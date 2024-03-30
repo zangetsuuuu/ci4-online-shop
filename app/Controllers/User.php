@@ -7,7 +7,7 @@ class User extends BaseController
     public function register()
     {
         $data = [
-            'title' => 'Sign Up'
+            'title' => 'Register'
         ];
 
         return view('pages/register', $data);

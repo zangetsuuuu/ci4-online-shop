@@ -4,21 +4,56 @@
 
 /* Set font family */
 @font-face {
-    font-family: "Red Hat Display";
-    src: url("../fonts/RedHatDisplay-Variable.woff2") format("woff");
-    font-display: swap;
-    font-style: normal;
+  font-family: "Red Hat Display";
+  src: url("../fonts/RedHatDisplay-Variable.woff2") format("woff");
+  font-display: swap;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: "Red Hat Display Italic";
-    src: url("../fonts/RedHatDisplay-Italic-Variable.woff2") format("woff");
-    font-display: swap;
-    font-style: normal;
+  font-family: "Red Hat Display Italic";
+  src: url("../fonts/RedHatDisplay-Italic-Variable.woff2") format("woff");
+  font-display: swap;
+  font-style: normal;
 }
 
 body {
-    background-image: url("../img/tailwind-bg.jpg");
-    background-size: cover;
-    font-family: 'Red Hat Display', sans-serif;
+  font-family: "Red Hat Display", sans-serif;
+  @apply bg-myWhite text-myBlack;
+}
+
+.btn-primary {
+  @apply text-white tracking-wide bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 ease-in-out duration-300;
+}
+
+.btn-alternative {
+  @apply py-2.5 px-5 text-sm font-medium text-gray-900 rounded-lg border border-gray-400 hover:bg-gray-200 hover:text-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 ease-in-out duration-300;
+}
+
+.btn-dark {
+  @apply text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 ease-in-out duration-300;
+}
+
+.btn-light {
+  @apply text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ease-in-out duration-300;
+}
+
+.btn-success {
+  @apply text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ease-in-out duration-300;
+}
+
+.btn-warning {
+  @apply text-white hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ease-in-out duration-300;
+}
+
+.btn-danger {
+  @apply text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ease-in-out duration-300;
+}
+
+.modal {
+  @apply hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full;
+}
+
+.modal-x {
+  @apply end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-6 h-6 md:w-8 md:h-8 ms-auto inline-flex justify-center items-center ease-in-out duration-300;
 }

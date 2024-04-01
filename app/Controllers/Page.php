@@ -6,14 +6,31 @@ class Page extends BaseController
 {
     public function index(): string
     {
-        $title = 'Homepage';
+        $title = 'Home';
 
         $data = [
-            'title' => $title,
-            'label' => 'Home'
+            'title' => $title
         ];
 
-        return view('pages/home', $data);
+        return view('pages/users/home', $data);
+    }
+
+    public function register()
+    {
+        $data = [
+            'title' => 'Register'
+        ];
+
+        return view('pages/users/register', $data);
+    }
+
+    public function login()
+    {
+        $data = [
+            'title' => 'Login'
+        ];
+
+        return view('pages/users/login', $data);
     }
 
     public function cart()
@@ -21,20 +38,38 @@ class Page extends BaseController
         $title = 'Cart';
 
         $data = [
-            'title' => $title,
-            'label' => 'My Cart'
+            'title' => $title
         ];
 
-        return view('pages/cart', $data);
+        return view('pages/users/cart', $data);
+    }
+
+    public function transaction()
+    {
+        $title = 'Transaction';
+
+        $data = [
+            'title' => $title
+        ];
+
+        return view('pages/users/transaction', $data);
     }
 
     public function account()
     {
         $data = [
-            'title' => 'Account',
-            'label' => 'My Account'
+            'title' => 'Account'
         ];
 
-        return view('pages/account', $data);
+        return view('pages/users/account', $data);
+    }
+
+    public function about()
+    {
+        $data = [
+            'title' => 'About Us'
+        ];
+
+        return view('pages/users/about', $data);
     }
 }

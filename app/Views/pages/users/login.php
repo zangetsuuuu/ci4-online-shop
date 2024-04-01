@@ -2,7 +2,7 @@
 
 <?= $this->section('content'); ?>
 <div class="min-h-screen flex items-center justify-center">
-    <div class="container px-8 py-16 md:py-0 md:px-24">
+    <div class="container px-4 py-16 md:py-0 md:px-0">
         <div class="bg-white p-8 rounded-xl shadow-xl max-w-lg w-full mx-auto">
             <div class="flex justify-center mb-6">
                 <span class="inline-block bg-gray-100 rounded-full p-3">

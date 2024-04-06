@@ -1,3 +1,4 @@
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="js/flowbite.min.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

@@ -1,24 +1,39 @@
-// Fugsi buka dan tutup popup
-function togglePopup(data) {
-    var popup = document.getElementById(data);
-    if (popup.classList.contains('hidden')) {
-        // Jika popup tersembunyi, tampilkan
-        popup.classList.remove('hidden');
-        popup.classList.add('flex', 'items-center', 'justify-center');
-        setTimeout(() => {
-            popup.classList.add('opacity-100');
-        }, 80);
-    } else {
-        // Jika popup ditampilkan, sembunyikan
-        popup.classList.remove('flex', 'items-center', 'justify-center');
-        popup.classList.add('hidden');
-        setTimeout(() => {
-            popup.classList.remove('opacity-100');
-        }, 80);
+function rupiahFormat(amount) {
+    var numberString = amount.toString(),
+        remainder = numberString.length % 3,
+        rupiah = numberString.substr(0, remainder),
+        thousands = numberString.substr(remainder).match(/\d{3}/g);
+
+    if (thousands) {
+        separator = remainder ? '.' : '';
+        rupiah += separator + thousands.join('.');
     }
+
+    return 'Rp. ' + rupiah;
 }
 
-function switchPopup(data1, data2) {
-    togglePopup(data1);
-    togglePopup(data2);
+const quantityInputs = document.querySelectorAll('#quantity');
+const priceCells = document.querySelectorAll('#price');
+const totalQuantityCell = document.getElementById('totalQuantity');
+const totalPriceCell = document.getElementById('totalPrice');
+
+function calculateTotal() {
+    let totalQuantity = 0;
+    let totalPrice = 0;
+
+    for (let i = 0; i < quantityInputs.length; i++) {
+        const quantity = parseInt(quantityInputs[i].value);
+        const price = parseInt(priceCells[i].getAttribute('data-original-value'));
+        
+        totalQuantity += quantity;
+        totalPrice += quantity * price;
+    }
+
+    totalQuantityCell.textContent = totalQuantity;
+    totalPriceCell.textContent = rupiahFormat(totalPrice);
 }
+
+calculateTotal();
+quantityInputs.forEach(function(input) {
+    input.addEventListener('input', calculateTotal);
+});

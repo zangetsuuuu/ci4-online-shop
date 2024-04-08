@@ -2,6 +2,6 @@
 
 <?= $this->renderSection('content'); ?>
 
-<?= $this->include('layout/modal'); ?>
+<?= $this->include('layout/modal/logout'); ?>
 
 <?= $this->include('layout/footer'); ?>

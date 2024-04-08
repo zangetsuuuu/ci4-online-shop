@@ -6,7 +6,7 @@
         <div class="h-full bg-white rounded-lg p-4 mt-16 md:mt-14">
             <!-- Carousel Start -->
             <div id="controls-carousel" class="relative w-full" data-carousel="slide">
-                <div class="relative border overflow-hidden rounded-lg h-[10rem] md:h-80">
+                <div class="relative border overflow-hidden rounded-lg h-[12rem] md:h-80">
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <img src="https://onlineprint.co.id/blog/wp-content/uploads/2023/04/banner-food-800x445.jpg" class="absolute w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover" alt="...">
                     </div>
@@ -87,4 +87,7 @@
         </div>
     </div>
 </div>
+
+<?= $this->include('layout/modal/category'); ?>
+
 <?= $this->endSection(); ?>

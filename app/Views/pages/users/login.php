@@ -16,11 +16,11 @@
             <form class="space-y-5" action="#">
                 <div>
                     <label for="email" class="text-sm font-medium text-myBlack tracking-wide">Email <span class="text-red-500">*</span></label>
-                    <input type="email" name="email" id="email" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-gray-800 focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="someone@example.com" required />
+                    <input type="email" name="email" id="email" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="someone@example.com" required />
                 </div>
                 <div>
                     <label for="password" class="text-sm font-medium text-myBlack tracking-wide">Password <span class="text-red-500">*</span></label>
-                    <input type="password" name="password" id="password" placeholder="••••••••" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-gray-800 focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" required />
+                    <input type="password" name="password" id="password" placeholder="••••••••" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" required />
                 </div>
                 <div class="flex items-center justify-between">
                     <div class="flex items-start">
@@ -31,7 +31,7 @@
                     </div>
                     <a href="#" class="text-sm text-blue-700 tracking-wide hover:underline">Lupa Password?</a>
                 </div>
-                <button type="submit" class="w-full text-white tracking-wide bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center ease-in-out duration-300 ">Login ke akun</button>
+                <button type="submit" class="btn-primary w-full">Login ke akun</button>
                 <div class="text-center text-sm font-medium text-gray-500 tracking-wide mt-4 md:mt-0">
                     Belum punya akun? <a href="/register" class="text-blue-700 hover:underline">Daftar akun</a>
                 </div>

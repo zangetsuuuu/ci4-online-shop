@@ -20,33 +20,39 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-x-0 gap-y-4 md:gap-x-4">
                     <div class="col-span-2">
                         <label for="fullName" class="text-sm font-medium text-myBlack tracking-wide">Nama Lengkap <span class="text-red-500">*</span></label>
-                        <input type="text" name="fullName" id="fullName" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-gray-800 focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="John Doe" required />
+                        <input type="text" name="fullName" id="fullName" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="John Doe" required />
                     </div>
                     <div>
                         <label for="userName" class="text-sm font-medium text-myBlack tracking-wide">Username <span class="text-red-500">*</span></label>
-                        <input type="text" name="userName" id="userName" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-gray-800 focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="johndoe" required />
+                        <input type="text" name="userName" id="userName" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="johndoe" required />
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-x-0 gap-y-4 md:gap-x-4">
                     <div class="col-span-2">
                         <label for="email" class="text-sm font-medium text-myBlack tracking-wide">Email <span class="text-red-500">*</span></label>
-                        <input type="email" name="email" id="email" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-gray-800 focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="someone@example.com" required />
+                        <input type="email" name="email" id="email" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="someone@example.com" required />
                     </div>
                     <div>
                         <label for="phoneNumber" class="text-sm font-medium text-myBlack tracking-wide">No. HP <span class="text-red-500">*</span></label>
-                        <input type="email" name="phoneNumber" id="phoneNumber" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-gray-800 focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="+62" required />
+                        <input type="email" name="phoneNumber" id="phoneNumber" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="+62" required />
                     </div>
                 </div>
                 <div>
-                    <label for="password" class="text-sm font-medium text-myBlack tracking-wide">Password <span class="text-red-500">*</span></label>
-                    <input type="password" name="password" id="password" placeholder="••••••••" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-gray-800 focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" required />
+                    <label for="address" class="text-sm font-medium text-myBlack tracking-wide">Alamat <span class="text-red-500">*</span></label>
+                    <input type="text" name="address" id="address" placeholder="Jl. Teratai No. 123" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" required />
                 </div>
-                <div>
-                    <label for="passwordCheck" class="text-sm font-medium text-myBlack tracking-wide">Konfirmasi Password <span class="text-red-500">*</span></label>
-                    <input type="password" name="passwordCheck" id="passwordCheck" placeholder="••••••••" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-gray-800 focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" required />
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-0 gap-y-4 md:gap-x-4">
+                    <div>
+                        <label for="password" class="text-sm font-medium text-myBlack tracking-wide">Password <span class="text-red-500">*</span></label>
+                        <input type="password" name="password" id="password" placeholder="••••••••" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" required />
+                    </div>
+                    <div>
+                        <label for="passwordCheck" class="text-sm font-medium text-myBlack tracking-wide">Konfirmasi Password <span class="text-red-500">*</span></label>
+                        <input type="password" name="passwordCheck" id="passwordCheck" placeholder="••••••••" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" required />
+                    </div>
                 </div>
                 <div class="flex flex-wrap md:flex-nowrap items-center justify-between">
-                    <button type="submit" class="w-full md:w-auto text-white tracking-wide bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center ease-in-out duration-300 ">Daftar akun</button>
+                    <button type="submit" class="btn-primary">Daftar akun</button>
                     <div class="text-sm font-medium text-gray-500 tracking-wide mx-auto md:me-0 mt-4 md:mt-0">
                         Sudah punya akun? <a href="/login" class="text-blue-700 hover:underline">Login</a>
                     </div>

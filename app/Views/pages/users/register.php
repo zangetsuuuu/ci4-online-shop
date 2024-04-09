@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="flex flex-wrap md:flex-nowrap items-center justify-between">
-                    <button type="submit" class="btn-primary">Daftar akun</button>
+                    <button type="submit" class="btn-primary w-full md:w-auto">Daftar akun</button>
                     <div class="text-sm font-medium text-gray-500 tracking-wide mx-auto md:me-0 mt-4 md:mt-0">
                         Sudah punya akun? <a href="/login" class="text-blue-700 hover:underline">Login</a>
                     </div>

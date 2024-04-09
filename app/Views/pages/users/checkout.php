@@ -16,13 +16,13 @@
                     <?php for ($i = 1; $i < 5; $i++) : ?>
                         <div class="flex justify-between items-center">
                             <p class="w-2/4 text-xs md:text-sm text-gray-600 text-left tracking-wide">Indomie Goreng &times;<?= $i ?></p>
-                            <p class="w-1/4 text-xs md:text-sm text-gray-600 text-end tracking-wide">Rp 4.000</p>
+                            <p class="w-1/4 text-xs md:text-sm text-gray-600 text-end tracking-wide">Rp. 4.000</p>
                         </div>
                     <?php endfor; ?>
                 </div>
                 <div class="flex justify-between items-center border-t pt-2">
                     <p class="text-base md:text-lg font-semibold tracking-wide">Total</p>
-                    <p class="text-base md:text-lg font-semibold tracking-wide">Rp 16.000</p>
+                    <p class="text-base md:text-lg font-semibold tracking-wide">Rp. 16.000</p>
                 </div>
             </div>
 

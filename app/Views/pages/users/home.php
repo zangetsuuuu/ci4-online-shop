@@ -42,7 +42,7 @@
 
             <!-- Product Start -->
             <div class="flex items-center justify-between my-4 md:my-5">
-                <h1 class="text-lg md:text-xl font-semibold tracking-wide">Daftar Produk</h1>
+                <h1 class="text-lg md:text-xl font-semibold tracking-wide">Daftar Barang</h1>
                 <button data-modal-target="category-modal" data-modal-toggle="category-modal" class="icon-alternative" type="button">
                     <svg class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7.24 2H5.34C3.15 2 2 3.15 2 5.33V7.23C2 9.41 3.15 10.56 5.33 10.56H7.23C9.41 10.56 10.56 9.41 10.56 7.23V5.33C10.57 3.15 9.42 2 7.24 2Z" fill="currentColor" />
@@ -83,7 +83,7 @@
                     </a>
                 <?php endfor; ?>
             </div>
-            <!-- Product Start -->
+            <!-- Product End -->
         </div>
     </div>
 </div>

@@ -4,7 +4,7 @@
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow overflow-hidden">
             <div class="w-full h-full">
-                <img src="img/bg-1.jpg" class="object-cover w-full h-full" alt="">
+                <img src="<?= base_url('img/bg-1.jpg'); ?>" class="object-cover w-full h-full" alt="">
             </div>
             <button type="button" class="absolute top-4 end-4 z-50 p-1 text-white bg-myBlack/20 backdrop-filter backdrop-blur-md hover:bg-white hover:text-myBlack rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center ease-in-out duration-300" data-modal-hide="profile-image-modal">
                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">

@@ -8,7 +8,7 @@
                 </svg>
                 <h3 class="mb-5 text-base font-normal text-gray-500 tracking-wide">Hapus item "Indomie" dari keranjang?</h3>
                 <div class="flex items-center justify-center space-x-3">
-                    <button type="submit" class="btn-danger w-20">Ya</button>
+                    <button type="submit" name="delete_cart_item" class="btn-danger w-20">Ya</button>
                     <button data-modal-hide="delete-cart-item-modal" type="button" class="btn-alternative w-20">Tidak</button>
                 </div>
             </div>

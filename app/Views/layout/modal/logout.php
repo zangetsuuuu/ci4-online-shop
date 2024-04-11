@@ -8,7 +8,7 @@
                 </svg>
                 <h3 class="mb-5 text-base font-normal text-gray-500 tracking-wide">Yakin ingin logout?</h3>
                 <div class="flex items-center justify-center space-x-3">
-                    <button type="submit" class="btn-danger w-20">Ya</button>
+                    <button type="submit" name="logout" class="btn-danger w-20">Ya</button>
                     <button data-modal-hide="logout-modal" type="button" class="btn-alternative w-20">Tidak</button>
                 </div>
             </div>

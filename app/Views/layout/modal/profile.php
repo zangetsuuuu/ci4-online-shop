@@ -17,7 +17,7 @@
                 <div class="space-y-5 p-4 md:p-5 max-h-[28rem] overflow-y-auto">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-5">
                         <div class="rounded-full w-40 h-40 overflow-hidden border mx-auto relative">
-                            <img id="frame" src="img/bg-1.jpg" class="object-cover w-full h-full" alt="">
+                            <img id="frame" src="<?= base_url('img/bg-1.jpg'); ?>" class="object-cover w-full h-full" alt="">
                             <div class="flex items-center justify-center absolute inset-0 bg-myBlack/20">
                                 <label data-tooltip-target="edit-user-picture-tooltip" for="fileInput" class="text-white hover:text-gray-300 p-3 rounded-full cursor-pointer ease-in-out duration-300">
                                     <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,20 +34,20 @@
 
                         <div class="col-span-2 space-y-6">
                             <div>
-                                <label for="fullName" class="text-sm font-medium text-myBlack tracking-wide">Nama Lengkap <span class="text-red-500">*</span></label>
+                                <label for="fullname" class="text-sm font-medium text-myBlack tracking-wide">Nama Lengkap <span class="text-red-500">*</span></label>
                                 <input type="text" name="fullName" id="fullName" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="John Doe" required />
                             </div>
                             <div>
-                                <label for="userName" class="text-sm font-medium text-myBlack tracking-wide">Username <span class="text-red-500">*</span></label>
-                                <input type="text" name="userName" id="userName" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="johndoe" required />
+                                <label for="username" class="text-sm font-medium text-myBlack tracking-wide">Username <span class="text-red-500">*</span></label>
+                                <input type="text" name="username" id="username" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="johndoe" required />
                             </div>
                             <div>
                                 <label for="email" class="text-sm font-medium text-myBlack tracking-wide">Email <span class="text-red-500">*</span></label>
                                 <input type="email" name="email" id="email" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="someone@example.com" required />
                             </div>
                             <div>
-                                <label for="phoneNumber" class="text-sm font-medium text-myBlack tracking-wide">No. HP <span class="text-red-500">*</span></label>
-                                <input type="email" name="phoneNumber" id="phoneNumber" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="+62" required />
+                                <label for="phone_number" class="text-sm font-medium text-myBlack tracking-wide">No. HP <span class="text-red-500">*</span></label>
+                                <input type="email" name="phone_number" id="phone_number" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="+62" required />
                             </div>
                             <div>
                                 <label for="address" class="text-sm font-medium text-myBlack tracking-wide">Alamat <span class="text-red-500">*</span></label>
@@ -59,7 +59,7 @@
                 <!-- Modal footer -->
                 <div class="flex items-center justify-end space-x-3 p-4 md:p-5 border-t border-gray-200 rounded-b">
                     <button type="button" data-modal-hide="user-profile-modal" class="btn-alternative">Batal</button>
-                    <button type="submit" class="btn-primary">Simpan Perubahan</button>
+                    <button type="submit" name="save_profile" class="btn-primary">Simpan Perubahan</button>
                 </div>
             </form>
         </div>

@@ -32,8 +32,8 @@
                         <label for="drinks" class="ms-2 text-sm font-medium text-myBlack tracking-wide">Minuman</label>
                     </div>
                     <div class="flex items-center">
-                        <input id="instantFood" type="radio" value="instantFood" name="category" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                        <label for="instantFood" class="ms-2 text-sm font-medium text-myBlack tracking-wide">Makanan Instan</label>
+                        <input id="instant_food" type="radio" value="instant_food" name="category" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                        <label for="instant_food" class="ms-2 text-sm font-medium text-myBlack tracking-wide">Makanan Instan</label>
                     </div>
                     <div class="flex items-center">
                         <input id="milk" type="radio" value="milk" name="category" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
@@ -46,8 +46,8 @@
                 </div>
                 <!-- Modal footer -->
                 <div class="flex items-center justify-end space-x-3 p-4 md:p-5 border-t border-gray-200 rounded-b">
-                    <button type="button" class="btn-alternative">Reset</button>
-                    <button type="submit" class="btn-primary">Konfirmasi</button>
+                    <button type="submit" name="reset_category" class="btn-alternative">Reset</button>
+                    <button type="submit" name="set_category" class="btn-primary">Konfirmasi</button>
                 </div>
             </form>
         </div>

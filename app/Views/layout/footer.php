@@ -1,4 +1,4 @@
-    <script src="js/flowbite.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="<?= base_url('js/flowbite.min.js'); ?>"></script>
+    <script src="<?= base_url('js/index.js'); ?>"></script>
 </body>
 </html>

@@ -15,3 +15,6 @@ $routes->get('/orders', 'Page::orders');
 $routes->get('/checkout', 'Page::checkout');
 $routes->get('/about-us', 'Page::about');
 $routes->get('/profile', 'Page::userProfile');
+$routes->get('/change-password', 'Page::changePassword');
+
+$routes->get('/product/(:segment)', 'Page::product/$1');

@@ -7,19 +7,19 @@ class Page extends BaseController
     public function index(): string
     {
         $data = [
-            'title' => 'Home'
+            'title' => 'Beranda'
         ];
 
-        return view('pages/users/home', $data);
+        return view('users/home', $data);
     }
 
     public function register()
     {
         $data = [
-            'title' => 'Register'
+            'title' => 'Daftar'
         ];
 
-        return view('pages/users/register', $data);
+        return view('auth/register', $data);
     }
 
     public function login()
@@ -28,25 +28,25 @@ class Page extends BaseController
             'title' => 'Login'
         ];
 
-        return view('pages/users/login', $data);
+        return view('auth/login', $data);
     }
 
     public function cart()
     {
         $data = [
-            'title' => 'Cart'
+            'title' => 'Keranjang'
         ];
 
-        return view('pages/users/cart', $data);
+        return view('users/cart', $data);
     }
 
     public function orders()
     {
         $data = [
-            'title' => 'Orders'
+            'title' => 'Pesanan'
         ];
 
-        return view('pages/users/orders', $data);
+        return view('users/orders', $data);
     }
 
     public function checkout()
@@ -55,24 +55,42 @@ class Page extends BaseController
             'title' => 'Checkout'
         ];
 
-        return view('pages/users/checkout', $data);
+        return view('users/checkout', $data);
     }
 
     public function about()
     {
         $data = [
-            'title' => 'About Us'
+            'title' => 'Tentang Kami'
         ];
 
-        return view('pages/users/about', $data);
+        return view('about', $data);
     }
 
     public function userProfile()
     {
         $data = [
-            'title' => 'My Profile'
+            'title' => 'Profil Saya'
         ];
 
-        return view('pages/users/profile', $data);
+        return view('users/profile', $data);
+    }
+
+    public function product()
+    {
+        $data = [
+            'title' => 'Detail Produk'
+        ];
+
+        return view('product/product-detail', $data);
+    }
+
+    public function changePassword()
+    {
+        $data = [
+            'title' => 'Ganti Password'
+        ];
+
+        return view('users/change-password', $data);
     }
 }

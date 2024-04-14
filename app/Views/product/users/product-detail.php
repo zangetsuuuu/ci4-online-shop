@@ -1,24 +1,19 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/users/template'); ?>
 
 <?= $this->section('content'); ?>
 <div class="min-h-screen">
     <div class="p-4 sm:ml-64">
-        <div class="h-full bg-white rounded-lg p-4 mt-16 md:mt-14">
+        <div class="h-full bg-white rounded-lg shadow-sm p-4 mt-16 md:mt-14">
             <div class="flex items-center space-x-2 md:space-x-3">
-                <svg class="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                        <g id="icon" fill="currentColor" transform="translate(64.000000, 34.346667)">
-                            <path d="M192,7.10542736e-15 L384,110.851252 L384,332.553755 L192,443.405007 L1.42108547e-14,332.553755 L1.42108547e-14,110.851252 L192,7.10542736e-15 Z M127.999,206.918 L128,357.189 L170.666667,381.824 L170.666667,231.552 L127.999,206.918 Z M42.6666667,157.653333 L42.6666667,307.920144 L85.333,332.555 L85.333,182.286 L42.6666667,157.653333 Z M275.991,97.759 L150.413,170.595 L192,194.605531 L317.866667,121.936377 L275.991,97.759 Z M192,49.267223 L66.1333333,121.936377 L107.795,145.989 L233.374,73.154 L192,49.267223 Z" id="Combined-Shape">
-                            </path>
-                        </g>
-                    </g>
+                <svg class="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V11C12.75 10.5858 12.4142 10.25 12 10.25C11.5858 10.25 11.25 10.5858 11.25 11V17C11.25 17.4142 11.5858 17.75 12 17.75ZM12 7C12.5523 7 13 7.44772 13 8C13 8.55228 12.5523 9 12 9C11.4477 9 11 8.55228 11 8C11 7.44772 11.4477 7 12 7Z" fill="currentColor" />
                 </svg>
                 <h1 class="text-lg md:text-xl font-semibold tracking-wide">Detail Produk</h1>
             </div>
             <hr class="my-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                 <div class="w-full h-64 rounded-lg overflow-hidden">
-                    <img class="w-full h-full object-cover" src="https://via.placeholder.com/300" alt="Product Image">
+                    <img class="w-full h-full object-cover" src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//93/MTA-2583228/indomie_indomie-goreng-mie-instan--85g--_full02.jpg">
                 </div>
                 <div class="relative col-span-1 md:col-span-2 p-3 md:p-4">
                     <div class="space-y-1.5 mb-2.5 md:mb-3.5">

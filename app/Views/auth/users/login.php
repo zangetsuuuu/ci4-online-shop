@@ -1,4 +1,4 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/users/template'); ?>
 
 <?= $this->section('content'); ?>
 <div class="min-h-screen flex items-center justify-center">
@@ -33,7 +33,7 @@
                 </div>
                 <button type="submit" name="login" class="btn-primary w-full">Login ke akun</button>
                 <div class="text-center text-sm font-medium text-gray-500 tracking-wide mt-4 md:mt-0">
-                    Belum punya akun? <a href="/register" class="text-blue-700 hover:underline">Daftar akun</a>
+                    Belum punya akun? <a href="/register" class="text-blue-700 hover:underline">Daftar</a>
                 </div>
             </form>
         </div>

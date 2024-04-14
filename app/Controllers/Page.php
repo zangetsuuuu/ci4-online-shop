@@ -49,6 +49,15 @@ class Page extends BaseController
         return view('admin/orders', $data);
     }
 
+    public function adminOrdersDetail()
+    {
+        $data = [
+            'title' => 'Detail Pesanan | ADMIN'
+        ];
+
+        return view('admin/order-details', $data);
+    }
+
     public function adminProduct()
     {
         $data = [
@@ -100,7 +109,7 @@ class Page extends BaseController
             'title' => 'Detail Produk | ADMIN'
         ];
 
-        return view('product/admin/product-detail', $data);
+        return view('admin/product-detail', $data);
     }
 
     public function productDetail()
@@ -109,7 +118,7 @@ class Page extends BaseController
             'title' => 'Detail Produk'
         ];
 
-        return view('product/users/product-detail', $data);
+        return view('users/product-detail', $data);
     }
 
     public function changePassword()

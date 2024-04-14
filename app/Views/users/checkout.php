@@ -1,4 +1,4 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/users/template'); ?>
 
 <?= $this->section('content'); ?>
 <div class="min-h-screen">
@@ -40,6 +40,6 @@
     </div>
 </div>
 
-<?= $this->include('layout/modal/checkout'); ?>
+<?= $this->include('layout/users/modal/checkout'); ?>
 
 <?= $this->endSection(); ?>

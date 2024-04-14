@@ -1,9 +1,9 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/users/template'); ?>
 
 <?= $this->section('content'); ?>
 <div class="min-h-screen">
     <div class="p-4 sm:ml-64">
-        <div class="h-full bg-white rounded-lg p-4 mt-16 md:mt-14">
+        <div class="h-full bg-white rounded-lg shadow-sm p-4 mt-16 md:mt-14">
             <!-- Carousel Start -->
             <div id="controls-carousel" class="relative w-full" data-carousel="slide">
                 <div class="relative border overflow-hidden rounded-lg h-[12rem] md:h-80">
@@ -38,13 +38,23 @@
                     </span>
                 </button>
             </div>
-            <!-- Carousel End -->
+        </div>
+        <!-- Carousel End -->
 
-            <hr class="my-5 md:my-6">
-
-            <!-- Product Start -->
-            <div class="flex items-center justify-between mb-5 md:mb-6">
-                <h1 class="text-lg md:text-xl font-semibold tracking-wide">Daftar Produk</h1>
+        <!-- Product Start -->
+        <div class="h-full bg-white rounded-lg shadow-sm p-4 mt-3 md:mt-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <svg class="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="icon" fill="currentColor" transform="translate(64.000000, 34.346667)">
+                                <path d="M192,7.10542736e-15 L384,110.851252 L384,332.553755 L192,443.405007 L1.42108547e-14,332.553755 L1.42108547e-14,110.851252 L192,7.10542736e-15 Z M127.999,206.918 L128,357.189 L170.666667,381.824 L170.666667,231.552 L127.999,206.918 Z M42.6666667,157.653333 L42.6666667,307.920144 L85.333,332.555 L85.333,182.286 L42.6666667,157.653333 Z M275.991,97.759 L150.413,170.595 L192,194.605531 L317.866667,121.936377 L275.991,97.759 Z M192,49.267223 L66.1333333,121.936377 L107.795,145.989 L233.374,73.154 L192,49.267223 Z" id="Combined-Shape">
+                                </path>
+                            </g>
+                        </g>
+                    </svg>
+                    <h1 class="text-lg md:text-xl font-semibold tracking-wide">Daftar Produk</h1>
+                </div>
                 <div class="flex items-center space-x-4">
                     <button data-modal-target="category-modal" data-modal-toggle="category-modal" class="text-myBlack hover:text-gray-500 ease-in-out duration-300">
                         <svg class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,9 +71,12 @@
                     </button>
                 </div>
             </div>
+        </div>
+
+        <div class="h-full bg-white rounded-lg shadow-sm p-4 mt-3 md:mt-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
                 <?php for ($i = 1; $i <= 24; $i++) : ?>
-                    <a href="/product/<?= $i ?>" class="max-h-[20rem] bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-lg ease-in-out duration-300 group">
+                    <a href="<?= base_url("/product/$i"); ?>" class="max-h-[20rem] bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-lg ease-in-out duration-300 group">
                         <form action="" method="">
                             <div class="h-24 md:h-28">
                                 <img class="w-full h-full object-contain" src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//93/MTA-2583228/indomie_indomie-goreng-mie-instan--85g--_full02.jpg" alt="">
@@ -92,13 +105,13 @@
                     </a>
                 <?php endfor; ?>
             </div>
-            <!-- Product End -->
         </div>
+        <!-- Product End -->
     </div>
 </div>
 
-<?= $this->include('layout/modal/category'); ?>
+<?= $this->include('layout/users/modal/category'); ?>
 
-<?= $this->include('layout/modal/search'); ?>
+<?= $this->include('layout/users/modal/search'); ?>
 
 <?= $this->endSection(); ?>

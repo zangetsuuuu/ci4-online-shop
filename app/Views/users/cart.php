@@ -1,9 +1,9 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/users/template'); ?>
 
 <?= $this->section('content'); ?>
 <div class="min-h-screen">
     <div class="p-4 sm:ml-64">
-        <div class="h-full bg-white rounded-lg p-4 mt-16 md:mt-14">
+        <div class="h-full bg-white rounded-lg shadow-sm p-4 mt-16 md:mt-14">
             <div class="flex items-center space-x-2 md:space-x-3">
                 <svg class="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2.08416 2.7512C2.22155 2.36044 2.6497 2.15503 3.04047 2.29242L3.34187 2.39838C3.95839 2.61511 4.48203 2.79919 4.89411 3.00139C5.33474 3.21759 5.71259 3.48393 5.99677 3.89979C6.27875 4.31243 6.39517 4.76515 6.4489 5.26153C6.47295 5.48373 6.48564 5.72967 6.49233 6H17.1305C18.8155 6 20.3323 6 20.7762 6.57708C21.2202 7.15417 21.0466 8.02369 20.6995 9.76275L20.1997 12.1875C19.8846 13.7164 19.727 14.4808 19.1753 14.9304C18.6236 15.38 17.8431 15.38 16.2821 15.38H10.9792C8.19028 15.38 6.79583 15.38 5.92943 14.4662C5.06302 13.5523 4.99979 12.5816 4.99979 9.64L4.99979 7.03832C4.99979 6.29837 4.99877 5.80316 4.95761 5.42295C4.91828 5.0596 4.84858 4.87818 4.75832 4.74609C4.67026 4.61723 4.53659 4.4968 4.23336 4.34802C3.91052 4.18961 3.47177 4.03406 2.80416 3.79934L2.54295 3.7075C2.15218 3.57012 1.94678 3.14197 2.08416 2.7512Z" fill="currentColor" />
@@ -12,22 +12,24 @@
                 </svg>
                 <h1 class="text-lg md:text-xl font-semibold tracking-wide">Keranjang</h1>
             </div>
-            <hr class="my-4">
+        </div>
+
+        <div class="h-full bg-white rounded-lg shadow-sm p-4 mt-3 md:mt-4">
             <form action="">
                 <div class="rounded-md overflow-x-auto">
-                    <table class="min-w-full text-sm text-left text-gray-500 tracking-wide divide-y divide-gray-200">
+                    <table class="min-w-full text-sm text-left text-gray-500 tracking-wide divide-y divide-gray-200 border border-gray-200">
                         <thead class="text-xs text-myBlack uppercase bg-gray-100">
                             <tr>
-                                <th scope="col" class="px-6 py-4 w-2/5">
+                                <th scope="col" class="px-6 py-4 w-fit">
                                     Nama Produk
                                 </th>
-                                <th scope="col" class="px-6 py-4 w-1/5">
+                                <th scope="col" class="px-6 py-4 w-fit">
                                     Jumlah
                                 </th>
-                                <th scope="col" class="px-6 py-4 w-1/5">
+                                <th scope="col" class="px-6 py-4 w-fit">
                                     Harga
                                 </th>
-                                <th scope="col" class="px-6 py-4 w-1/5">
+                                <th scope="col" class="px-6 py-4 w-fit">
                                     Aksi
                                 </th>
                             </tr>
@@ -38,15 +40,15 @@
                                     <th scope="row" class="px-6 py-4 font-medium text-myBlack whitespace-nowrap">
                                         Indomie Goreng
                                     </th>
-                                    <td class="px-6 py-4">
+                                    <td class="px-6 py-4 whitespace-nowrap">
                                         <input type="number" name="quantity" min="1" value="1" class="quantity w-16 h-8 rounded-md">
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-6 py-4 whitespace-nowrap">
                                         <span class="price" data-original-value="<?= $j; ?>">
                                             <?= 'Rp. ' . number_format($j, 0, ',', '.'); ?>
                                         </span>
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-6 py-4 whitespace-nowrap">
                                         <button data-modal-target="delete-cart-item-modal" data-modal-toggle="delete-cart-item-modal" type="button" class="text-red-500 font-semibold ms-1 hover:text-red-700 ease-in-out duration-200">
                                             <svg fill="currentColor" class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="delete" class="icon glyph">
                                                 <path d="M17,4V5H15V4H9V5H7V4A2,2,0,0,1,9,2h6A2,2,0,0,1,17,4Z"></path>
@@ -58,10 +60,10 @@
                             <?php endfor; ?>
                         </tbody>
                         <tfoot>
-                            <tr class="font-semibold text-myBlack ">
+                            <tr class="font-semibold text-myBlack">
                                 <th scope="row" class="px-6 py-3 text-base">Total</th>
-                                <td id="totalQuantity" class="px-6 py-3">1</td>
-                                <td id="totalPrice" class="px-6 py-3">0</td>
+                                <td id="totalQuantity" class="px-6 py-4 whitespace-nowrap">1</td>
+                                <td id="totalPrice" class="px-6 py-4 whitespace-nowrap">0</td>
                             </tr>
                         </tfoot>
                     </table>
@@ -80,6 +82,6 @@
     </div>
 </div>
 
-<?= $this->include('layout/modal/delete-cart-item'); ?>
+<?= $this->include('layout/users/modal/delete-cart-item'); ?>
 
 <?= $this->endSection(); ?>

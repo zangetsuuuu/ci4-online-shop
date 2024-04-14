@@ -1,9 +1,9 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/users/template'); ?>
 
 <?= $this->section('content'); ?>
 <div class="min-h-screen">
     <div class="p-4 sm:ml-64">
-        <div class="h-full bg-white rounded-lg p-4 mt-16 md:mt-14">
+        <div class="h-full bg-white rounded-lg shadow-sm p-4 mt-16 md:mt-14">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-2 md:space-x-3">
                     <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,9 +19,11 @@
                     <span>Edit profil</span>
                 </button>
             </div>
-            <hr class="mt-4 mb-8">
+        </div>
+
+        <div class="h-full bg-white rounded-lg shadow-sm p-6 mt-3 md:mt-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-5">
-                <div class="relative rounded-full w-56 h-56 overflow-hidden border mx-auto">
+                <div class="relative rounded-full w-48 h-48 md:w-56 md:h-56 overflow-hidden border mx-auto">
                     <img src="img/bg-1.jpg" class="object-cover w-full h-full" alt="">
                     <div class="flex items-center justify-center absolute inset-0 cursor-pointer opacity-0 hover:opacity-100 bg-myBlack/50 ease-in-out duration-300">
                         <button type="button" data-modal-target="profile-image-modal" data-modal-toggle="profile-image-modal" data-tooltip-target="profile-image-tooltip" class="text-white hover:text-gray-300 p-3 rounded-full ease-in-out duration-300">
@@ -67,8 +69,8 @@
     </div>
 </div>
 
-<?= $this->include('layout/modal/profile'); ?>
+<?= $this->include('layout/users/modal/profile'); ?>
 
-<?= $this->include('layout/modal/profile-img'); ?>
+<?= $this->include('layout/users/modal/profile-img'); ?>
 
 <?= $this->endSection(); ?>

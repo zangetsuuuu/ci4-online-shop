@@ -1,9 +1,9 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/users/template'); ?>
 
 <?= $this->section('content'); ?>
 <div class="min-h-screen">
     <div class="p-4 sm:ml-64">
-        <div class="h-full bg-white rounded-lg p-4 mt-16 md:mt-14">
+        <div class="h-full bg-white rounded-lg shadow-sm p-4 mt-16 md:mt-14">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-2 md:space-x-3">
                     <svg class="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,38 +17,54 @@
                     </svg>
                 </button>
             </div>
-            <hr class="my-4">
+        </div>
+
+        <div class="h-full bg-white rounded-lg shadow-sm p-4 mt-3 md:mt-4">
             <div class="rounded-md overflow-x-auto">
                 <!-- Orders start -->
-                <table class="min-w-full text-sm text-left text-gray-500 tracking-wide divide-y divide-gray-200">
+                <table class="min-w-full text-sm text-left text-gray-500 tracking-wide divide-y divide-gray-200 border border-gray-200">
                     <thead class="text-xs text-myBlack uppercase bg-gray-100">
                         <tr>
-                            <th scope="col" class="px-6 py-4 w-1/5">
+                            <th scope="col" class="px-6 py-4 w-fit">
+                                No.
+                            </th>
+                            <th scope="col" class="px-6 py-4 w-fit">
                                 Tanggal Pesanan
                             </th>
-                            <th scope="col" class="px-6 py-4 w-2/5">
+                            <th scope="col" class="px-6 py-4 w-fit">
                                 Nama Produk
                             </th>
-                            <th scope="col" class="px-6 py-4 w-1/5">
-                                Jumlah
+                            <th scope="col" class="px-6 py-4 w-fit">
+                                Total
                             </th>
-                            <th scope="col" class="px-6 py-4 w-1/5">
+                            <th scope="col" class="px-6 py-4 w-fit">
                                 Status
+                            </th>
+                            <th scope="col" class="px-6 py-4 w-fit">
+                                Aksi
                             </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        <?php for ($i = 1; $i <= 5; $i++): ?>
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap">09-04-2024</td>
-                            <td class="px-6 py-4 whitespace-nowrap truncate max-w-16">Indomie Goreng, Rinso, Chitato lor</td>
-                            <td class="px-6 py-4 whitespace-nowrap"><?= $i; ?></td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                    Selesai
-                                </span>
-                            </td>
-                        </tr>
+                        <?php for ($i = 1; $i <= 5; $i++) : ?>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><?= $i; ?></td>
+                                <td class="px-6 py-4 whitespace-nowrap">09-04-2024</td>
+                                <td class="px-6 py-4 whitespace-nowrap max-w-12 truncate">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, sint!</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Rp. 20.000</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        Selesai
+                                    </span>
+                                </td>
+                                <td class="px-7 py-4 whitespace-nowrap">
+                                    <a href="<?= base_url('/orders/' . $i . ''); ?>" class=" hover:text-myBlack ease-in-out duration-300">
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V11C12.75 10.5858 12.4142 10.25 12 10.25C11.5858 10.25 11.25 10.5858 11.25 11V17C11.25 17.4142 11.5858 17.75 12 17.75ZM12 7C12.5523 7 13 7.44772 13 8C13 8.55228 12.5523 9 12 9C11.4477 9 11 8.55228 11 8C11 7.44772 11.4477 7 12 7Z" fill="currentColor" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
                         <?php endfor; ?>
                     </tbody>
                 </table>
@@ -58,6 +74,6 @@
     </div>
 </div>
 
-<?= $this->include('layout/modal/order-filters'); ?>
+<?= $this->include('layout/users/modal/order-filters'); ?>
 
 <?= $this->endSection(); ?>

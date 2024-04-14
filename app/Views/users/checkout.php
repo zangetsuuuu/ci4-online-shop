@@ -14,8 +14,8 @@
                 <div class="space-y-2 mb-2">
                     <?php for ($i = 1; $i < 5; $i++) : ?>
                         <div class="flex justify-between items-center">
-                            <p class="w-2/4 text-xs md:text-sm text-gray-600 text-left tracking-wide">Indomie Goreng &times;<?= $i ?></p>
-                            <p class="w-1/4 text-xs md:text-sm text-gray-600 text-end tracking-wide">Rp. 4.000</p>
+                            <p class="w-2/4 text-xs md:text-sm text-gray-500 text-left tracking-wide">Indomie Goreng &times;<?= $i ?></p>
+                            <p class="w-1/4 text-xs md:text-sm text-gray-500 text-end tracking-wide">Rp. 4.000</p>
                         </div>
                     <?php endfor; ?>
                 </div>

@@ -68,7 +68,7 @@
                     </div>
                     <!-- Modal footer -->
                     <div class="flex items-center justify-end space-x-3 p-4 md:p-5 border-t border-gray-200 rounded-b">
-                        <button type="button" data-modal-hide="edit-product-modal" class="btn-alternative">Batal</button>
+                        <button type="button" data-modal-hide="edit-product-modal#<?= $i; ?>" class="btn-alternative">Batal</button>
                         <button type="submit" name="add_product" class="btn-admin">Simpan Perubahan</button>
                     </div>
                 </form>

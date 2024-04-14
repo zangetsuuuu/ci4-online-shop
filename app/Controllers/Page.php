@@ -13,22 +13,13 @@ class Page extends BaseController
         return view('users/home', $data);
     }
 
-    public function register()
+    public function dashboard()
     {
         $data = [
-            'title' => 'Daftar'
+            'title' => 'Dashboard | ADMIN'
         ];
 
-        return view('auth/register', $data);
-    }
-
-    public function login()
-    {
-        $data = [
-            'title' => 'Login'
-        ];
-
-        return view('auth/login', $data);
+        return view('admin/dashboard', $data);
     }
 
     public function cart()
@@ -47,6 +38,24 @@ class Page extends BaseController
         ];
 
         return view('users/orders', $data);
+    }
+
+    public function adminOrders()
+    {
+        $data = [
+            'title' => 'Pesanan | ADMIN'
+        ];
+
+        return view('admin/orders', $data);
+    }
+
+    public function adminProduct()
+    {
+        $data = [
+            'title' => 'Produk | ADMIN'
+        ];
+
+        return view('admin/product', $data);
     }
 
     public function checkout()
@@ -76,13 +85,31 @@ class Page extends BaseController
         return view('users/profile', $data);
     }
 
-    public function product()
+    public function adminProfile()
+    {
+        $data = [
+            'title' => 'Profil | ADMIN'
+        ];
+
+        return view('admin/profile', $data);
+    }
+
+    public function adminProductDetail()
+    {
+        $data = [
+            'title' => 'Detail Produk | ADMIN'
+        ];
+
+        return view('product/admin/product-detail', $data);
+    }
+
+    public function productDetail()
     {
         $data = [
             'title' => 'Detail Produk'
         ];
 
-        return view('product/product-detail', $data);
+        return view('product/users/product-detail', $data);
     }
 
     public function changePassword()
@@ -92,5 +119,32 @@ class Page extends BaseController
         ];
 
         return view('users/change-password', $data);
+    }
+
+    public function adminChangePassword()
+    {
+        $data = [
+            'title' => 'Ganti Password | ADMIN'
+        ];
+
+        return view('admin/change-password', $data);
+    }
+
+    public function customers()
+    {
+        $data = [
+            'title' => 'Daftar Pelanggan | ADMIN'
+        ];
+
+        return view('admin/customers', $data);
+    }
+
+    public function customerDetails()
+    {
+        $data = [
+            'title' => 'Info Pelanggan | ADMIN'
+        ];
+
+        return view('admin/customer-details', $data);
     }
 }

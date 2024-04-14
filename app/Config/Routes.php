@@ -16,7 +16,7 @@ $routes->get('/admin/product', 'Page::adminProduct');
 $routes->get('/admin/profile', 'Page::adminProfile');
 $routes->get('/admin/change-password', 'Page::adminChangePassword');
 $routes->get('/admin/orders', 'Page::adminOrders');
-$routes->get('/admin/orders/(:segment)', 'Page::adminOrders/$1');
+$routes->get('/admin/orders/(:segment)', 'Page::adminOrdersDetail/$1');
 $routes->get('/admin/customers', 'Page::customers');
 $routes->get('/admin/customers/(:segment)', 'Page::customerDetails/$1');
 

@@ -43,7 +43,7 @@
                             </div>
                             <ul class="py-1" role="none">
                                 <li>
-                                    <a href="<?= base_url('/profile'); ?>" class="block px-4 py-2 text-sm text-myBlack tracking-wide hover:bg-gray-100 ease-in-out duration-200" role="menuitem">Edit profil</a>
+                                    <a href="<?= base_url('/profile'); ?>" class="block px-4 py-2 text-sm text-myBlack tracking-wide hover:bg-gray-100 ease-in-out duration-200" role="menuitem">Profil</a>
                                 </li>
                                 <li>
                                     <a href="<?= base_url('/change-password'); ?>" class="block px-4 py-2 text-sm text-myBlack tracking-wide hover:bg-gray-100 ease-in-out duration-200" role="menuitem">Ganti password</a>
@@ -68,7 +68,7 @@
             <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
                 <ul class="space-y-2 font-medium">
                     <li>
-                        <a href="<?= base_url('/home'); ?>" class="flex items-center p-2 rounded-lg hover:text-blue-700 hover:bg-gray-100 group ease-in-out duration-200 <?= ($title == 'Home') ? 'bg-gray-100 text-blue-700' : 'text-myBlack' ?>">
+                        <a href="<?= base_url('/home'); ?>" class="flex items-center p-2 rounded-lg hover:text-blue-700 hover:bg-gray-100 group ease-in-out duration-200 <?= ($title == 'Beranda') ? 'bg-gray-100 text-blue-700' : 'text-myBlack' ?>">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5192 7.82274C2 8.77128 2 9.91549 2 12.2039V13.725C2 17.6258 2 19.5763 3.17157 20.7881C4.34315 22 6.22876 22 10 22H14C17.7712 22 19.6569 22 20.8284 20.7881C22 19.5763 22 17.6258 22 13.725V12.2039C22 9.91549 22 8.77128 21.4808 7.82274C20.9616 6.87421 20.0131 6.28551 18.116 5.10812L16.116 3.86687C14.1106 2.62229 13.1079 2 12 2C10.8921 2 9.88939 2.62229 7.88403 3.86687L5.88403 5.10813C3.98695 6.28551 3.0384 6.87421 2.5192 7.82274ZM9 17.25C8.58579 17.25 8.25 17.5858 8.25 18C8.25 18.4142 8.58579 18.75 9 18.75H15C15.4142 18.75 15.75 18.4142 15.75 18C15.75 17.5858 15.4142 17.25 15 17.25H9Z" fill="currentColor" />
                             </svg>
@@ -76,7 +76,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url('/cart'); ?>" class="flex items-center p-2 rounded-lg hover:text-blue-700 hover:bg-gray-100 group ease-in-out duration-200 <?= ($title == 'Cart') ? 'bg-gray-100 text-blue-700' : 'text-myBlack' ?>">
+                        <a href="<?= base_url('/cart'); ?>" class="flex items-center p-2 rounded-lg hover:text-blue-700 hover:bg-gray-100 group ease-in-out duration-200 <?= ($title == 'Keranjang') ? 'bg-gray-100 text-blue-700' : 'text-myBlack' ?>">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2.08416 2.7512C2.22155 2.36044 2.6497 2.15503 3.04047 2.29242L3.34187 2.39838C3.95839 2.61511 4.48203 2.79919 4.89411 3.00139C5.33474 3.21759 5.71259 3.48393 5.99677 3.89979C6.27875 4.31243 6.39517 4.76515 6.4489 5.26153C6.47295 5.48373 6.48564 5.72967 6.49233 6H17.1305C18.8155 6 20.3323 6 20.7762 6.57708C21.2202 7.15417 21.0466 8.02369 20.6995 9.76275L20.1997 12.1875C19.8846 13.7164 19.727 14.4808 19.1753 14.9304C18.6236 15.38 17.8431 15.38 16.2821 15.38H10.9792C8.19028 15.38 6.79583 15.38 5.92943 14.4662C5.06302 13.5523 4.99979 12.5816 4.99979 9.64L4.99979 7.03832C4.99979 6.29837 4.99877 5.80316 4.95761 5.42295C4.91828 5.0596 4.84858 4.87818 4.75832 4.74609C4.67026 4.61723 4.53659 4.4968 4.23336 4.34802C3.91052 4.18961 3.47177 4.03406 2.80416 3.79934L2.54295 3.7075C2.15218 3.57012 1.94678 3.14197 2.08416 2.7512Z" fill="currentColor" />
                                 <path d="M7.5 18C8.32843 18 9 18.6716 9 19.5C9 20.3284 8.32843 21 7.5 21C6.67157 21 6 20.3284 6 19.5C6 18.6716 6.67157 18 7.5 18Z" fill="currentColor" />
@@ -86,7 +86,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url('/orders'); ?>" class="flex items-center p-2 rounded-lg hover:text-blue-700 hover:bg-gray-100 group ease-in-out duration-200 <?= ($title == 'Orders') ? 'bg-gray-100 text-blue-700' : 'text-myBlack' ?>">
+                        <a href="<?= base_url('/orders'); ?>" class="flex items-center p-2 rounded-lg hover:text-blue-700 hover:bg-gray-100 group ease-in-out duration-200 <?= ($title == 'Pesanan') ? 'bg-gray-100 text-blue-700' : 'text-myBlack' ?>">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M5.58579 4.58579C5 5.17157 5 6.11438 5 8V17C5 18.8856 5 19.8284 5.58579 20.4142C6.17157 21 7.11438 21 9 21H15C16.8856 21 17.8284 21 18.4142 20.4142C19 19.8284 19 18.8856 19 17V8C19 6.11438 19 5.17157 18.4142 4.58579C17.8284 4 16.8856 4 15 4H9C7.11438 4 6.17157 4 5.58579 4.58579ZM9 8C8.44772 8 8 8.44772 8 9C8 9.55228 8.44772 10 9 10H15C15.5523 10 16 9.55228 16 9C16 8.44772 15.5523 8 15 8H9ZM9 12C8.44772 12 8 12.4477 8 13C8 13.5523 8.44772 14 9 14H15C15.5523 14 16 13.5523 16 13C16 12.4477 15.5523 12 15 12H9ZM9 16C8.44772 16 8 16.4477 8 17C8 17.5523 8.44772 18 9 18H13C13.5523 18 14 17.5523 14 17C14 16.4477 13.5523 16 13 16H9Z" fill="currentColor" />
                             </svg>
@@ -118,7 +118,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="<?= base_url('/about-us'); ?>" class="flex items-center p-2 rounded-lg hover:text-blue-700 hover:bg-gray-100 group ease-in-out duration-200 <?= ($title == 'About Us') ? 'bg-gray-100 text-blue-700' : 'text-myBlack' ?>">
+                        <a href="<?= base_url('/about-us'); ?>" class="flex items-center p-2 rounded-lg hover:text-blue-700 hover:bg-gray-100 group ease-in-out duration-200 <?= ($title == 'Tentang Kami') ? 'bg-gray-100 text-blue-700' : 'text-myBlack' ?>">
                             <svg class="w-5 h-5" viewBox="0 0 48 48" version="1" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 48 48">
                                 <path fill="currentColor" d="M37,40H11l-6,6V12c0-3.3,2.7-6,6-6h26c3.3,0,6,2.7,6,6v22C43,37.3,40.3,40,37,40z" />
                                 <g fill="#ffffff">

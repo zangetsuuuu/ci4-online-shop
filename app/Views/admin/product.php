@@ -45,7 +45,7 @@
         </div>
         
         <div class="h-full bg-white rounded-lg shadow-md p-4 mt-3 md:mt-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
                 <?php for ($i = 1; $i <= 24; $i++) : ?>
                     <a href="<?= base_url("/admin/product/$i"); ?>" class="max-h-[20rem] bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-lg ease-in-out duration-300 group">
                         <form action="" method="">

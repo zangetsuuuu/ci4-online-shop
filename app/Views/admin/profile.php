@@ -1,4 +1,4 @@
-<?= $this->extend('layout/users/template'); ?>
+<?= $this->extend('layout/admin/template'); ?>
 
 <?= $this->section('content'); ?>
 <div class="min-h-screen">
@@ -12,7 +12,7 @@
                     </svg>
                     <h1 class="text-lg md:text-xl font-semibold tracking-wide">Profil</h1>
                 </div>
-                <button data-modal-target="user-profile-modal" data-modal-toggle="user-profile-modal" class="flex items-center space-x-2 text-xs md:text-sm font-semibold tracking-wide text-blue-700 hover:underline" type="button">
+                <button data-modal-target="user-profile-modal" data-modal-toggle="user-profile-modal" class="flex items-center space-x-2 text-xs md:text-sm font-semibold tracking-wide text-emerald-500 hover:underline" type="button">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z" fill="currentColor" />
                     </svg>
@@ -22,7 +22,7 @@
             <hr class="mt-4 mb-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-5">
                 <div class="relative rounded-full w-56 h-56 overflow-hidden border mx-auto">
-                    <img src="img/bg-1.jpg" class="object-cover w-full h-full" alt="">
+                    <img src="<?= base_url('img/bg-1.jpg'); ?>" class="object-cover w-full h-full" alt="">
                     <div class="flex items-center justify-center absolute inset-0 cursor-pointer opacity-0 hover:opacity-100 bg-myBlack/50 ease-in-out duration-300">
                         <button type="button" data-modal-target="profile-image-modal" data-modal-toggle="profile-image-modal" data-tooltip-target="profile-image-tooltip" class="text-white hover:text-gray-300 p-3 rounded-full ease-in-out duration-300">
                             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -67,8 +67,6 @@
     </div>
 </div>
 
-<?= $this->include('layout/users/modal/profile'); ?>
-
-<?= $this->include('layout/users/modal/profile-img'); ?>
+<?= $this->include('layout/admin/modal/profile'); ?>
 
 <?= $this->endSection(); ?>

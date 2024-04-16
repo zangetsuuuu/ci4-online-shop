@@ -23,6 +23,7 @@ $routes->group('admin', function ($routes) {
     $routes->get('order/(:segment)', 'Admin\Orders::detail/$1');
     $routes->get('customers', 'Admin\Customers::index');
     $routes->get('customer/(:segment)', 'Admin\Customers::detail/$1');
+    $routes->get('customer/(:segment)/edit', 'Admin\Customers::edit/$1');
     $routes->get('profile', 'Admin\Profile::index');
     $routes->get('profile/(:segment)/edit', 'Admin\Profile::edit/$1');
 });

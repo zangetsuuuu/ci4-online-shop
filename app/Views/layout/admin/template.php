@@ -1,6 +1,6 @@
 <?= $this->include('layout/admin/header'); ?>
 
-<?= $this->include('layout/admin/modal/logout'); ?>
+<?= $this->include('layout/admin/logout'); ?>
 
 <?= $this->renderSection('content'); ?>
 

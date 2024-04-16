@@ -23,4 +23,13 @@ class Customers extends BaseController
 
         return view('admin/customers/detail', $data);
     }
+
+    public function edit()
+    {
+        $data = [
+            'title' => 'Edit Pelanggan | ADMIN'
+        ];
+
+        return view('admin/customers/edit', $data);
+    }
 }

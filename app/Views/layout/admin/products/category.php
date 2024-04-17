@@ -13,23 +13,19 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="">
+            <form action="<?= base_url('admin/products') ?>" method="get">
                 <div class="p-4 md:p-5">
                     <div class="w-full">
                         <select id="category" name="category" class="block w-full p-2.5 text-base bg-gray-50 border-gray-300 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm rounded-md">
-                            <option value="all" selected disabled>Semua Kategori</option>
-                            <option value="staple">Bahan Pokok</option>
-                            <option value="snack">Snack</option>
-                            <option value="beverage">Minuman</option>
-                            <option value="instant_food">Makanan Instan</option>
-                            <option value="milk">Susu</option>
-                            <option value="bread">Roti</option>
+                            <option value="all" selected>Semua Kategori</option>
+                            <option value="makanan" <?= ($category === 'makanan') ? 'selected' : ''; ?>>Makanan</option>
+                            <option value="minuman" <?= ($category === 'minuman') ? 'selected' : ''; ?>>Minuman</option>
                         </select>
                     </div>
                 </div>
                 <!-- Modal footer -->
                 <div class="flex items-center justify-end space-x-3 p-4 md:p-5 border-t border-gray-200 rounded-b">
-                    <button type="submit" class="btn-alternative">Reset</button>
+                    <button type="button" data-modal-hide="category-modal" class="btn-alternative">Batal</button>
                     <button type="submit" class="btn-admin">Konfirmasi</button>
                 </div>
             </form>

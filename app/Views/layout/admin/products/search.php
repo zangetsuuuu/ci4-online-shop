@@ -13,7 +13,7 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="" method="GET">
+            <form action="<?= base_url('admin/products/search'); ?>" method="get">
                 <div class="p-4 md:p-5">
                     <label for="search" class="sr-only">Cari</label>
                     <div class="relative w-full">
@@ -22,13 +22,13 @@
                                 <path d="M16.6725 16.6412L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <input type="text" id="search" class="ps-10 p-2.5 block w-full rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="Masukkan keyword..." required />
+                        <input type="text" id="search" name="keyword" class="ps-10 p-2.5 block w-full rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="Masukkan keyword..." required />
                     </div>
                 </div>
                 <!-- Modal footer -->
                 <div class="flex items-center justify-end space-x-3 p-4 md:p-5 border-t border-gray-200 rounded-b">
                     <button type="button" class="btn-alternative" data-modal-hide="search-modal">Batal</button>
-                    <button type="submit" name="search" class="btn-admin">Cari</button>
+                    <button type="submit" class="btn-admin">Cari</button>
                 </div>
             </form>
         </div>

@@ -16,7 +16,7 @@
             <form action="<?= base_url('admin/products') ?>" method="get">
                 <div class="p-4 md:p-5">
                     <div class="w-full">
-                        <select id="category" name="category" class="block w-full p-2.5 text-base bg-gray-50 border-gray-300 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm rounded-md">
+                        <select id="category" name="category" class="admin-input">
                             <option value="all" selected>Semua Kategori</option>
                             <option value="makanan" <?= ($category === 'makanan') ? 'selected' : ''; ?>>Makanan</option>
                             <option value="minuman" <?= ($category === 'minuman') ? 'selected' : ''; ?>>Minuman</option>

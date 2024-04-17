@@ -18,7 +18,7 @@
                     <h1 class="text-lg md:text-xl font-semibold tracking-wide">Produk</h1>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="<?= base_url('/admin/product/create'); ?>" class="text-myBlack hover:text-emerald-500 ease-in-out duration-200" data-tooltip-target="add-product-tooltip">
+                    <a href="<?= base_url('admin/product/create'); ?>" class="text-myBlack hover:text-emerald-500 ease-in-out duration-200" data-tooltip-target="add-product-tooltip">
                         <svg class="w-7 h-7 md:w-8 md:h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 6V18M18 12H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
@@ -44,75 +44,129 @@
             </div>
         </div>
 
-        <div class="h-full bg-white rounded-lg shadow-md p-4 mt-3 md:mt-4">
-            <div class="rounded-md overflow-x-auto">
-                <!-- Products start -->
-                <table class="min-w-[60rem] md:min-w-full text-sm text-left text-gray-500 tracking-wide divide-y divide-gray-200 border border-gray-200">
-                    <thead class="text-xs text-myBlack uppercase bg-gray-100 text-center">
-                        <tr>
-                            <th scope="col" class="px-6 py-4 w-fit">
-                                No.
-                            </th>
-                            <th scope="col" class="px-6 py-4 w-fit">
-                                Gambar
-                            </th>
-                            <th scope="col" class="px-6 py-4 w-fit">
-                                Nama Produk
-                            </th>
-                            <th scope="col" class="px-6 py-4 w-fit">
-                                Stok
-                            </th>
-                            <th scope="col" class="px-6 py-4 w-fit">
-                                Harga
-                            </th>
-                            <th scope="col" class="px-6 py-4 w-fit">
-                                Aksi
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200 text-center">
-                        <?php for ($i = 1; $i <= 5; $i++) : ?>
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap font-bold text-myBlack"><?= $i; ?></td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="h-24 md:h-28">
-                                        <img class="w-full h-full object-contain" src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//93/MTA-2583228/indomie_indomie-goreng-mie-instan--85g--_full02.jpg" alt="">
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">Indomie Goreng</td>
-                                <td class="px-6 py-4 whitespace-nowrap">43</td>
-                                <td class="px-6 py-4 whitespace-nowrap truncate max-w-10">Rp. 4.500</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="flex items-center justify-center space-x-3">
-                                        <a href="<?= base_url("/admin/product/$i"); ?>" class="hover:text-myBlack ease-in-out duration-300">
-                                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V11C12.75 10.5858 12.4142 10.25 12 10.25C11.5858 10.25 11.25 10.5858 11.25 11V17C11.25 17.4142 11.5858 17.75 12 17.75ZM12 7C12.5523 7 13 7.44772 13 8C13 8.55228 12.5523 9 12 9C11.4477 9 11 8.55228 11 8C11 7.44772 11.4477 7 12 7Z" fill="currentColor" />
-                                            </svg>
-                                        </a>
-                                        <a href="<?= base_url("/admin/product/$i/edit"); ?>" class="text-emerald-500 hover:text-emerald-600 ease-in-out duration-300">
-                                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z" fill="currentColor" />
-                                            </svg>
-                                        </a>
-                                        <button data-modal-target="delete-product-modal#<?= $i; ?>" data-modal-toggle="delete-product-modal#<?= $i; ?>" class="text-red-500 hover:text-red-600 ease-in-out duration-300">
-                                            <svg fill="currentColor" class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="delete" class="icon glyph">
-                                                <path d="M17,4V5H15V4H9V5H7V4A2,2,0,0,1,9,2h6A2,2,0,0,1,17,4Z"></path>
-                                                <path d="M20,6H4A1,1,0,0,0,4,8H5V20a2,2,0,0,0,2,2H17a2,2,0,0,0,2-2V8h1a1,1,0,0,0,0-2Z"></path>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
+        <div class="h-full bg-white rounded-lg shadow-sm p-4 mt-3 md:mt-4">
+            <?php if (isset($flashMessages)) :
+                foreach ($flashMessages as $key => $flashMessage) :
+                    if ($flashMessage['message']) : ?>
+                        <div id="<?= $flashMessage['id'] ?>" class="flex items-center p-3 md:p-4 mb-4 text-green-800 tracking-wide rounded-lg bg-green-50" role="alert">
+                            <svg class="flex-shrink-0 w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                            </svg>
+                            <span class="sr-only">Info</span>
+                            <div class="ms-3 text-xs md:text-sm font-medium tracking-wide">
+                                <?= $flashMessage['message'] ?>
+                            </div>
+                            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1 md:p-1.5 hover:bg-green-200 inline-flex items-center justify-center w-7 h-7 md:w-8 md:h-8 ease-in-out duration-200" data-dismiss-target="#<?= $flashMessage['id'] ?>" aria-label="Close">
+                                <span class="sr-only">Close</span>
+                                <svg class="w-2 h-2 md:w-3 md:h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                </svg>
+                            </button>
+                        </div>
+            <?php endif;
+                endforeach;
+            endif; ?>
 
-                            <?= $this->include('layout/admin/products/delete'); ?>
-                        <?php endfor; ?>
-                    </tbody>
-                </table>
+            <?php if (isset($category) && $category !== '') : ?>
+                <div class="flex items-center p-3 md:p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 mb-4" role="alert">
+                    <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <span class="sr-only">Info</span>
+                    <div>
+                        <div class="ms-3 text-xs md:text-sm font-medium tracking-wide">
+                            Menampilkan produk dengan kategori: <?= ucfirst($category); ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <?php if (session()->getFlashdata('Search Info') && $category === '') : ?>
+                <div class="flex items-center p-3 md:p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50" role="alert">
+                    <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <span class="sr-only">Info</span>
+                    <div>
+                        <div class="ms-3 text-xs md:text-sm font-medium tracking-wide">
+                            <?= session()->getFlashdata('Search Info'); ?>
+                        </div>
+                    </div>
+                </div>
+            <?php elseif (!empty($products)) : ?>
+                <!-- Products start -->
+                <div class="rounded-md overflow-x-auto">
+                    <table class="min-w-[60rem] md:min-w-full text-sm text-left text-gray-500 tracking-wide divide-y divide-gray-200 border border-gray-200">
+                        <thead class="text-xs text-myBlack uppercase bg-gray-100 text-center">
+                            <tr>
+                                <th scope="col" class="px-6 py-4 w-10">
+                                    No.
+                                </th>
+                                <th scope="col" class="px-6 py-4 w-fit">
+                                    Gambar
+                                </th>
+                                <th scope="col" class="px-6 py-4 w-fit">
+                                    Nama Produk
+                                </th>
+                                <th scope="col" class="px-6 py-4 w-fit">
+                                    Stok
+                                </th>
+                                <th scope="col" class="px-6 py-4 w-40">
+                                    Harga
+                                </th>
+                                <th scope="col" class="px-6 py-4 w-fit">
+                                    Aksi
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200 text-center">
+                            <?php $i = 1; ?>
+                            <?php foreach ($products as $data) : ?>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap font-bold text-myBlack"><?= $i; ?>.</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="h-24 md:h-28">
+                                            <img class="w-full h-full object-contain" src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//93/MTA-2583228/indomie_indomie-goreng-mie-instan--85g--_full02.jpg" alt="">
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap"><?= $data['name']; ?></td>
+                                    <td class="px-6 py-4 whitespace-nowrap"><?= $data['stock']; ?></td>
+                                    <td class="px-6 py-4 whitespace-nowrap truncate max-w-10">
+                                        Rp. <?= number_format($data['price'], 0, ',', '.'); ?>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center justify-center space-x-3">
+                                            <a href="<?= base_url("/admin/product/$data[slug]"); ?>" class="hover:text-myBlack ease-in-out duration-300">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V11C12.75 10.5858 12.4142 10.25 12 10.25C11.5858 10.25 11.25 10.5858 11.25 11V17C11.25 17.4142 11.5858 17.75 12 17.75ZM12 7C12.5523 7 13 7.44772 13 8C13 8.55228 12.5523 9 12 9C11.4477 9 11 8.55228 11 8C11 7.44772 11.4477 7 12 7Z" fill="currentColor" />
+                                                </svg>
+                                            </a>
+                                            <a href="<?= base_url("/admin/product/$data[slug]/edit"); ?>" class="text-emerald-500 hover:text-emerald-600 ease-in-out duration-300">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z" fill="currentColor" />
+                                                </svg>
+                                            </a>
+                                            <button data-modal-target="delete-product-modal#<?= $data['id']; ?>" data-modal-toggle="delete-product-modal#<?= $data['id']; ?>" class="text-red-500 hover:text-red-600 ease-in-out duration-300">
+                                                <svg fill="currentColor" class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="delete" class="icon glyph">
+                                                    <path d="M17,4V5H15V4H9V5H7V4A2,2,0,0,1,9,2h6A2,2,0,0,1,17,4Z"></path>
+                                                    <path d="M20,6H4A1,1,0,0,0,4,8H5V20a2,2,0,0,0,2,2H17a2,2,0,0,0,2-2V8h1a1,1,0,0,0,0-2Z"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php $i++; ?>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
                 <!-- Products end -->
-            </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>
+
+<?= $this->include('layout/admin/products/delete'); ?>
 
 <?= $this->include('layout/admin/products/category'); ?>
 

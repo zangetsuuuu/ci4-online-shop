@@ -12,13 +12,16 @@
                     <h1 class="text-lg md:text-xl font-semibold tracking-wide">Tambah Produk</h1>
                 </div>
                 <a href="<?= base_url('/admin/products'); ?>" class="flex items-center space-x-2 text-xs md:text-sm tracking-wide text-gray-500 hover:underline">
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
                     <div>Kembali<span class="hidden md:inline"> ke produk</span></div>
                 </a>
             </div>
         </div>
         <div class="h-full bg-white rounded-lg shadow-sm p-4 mt-3 md:mt-4">
-            <form action="" method="POST">
+            <form action="<?= base_url('admin/product/save'); ?>" method="post">
+                <?= csrf_field(); ?>
                 <div class="space-y-5">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-8">
                         <!-- Product Image -->
@@ -44,32 +47,53 @@
                         <!-- Product Info -->
                         <div class="col-span-2 space-y-6">
                             <div>
-                                <label for="product_name" class="text-sm font-medium text-myBlack tracking-wide">Nama Produk <span class="text-red-500">*</span></label>
-                                <input type="text" name="product_name" id="product_name" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="Tambahkan nama produk" required />
+                                <label for="name" class="text-sm font-medium text-myBlack tracking-wide">Nama Produk <span class="text-red-500">*</span></label>
+                                <input type="text" name="name" id="name" class="<?= ($validation && $validation->hasError('name')) ? 'input-error' : 'input-admin' ?>" <?= ($validation && $validation->hasError('name')) ? 'autofocus' : '' ?> value="<?= old('name'); ?>" placeholder="Tambahkan nama produk" />
+                                <?php if ($validation && $validation->hasError('name')) : ?>
+                                    <p class="input-error-message">
+                                        <?= $validation->getError('name'); ?>
+                                    </p>
+                                <?php endif; ?>
                             </div>
                             <div>
-                                <label for="product_category" class="text-sm font-medium text-myBlack tracking-wide">Kategori <span class="text-red-500">*</span></label>
-                                <select name="product_category" id="product_category" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 focus:shadow-md text-sm md:text-base" required>
+                                <label for="category" class="text-sm font-medium text-myBlack tracking-wide">Kategori <span class="text-red-500">*</span></label>
+                                <select name="category" id="category" class="<?= ($validation && $validation->hasError('category')) ? 'input-error' : 'input-admin' ?>" <?= ($validation && $validation->hasError('stock')) ? 'autofocus' : '' ?>">
                                     <option value="" disabled selected>Pilih kategori</option>
-                                    <option value="staple">Bahan Pokok</option>
-                                    <option value="snack">Snack</option>
-                                    <option value="instant_food">Makanan Instan</option>
-                                    <option value="beverage">Minuman</option>
-                                    <option value="milk">Susu</option>
-                                    <option value="bread">Roti</option>
+                                    <option value="makanan" <?= old('category') == 'makanan' ? 'selected' : '' ?>>makanan</option>
+                                    <option value="minuman" <?= old('category') == 'minuman' ? 'selected' : '' ?>>minuman</option>
                                 </select>
+                                <?php if ($validation && $validation->hasError('category')) : ?>
+                                    <p class="input-error-message">
+                                        <?= $validation->getError('category'); ?>
+                                    </p>
+                                <?php endif; ?>
                             </div>
                             <div>
-                                <label for="product_stock" class="text-sm font-medium text-myBlack tracking-wide">Stok <span class="text-red-500">*</span></label>
-                                <input type="number" min="1" name="product_stock" id="product_stock" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="Tambahkan stok" required />
+                                <label for="stock" class="text-sm font-medium text-myBlack tracking-wide">Stok <span class="text-red-500">*</span></label>
+                                <input type="number" min="1" name="stock" id="stock" class="<?= ($validation && $validation->hasError('stock')) ? 'input-error' : 'input-admin' ?>" <?= ($validation && $validation->hasError('stock')) ? 'autofocus' : '' ?> value="<?= old('stock'); ?>" placeholder="Tambahkan stok" />
+                                <?php if ($validation && $validation->hasError('stock')) : ?>
+                                    <p class="input-error-message">
+                                        <?= $validation->getError('stock'); ?>
+                                    </p>
+                                <?php endif; ?>
                             </div>
                             <div>
-                                <label for="product_price" class="text-sm font-medium text-myBlack tracking-wide">Harga <span class="text-red-500">*</span></label>
-                                <input type="number" min="500" name="product_price" id="product_price" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="Rp." required />
+                                <label for="price" class="text-sm font-medium text-myBlack tracking-wide">Harga <span class="text-red-500">*</span></label>
+                                <input type="number" min="500" name="price" id="price" class="<?= ($validation && $validation->hasError('price')) ? 'input-error' : 'input-admin' ?>" <?= ($validation && $validation->hasError('price')) ? 'autofocus' : '' ?> value="<?= old('price'); ?>" placeholder="Rp." />
+                                <?php if ($validation && $validation->hasError('price')) : ?>
+                                    <p class="input-error-message">
+                                        <?= $validation->getError('price'); ?>
+                                    </p>
+                                <?php endif; ?>
                             </div>
                             <div>
-                                <label for="product_description" class="text-sm font-medium text-myBlack tracking-wide">Deskripsi <span class="text-red-500">*</span></label>
-                                <textarea name="product_description" id="product_description" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 focus:shadow-md text-sm md:text-base resize-none" placeholder="Tambahkan deskripsi" required></textarea>
+                                <label for="description" class="text-sm font-medium text-myBlack tracking-wide">Deskripsi <span class="text-red-500">*</span></label>
+                                <textarea name="description" id="description" class="<?= ($validation && $validation->hasError('description')) ? 'input-error resize-none' : 'input-admin resize-none' ?>" <?= ($validation && $validation->hasError('description')) ? 'autofocus' : '' ?> value="<?= old('description'); ?>"" placeholder=" Tambahkan deskripsi"></textarea>
+                                <?php if ($validation && $validation->hasError('description')) : ?>
+                                    <p class="input-error-message">
+                                        <?= $validation->getError('description'); ?>
+                                    </p>
+                                <?php endif; ?>
                             </div>
                             <button type="submit" class="btn-admin w-full">Tambah Produk</button>
                         </div>

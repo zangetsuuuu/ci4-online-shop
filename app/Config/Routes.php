@@ -6,6 +6,9 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
+// Auto route
+$routes->setAutoRoute(true);
+
 // Default route
 $routes->get('/', 'Home::index');
 
@@ -13,17 +16,28 @@ $routes->get('/', 'Home::index');
 $routes->group('admin', function ($routes) {
     $routes->get('', 'Auth\Login::admin');
     $routes->get('change-password', 'Auth\Password::admin');
-
     $routes->get('dashboard', 'Admin\Dashboard::index');
-    $routes->get('products', 'Admin\Products::index');
-    $routes->get('product/create', 'Admin\Products::create');
-    $routes->get('product/(:segment)', 'Admin\Products::detail/$1');
-    $routes->get('product/(:segment)/edit', 'Admin\Products::edit/$1');
+
+    // Products
+    $routes->get('products', 'Admin\Products::viewProduct');
+    $routes->get('products/search', 'Admin\Products::searchProduct');
+    $routes->get('product/create', 'Admin\Products::viewCreateProduct');
+    $routes->post('product/save', 'Admin\Products::saveProduct');
+    $routes->get('product/(:segment)', 'Admin\Products::viewDetailProduct/$1');
+    $routes->get('product/(:segment)/edit', 'Admin\Products::viewEditProduct/$1');
+    $routes->post('product/(:num)/update', 'Admin\Products::updateProduct/$1');
+    $routes->delete('product/(:num)/delete', 'Admin\Products::deleteProduct/$1');
+
+    // Orders
     $routes->get('orders', 'Admin\Orders::index');
     $routes->get('order/(:segment)', 'Admin\Orders::detail/$1');
+
+    // Customers
     $routes->get('customers', 'Admin\Customers::index');
     $routes->get('customer/(:segment)', 'Admin\Customers::detail/$1');
     $routes->get('customer/(:segment)/edit', 'Admin\Customers::edit/$1');
+
+    // Profile
     $routes->get('profile', 'Admin\Profile::index');
     $routes->get('profile/(:segment)/edit', 'Admin\Profile::edit/$1');
 });

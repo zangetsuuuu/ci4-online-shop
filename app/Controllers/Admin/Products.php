@@ -15,7 +15,7 @@ class Products extends BaseController
         $this->productsModel = new ProductsModel();
     }
 
-    public function viewProduct()
+    public function viewProducts()
     {
         $category = $this->request->getVar('category');
 
@@ -26,37 +26,20 @@ class Products extends BaseController
             'category' => $category,
             'products' => !$category ? $this->productsModel->getProducts() : $this->productsModel->getProductsByCategory($category),
             'flashMessages' => [
-                'Create Success Message' => ['id' => 'alert-create-success', 'message' => session()->getFlashdata('Create Success Message')],
-                'Edit Success Message' => ['id' => 'alert-edit-success', 'message' => session()->getFlashdata('Edit Success Message')],
-                'Delete Success Message' => ['id' => 'alert-delete-success', 'message' => session()->getFlashdata('Delete Success Message')],
+                'Create Success' => ['id' => 'alert-create-success', 'message' => session()->getFlashdata('Create Success')],
+                'Edit Success' => ['id' => 'alert-edit-success', 'message' => session()->getFlashdata('Edit Success')],
+                'Delete Success' => ['id' => 'alert-delete-success', 'message' => session()->getFlashdata('Delete Success')],
             ]
         ];
 
         return view('admin/products/index', $data);
     }
 
-    public function searchProduct()
-    {
-        $keyword = $this->request->getVar('keyword');
-
-        $data = [
-            'title' => 'Daftar Produk | ADMIN',
-            'category' => '',
-            'products' => $this->productsModel->getProductBySearch($keyword)
-        ];
-
-        if (empty($data['products'])) {
-            session()->setFlashdata('Search Info', 'Produk ' . $keyword . ' tidak ditemukan!');
-        }
-
-        return view('admin/products/index', $data);
-    }
-
-    public function viewDetailProduct($slug)
+    public function viewProductDetail($slug)
     {
         $data = [
             'title' => 'Detail Produk | ADMIN',
-            'product' => $this->productsModel->getProductsBySlug($slug)
+            'product' => $this->productsModel->getProductBySlug($slug)
         ];
 
         return view('admin/products/detail', $data);
@@ -70,6 +53,25 @@ class Products extends BaseController
         ];
 
         return view('admin/products/create', $data);
+    }
+
+    public function searchProduct()
+    {
+        $keyword = $this->request->getVar('keyword');
+
+        $data = [
+            'title' => 'Daftar Produk | ADMIN',
+            'category' => '',
+            'products' => $this->productsModel->getProductBySearch($keyword)
+        ];
+
+        if (empty($data['products'])) {
+            session()->setFlashdata('Not Found', 'Hasil pencarian: ' . $keyword . ', tidak ditemukan!');
+        } else {
+            session()->setFlashdata('Search Info', 'Hasil pencarian: ' . $keyword);
+        }
+
+        return view('admin/products/index', $data);
     }
 
     public function saveProduct()
@@ -125,7 +127,7 @@ class Products extends BaseController
 
         $this->productsModel->save($data);
 
-        session()->setFlashdata('Create Success Message', 'Data berhasil ditambahkan!');
+        session()->setFlashdata('Create Success', 'Data berhasil ditambahkan!');
 
         return redirect()->to('admin/products');
     }
@@ -135,7 +137,7 @@ class Products extends BaseController
         $data = [
             'title' => 'Edit Produk | ADMIN',
             'validation' => session()->getFlashdata('validation'),
-            'product' => $this->productsModel->getProductsBySlug($slug)
+            'product' => $this->productsModel->getProductBySlug($slug)
         ];
 
         if (empty($data['product'])) {
@@ -147,7 +149,7 @@ class Products extends BaseController
 
     public function updateProduct($id)
     {
-        $oldName = $this->productsModel->getProductsById($id);
+        $oldName = $this->productsModel->getProductById($id);
 
         if ($oldName['name'] == $this->request->getVar('name')) {
             $nameRule = 'required';
@@ -200,7 +202,7 @@ class Products extends BaseController
 
         $this->productsModel->save($data);
 
-        session()->setFlashdata('Edit Success Message', 'Data berhasil diubah!');
+        session()->setFlashdata('Edit Success', 'Data berhasil diubah!');
 
         return redirect()->to('admin/products');
     }
@@ -209,7 +211,7 @@ class Products extends BaseController
     {
         $this->productsModel->delete($id);
 
-        session()->setFlashdata('Delete Success Message', 'Data berhasil dihapus!');
+        session()->setFlashdata('Delete Success', 'Data berhasil dihapus!');
 
         return redirect()->to('admin/products');
     }

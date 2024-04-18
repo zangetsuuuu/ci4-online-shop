@@ -19,11 +19,11 @@ $routes->group('admin', function ($routes) {
     $routes->get('dashboard', 'Admin\Dashboard::index');
 
     // Products
-    $routes->get('products', 'Admin\Products::viewProduct');
-    $routes->get('products/search', 'Admin\Products::searchProduct');
+    $routes->get('products', 'Admin\Products::viewProducts');
+    $routes->get('product/search', 'Admin\Products::searchProduct');
     $routes->get('product/create', 'Admin\Products::viewCreateProduct');
     $routes->post('product/save', 'Admin\Products::saveProduct');
-    $routes->get('product/(:segment)', 'Admin\Products::viewDetailProduct/$1');
+    $routes->get('product/(:segment)', 'Admin\Products::viewProductDetail/$1');
     $routes->get('product/(:segment)/edit', 'Admin\Products::viewEditProduct/$1');
     $routes->post('product/(:num)/update', 'Admin\Products::updateProduct/$1');
     $routes->delete('product/(:num)/delete', 'Admin\Products::deleteProduct/$1');
@@ -33,9 +33,10 @@ $routes->group('admin', function ($routes) {
     $routes->get('order/(:segment)', 'Admin\Orders::detail/$1');
 
     // Customers
-    $routes->get('customers', 'Admin\Customers::index');
-    $routes->get('customer/(:segment)', 'Admin\Customers::detail/$1');
-    $routes->get('customer/(:segment)/edit', 'Admin\Customers::edit/$1');
+    $routes->get('customers', 'Admin\Customers::viewCustomers');
+    $routes->get('customer/search', 'Admin\Customers::searchCustomer');
+    $routes->get('customer/(:segment)', 'Admin\Customers::viewCustomerDetail/$1');
+    $routes->delete('customer/(:num)/delete', 'Admin\Customers::deleteCustomer/$1');
 
     // Profile
     $routes->get('profile', 'Admin\Profile::index');
@@ -46,6 +47,7 @@ $routes->group('admin', function ($routes) {
 $routes->group('', function ($routes) {
     $routes->get('login', 'Auth\Login::customers');
     $routes->get('register', 'Auth\Register::customers');
+    $routes->post('auth/register', 'Auth\Register::saveCustomerData');
     $routes->get('change-password', 'Auth\Password::customers');
 
     $routes->get('cart', 'Customers\Cart::index');

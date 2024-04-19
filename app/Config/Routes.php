@@ -14,29 +14,30 @@ $routes->get('/', 'Home::index');
 
 // Admin routes
 $routes->group('admin', function ($routes) {
-    $routes->get('', 'Auth\Login::admin');
+    $routes->get('', 'Auth\Admin\Login::viewForm');
+    $routes->get('create', 'Auth\Admin\Register::viewForm');
     $routes->get('change-password', 'Auth\Password::admin');
     $routes->get('dashboard', 'Admin\Dashboard::index');
 
     // Products
-    $routes->get('products', 'Admin\Products::viewProducts');
-    $routes->get('product/search', 'Admin\Products::searchProduct');
-    $routes->get('product/create', 'Admin\Products::viewCreateProduct');
-    $routes->post('product/save', 'Admin\Products::saveProduct');
-    $routes->get('product/(:segment)', 'Admin\Products::viewProductDetail/$1');
-    $routes->get('product/(:segment)/edit', 'Admin\Products::viewEditProduct/$1');
-    $routes->post('product/(:num)/update', 'Admin\Products::updateProduct/$1');
-    $routes->delete('product/(:num)/delete', 'Admin\Products::deleteProduct/$1');
+    $routes->get('products', 'Admin\Product::viewProducts');
+    $routes->get('product/search', 'Admin\Product::searchProduct');
+    $routes->get('product/create', 'Admin\Product::viewCreateProduct');
+    $routes->post('product/save', 'Admin\Product::saveProduct');
+    $routes->get('product/(:segment)', 'Admin\Product::viewProductDetail/$1');
+    $routes->get('product/(:segment)/edit', 'Admin\Product::viewEditProduct/$1');
+    $routes->post('product/(:num)/update', 'Admin\Product::updateProduct/$1');
+    $routes->delete('product/(:num)/delete', 'Admin\Product::deleteProduct/$1');
 
     // Orders
-    $routes->get('orders', 'Admin\Orders::index');
-    $routes->get('order/(:segment)', 'Admin\Orders::detail/$1');
+    $routes->get('orders', 'Admin\Order::viewOrders');
+    $routes->get('order/(:segment)', 'Admin\Order::viewOrderDetail/$1');
 
     // Customers
-    $routes->get('customers', 'Admin\Customers::viewCustomers');
-    $routes->get('customer/search', 'Admin\Customers::searchCustomer');
-    $routes->get('customer/(:segment)', 'Admin\Customers::viewCustomerDetail/$1');
-    $routes->delete('customer/(:num)/delete', 'Admin\Customers::deleteCustomer/$1');
+    $routes->get('customers', 'Admin\Customer::viewCustomers');
+    $routes->get('customer/search', 'Admin\Customer::searchCustomer');
+    $routes->get('customer/(:segment)', 'Admin\Customer::viewCustomerDetail/$1');
+    $routes->delete('customer/(:num)/delete', 'Admin\Customer::deleteCustomer/$1');
 
     // Profile
     $routes->get('profile', 'Admin\Profile::index');
@@ -45,19 +46,19 @@ $routes->group('admin', function ($routes) {
 
 // Customer routes
 $routes->group('', function ($routes) {
-    $routes->get('login', 'Auth\Login::customers');
-    $routes->get('register', 'Auth\Register::customers');
-    $routes->post('auth/register', 'Auth\Register::saveCustomerData');
-    $routes->get('change-password', 'Auth\Password::customers');
+    $routes->get('login', 'Auth\Customer\Login::viewForm');
+    $routes->get('register', 'Auth\Customer\Register::viewForm');
+    $routes->post('auth/register', 'Auth\Customer\Register::saveCustomerData');
+    $routes->get('change-password', 'Auth\Customer\Password::customers');
 
-    $routes->get('cart', 'Customers\Cart::index');
-    $routes->get('products', 'Customers\Products::index');
-    $routes->get('product/(:segment)', 'Customers\Products::detail/$1');
-    $routes->get('orders', 'Customers\Orders::index');
-    $routes->get('order/(:segment)', 'Customers\Orders::detail/$1');
-    $routes->get('checkout', 'Customers\Checkout::index');
-    $routes->get('profile', 'Customers\Profile::index');
-    $routes->get('profile/(:segment)/edit', 'Customers\Profile::edit/$1');
+    $routes->get('cart', 'Customer\Cart::viewCart');
+    $routes->get('products', 'Customer\Product::viewProducts');
+    $routes->get('product/(:segment)', 'Customer\Product::viewProductDetail/$1');
+    $routes->get('orders', 'Customer\Order::viewOrders');
+    $routes->get('order/(:segment)', 'Customer\Order::detail/$1');
+    $routes->get('checkout', 'Customer\Checkout::index');
+    $routes->get('profile', 'Customer\Profile::index');
+    $routes->get('profile/(:segment)/edit', 'Customer\Profile::edit/$1');
 });
 
 // Public page route

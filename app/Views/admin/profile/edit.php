@@ -11,7 +11,7 @@
                     </svg>
                     <h1 class="text-lg md:text-xl font-semibold tracking-wide">Edit Profil</h1>
                 </div>
-                <a href="<?= base_url('/admin/profile'); ?>" class="flex items-center space-x-2 text-xs md:text-sm tracking-wide text-gray-500 hover:underline">
+                <a href="<?= base_url('admin/profile'); ?>" class="flex items-center space-x-2 text-xs md:text-sm tracking-wide text-gray-500 hover:underline">
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                     </svg>
@@ -43,19 +43,19 @@
                         <div class="col-span-2 space-y-6">
                             <div>
                                 <label for="fullname" class="text-sm font-medium text-myBlack tracking-wide">Nama Lengkap <span class="text-red-500">*</span></label>
-                                <input type="text" name="fullName" id="fullName" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="John Doe" required />
+                                <input type="text" name="fullName" id="fullName" class="input-admin" placeholder="John Doe" required />
                             </div>
                             <div>
                                 <label for="username" class="text-sm font-medium text-myBlack tracking-wide">Username <span class="text-red-500">*</span></label>
-                                <input type="text" name="username" id="username" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="johndoe" required />
+                                <input type="text" name="username" id="username" class="input-admin" placeholder="johndoe" required />
                             </div>
                             <div>
                                 <label for="email" class="text-sm font-medium text-myBlack tracking-wide">Email <span class="text-red-500">*</span></label>
-                                <input type="email" name="email" id="email" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="someone@example.com" required />
+                                <input type="email" name="email" id="email" class="input-admin" placeholder="someone@example.com" required />
                             </div>
                             <div>
                                 <label for="phone_number" class="text-sm font-medium text-myBlack tracking-wide">No. HP <span class="text-red-500">*</span></label>
-                                <input type="email" name="phone_number" id="phone_number" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="+62" required />
+                                <input type="email" name="phone_number" id="phone_number" class="input-admin" placeholder="+62" required />
                             </div>
                             <button type="submit" class="btn-admin w-full">Simpan Perubahan</button>
                         </div>

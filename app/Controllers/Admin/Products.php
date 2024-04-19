@@ -66,9 +66,11 @@ class Products extends BaseController
         ];
 
         if (empty($data['products'])) {
-            session()->setFlashdata('Not Found', 'Hasil pencarian: ' . $keyword . ', tidak ditemukan!');
+            session()->setFlashdata('Product Not Found', 'Hasil pencarian: ' . $keyword . ', tidak ditemukan!');
+            session()->remove('Product Search Info');
         } else {
-            session()->setFlashdata('Search Info', 'Hasil pencarian: ' . $keyword);
+            session()->setFlashdata('Product Search Info', 'Hasil pencarian: ' . $keyword);
+            session()->remove('Product Not Found');
         }
 
         return view('admin/products/index', $data);

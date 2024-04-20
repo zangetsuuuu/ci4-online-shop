@@ -21,6 +21,24 @@
         </div>
 
         <div class="h-full bg-white rounded-lg shadow-sm p-4 mt-3 md:mt-4">
+            <?php if (session()->getFlashdata('Delete Success')) : ?>
+                <div id="alert-delete-success" class="flex items-center p-3 md:p-4 mb-4 text-green-800 tracking-wide rounded-lg bg-green-50" role="alert">
+                    <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="sr-only">Info</span>
+                    <div class="ms-3 text-xs md:text-sm font-medium tracking-wide">
+                        <?= session()->getFlashdata('Delete Success') ?>
+                    </div>
+                    <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1 md:p-1.5 hover:bg-green-200 inline-flex items-center justify-center w-7 h-7 md:w-8 md:h-8 ease-in-out duration-200" data-dismiss-target="#alert-delete-success" aria-label="Close">
+                        <span class="sr-only">Close</span>
+                        <svg class="w-2 h-2 md:w-3 md:h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                    </button>
+                </div>
+            <?php endif; ?>
+
             <?php if (session()->getFlashdata('Customer Search Info')) : ?>
                 <div class="flex items-center justify-between p-3 md:p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 mb-4">
                     <div class="flex items-center" role="alert">
@@ -59,7 +77,7 @@
                     <table class="min-w-[60rem] md:min-w-full text-sm text-left text-gray-500 tracking-wide divide-y divide-gray-200 border border-gray-200">
                         <thead class="text-xs text-myBlack uppercase bg-gray-100 text-center">
                             <tr>
-                                <th scope="col" class="px-6 py-4 w-10">
+                                <th scope="col" class="px-6 py-4 w-fit">
                                     No.
                                 </th>
                                 <th scope="col" class="px-6 py-4 w-fit">
@@ -83,13 +101,16 @@
                             <?php $i = 1; ?>
                             <?php foreach ($customers as $data) : ?>
                                 <tr class="hover:bg-gray-50 ease-in-out duration-150">
-                                    <td class="px-6 py-4 whitespace-nowrap text-myBlack font-bold"><?= $i; ?></td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-myBlack font-bold"><?= $i; ?>.</td>
+                                    <td class="px-6 py-4 whitespace-nowrap flex justify-center">
+                                        <img class="w-9 h-9 md:w-10 md:h-10 rounded-full" src="<?= base_url('img/blank-avatar.webp'); ?>" alt="">
+                                    </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="w-10 h-10 rounded-full overflow-hidden mx-auto">
-                                            <img class="w-full h-full object-cover" src="<?= base_url('img/bg-1.jpg'); ?>" alt="">
+                                        <div class="space-y-0.5">
+                                            <div class="text-sm font-semibold"><?= $data['first_name'] . ' ' . $data['last_name']; ?></div>
+                                            <div class="text-xs text-gray-400">@<?= $data['username']; ?></div>
                                         </div>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap max-w-40 truncate"><?= $data['first_name'] . ' ' . $data['last_name']; ?></td>
                                     <td class="px-6 py-4 whitespace-nowrap"><?= $data['email']; ?></td>
                                     <td class="px-6 py-4 whitespace-nowrap"><?= $data['phone_number']; ?></td>
                                     <td class="px-6 py-4 whitespace-nowrap">

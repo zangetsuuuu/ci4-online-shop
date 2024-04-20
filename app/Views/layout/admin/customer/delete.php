@@ -9,7 +9,7 @@
                     </svg>
                     <h3 class="mb-5 text-base font-normal text-gray-500 tracking-wide">Hapus pelanggan "<?= $data['first_name'] . ' ' . $data['last_name']; ?>"?</h3>
                     <div class="flex items-center justify-center space-x-3">
-                        <form class="d-inline" action="<?= base_url("admin/customer/$data[id]"); ?>/delete" method="post">
+                        <form class="d-inline" action="<?= base_url("admin/customer/$data[id]/delete"); ?>" method="post">
                             <?= csrf_field(); ?>
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="btn-danger w-20">Ya</button>

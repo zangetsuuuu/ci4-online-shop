@@ -1,4 +1,4 @@
-<?= $this->extend('layout/customers/template'); ?>
+<?= $this->extend('layout/customer/template'); ?>
 
 <?= $this->section('content'); ?>
 <div class="min-h-screen flex items-center justify-center">

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Auth;
+namespace App\Controllers\Auth\Admin;
 
 use App\Controllers\BaseController;
 
@@ -15,7 +15,7 @@ class Register extends BaseController
         $this->registerModel = new RegisterModel();
     }
 
-    public function viewAdminForm()
+    public function viewForm()
     {
         $data = [
             'title' => 'Daftar Akun | ADMIN',
@@ -25,7 +25,7 @@ class Register extends BaseController
         return view('auth/admin/register', $data);
     }
 
-    public function saveCustomerData()
+    public function saveAdminData()
     {
         $config = [
             'first_name' => [
@@ -41,7 +41,7 @@ class Register extends BaseController
                 ]
             ],
             'username' => [
-                'rules' => 'required|is_unique[customers.username]|regex_match[/^\S*$/]',
+                'rules' => 'required|is_unique[admins.username]|regex_match[/^\S*$/]',
                 'errors' => [
                     'required' => 'Username tidak boleh kosong!',
                     'is_unique' => 'Username sudah digunakan!',
@@ -49,7 +49,7 @@ class Register extends BaseController
                 ]
             ],
             'email' => [
-                'rules' => 'required|is_unique[customers.email]|valid_email',
+                'rules' => 'required|is_unique[admins.email]|valid_email',
                 'errors' => [
                     'required' => 'Email tidak boleh kosong!',
                     'is_unique' => 'Email sudah digunakan!',
@@ -57,17 +57,10 @@ class Register extends BaseController
                 ]
             ],
             'phone_number' => [
-                'rules' => 'required|is_unique[customers.phone_number]',
+                'rules' => 'required|is_unique[admins.phone_number]',
                 'errors' => [
                     'required' => 'Nomor HP tidak boleh kosong!',
                     'is_unique' => 'Nomor HP sudah digunakan!'
-                ]
-            ],
-            'address' => [
-                'rules' => 'required|is_unique[customers.address]',
-                'errors' => [
-                    'required' => 'Alamat tidak boleh kosong!',
-                    'is_unique' => 'Alamat sudah digunakan!'
                 ]
             ],
             'password' => [
@@ -96,14 +89,13 @@ class Register extends BaseController
             'username' => $this->request->getVar('username'),
             'email' => $this->request->getVar('email'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
-            'phone_number' => $this->request->getVar('phone_number'),
-            'address' => $this->request->getVar('address')
+            'phone_number' => $this->request->getVar('phone_number')
         ];
 
         $this->registerModel->save($data);
 
         session()->setFlashdata('Register Success', 'Akun berhasil didaftarkan!');
 
-        return redirect()->to('login');
+        return redirect()->to('admin/list');
     }
 }

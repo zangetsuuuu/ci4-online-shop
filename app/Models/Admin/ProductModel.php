@@ -36,4 +36,9 @@ class ProductModel extends Model
         return $this->where("CONCAT(name, ' ', category, ' ', description, ' ', price, ' ', stock) LIKE '%$keyword%'", null, true)
             ->findAll();
     }
+
+    public function getTotalProducts()
+    {
+        return $this->countAllResults();
+    }
 }

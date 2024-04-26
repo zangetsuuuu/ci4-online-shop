@@ -9,7 +9,7 @@ class CustomerModel extends Model
     protected $table = 'customers';
     protected $returnType = 'array';
     protected $useTimestamps = true;
-    protected $allowedFields = ['first_name', 'last_name', 'username', 'email', 'password', 'phone_number', 'address'];
+    protected $allowedFields = ['fullname', 'username', 'email', 'password', 'phone_number', 'address'];
 
     public function getCustomers()
     {
@@ -24,7 +24,12 @@ class CustomerModel extends Model
 
     public function getCustomerBySearch($keyword)
     {
-        return $this->where("CONCAT(first_name, ' ', last_name, ' ', username, ' ', email, ' ', phone_number, ' ', address) LIKE '%$keyword%'", null, true)
+        return $this->where("CONCAT(fullname, ' ', username, ' ', email, ' ', phone_number, ' ', address) LIKE '%$keyword%'", null, true)
             ->findAll();
+    }
+
+    public function getTotalCustomers()
+    {
+        return $this->countAllResults();
     }
 }

@@ -16,6 +16,11 @@ class AdminModel extends Model
         return $this->findAll();
     }
 
+    public function getAdminById($id)
+    {
+        return $this->where(['id' => $id])->first();
+    }
+
     public function getAdminByUsername($username)
     {
         $username = ltrim($username, '@');

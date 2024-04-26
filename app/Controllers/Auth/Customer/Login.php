@@ -14,5 +14,4 @@ class Login extends BaseController
 
         return view('auth/customer/login', $data);
     }
-    
 }

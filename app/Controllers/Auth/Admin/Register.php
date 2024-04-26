@@ -28,16 +28,10 @@ class Register extends BaseController
     public function saveAdminData()
     {
         $config = [
-            'first_name' => [
+            'fullname' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Nama depan tidak boleh kosong!'
-                ]
-            ],
-            'last_name' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Nama belakang tidak boleh kosong!'
+                    'required' => 'Nama tidak boleh kosong!'
                 ]
             ],
             'username' => [
@@ -84,8 +78,7 @@ class Register extends BaseController
         }
 
         $data = [
-            'first_name' => $this->request->getVar('first_name'),
-            'last_name' => $this->request->getVar('last_name'),
+            'fullname' => $this->request->getVar('fullname'),
             'username' => $this->request->getVar('username'),
             'email' => $this->request->getVar('email'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),

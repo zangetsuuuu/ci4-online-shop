@@ -28,16 +28,10 @@ class Register extends BaseController
     public function saveCustomerData()
     {
         $config = [
-            'first_name' => [
+            'fullname' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Nama depan tidak boleh kosong!'
-                ]
-            ],
-            'last_name' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Nama belakang tidak boleh kosong!'
+                    'required' => 'Nama tidak boleh kosong!'
                 ]
             ],
             'username' => [

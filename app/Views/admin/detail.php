@@ -28,7 +28,7 @@
                 <div class="col-span-2 space-y-6">
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Nama Lengkap</p>
-                        <h1 class="text-lg font-semibold tracking-wide"><?= $admin['first_name'] . ' ' . $admin['last_name']; ?></h1>
+                        <h1 class="text-lg font-semibold tracking-wide"><?= $admin['fullname']; ?></h1>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Username</p>

@@ -52,7 +52,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="<?= base_url('admin/products'); ?>" class="text-xs md:text-sm font-medium tracking-wide hover:underline">Reset</a>
+                    <a href="<?= base_url('admin/customers'); ?>" class="text-xs md:text-sm font-medium tracking-wide hover:underline">Reset</a>
                 </div>
             <?php elseif (session()->getFlashdata('Customer Not Found')) : ?>
                 <div class="flex items-center justify-between p-3 md:p-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50">
@@ -107,7 +107,7 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="space-y-0.5">
-                                            <div class="text-sm font-semibold"><?= $data['first_name'] . ' ' . $data['last_name']; ?></div>
+                                            <div class="text-sm font-semibold"><?= $data['fullname']; ?></div>
                                             <div class="text-xs text-gray-400">@<?= $data['username']; ?></div>
                                         </div>
                                     </td>

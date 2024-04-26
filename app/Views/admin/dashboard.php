@@ -19,11 +19,11 @@
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
                 <div class="bg-emerald-500 text-white tracking-wide rounded-lg p-3.5 md:p-4">
                     <h2 class="text-sm md:text-base font-semibold mb-2">Total Pesanan</h2>
-                    <p class="text-lg md:text-2xl font-bold">156</p>
+                    <p class="text-lg md:text-2xl font-bold">20</p>
                 </div>
                 <div class="bg-sky-500 text-white tracking-wide rounded-lg p-3.5 md:p-4">
                     <h2 class="text-sm md:text-base font-semibold mb-2">Total Produk</h2>
-                    <p class="text-lg md:text-2xl font-bold">50</p>
+                    <p class="text-lg md:text-2xl font-bold"><?= $totalProducts; ?></p>
                 </div>
                 <div class="bg-yellow-400 text-white tracking-wide rounded-lg p-3.5 md:p-4">
                     <h2 class="text-sm md:text-base font-semibold mb-2">Pesanan Tertunda</h2>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="bg-indigo-500 text-white tracking-wide rounded-lg p-3.5 md:p-4">
                     <h2 class="text-sm md:text-base font-semibold mb-2">Jumlah Customer</h2>
-                    <p class="text-lg md:text-2xl font-bold">32</p>
+                    <p class="text-lg md:text-2xl font-bold"><?= $totalCustomers; ?></p>
                 </div>
             </div>
         </div>

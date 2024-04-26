@@ -15,14 +15,13 @@
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                     </svg>
-                    <div>Kembali<span class="hidden md:inline"> ke produk</span></div>
+                    <div>Kembali</div>
                 </a>
             </div>
         </div>
         <div class="h-full bg-white rounded-lg shadow-sm p-4 mt-3 md:mt-4">
             <form action="<?= base_url("admin/product/$product[id]/update"); ?>" method="post">
                 <?= csrf_field(); ?>
-                <input type="hidden" name="slug" value="<?= $product['slug']; ?>">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-8">
                     <!-- Product Image -->
                     <div class="rounded-md w-full h-60 overflow-hidden border relative">

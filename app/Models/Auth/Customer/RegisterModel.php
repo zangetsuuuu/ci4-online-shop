@@ -9,5 +9,5 @@ class RegisterModel extends Model
     protected $table = 'customers';
     protected $returnType = 'array';
     protected $useTimestamps = true;
-    protected $allowedFields = ['first_name', 'last_name', 'username', 'email', 'password', 'phone_number', 'address'];
+    protected $allowedFields = ['fullname', 'username', 'email', 'password', 'phone_number', 'address'];
 }

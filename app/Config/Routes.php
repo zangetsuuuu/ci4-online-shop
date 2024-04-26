@@ -26,12 +26,12 @@ $routes->group('admin', function ($routes) {
     // Products
     $routes->get('products', 'Admin\Product::viewProducts');
     $routes->get('products/search', 'Admin\Product::searchProduct');
-    $routes->get('products/create', 'Admin\Product::viewCreateProduct');
-    $routes->post('products/save', 'Admin\Product::saveProduct');
-    $routes->get('products/(:segment)', 'Admin\Product::viewProductDetail/$1');
-    $routes->get('products/(:segment)/edit', 'Admin\Product::viewEditProduct/$1');
-    $routes->post('products/(:num)/update', 'Admin\Product::updateProduct/$1');
-    $routes->delete('products/(:num)/delete', 'Admin\Product::deleteProduct/$1');
+    $routes->get('product/create', 'Admin\Product::viewCreateProduct');
+    $routes->post('product/save', 'Admin\Product::saveProduct');
+    $routes->get('product/(:segment)', 'Admin\Product::viewProductDetail/$1');
+    $routes->get('product/(:segment)/edit', 'Admin\Product::viewEditProduct/$1');
+    $routes->post('product/(:num)/update', 'Admin\Product::updateProduct/$1');
+    $routes->delete('product/(:num)/delete', 'Admin\Product::deleteProduct/$1');
 
     // Orders
     $routes->get('orders', 'Admin\Order::viewOrders');
@@ -39,15 +39,16 @@ $routes->group('admin', function ($routes) {
 
     // Customers
     $routes->get('customers', 'Admin\Customer::viewCustomers');
-    $routes->get('customers/search', 'Admin\Customer::searchCustomer');
-    $routes->get('customers/(:segment)', 'Admin\Customer::viewCustomerDetail/$1');
-    $routes->delete('customers/(:num)/delete', 'Admin\Customer::deleteCustomer/$1');
+    $routes->get('customer/search', 'Admin\Customer::searchCustomer');
+    $routes->get('customer/(:segment)', 'Admin\Customer::viewCustomerDetail/$1');
+    $routes->delete('customer/(:num)/delete', 'Admin\Customer::deleteCustomer/$1');
     
     // Profile
     $routes->get('profile', 'Admin\Profile::viewInfo');
-    $routes->get('profile/(:segment)/edit', 'Admin\Profile::edit/$1');
+    $routes->get('profile/(:segment)/edit', 'Admin\Profile::viewEditProfile/$1');
+    $routes->get('profile/(:segment)/update', 'Admin\Profile::updateAdminProfile/$1');
     
-    $routes->get('(:segment)', 'Admin\Admin::viewAdminDetail/$1');
+    $routes->get('info/(:segment)', 'Admin\Admin::viewAdminDetail/$1');
 });
 
 // Customer routes
@@ -59,6 +60,7 @@ $routes->group('', function ($routes) {
 
     $routes->get('cart', 'Customer\Cart::viewCart');
     $routes->get('products', 'Customer\Product::viewProducts');
+    $routes->post('product/add-to-cart', 'Customer\Product::addToCart');
     $routes->get('product/(:segment)', 'Customer\Product::viewProductDetail/$1');
     $routes->get('orders', 'Customer\Order::viewOrders');
     $routes->get('order/(:segment)', 'Customer\Order::detail/$1');

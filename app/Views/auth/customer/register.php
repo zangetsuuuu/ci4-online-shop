@@ -18,22 +18,13 @@
             <p class="text-sm text-gray-500 text-center tracking-wide mb-8">Isi data Anda untuk mendaftar.</p>
             <form class="space-y-5" action="<?= base_url('auth/register'); ?>" method="post">
                 <?= csrf_field() ?>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-0 gap-y-4 md:gap-x-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-0 gap-y-4 md:gap-x-4">
                     <div>
-                        <label for="first_name" class="text-sm font-medium text-myBlack tracking-wide">Nama Depan <span class="text-red-500">*</span></label>
-                        <input type="text" name="first_name" id="first_name" class="<?= ($validation && $validation->hasError('first_name')) ? 'input-error' : 'input-customers' ?>" <?= ($validation && $validation->hasError('first_name')) ? 'autofocus' : '' ?> placeholder="John" value="<?= old('first_name') ?>" />
-                        <?php if ($validation && $validation->hasError('first_name')) : ?>
+                        <label for="fullname" class="text-sm font-medium text-myBlack tracking-wide">Nama Lengkap <span class="text-red-500">*</span></label>
+                        <input type="text" name="fullname" id="fullname" class="<?= ($validation && $validation->hasError('fullname')) ? 'input-error' : 'input-customers' ?>" <?= ($validation && $validation->hasError('fullname')) ? 'autofocus' : '' ?> placeholder="John Doe" value="<?= old('fullname') ?>" />
+                        <?php if ($validation && $validation->hasError('fullname')) : ?>
                             <div class="input-error-message">
-                                <?= $validation->getError('first_name'); ?>
-                            </div>
-                        <?php endif ?>
-                    </div>
-                    <div>
-                        <label for="last_name" class="text-sm font-medium text-myBlack tracking-wide">Nama Belakang <span class="text-red-500">*</span></label>
-                        <input type="text" name="last_name" id="last_name" class="<?= ($validation && $validation->hasError('last_name')) ? 'input-error' : 'input-customers' ?>" <?= ($validation && $validation->hasError('last_name')) ? 'autofocus' : '' ?> placeholder="Doe" value="<?= old('last_name') ?>" />
-                        <?php if ($validation && $validation->hasError('last_name')) : ?>
-                            <div class="input-error-message">
-                                <?= $validation->getError('last_name'); ?>
+                                <?= $validation->getError('fullname'); ?>
                             </div>
                         <?php endif ?>
                     </div>
@@ -47,8 +38,8 @@
                         <?php endif ?>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-0 gap-y-4 md:gap-x-4">
-                    <div class="col-span-2">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-0 gap-y-4 md:gap-x-4">
+                    <div>
                         <label for="email" class="text-sm font-medium text-myBlack tracking-wide">Email <span class="text-red-500">*</span></label>
                         <input type="email" name="email" id="email" class="<?= ($validation && $validation->hasError('email')) ? 'input-error' : 'input-customers' ?>" <?= ($validation && $validation->hasError('email')) ? 'autofocus' : '' ?> placeholder="someone@example.com" value="<?= old('email') ?>" />
                         <?php if ($validation && $validation->hasError('email')) : ?>

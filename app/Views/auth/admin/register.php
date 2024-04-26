@@ -36,20 +36,11 @@
 
                         <div class="col-span-2 space-y-5">
                             <div>
-                                <label for="first_name" class="text-sm font-medium text-myBlack tracking-wide">Nama Depan <span class="text-red-500">*</span></label>
-                                <input type="text" name="first_name" id="first_name" class="<?= ($validation && $validation->hasError('first_name')) ? 'input-error' : 'input-admin' ?>" <?= ($validation && $validation->hasError('first_name')) ? 'autofocus' : '' ?> placeholder="John" value="<?= old('first_name') ?>" />
-                                <?php if ($validation && $validation->hasError('first_name')) : ?>
+                                <label for="fullname" class="text-sm font-medium text-myBlack tracking-wide">Nama Lengkap <span class="text-red-500">*</span></label>
+                                <input type="text" name="fullname" id="fullname" class="<?= ($validation && $validation->hasError('fullname')) ? 'input-error' : 'input-admin' ?>" <?= ($validation && $validation->hasError('fullname')) ? 'autofocus' : '' ?> placeholder="John Doe" value="<?= old('fullname') ?>" />
+                                <?php if ($validation && $validation->hasError('fullname')) : ?>
                                     <div class="input-error-message">
-                                        <?= $validation->getError('first_name'); ?>
-                                    </div>
-                                <?php endif ?>
-                            </div>
-                            <div>
-                                <label for="last_name" class="text-sm font-medium text-myBlack tracking-wide">Nama Belakang <span class="text-red-500">*</span></label>
-                                <input type="text" name="last_name" id="last_name" class="<?= ($validation && $validation->hasError('last_name')) ? 'input-error' : 'input-admin' ?>" <?= ($validation && $validation->hasError('last_name')) ? 'autofocus' : '' ?> placeholder="Doe" value="<?= old('last_name') ?>" />
-                                <?php if ($validation && $validation->hasError('last_name')) : ?>
-                                    <div class="input-error-message">
-                                        <?= $validation->getError('last_name'); ?>
+                                        <?= $validation->getError('fullname'); ?>
                                     </div>
                                 <?php endif ?>
                             </div>
@@ -101,6 +92,7 @@
                             <button type="submit" class="btn-admin w-full">Tambah Admin</button>
                         </div>
                     </div>
+                </div>
             </form>
         </div>
     </div>

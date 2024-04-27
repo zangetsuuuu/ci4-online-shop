@@ -18,7 +18,7 @@ $routes->group('admin', function ($routes) {
     $routes->get('create', 'Auth\Admin\Register::viewForm');
     $routes->post('save', 'Auth\Admin\Register::saveAdminData');
     $routes->get('change-password', 'Auth\Password::admin');
-    $routes->get('dashboard', 'Admin\Dashboard::index');
+    $routes->get('dashboard', 'Admin\Dashboard::viewDashboard');
     $routes->get('list', 'Admin\Admin::viewAdmins');
     $routes->get('search', 'Admin\Admin::searchAdmin');
     $routes->delete('(:num)/delete', 'Admin\Admin::deleteAdmin/$1');
@@ -59,6 +59,8 @@ $routes->group('', function ($routes) {
     $routes->get('change-password', 'Auth\Customer\Password::customers');
 
     $routes->get('cart', 'Customer\Cart::viewCart');
+    $routes->post('cart/(:num)/update', 'Customer\Cart::updateCartItem/$1');
+    $routes->delete('cart/(:num)/delete', 'Customer\Cart::deleteCartItem/$1');
     $routes->get('products', 'Customer\Product::viewProducts');
     $routes->post('product/add-to-cart', 'Customer\Product::addToCart');
     $routes->get('product/(:segment)', 'Customer\Product::viewProductDetail/$1');

@@ -16,6 +16,11 @@ class CustomerModel extends Model
         return $this->findAll();
     }
 
+    public function getCustomerById($id)
+    {
+        return $this->where(['id' => $id])->first();
+    }
+
     public function getCustomerByUsername($username)
     {
         $username = ltrim($username, '@');

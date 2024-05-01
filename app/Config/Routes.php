@@ -35,7 +35,7 @@ $routes->group('admin', function ($routes) {
 
     // Orders
     $routes->get('orders', 'Admin\Order::viewOrders');
-    $routes->get('orders/(:segment)', 'Admin\Order::viewOrderDetail/$1');
+    $routes->get('order/(:segment)', 'Admin\Order::viewOrderDetail/$1');
 
     // Customers
     $routes->get('customers', 'Admin\Customer::viewCustomers');
@@ -69,6 +69,9 @@ $routes->group('', function ($routes) {
     $routes->get('checkout', 'Customer\Checkout::index');
     $routes->get('profile', 'Customer\Profile::index');
     $routes->get('profile/(:segment)/edit', 'Customer\Profile::edit/$1');
+    $routes->post('payment/save-transaction', 'Customer\Payment::saveTransaction');
+    $routes->get('payment/success', 'Customer\Payment::success');
+    $routes->get('payment/failed', 'Customer\Payment::failed');
 });
 
 // Public page route

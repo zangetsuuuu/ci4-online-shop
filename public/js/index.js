@@ -12,37 +12,35 @@ function rupiahFormat(amount) {
     return 'Rp. ' + rupiah;
 }
 
-const quantityInputs = document.querySelectorAll('.quantity');
-const priceCells = document.querySelectorAll('.price');
-const totalQuantityCell = document.getElementById('totalQuantity');
-const totalPriceCell = document.getElementById('totalPrice');
+const $quantityInputs = $('input.quantity');
+const $priceCells = $('td.price');
+const $totalQuantityCell = $('#totalQuantity');
+const $totalPriceCell = $('#totalPrice');
 
 function calculateTotal() {
     let totalQuantity = 0;
     let totalPrice = 0;
 
-    for (let i = 0; i < quantityInputs.length; i++) {
-        const quantity = parseInt(quantityInputs[i].value);
-        const price = parseInt(priceCells[i].getAttribute('data-original-value'));
+    $quantityInputs.each(function(index, input) {
+        const quantity = parseInt($(input).val());
+        const price = parseInt($(priceCells[index]).data('original-value'));
 
         totalQuantity += quantity;
         totalPrice += quantity * price;
-    }
+    });
 
-    totalQuantityCell.textContent = totalQuantity;
-    totalPriceCell.textContent = rupiahFormat(totalPrice);
+    $totalQuantityCell.text(totalQuantity);
+    $totalPriceCell.text(rupiahFormat(totalPrice));
 }
 
 calculateTotal();
-quantityInputs.forEach(function(input) {
-    input.addEventListener('input', calculateTotal);
-});
+$quantityInputs.on('input', calculateTotal);
 
 function previewImage() {
-    const imageInput = document.getElementById('fileInput');
-    const imagePreview = document.getElementById('frame');
+    const $imageInput = $('#fileInput');
+    const $imagePreview = $('#frame');
 
-    if (fileInput.files && fileInput.files[0]) {
-        imagePreview.src = window.URL.createObjectURL(imageInput.files[0])
+    if ($imageInput[0].files && $imageInput[0].files[0]) {
+        $imagePreview.attr('src', window.URL.createObjectURL($imageInput[0].files[0]));
     }
 }

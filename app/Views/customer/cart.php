@@ -13,9 +13,6 @@
                 <h1 class="text-lg md:text-xl font-semibold tracking-wide">Keranjang</h1>
             </div>
         </div>
-
-
-
         <div class="h-full bg-white rounded-lg shadow-sm p-4 mt-3 md:mt-4">
             <?php if (isset($flashMessages)) :
                 foreach ($flashMessages as $key => $flashMessage) :
@@ -79,9 +76,9 @@
                                 </th>
                             </tr>
                         </thead>
-                        <form action="<?= base_url('cart/checkout'); ?>" method="post">
-                            <?= csrf_field(); ?>
-                            <tbody class="bg-white divide-y divide-gray-200">
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <form id="orderForm" action="<?= base_url('checkout'); ?>" method="post">
+                                <?= csrf_field(); ?>
                                 <?php foreach ($cart as $item) : ?>
                                     <tr>
                                         <th scope="row" class="px-6 py-4 font-medium text-myBlack whitespace-nowrap">
@@ -102,34 +99,34 @@
                                                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z" fill="currentColor" />
                                                     </svg>
-                                                    </a>
-                                                    <button data-modal-target="delete-cart-item-modal#<?= $item['id']; ?>" data-modal-toggle="delete-cart-item-modal#<?= $item['id']; ?>" type="button" class="text-red-500 font-semibold  hover:text-red-700 ease-in-out duration-200">
-                                                        <svg fill="currentColor" class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="delete" class="icon glyph">
-                                                            <path d="M17,4V5H15V4H9V5H7V4A2,2,0,0,1,9,2h6A2,2,0,0,1,17,4Z"></path>
-                                                            <path d="M20,6H4A1,1,0,0,0,4,8H5V20a2,2,0,0,0,2,2H17a2,2,0,0,0,2-2V8h1a1,1,0,0,0,0-2Z"></path>
-                                                        </svg>
-                                                    </button>
+                                                </button>
+                                                <button data-modal-target="delete-cart-item-modal#<?= $item['id']; ?>" data-modal-toggle="delete-cart-item-modal#<?= $item['id']; ?>" type="button" class="text-red-500 font-semibold  hover:text-red-700 ease-in-out duration-200">
+                                                    <svg fill="currentColor" class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="delete" class="icon glyph">
+                                                        <path d="M17,4V5H15V4H9V5H7V4A2,2,0,0,1,9,2h6A2,2,0,0,1,17,4Z"></path>
+                                                        <path d="M20,6H4A1,1,0,0,0,4,8H5V20a2,2,0,0,0,2,2H17a2,2,0,0,0,2-2V8h1a1,1,0,0,0,0-2Z"></path>
+                                                    </svg>
+                                                </button>
                                             </div>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
-                            </tbody>
-                            <tfoot>
-                                <tr class="font-semibold text-myBlack">
-                                    <th scope="row" class="px-6 py-3 text-base">Total</th>
-                                    <td name="total_quantity" class="px-6 py-4 whitespace-nowrap">
-                                        <?= $total_quantity; ?>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap"></td>
-                                    <td name="total_price" class="px-6 py-4 whitespace-nowrap">
-                                        <?= 'Rp. ' . number_format($total_price, 0, ',', '.'); ?>
-                                    </td>
-                                </tr>
-                            </tfoot>
-                        </form>
+                            </form>
+                        </tbody>
+                        <tfoot>
+                            <tr class="font-semibold text-myBlack">
+                                <th scope="row" class="px-6 py-3 text-base">Total</th>
+                                <td name="total_quantity" class="px-6 py-4 whitespace-nowrap">
+                                    <?= $total_quantity; ?>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap"></td>
+                                <td name="total_price" class="px-6 py-4 whitespace-nowrap">
+                                    <?= 'Rp. ' . number_format($total_price, 0, ',', '.'); ?>
+                                </td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
-                <button type="submit" class="btn-primary w-full mt-4 flex items-center justify-center space-x-2">
+                <button id="pay-button" type="button" class="btn-primary w-full mt-4 flex items-center justify-center space-x-2">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M3.04047 2.29242C2.6497 2.15503 2.22155 2.36044 2.08416 2.7512C1.94678 3.14197 2.15218 3.57012 2.54295 3.7075L2.80416 3.79934C3.47177 4.03406 3.91052 4.18961 4.23336 4.34802C4.53659 4.4968 4.67026 4.61723 4.75832 4.74609C4.84858 4.87818 4.91828 5.0596 4.95761 5.42295C4.99877 5.80316 4.99979 6.29837 4.99979 7.03832L4.99979 9.64C4.99979 12.5816 5.06302 13.5523 5.92943 14.4662C6.79583 15.38 8.19028 15.38 10.9792 15.38H16.2821C17.8431 15.38 18.6236 15.38 19.1753 14.9304C19.727 14.4808 19.8846 13.7164 20.1997 12.1875L20.6995 9.76275C21.0466 8.02369 21.2202 7.15417 20.7762 6.57708C20.3323 6 18.8155 6 17.1305 6H6.49233C6.48564 5.72967 6.47295 5.48373 6.4489 5.26153C6.39517 4.76515 6.27875 4.31243 5.99677 3.89979C5.71259 3.48393 5.33474 3.21759 4.89411 3.00139C4.48203 2.79919 3.95839 2.61511 3.34187 2.39838L3.04047 2.29242ZM15.5172 8.4569C15.8172 8.74256 15.8288 9.21729 15.5431 9.51724L12.686 12.5172C12.5444 12.6659 12.3481 12.75 12.1429 12.75C11.9376 12.75 11.7413 12.6659 11.5998 12.5172L10.4569 11.3172C10.1712 11.0173 10.1828 10.5426 10.4828 10.2569C10.7827 9.97123 11.2574 9.98281 11.5431 10.2828L12.1429 10.9125L14.4569 8.48276C14.7426 8.18281 15.2173 8.17123 15.5172 8.4569Z" fill="currentColor" />
                         <path d="M7.5 18C8.32843 18 9 18.6716 9 19.5C9 20.3284 8.32843 21 7.5 21C6.67157 21 6 20.3284 6 19.5C6 18.6716 6.67157 18 7.5 18Z" fill="currentColor" />
@@ -156,4 +153,44 @@
 
 <?= $this->include('layout/customer/delete_cart'); ?>
 
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-Wg9fR-ViVgBSDeDQ"></script>
+<script type="text/javascript">
+    document.getElementById('pay-button').onclick = function() {
+        // SnapToken acquired from Payment controller
+        window.snap.pay('<?= $snapToken; ?>', {
+            onSuccess: function(result) {
+                console.log(result);
+                $.ajax({
+                    url: '<?= base_url('payment/save-transaction'); ?>',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: JSON.stringify(result),
+                    contentType: 'application/json',
+                    success: function(response) {
+                        console.log(result);
+                        if (result.transaction_status == 'settlement') {
+                            // Redirect to success page
+                            document.location.href = '<?= base_url('payment/success'); ?>';
+                        } else {
+                            // Redirect to failed page
+                            document.location.href = '<?= base_url('payment/failed'); ?>';
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        alert('Failed to send transaction data to server!');
+                    }
+                });
+            },
+            onPending: function(result) {
+                console.log(result);
+            },
+            onError: function(result) {
+                console.log(result);
+                // Redirect to failed page
+                document.location.href = '<?= base_url('payment/failed'); ?>';
+            }
+        });
+    };
+</script>
 <?= $this->endSection(); ?>

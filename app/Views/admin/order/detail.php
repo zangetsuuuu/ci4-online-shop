@@ -79,7 +79,7 @@
                 <!-- Payment method -->
                 <div class="bg-gray-50 rounded-lg p-4">
                     <h2 class="text-base md:text-lg font-semibold tracking-wide mb-3">Metode Pembayaran</h2>
-                    <p class="text-xs md:text-sm text-gray-500 font-semibold tracking-wide">DANA</p>
+                    <p class="text-xs md:text-sm text-gray-500 font-semibold tracking-wide">QRIS</p>
                 </div>
             </div>
         </div>

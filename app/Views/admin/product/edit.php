@@ -25,7 +25,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-8">
                     <!-- Product Image -->
                     <div class="rounded-md w-full h-60 overflow-hidden border relative">
-                        <img id="frame" src="<?= base_url('img/gradient.jpg'); ?>" class="object-cover w-full h-full" alt="">
+                        <img id="frame" src="<?= $product['image']; ?>" class="object-cover w-full h-full" alt="">
                         <div class="flex items-center justify-center absolute inset-0 bg-myBlack/20">
                             <label data-tooltip-target="add-product-image-tooltip" for="fileInput" class="text-white hover:text-gray-300 p-3 rounded-full cursor-pointer ease-in-out duration-300">
                                 <svg class="w-7 h-7" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

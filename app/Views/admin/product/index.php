@@ -149,7 +149,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap font-bold text-myBlack"><?= $i; ?>.</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="h-24 md:h-28">
-                                            <img class="w-full h-full object-contain" src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//93/MTA-2583228/indomie_indomie-goreng-mie-instan--85g--_full02.jpg" alt="">
+                                            <img class="w-full h-full object-contain" src="<?= $data['image']; ?>" alt="">
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap"><?= $data['name']; ?></td>

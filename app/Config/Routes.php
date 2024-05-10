@@ -44,9 +44,9 @@ $routes->group('admin', function ($routes) {
     $routes->delete('customer/(:num)/delete', 'Admin\Customer::deleteCustomer/$1');
     
     // Profile
-    $routes->get('profile', 'Admin\Profile::viewInfo');
-    $routes->get('profile/(:segment)/edit', 'Admin\Profile::viewEditProfile/$1');
-    $routes->get('profile/(:segment)/update', 'Admin\Profile::updateAdminProfile/$1');
+    $routes->get('(:segment)', 'Admin\Profile::viewInfo/$1');
+    $routes->get('(:segment)/edit', 'Admin\Profile::viewEditProfile/$1');
+    $routes->get('(:segment)/update', 'Admin\Profile::updateAdminProfile/$1');
     
     $routes->get('info/(:segment)', 'Admin\Admin::viewAdminDetail/$1');
 });
@@ -65,11 +65,11 @@ $routes->group('', function ($routes) {
     $routes->post('product/add-to-cart', 'Customer\Product::addToCart');
     $routes->get('product/(:segment)', 'Customer\Product::viewProductDetail/$1');
     $routes->get('orders', 'Customer\Order::viewOrders');
-    $routes->get('order/(:segment)', 'Customer\Order::detail/$1');
-    $routes->get('checkout', 'Customer\Checkout::index');
-    $routes->get('profile', 'Customer\Profile::index');
+    $routes->get('order/(:segment)', 'Customer\Order::viewOrderDetail/$1');
+    $routes->get('profile', 'Customer\Profile::viewProfile');
     $routes->get('profile/(:segment)/edit', 'Customer\Profile::edit/$1');
     $routes->post('payment/save-transaction', 'Customer\Payment::saveTransaction');
+    $routes->get('checkout', 'Customer\Payment::checkout');
     $routes->get('payment/success', 'Customer\Payment::success');
     $routes->get('payment/failed', 'Customer\Payment::failed');
 });

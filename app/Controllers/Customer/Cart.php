@@ -5,25 +5,16 @@ namespace App\Controllers\Customer;
 use App\Controllers\BaseController;
 use App\Models\Customer\CartModel;
 use App\Models\Customer\ProductModel;
-use App\Models\Admin\CustomerModel;
-use Midtrans\Config;
-use Midtrans\Snap;
 
 class Cart extends BaseController
 {
     protected $cartModel;
     protected $productModel;
-    protected $customerModel;
 
     public function __construct()
     {
         $this->cartModel = new CartModel();
         $this->productModel = new ProductModel();
-        $this->customerModel = new CustomerModel();
-        Config::$serverKey = 'SB-Mid-server-pzDcwPlXshvIxjJMLEvZtQdx';
-        Config::$isProduction = false;
-        Config::$isSanitized = true;
-        Config::$is3ds = true;
     }
 
     public function viewCart()
@@ -31,7 +22,6 @@ class Cart extends BaseController
         $customerId = 1;
 
         $cartItems = $this->cartModel->getCartByCustomerId($customerId);
-        $customerData = $this->customerModel->getCustomerById($customerId);
 
         $cartDetails = [];
         foreach ($cartItems as $cartItem) {
@@ -54,30 +44,6 @@ class Cart extends BaseController
             $totalPrice += $item['total'];
         }
 
-        // Params for Snap Token
-        $transactionDetails = [
-            'order_id' => rand(),
-            'gross_amount' => $totalPrice,
-        ];
-
-        $itemDetails = [];
-        foreach ($cartDetails as $item) {
-            $itemDetails[] = [
-                'id' => $item['product_id'],
-                'price' => $item['price'],
-                'quantity' => $item['quantity'],
-                'name' => $item['product_name'],
-            ];
-        }
-
-        $customerDetails = [
-            'first_name' => $customerData['fullname'],
-            'username' => $customerData['username'],
-            'email' => $customerData['email'],
-            'phone' => $customerData['phone_number'],
-            'address' => $customerData['address']
-        ];
-
         $data = [
             'title' => 'Keranjang',
             'cart' => $cartDetails,
@@ -87,13 +53,7 @@ class Cart extends BaseController
             'flashMessages' => [
                 'Edit Success' => ['id' => 'alert-edit-success', 'message' => session()->getFlashdata('Edit Success')],
                 'Delete Success' => ['id' => 'alert-delete-success', 'message' => session()->getFlashdata('Delete Success')],
-            ],
-            'transaction_details' => $transactionDetails,
-            'snapToken' => Snap::getSnapToken([
-                'transaction_details' => $transactionDetails,
-                'item_details' => $itemDetails,
-                'customer_details' => $customerDetails
-            ])
+            ]
         ];
 
         return view('customer/cart', $data);

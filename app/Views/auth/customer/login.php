@@ -1,27 +1,27 @@
 <?= $this->extend('layout/customer/template'); ?>
 
 <?= $this->section('content'); ?>
-<div class="min-h-screen flex items-center justify-center">
+<div class="flex items-center justify-center min-h-screen">
     <div class="container px-4 py-16 md:py-0 md:px-0">
-        <div class="bg-white p-6 md:p-8 rounded-xl shadow-xl max-w-lg w-full mx-auto">
+        <div class="w-full max-w-lg p-6 mx-auto bg-white shadow-xl md:p-8 rounded-xl">
             <div class="flex justify-center mb-6">
-                <span class="inline-block bg-gray-100 rounded-full p-3">
+                <span class="inline-block p-3 bg-gray-100 rounded-full">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 8L16 12M16 12L12 16M16 12H3M3.33782 7C5.06687 4.01099 8.29859 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C8.29859 22 5.06687 19.989 3.33782 17" class="stroke-myBlack" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </span>
             </div>
-            <h2 class="text-2xl font-semibold text-center tracking-wide mb-2">Login ke Akun Anda</h2>
-            <p class="text-sm text-gray-500 text-center tracking-wide mb-6">Silakan masukkan informasi Anda untuk login.</p>
-            
+            <h2 class="mb-2 text-2xl font-semibold tracking-wide text-center">Login ke Akun Anda</h2>
+            <p class="mb-6 text-sm tracking-wide text-center text-gray-500">Silakan masukkan informasi Anda untuk login.</p>
+
             <?php if (session()->getFlashdata('Register Success')) : ?>
-                <div class="flex items-center p-3 md:p-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 mb-4" role="alert">
+                <div class="flex items-center p-3 mb-4 text-sm text-green-800 border border-green-300 rounded-lg md:p-4 bg-green-50" role="alert">
                     <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                     </svg>
                     <span class="sr-only">Info</span>
                     <div>
-                        <div class="ms-3 text-xs md:text-sm font-medium tracking-wide">
+                        <div class="text-xs font-medium tracking-wide ms-3 md:text-sm">
                             <?= session()->getFlashdata('Register Success'); ?>
                         </div>
                     </div>
@@ -30,24 +30,24 @@
 
             <form class="space-y-5" action="#">
                 <div>
-                    <label for="email" class="text-sm font-medium text-myBlack tracking-wide">Username / Email <span class="text-red-500">*</span></label>
-                    <input type="email" name="email" id="email" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" placeholder="johndoe / someone@example.com" required />
+                    <label for="email" class="text-sm font-medium tracking-wide text-myBlack">Username / Email <span class="text-red-500">*</span></label>
+                    <input type="email" name="email" id="email" class="input-customers" placeholder="johndoe / someone@example.com" required />
                 </div>
                 <div>
-                    <label for="password" class="text-sm font-medium text-myBlack tracking-wide">Password <span class="text-red-500">*</span></label>
-                    <input type="password" name="password" id="password" placeholder="••••••••" class="block w-full p-2.5 mt-2 rounded-md bg-gray-50 border border-gray-300 placeholder-gray-400 text-myBlack focus:outline-none focus:ring-blue-700 focus:border-blue-700 focus:z-10 focus:shadow-md text-sm md:text-base" required />
+                    <label for="password" class="text-sm font-medium tracking-wide text-myBlack">Password <span class="text-red-500">*</span></label>
+                    <input type="password" name="password" id="password" placeholder="••••••••" class="input-customers" required />
                 </div>
                 <div class="flex items-center justify-between">
                     <div class="flex items-start">
                         <div class="flex items-center h-5">
                             <input id="remember" type="checkbox" name="remember" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-2 focus:ring-blue-300" required />
                         </div>
-                        <label for="remember" class="ms-2 text-sm font-medium text-myBlack tracking-wide">Ingat saya</label>
+                        <label for="remember" class="text-sm font-medium tracking-wide ms-2 text-myBlack">Ingat saya</label>
                     </div>
-                    <a href="<?= base_url('/forgot-password') ?>" class="text-sm text-blue-700 tracking-wide hover:underline">Lupa Password?</a>
+                    <a href="<?= base_url('/forgot-password') ?>" class="text-sm tracking-wide text-blue-700 hover:underline">Lupa Password?</a>
                 </div>
-                <button type="submit" name="login" class="btn-primary w-full">Login ke akun</button>
-                <div class="text-center text-sm font-medium text-gray-500 tracking-wide mt-4 md:mt-0">
+                <button type="submit" name="login" class="w-full btn-primary">Login ke akun</button>
+                <div class="mt-4 text-sm font-medium tracking-wide text-center text-gray-500 md:mt-0">
                     Belum punya akun? <a href="/register" class="text-blue-700 hover:underline">Daftar</a>
                 </div>
             </form>

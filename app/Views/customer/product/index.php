@@ -80,7 +80,7 @@
                         <form action="" method="">
                             <div class="h-24 md:h-28 relative">
                                 <a href="<?= base_url("/product/$data[slug]"); ?>">
-                                    <img class="w-full h-full object-contain" src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//93/MTA-2583228/indomie_indomie-goreng-mie-instan--85g--_full02.jpg" alt="">
+                                    <img class="w-full h-full object-contain" src="<?= $data['image']; ?>" alt="">
                                     <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 ease-in-out duration-300 bg-myBlack/20 backdrop-filter backdrop-blur-md text-white text-sm font-semibold tracking-wide">
                                         Klik untuk lihat detail
                                     </div>

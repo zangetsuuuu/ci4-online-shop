@@ -1,26 +1,40 @@
 <?php
 
-namespace App\Controllers\Customers;
+namespace App\Controllers\Customer;
 
 use App\Controllers\BaseController;
+use App\Models\Customer\ProfileModel;
 
 class Profile extends BaseController
 {
-    public function index(): string
+    protected $profileModel;
+
+    public function __construct()
+    {
+        $this->profileModel = new ProfileModel();
+    }
+
+    public function viewProfile()
     {
         $data = [
             'title' => 'Profil'
         ];
 
-        return view('customers/profile/index', $data);
+        return view('customer/profile/index', $data);
     }
 
-    public function edit()
+    public function edit($username)
     {
         $data = [
-            'title' => 'Edit Profil'
+            'title' => 'Edit Profil',
+            'customer' => $this->profileModel->getCustomerByUsername($username),
+            'validation' => session()->getFlashdata('validation')
         ];
 
-        return view('customers/profile/edit', $data);
+        if (empty($data['customer'])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Data customer tidak ditemukan');
+        }
+
+        return view('customer/profile/edit', $data);
     }
 }

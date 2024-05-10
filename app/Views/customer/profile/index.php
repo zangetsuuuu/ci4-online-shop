@@ -1,4 +1,4 @@
-<?= $this->extend('layout/customers/template'); ?>
+<?= $this->extend('layout/customer/template'); ?>
 
 <?= $this->section('content'); ?>
 <div class="min-h-screen">
@@ -58,6 +58,10 @@
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Alamat</p>
                         <h1 class="text-lg font-semibold tracking-wide">Jl. Teratai No. 123</h1>
                     </div>
+                    <div class="space-y-2">
+                        <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Role</p>
+                        <h1 class="text-lg font-semibold tracking-wide">Pelanggan</h1>
+                    </div>
                     <hr class="my-4">
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Total Pesanan</p>
@@ -69,6 +73,6 @@
     </div>
 </div>
 
-<?= $this->include('layout/customers/profile/avatar'); ?>
+<?= $this->include('layout/customer/profile/avatar'); ?>
 
 <?= $this->endSection(); ?>

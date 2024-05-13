@@ -3,34 +3,34 @@
 <?= $this->section('content'); ?>
 <div class="min-h-screen">
     <div class="p-4 sm:ml-64">
-        <div class="h-full bg-white rounded-lg shadow-sm p-4 mt-16 md:mt-14">
+        <div class="h-full p-4 mt-16 bg-white rounded-lg shadow-sm md:mt-14">
             <!-- Carousel Start -->
             <div id="controls-carousel" class="relative w-full" data-carousel="slide">
                 <div class="relative border overflow-hidden rounded-lg h-[12rem] md:h-80">
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://onlineprint.co.id/blog/wp-content/uploads/2023/04/banner-food-800x445.jpg" class="absolute w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover" alt="...">
+                        <img src="https://onlineprint.co.id/blog/wp-content/uploads/2023/04/banner-food-800x445.jpg" class="absolute object-cover w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </div>
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="img/gradient.jpg" class="absolute w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover" alt="...">
+                        <img src="img/gradient.jpg" class="absolute object-cover w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </div>
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="img/bg-1.jpg" class="absolute w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover" alt="...">
+                        <img src="img/bg-1.jpg" class="absolute object-cover w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </div>
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="img/gradient.jpg" class="absolute w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover" alt="...">
+                        <img src="img/gradient.jpg" class="absolute object-cover w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </div>
                 </div>
                 <!-- Slider controls -->
-                <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-myBlack/20 group-hover:bg-white/30 group-focus:ring-4 group-focus:ring-white group-focus:outline-none ease-in-out duration-300">
+                <button type="button" class="absolute top-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer start-0 group focus:outline-none" data-carousel-prev>
+                    <span class="inline-flex items-center justify-center w-10 h-10 duration-300 ease-in-out rounded-full bg-myBlack/20 group-hover:bg-white/30 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
                         <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
                         </svg>
                         <span class="sr-only">Previous</span>
                     </span>
                 </button>
-                <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-myBlack/20 group-hover:bg-white/30 group-focus:ring-4 group-focus:ring-white group-focus:outline-none ease-in-out duration-300">
+                <button type="button" class="absolute top-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer end-0 group focus:outline-none" data-carousel-next>
+                    <span class="inline-flex items-center justify-center w-10 h-10 duration-300 ease-in-out rounded-full bg-myBlack/20 group-hover:bg-white/30 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
                         <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                         </svg>
@@ -42,7 +42,7 @@
         <!-- Carousel End -->
 
         <!-- Product Start -->
-        <div class="h-full bg-white rounded-lg shadow-sm p-4 mt-3 md:mt-4">
+        <div class="h-full p-4 mt-3 bg-white rounded-lg shadow-sm md:mt-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-3">
                     <svg class="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -53,10 +53,10 @@
                             </g>
                         </g>
                     </svg>
-                    <h1 class="text-lg md:text-xl font-semibold tracking-wide">Produk</h1>
+                    <h1 class="text-lg font-semibold tracking-wide md:text-xl">Produk</h1>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button data-modal-target="category-modal" data-modal-toggle="category-modal" class="text-myBlack hover:text-gray-500 ease-in-out duration-300">
+                    <button data-modal-target="category-modal" data-modal-toggle="category-modal" class="duration-300 ease-in-out text-myBlack hover:text-gray-500">
                         <svg class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.24 2H5.34C3.15 2 2 3.15 2 5.33V7.23C2 9.41 3.15 10.56 5.33 10.56H7.23C9.41 10.56 10.56 9.41 10.56 7.23V5.33C10.57 3.15 9.42 2 7.24 2Z" fill="currentColor" />
                             <path d="M18.6695 2H16.7695C14.5895 2 13.4395 3.15 13.4395 5.33V7.23C13.4395 9.41 14.5895 10.56 16.7695 10.56H18.6695C20.8495 10.56 21.9995 9.41 21.9995 7.23V5.33C21.9995 3.15 20.8495 2 18.6695 2Z" fill="currentColor" />
@@ -64,7 +64,7 @@
                             <path d="M7.24 13.4297H5.34C3.15 13.4297 2 14.5797 2 16.7597V18.6597C2 20.8497 3.15 21.9997 5.33 21.9997H7.23C9.41 21.9997 10.56 20.8497 10.56 18.6697V16.7697C10.57 14.5797 9.42 13.4297 7.24 13.4297Z" fill="currentColor" />
                         </svg>
                     </button>
-                    <button data-modal-target="search-modal" data-modal-toggle="search-modal" class="text-myBlack hover:text-gray-500 ease-in-out duration-300">
+                    <button data-modal-target="search-modal" data-modal-toggle="search-modal" class="duration-300 ease-in-out text-myBlack hover:text-gray-500">
                         <svg class="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16.6725 16.6412L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
@@ -73,26 +73,61 @@
             </div>
         </div>
 
-        <div class="h-full bg-white rounded-lg shadow-sm p-4 mt-3 md:mt-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+        <div class="h-full p-4 mt-3 bg-white rounded-lg shadow-sm md:mt-4">
+
+            <?php if (session()->getFlashdata('Add Success')) : ?>
+                <div id="alert-add-success" class="flex items-center p-3 mb-4 tracking-wide text-blue-800 rounded-lg md:p-4 bg-blue-50" role="alert">
+                    <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <span class="sr-only">Info</span>
+                    <div class="text-xs font-medium tracking-wide ms-3 md:text-sm">
+                        <?= session()->getFlashdata('Add Success'); ?>
+                    </div>
+                    <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-blue-50 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 p-1 md:p-1.5 hover:bg-blue-200 inline-flex items-center justify-center w-7 h-7 md:w-8 md:h-8 ease-in-out duration-200" data-dismiss-target="#alert-add-success" aria-label="Close">
+                        <span class="sr-only">Close</span>
+                        <svg class="w-2 h-2 md:w-3 md:h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                    </button>
+                </div>
+            <?php elseif (session()->getFlashdata('Stock Not Available')) : ?>
+                <div id="alert-stock-not-available" class="flex items-center p-3 mb-4 tracking-wide text-yellow-800 rounded-lg md:p-4 bg-yellow-50" role="alert">
+                    <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <span class="sr-only">Info</span>
+                    <div class="text-xs font-medium tracking-wide ms-3 md:text-sm">
+                        <?= session()->getFlashdata('Stock Not Available'); ?>
+                    </div>
+                    <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-yellow-50 text-yellow-500 rounded-lg focus:ring-2 focus:ring-yellow-400 p-1 md:p-1.5 hover:bg-yellow-200 inline-flex items-center justify-center w-7 h-7 md:w-8 md:h-8 ease-in-out duration-200" data-dismiss-target="#alert-stock-not-available" aria-label="Close">
+                        <span class="sr-only">Close</span>
+                        <svg class="w-2 h-2 md:w-3 md:h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                    </button>
+                </div>
+            <?php endif; ?>
+
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5">
                 <?php foreach ($products as $data) : ?>
                     <div class="max-h-[20rem] bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-lg ease-in-out duration-300 group">
                         <form action="" method="">
-                            <div class="h-24 md:h-28 relative">
-                                <a href="<?= base_url("/product/$data[slug]"); ?>">
-                                    <img class="w-full h-full object-contain" src="<?= $data['image']; ?>" alt="">
-                                    <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 ease-in-out duration-300 bg-myBlack/20 backdrop-filter backdrop-blur-md text-white text-sm font-semibold tracking-wide">
+                            <div class="relative h-24 md:h-28">
+                                <a href="<?= base_url("product/$data[slug]"); ?>">
+                                    <img class="object-contain w-full h-full" src="<?= $data['image']; ?>" alt="">
+                                    <div class="absolute inset-0 flex items-center justify-center text-sm font-semibold tracking-wide text-white duration-300 ease-in-out opacity-0 hover:opacity-100 bg-myBlack/20 backdrop-filter backdrop-blur-md">
                                         Klik untuk lihat detail
                                     </div>
                                 </a>
                             </div>
                             <div class="p-3">
                                 <div class="mb-4">
-                                    <div class="text-sm md:text-base font-semibold tracking-wide text-myBlack truncate mb-1"><?= $data['name']; ?></div>
+                                    <div class="mb-1 text-sm font-semibold tracking-wide truncate md:text-base text-myBlack"><?= $data['name']; ?></div>
                                     <span class="bg-gray-100 text-gray-500 text-[0.65rem] md:text-xs font-medium tracking-wide px-2.5 py-0.5 rounded">Stok: <?= ($data['stock'] == 0) ? 'Habis' : number_format($data['stock'], 0, ',', '.') ?></span>
                                 </div>
                                 <div class="flex items-center justify-between rounded-md">
-                                    <h1 class="text-sm md:text-base font-semibold tracking-wide">
+                                    <h1 class="text-sm font-semibold tracking-wide md:text-base">
                                         Rp. <?= number_format($data['price'], 0, ',', '.'); ?>
                                     </h1>
                                     <button data-tooltip-target="cart-tooltip#<?= $data['id']; ?>" data-modal-target="add-to-cart-modal#<?= $data['id']; ?>" data-modal-toggle="add-to-cart-modal#<?= $data['id']; ?>" type="button" class="icon-primary" <?= ($data['stock'] == 0) ? 'disabled' : '' ?>>
@@ -105,7 +140,7 @@
                                 </div>
                             </div>
                         </form>
-                        <div id="cart-tooltip#<?= $data['id']; ?>" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs tracking-wide font-medium text-white transition-opacity duration-300 bg-myBlack rounded-lg shadow-sm opacity-0 tooltip group">
+                        <div id="cart-tooltip#<?= $data['id']; ?>" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium tracking-wide text-white transition-opacity duration-300 rounded-lg shadow-sm opacity-0 bg-myBlack tooltip group">
                             <?= ($data['stock'] == 0) ? 'Habis' : 'Tambahkan ke keranjang' ?>
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>

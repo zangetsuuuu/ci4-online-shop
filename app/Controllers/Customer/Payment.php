@@ -7,8 +7,11 @@ use App\Models\Customer\TransactionModel;
 use App\Models\Customer\ProductModel;
 use App\Models\Customer\CartModel;
 use App\Models\Admin\CustomerModel;
+use App\Models\Customer\OrderModel;
+use App\Models\Customer\OrderItemModel;
 use Midtrans\Config;
 use Midtrans\Snap;
+use CodeIgniter\I18n\Time;
 
 class Payment extends BaseController
 {
@@ -16,6 +19,8 @@ class Payment extends BaseController
     protected $cartModel;
     protected $productModel;
     protected $customerModel;
+    protected $orderModel;
+    protected $orderItemModel;
 
     public function __construct()
     {
@@ -23,6 +28,8 @@ class Payment extends BaseController
         $this->productModel = new ProductModel();
         $this->cartModel = new CartModel();
         $this->customerModel = new CustomerModel();
+        $this->orderModel = new OrderModel();
+        $this->orderItemModel = new OrderItemModel();
         Config::$serverKey = 'SB-Mid-server-pzDcwPlXshvIxjJMLEvZtQdx';
         Config::$isProduction = false;
         Config::$isSanitized = true;
@@ -31,8 +38,7 @@ class Payment extends BaseController
 
     public function checkout()
     {
-        $customerId = 1;
-
+        $customerId = session()->get('id');
         $cartItems = $this->cartModel->getCartByCustomerId($customerId);
         $customerData = $this->customerModel->getCustomerById($customerId);
 
@@ -61,6 +67,7 @@ class Payment extends BaseController
         $transactionDetails = [
             'order_id' => rand(),
             'gross_amount' => $totalPrice,
+            'created_at' => Time::now(),
         ];
 
         $itemDetails = [];
@@ -81,21 +88,24 @@ class Payment extends BaseController
             'address' => $customerData['address']
         ];
 
+        $snapToken = Snap::getSnapToken([
+            'transaction_details' => $transactionDetails,
+            'item_details' => $itemDetails,
+            'customer_details' => $customerDetails
+        ]);
+
         $data = [
             'title' => 'Checkout',
             'cart' => $cartDetails,
             'total_quantity' => $totalQuantity,
             'total_price' => $totalPrice,
             'transaction_details' => $transactionDetails,
-            'snapToken' => Snap::getSnapToken([
-                'transaction_details' => $transactionDetails,
-                'item_details' => $itemDetails,
-                'customer_details' => $customerDetails
-            ])
+            'snapToken' => $snapToken
         ];
 
         return view('customer/checkout', $data);
     }
+
 
     public function success()
     {
@@ -119,25 +129,49 @@ class Payment extends BaseController
     {
         $transaction = json_decode(file_get_contents('php://input'), true);
 
+        $customerId = session()->get('id');
+
         $data = [
             'midtrans_transaction_id' => $transaction['transaction_id'],
             'midtrans_order_id' => $transaction['order_id'],
-            'status' => $transaction['transaction_status'],
-            'amount' => $transaction['gross_amount'],
+            'status' => $status = $transaction['transaction_status'],
+            'amount' => $amount = $transaction['gross_amount'],
             'payment_type' => $transaction['payment_type'],
             'transaction_time' => $transaction['transaction_time'],
             'fraud_status' => $transaction['fraud_status']
         ];
 
-        // Save transaction data to database
         $saveTransaction = $this->transactionModel->save($data);
 
-        if ($saveTransaction && $transaction['transaction_status'] == 'settlement') {
+        if ($saveTransaction && $status == 'settlement') {
             $response = [
                 'success' => true
             ];
 
-            $customerId = 1;
+            $orderData = [
+                'reference' => uniqid(),
+                'customer_id' => $customerId,
+                'transaction_id' => $this->transactionModel->getInsertID(),
+                'total_price' => $amount,
+                'created_at' => Time::now(),
+                'status' => 'diterima'
+            ];
+
+            $this->orderModel->save($orderData);
+
+            $orderItems = $this->cartModel->getCartByCustomerId($customerId);
+
+            foreach ($orderItems as $orderItem) {
+                $orderItemData = [
+                    'order_id' => $this->orderModel->getInsertID(),
+                    'product_id' => $orderItem['product_id'],
+                    'quantity' => $orderItem['quantity'],
+                    'price' => $orderItem['price']
+                ];
+
+                $this->orderItemModel->save($orderItemData);
+            }
+
             $this->cartModel->where('customer_id', $customerId)->delete();
         } else {
             $response = [

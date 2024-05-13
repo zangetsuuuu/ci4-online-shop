@@ -56,6 +56,8 @@ $routes->group('', function ($routes) {
     $routes->get('login', 'Auth\Customer\Login::viewForm');
     $routes->get('register', 'Auth\Customer\Register::viewForm');
     $routes->post('auth/register', 'Auth\Customer\Register::saveCustomerData');
+    $routes->post('auth/login', 'Auth\Customer\Login::loginToAccount');
+    $routes->post('auth/logout', 'Auth\Logout::index');
     $routes->get('change-password', 'Auth\Customer\Password::customers');
 
     $routes->get('cart', 'Customer\Cart::viewCart');
@@ -69,7 +71,7 @@ $routes->group('', function ($routes) {
     $routes->get('profile', 'Customer\Profile::viewProfile');
     $routes->get('profile/(:segment)/edit', 'Customer\Profile::edit/$1');
     $routes->post('payment/save-transaction', 'Customer\Payment::saveTransaction');
-    $routes->get('checkout', 'Customer\Payment::checkout');
+    $routes->post('checkout', 'Customer\Payment::checkout');
     $routes->get('payment/success', 'Customer\Payment::success');
     $routes->get('payment/failed', 'Customer\Payment::failed');
 });

@@ -5,21 +5,24 @@ namespace App\Controllers\Customer;
 use App\Controllers\BaseController;
 use App\Models\Customer\CartModel;
 use App\Models\Customer\ProductModel;
+use App\Models\Customer\OrderModel;
 
 class Cart extends BaseController
 {
     protected $cartModel;
     protected $productModel;
+    protected $orderModel;
 
     public function __construct()
     {
         $this->cartModel = new CartModel();
         $this->productModel = new ProductModel();
+        $this->orderModel = new OrderModel();
     }
 
     public function viewCart()
     {
-        $customerId = 1;
+        $customerId = session()->get('id');
 
         $cartItems = $this->cartModel->getCartByCustomerId($customerId);
 
@@ -61,16 +64,7 @@ class Cart extends BaseController
 
     public function updateCartItem()
     {
-        $config = [
-            'quantity' => [
-                'rules' => 'required|integer|less_than[stock]',
-                'errors' => [
-                    'required' => 'Jumlah produk tidak boleh kosong!',
-                    'integer' => 'Jumlah produk harus berupa bilangan bulat!',
-                    'less_than' => 'Jumlah pesanan tidak boleh lebih dari stok!'
-                ]
-            ]
-        ];
+        $config = $this->cartModel->validation();
 
         if (!$this->validate($config)) {
             return redirect()->back()->withInput()->with('validation', $this->validator);

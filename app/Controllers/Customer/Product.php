@@ -44,16 +44,7 @@ class Product extends BaseController
 
     public function addToCart()
     {
-        $config = [
-            'quantity' => [
-                'rules' => 'required|integer|less_than[stock]',
-                'errors' => [
-                    'required' => 'Jumlah produk tidak boleh kosong!',
-                    'integer' => 'Jumlah produk harus berupa bilangan bulat!',
-                    'less_than' => 'Jumlah pesanan tidak boleh lebih dari stok!'
-                ]
-            ]
-        ];
+        $config = $this->productModel->validation();
 
         if (!$this->validate($config)) {
             return redirect()->back()->withInput()->with('validation', $this->validator);
@@ -64,15 +55,20 @@ class Product extends BaseController
 
         $product = $this->productModel->find($productId);
 
+        if ($quantity > $product['stock']) {
+            session()->setFlashdata('Stock Not Available', 'Jumlah pesanan melebihi stok produk!');
+            return redirect()->back();
+        }
+
         $cartItem = $this->cartModel->where('product_id', $productId)
-            ->where('customer_id', 1)
+            ->where('customer_id', session()->get('id'))
             ->first();
 
         if ($cartItem) {
             $this->cartModel->update($cartItem['id'], ['quantity' => $cartItem['quantity'] + $quantity]);
         } else {
             $data = [
-                'customer_id' => 1,
+                'customer_id' => session()->get('id'),
                 'product_id' => $productId,
                 'quantity' => $quantity,
                 'price' => $product['price']
@@ -84,8 +80,9 @@ class Product extends BaseController
         $newStock = $product['stock'] - $quantity;
         $this->productModel->update($productId, ['stock' => $newStock]);
 
-        session()->setFlashdata('Add Success', 'Produk ditambahkan ke keranjang!');
+        session()->setFlashdata('Add Success', 'Berhasil ditambahkan ke keranjang!');
 
         return redirect()->to('products');
     }
+
 }

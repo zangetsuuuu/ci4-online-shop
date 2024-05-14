@@ -30,8 +30,8 @@
                     </div>
                     <div>
                         <label for="username" class="text-sm font-medium tracking-wide text-myBlack">Username <span class="text-red-500">*</span></label>
-                        <input type="text" name="username" id="username" class="<?= ($validation) ? 'input-error' : 'input-customers' ?>" <?= ($validation) ? 'autofocus' : '' ?> placeholder="johndoe" value="<?= old('username') ?>" />
-                        <?php if ($validation) : ?>
+                        <input type="text" name="username" id="username" class="<?= ($validation && $validation->hasError('username')) ? 'input-error' : 'input-customers' ?>" <?= ($validation && $validation->hasError('username')) ? 'autofocus' : '' ?> placeholder="johndoe" value="<?= old('username') ?>" />
+                        <?php if ($validation && $validation->hasError('username')) : ?>
                             <div class="input-error-message">
                                 <?= $validation->getError('username'); ?>
                             </div>
@@ -41,8 +41,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-0 gap-y-4 md:gap-x-4">
                     <div>
                         <label for="email" class="text-sm font-medium tracking-wide text-myBlack">Email <span class="text-red-500">*</span></label>
-                        <input type="email" name="email" id="email" class="<?= ($validation) ? 'input-error' : 'input-customers' ?>" <?= ($validation) ? 'autofocus' : '' ?> placeholder="someone@example.com" value="<?= old('email') ?>" />
-                        <?php if ($validation) : ?>
+                        <input type="email" name="email" id="email" class="<?= ($validation && $validation->hasError('email')) ? 'input-error' : 'input-customers' ?>" <?= ($validation && $validation->hasError('email')) ? 'autofocus' : '' ?> placeholder="someone@example.com" value="<?= old('email') ?>" />
+                        <?php if ($validation && $validation->hasError('email')) : ?>
                             <div class="input-error-message">
                                 <?= $validation->getError('email'); ?>
                             </div>
@@ -50,8 +50,8 @@
                     </div>
                     <div>
                         <label for="phone_number" class="text-sm font-medium tracking-wide text-myBlack">No. HP <span class="text-red-500">*</span></label>
-                        <input type="text" name="phone_number" id="phone_number" class="<?= ($validation) ? 'input-error' : 'input-customers' ?>" <?= ($validation) ? 'autofocus' : '' ?> placeholder="+62" value="<?= old('phone_number') ?>" />
-                        <?php if ($validation) : ?>
+                        <input type="text" name="phone_number" id="phone_number" class="<?= ($validation && $validation->hasError('phone_number')) ? 'input-error' : 'input-customers' ?>" <?= ($validation && $validation->hasError('phone_number')) ? 'autofocus' : '' ?> placeholder="+62" value="<?= old('phone_number') ?>" />
+                        <?php if ($validation && $validation->hasError('phone_number')) : ?>
                             <div class="input-error-message">
                                 <?= $validation->getError('phone_number'); ?>
                             </div>
@@ -60,8 +60,8 @@
                 </div>
                 <div>
                     <label for="address" class="text-sm font-medium tracking-wide text-myBlack">Alamat <span class="text-red-500">*</span></label>
-                    <input type="text" name="address" id="address" class="<?= ($validation) ? 'input-error' : 'input-customers' ?>" <?= ($validation) ? 'autofocus' : '' ?> placeholder="Jl. Teratai No. 123" value="<?= old('address') ?>" />
-                    <?php if ($validation) : ?>
+                    <input type="text" name="address" id="address" class="<?= ($validation && $validation->hasError('address')) ? 'input-error' : 'input-customers' ?>" <?= ($validation && $validation->hasError('address')) ? 'autofocus' : '' ?> placeholder="Jl. Teratai No. 123" value="<?= old('address') ?>" />
+                    <?php if ($validation && $validation->hasError('address')) : ?>
                         <div class="input-error-message">
                             <?= $validation->getError('address'); ?>
                         </div>
@@ -70,8 +70,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-0 gap-y-4 md:gap-x-4">
                     <div>
                         <label for="password" class="text-sm font-medium tracking-wide text-myBlack">Password <span class="text-red-500">*</span></label>
-                        <input type="password" name="password" id="password" class="<?= ($validation) ? 'input-error' : 'input-customers' ?>" <?= ($validation) ? 'autofocus' : '' ?> placeholder="••••••••" value="<?= old('password') ?>" />
-                        <?php if ($validation) : ?>
+                        <input type="password" name="password" id="password" class="<?= ($validation && $validation->hasError('password')) ? 'input-error' : 'input-customers' ?>" <?= ($validation && $validation->hasError('password')) ? 'autofocus' : '' ?> placeholder="••••••••" value="<?= old('password') ?>" />
+                        <?php if ($validation && $validation->hasError('password')) : ?>
                             <div class="input-error-message">
                                 <?= $validation->getError('password'); ?>
                             </div>
@@ -79,8 +79,8 @@
                     </div>
                     <div>
                         <label for="confirm_password" class="text-sm font-medium tracking-wide text-myBlack">Konfirmasi Password <span class="text-red-500">*</span></label>
-                        <input type="password" name="confirm_password" id="confirm_password" class="<?= ($validation) ? 'input-error' : 'input-customers' ?>" <?= ($validation) ? 'autofocus' : '' ?> placeholder="••••••••" value="<?= old('confirm_password') ?>" />
-                        <?php if ($validation) : ?>
+                        <input type="password" name="confirm_password" id="confirm_password" class="<?= ($validation && $validation->hasError('confirm_password')) ? 'input-error' : 'input-customers' ?>" <?= ($validation && $validation->hasError('confirm_password')) ? 'autofocus' : '' ?> placeholder="••••••••" value="<?= old('confirm_password') ?>" />
+                        <?php if ($validation && $validation->hasError('confirm_password')) : ?>
                             <div class="input-error-message">
                                 <?= $validation->getError('confirm_password'); ?>
                             </div>

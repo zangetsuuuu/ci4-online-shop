@@ -26,6 +26,16 @@ class ProductModel extends Model
         return $this->where(['slug' => $slug])->first();
     }
 
+    public function getProductBySearch($keyword)
+    {
+        return $this->like('name', $keyword)
+            ->orLike('category', $keyword)
+            ->orLike('description', $keyword)
+            ->orLike('price', $keyword)
+            ->orLike('stock', $keyword)
+            ->findAll();
+    }
+
     public function validation()
     {
         return [

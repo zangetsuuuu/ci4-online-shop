@@ -19,9 +19,13 @@ class Product extends BaseController
 
     public function viewProducts()
     {
+        $category = $this->request->getVar('category');
+
+        $category = ($category === 'all') ? null : $category;
+
         $data = [
             'title' => 'Daftar Produk',
-            'products' => $this->productModel->getProducts(),
+            'products' => !$category ? $this->productModel->getProducts() : $this->productModel->getProductsByCategory($category),
             'validation' => session()->getFlashdata('validation')
         ];
 
@@ -40,6 +44,27 @@ class Product extends BaseController
         }
 
         return view('customer/product/detail', $data);
+    }
+
+    public function searchProduct()
+    {
+        $keyword = $this->request->getVar('keyword');
+
+        $data = [
+            'title' => 'Daftar Produk | ADMIN',
+            'category' => '',
+            'products' => $this->productModel->getProductBySearch($keyword)
+        ];
+
+        if (empty($data['products'])) {
+            session()->setFlashdata('Product Not Found', 'Hasil tidak ditemukan!');
+            session()->remove('Product Search Info');
+        } else {
+            session()->setFlashdata('Product Search Info', 'Hasil pencarian: ' . $keyword);
+            session()->remove('Product Not Found');
+        }
+
+        return view('customer/product/index', $data);
     }
 
     public function addToCart()
@@ -82,7 +107,7 @@ class Product extends BaseController
 
         session()->setFlashdata('Add Success', 'Berhasil ditambahkan ke keranjang!');
 
-        return redirect()->to('products');
+        return redirect()->back();
     }
 
 }

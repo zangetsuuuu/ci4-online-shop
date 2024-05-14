@@ -44,8 +44,8 @@
                 <?= csrf_field(); ?>
                 <div>
                     <label for="username" class="text-sm font-medium tracking-wide text-myBlack">Username<span class="text-red-500">*</span></label>
-                    <input type="text" name="username" id="username" class="<?= ($validation) ? 'input-error' : 'input-customers' ?>" <?= ($validation) ? 'autofocus' : '' ?> value="<?= old('username') ?>" placeholder="johndoe" />
-                    <?php if ($validation) : ?>
+                    <input type="text" name="username" id="username" class="<?= ($validation && $validation->hasError('username')) ? 'input-error' : 'input-customers' ?>" <?= ($validation && $validation->hasError('username')) ? 'autofocus' : '' ?> value="<?= old('username') ?>" placeholder="johndoe" />
+                    <?php if ($validation && $validation->hasError('username')) : ?>
                         <div class="input-error-message">
                             <?= $validation->getError('username'); ?>
                         </div>
@@ -53,8 +53,8 @@
                 </div>
                 <div>
                     <label for="password" class="text-sm font-medium tracking-wide text-myBlack">Password <span class="text-red-500">*</span></label>
-                    <input type="password" name="password" id="password" placeholder="••••••••" class="<?= ($validation) ? 'input-error' : 'input-customers' ?>" <?= ($validation) ? 'autofocus' : '' ?> value="<?= old('password') ?>" />
-                    <?php if ($validation) : ?>
+                    <input type="password" name="password" id="password" placeholder="••••••••" class="<?= ($validation && $validation->hasError('password')) ? 'input-error' : 'input-customers' ?>" <?= ($validation && $validation->hasError('password')) ? 'autofocus' : '' ?> value="<?= old('password') ?>" />
+                    <?php if ($validation && $validation->hasError('password')) : ?>
                         <div class="input-error-message">
                             <?= $validation->getError('password'); ?>
                         </div>

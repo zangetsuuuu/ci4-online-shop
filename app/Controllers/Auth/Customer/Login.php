@@ -25,9 +25,9 @@ class Login extends BaseController
 
     public function loginToAccount()
     {
-        $rules = $this->loginModel->validation();
-        if (!$this->validate($rules)) {
-            return redirect()->back()->withInput();
+        $config = $this->loginModel->validation();
+        if (!$this->validate($config)) {
+            return redirect()->back()->withInput()->with('validation', $this->validator);
         }
 
         $username = $this->request->getVar('username');
@@ -61,16 +61,5 @@ class Login extends BaseController
         ];
 
         session()->set($data);
-    }
-
-
-    public function logout()
-    {
-        session()->remove('id');
-        session()->remove('fullname');
-        session()->remove('email');
-        session()->remove('isLoggedIn');
-        setcookie('remember_' . session()->get('id'), '', time() - 3600, '/');
-        return redirect()->to('login');
     }
 }

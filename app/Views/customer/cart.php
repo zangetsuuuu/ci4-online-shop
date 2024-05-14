@@ -58,7 +58,7 @@
                 <form action="<?= base_url('checkout'); ?>" method="post">
                     <?= csrf_field(); ?>
                     <div class="overflow-x-auto rounded-md">
-                        <table class="min-w-[40rem] md:min-w-full text-sm text-gray-500 tracking-wide divide-y divide-gray-200 border border-gray-200 text-left">
+                        <table class="min-w-[40rem] md:min-w-full text-xs md:text-sm text-gray-500 tracking-wide divide-y divide-gray-200 border border-gray-200 text-left">
                             <thead class="text-xs uppercase bg-gray-100 text-myBlack">
                                 <tr>
                                     <th scope="col" class="px-6 py-4 w-fit">

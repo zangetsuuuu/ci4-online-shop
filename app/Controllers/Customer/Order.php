@@ -26,11 +26,11 @@ class Order extends BaseController
     public function viewOrders()
     {
         $statusColor = [
-            'diterima' => 'text-blue-500 bg-blue-100',
-            'diproses' => 'text-yellow-500 bg-yellow-100',
-            'siap diambil' => 'text-green-500 bg-green-100',
             'dibatalkan' => 'text-red-500 bg-red-100',
-            'selesai' => 'text-green-700 bg-green-200'
+            'menunggu diproses' => 'text-gray-500 bg-gray-100',
+            'diproses' => 'text-yellow-500 bg-yellow-500',
+            'siap diambil' => 'text-blue-500 bg-blue-100',
+            'selesai' => 'text-green-500 bg-green-100'
         ];
         
         $orders = $this->orderModel->getOrders();
@@ -50,11 +50,11 @@ class Order extends BaseController
     public function viewOrderDetail($params)
     {
         $statusColor = [
-            'diterima' => 'text-blue-500 bg-blue-100',
-            'diproses' => 'text-yellow-500 bg-yellow-100',
-            'siap diambil' => 'text-green-500 bg-green-100',
             'dibatalkan' => 'text-red-500 bg-red-100',
-            'selesai' => 'text-green-700 bg-green-200'
+            'menunggu diproses' => 'text-gray-500 bg-gray-100',
+            'diproses' => 'text-yellow-500 bg-yellow-100',
+            'siap diambil' => 'text-blue-500 bg-blue-100',
+            'selesai' => 'text-green-500 bg-green-100'
         ];
 
         $order = $this->orderModel->getOrderDetails($params);

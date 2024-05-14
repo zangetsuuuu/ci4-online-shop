@@ -37,10 +37,15 @@ calculateTotal();
 $quantityInputs.on('input', calculateTotal);
 
 function previewImage() {
-    const $imageInput = $('#fileInput');
-    const $imagePreview = $('#frame');
+    const imageInput = document.querySelector('#fileInput');
+    const imagePreview = document.querySelector('#frame');
 
-    if ($imageInput[0].files && $imageInput[0].files[0]) {
-        $imagePreview.attr('src', window.URL.createObjectURL($imageInput[0].files[0]));
+    if (imageInput.files && imageInput.files[0]) {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(imageInput.files[0]);
+
+        fileReader.onload = function(e) {
+            imagePreview.src = e.target.result;
+        }
     }
 }

@@ -25,7 +25,7 @@ $routes->group('admin', function ($routes) {
 
     // Products
     $routes->get('products', 'Admin\Product::viewProducts');
-    $routes->get('products/search', 'Admin\Product::searchProduct');
+    $routes->get('product/search', 'Admin\Product::searchProduct');
     $routes->get('product/create', 'Admin\Product::viewCreateProduct');
     $routes->post('product/save', 'Admin\Product::saveProduct');
     $routes->get('product/(:segment)', 'Admin\Product::viewProductDetail/$1');
@@ -64,6 +64,7 @@ $routes->group('', function ($routes) {
     $routes->post('cart/(:num)/update', 'Customer\Cart::updateCartItem/$1');
     $routes->delete('cart/(:num)/delete', 'Customer\Cart::deleteCartItem/$1');
     $routes->get('products', 'Customer\Product::viewProducts');
+    $routes->get('product/search', 'Customer\Product::searchProduct');
     $routes->post('product/add-to-cart', 'Customer\Product::addToCart');
     $routes->get('product/(:segment)', 'Customer\Product::viewProductDetail/$1');
     $routes->get('orders', 'Customer\Order::viewOrders');

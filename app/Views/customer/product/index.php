@@ -74,7 +74,6 @@
         </div>
 
         <div class="h-full p-4 mt-3 bg-white rounded-lg shadow-sm md:mt-4">
-
             <?php if (session()->getFlashdata('Add Success')) : ?>
                 <div id="alert-add-success" class="flex items-center p-3 mb-4 tracking-wide text-blue-800 rounded-lg md:p-4 bg-blue-50" role="alert">
                     <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -106,6 +105,55 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                         </svg>
                     </button>
+                </div>
+            <?php endif; ?>
+
+            <?php if (isset($category) && $category !== '') : ?>
+                <div class="flex items-center justify-between p-3 mb-4 text-sm text-gray-800 border border-gray-300 rounded-lg md:p-4 bg-gray-50">
+                    <div class="flex items-center" role="alert">
+                        <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                        </svg>
+                        <span class="sr-only">Info</span>
+                        <div>
+                            <div class="text-xs font-medium tracking-wide ms-3 md:text-sm">
+                                Kategori produk: <?= ucfirst($category); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="<?= base_url('products'); ?>" class="text-xs font-medium tracking-wide md:text-sm hover:underline">Reset</a>
+                </div>
+            <?php endif; ?>
+
+            <?php if (session()->getFlashdata('Product Search Info')) : ?>
+                <div class="flex items-center justify-between p-3 mb-4 text-sm text-gray-800 border border-gray-300 rounded-lg md:p-4 bg-gray-50">
+                    <div class="flex items-center" role="alert">
+                        <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                        </svg>
+                        <span class="sr-only">Info</span>
+                        <div>
+                            <div class="text-xs font-medium tracking-wide ms-3 md:text-sm">
+                                <?= session()->getFlashdata('Product Search Info'); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="<?= base_url('products'); ?>" class="text-xs font-medium tracking-wide md:text-sm hover:underline">Reset</a>
+                </div>
+            <?php elseif (session()->getFlashdata('Product Not Found')) : ?>
+                <div class="flex items-center justify-between p-3 text-sm text-yellow-800 border border-yellow-300 rounded-lg md:p-4 bg-yellow-50">
+                    <div class="flex items-center" role="alert">
+                        <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/>
+                        </svg>
+                        <span class="sr-only">Info</span>
+                        <div>
+                            <div class="text-xs font-medium tracking-wide ms-3 md:text-sm">
+                                <?= session()->getFlashdata('Product Not Found'); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="<?= base_url('products'); ?>" class="text-xs font-medium tracking-wide md:text-sm hover:underline">Kembali</a>
                 </div>
             <?php endif; ?>
 

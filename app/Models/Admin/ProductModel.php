@@ -33,7 +33,11 @@ class ProductModel extends Model
 
     public function getProductBySearch($keyword)
     {
-        return $this->where("CONCAT(name, ' ', category, ' ', description, ' ', price, ' ', stock) LIKE '%$keyword%'", null, true)
+        return $this->like('name', $keyword)
+            ->orLike('category', $keyword)
+            ->orLike('description', $keyword)
+            ->orLike('price', $keyword)
+            ->orLike('stock', $keyword)
             ->findAll();
     }
 

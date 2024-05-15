@@ -78,41 +78,7 @@ class Product extends BaseController
 
     public function saveProduct()
     {
-        $config = [
-            'name' => [
-                'rules' => 'required|is_unique[products.name]',
-                'errors' => [
-                    'required' => 'Nama produk tidak boleh kosong!',
-                    'is_unique' => 'Nama produk sudah digunakan!'
-                ]
-            ],
-            'category' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Pilih salah satu kategori!'
-                ]
-            ],
-            'stock' => [
-                'rules' => 'required|integer',
-                'errors' => [
-                    'required' => 'Stok tidak boleh kosong!',
-                    'integer' => 'Stok harus berupa bilangan bulat!'
-                ]
-            ],
-            'price' => [
-                'rules' => 'required|numeric',
-                'errors' => [
-                    'required' => 'Harga tidak boleh kosong!',
-                    'numeric' => 'Harga harus berupa angka!'
-                ]
-            ],
-            'description' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Deskripsi produk tidak boleh kosong!'
-                ]
-            ]
-        ];
+        $config = $this->productModel->saveValidation();
 
         if (!$this->validate($config)) {
             return redirect()->back()->withInput()->with('validation', $this->validator);
@@ -159,35 +125,7 @@ class Product extends BaseController
             $nameRule = 'required|is_unique[products.name]';
         }
 
-        $config = [
-            'name' => [
-                'rules' => $nameRule,
-                'errors' => [
-                    'required' => 'Nama produk tidak boleh kosong!',
-                    'is_unique' => 'Nama produk sudah digunakan!'
-                ]
-            ],
-            'stock' => [
-                'rules' => 'required|integer',
-                'errors' => [
-                    'required' => 'Stok tidak boleh kosong!',
-                    'integer' => 'Stok harus berupa bilangan bulat!'
-                ]
-            ],
-            'price' => [
-                'rules' => 'required|numeric',
-                'errors' => [
-                    'required' => 'Harga tidak boleh kosong!',
-                    'numeric' => 'Harga harus berupa angka!'
-                ]
-            ],
-            'description' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Deskripsi produk tidak boleh kosong!'
-                ]
-            ]
-        ];
+        $config = $this->productModel->updateValidation($nameRule);
 
         if (!$this->validate($config)) {
             return redirect()->back()->withInput()->with('validation', $this->validator);

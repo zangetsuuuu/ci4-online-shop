@@ -75,8 +75,34 @@ class Order extends BaseController
             'payment_type' => $transaction['payment_type'],
             'color' => $statusColor[$order['status']]
         ];
-        // dd($data);
 
         return view('customer/order/detail', $data);
+    }
+
+    public function setOrderFilters()
+    {
+        $statusColor = [
+            'dibatalkan' => 'text-red-500 bg-red-100',
+            'menunggu diproses' => 'text-gray-500 bg-gray-100',
+            'diproses' => 'text-yellow-500 bg-yellow-500',
+            'siap diambil' => 'text-blue-500 bg-blue-100',
+            'selesai' => 'text-green-500 bg-green-100'
+        ];
+
+        $date = $this->request->getVar('date');
+        $status = $this->request->getVar('status');
+
+        $orders = $this->orderModel->getOrders($date, $status);
+
+        foreach ($orders as &$order) {
+            $order['color'] = $statusColor[$order['status']] ?? 'text-gray-500 bg-gray-100';
+        }
+
+        $data = [
+            'title' => 'Daftar Pesanan',
+            'orders' => $orders
+        ];
+
+        return view('customer/order/index', $data);
     }
 }

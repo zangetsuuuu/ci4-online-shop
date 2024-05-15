@@ -13,26 +13,29 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="" method="GET">
+            <form action="<?= base_url('orders/filter'); ?>" method="get">
+                <?= csrf_field(); ?>
                 <div class="p-4 space-y-5 md:p-5">
                     <div>
-                        <label for="tanggal" class="text-sm font-medium tracking-wide text-myBlack">Tanggal:</label>
-                        <input type="date" id="tanggal" name="tanggal" class="input-customers">
+                        <label for="date" class="text-sm font-medium tracking-wide text-myBlack">Tanggal:</label>
+                        <input type="date" id="date" name="date" class="input-customers">
                     </div>
                     <div>
                         <label for="status" class="text-sm font-medium tracking-wide text-myBlack">Status:</label>
                         <select id="status" name="status" class="input-customers">
-                            <option value="all" selected>Semua</option>
-                            <option value="process">Diproses</option>
-                            <option value="done">Selesai</option>
-                            <option value="cancelled">Dibatalkan</option>
+                            <option value="" selected>Semua</option>
+                            <option value="menunggu diproses">Menunggu Diproses</option>
+                            <option value="diproses">Diproses</option>
+                            <option value="siap diambil">Siap Diambil</option>
+                            <option value="selesai">Selesai</option>
+                            <option value="dibatalkan">Dibatalkan</option>
                         </select>
                     </div>
                 </div>
                 <!-- Modal footer -->
                 <div class="flex items-center justify-end p-4 space-x-3 border-t border-gray-200 rounded-b md:p-5">
                     <button type="button" data-modal-hide="order-filters-modal" class="btn-alternative">Batal</button>
-                    <button type="submit" name="set_filter" class="btn-primary">Terapkan Filter</button>
+                    <button type="submit" class="btn-primary">Terapkan Filter</button>
                 </div>
             </form>
         </div>

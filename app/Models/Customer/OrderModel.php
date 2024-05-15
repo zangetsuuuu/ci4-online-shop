@@ -10,9 +10,23 @@ class OrderModel extends Model
     protected $allowedFields = ['reference','customer_id', 'transaction_id', 'total_price', 'status', 'created_at', 'updated_at'];
     protected $returnType = 'array';
 
-    public function getOrders()
+    public function getOrders($date = '', $status = '')
     {
-        return $this->where(['customer_id' => session()->get('id')])->findAll();
+        $customerId = session()->get('id');
+        
+        $conditions = [
+            'customer_id' => $customerId,
+        ];
+
+        if (!empty($date)) {
+            $conditions['DATE(created_at)'] = $date;
+        }
+
+        if (!empty($status)) {
+            $conditions['status'] = $status;
+        }
+
+        return $this->where($conditions)->findAll();
     }
 
     public function getOrderDetails($params)

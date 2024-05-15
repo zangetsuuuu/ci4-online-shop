@@ -68,6 +68,7 @@ $routes->group('', function ($routes) {
     $routes->post('product/add-to-cart', 'Customer\Product::addToCart');
     $routes->get('product/(:segment)', 'Customer\Product::viewProductDetail/$1');
     $routes->get('orders', 'Customer\Order::viewOrders');
+    $routes->get('orders/filter', 'Customer\Order::setOrderFilters');
     $routes->get('order/(:segment)', 'Customer\Order::viewOrderDetail/$1');
     $routes->get('profile', 'Customer\Profile::viewProfile');
     $routes->get('profile/(:segment)/edit', 'Customer\Profile::edit/$1');

@@ -26,6 +26,11 @@ class ProductModel extends Model
         return $this->where(['slug' => $slug])->first();
     }
 
+    public function getProductsByCategory($category)
+    {
+        return $this->where(['category' => $category])->findAll();
+    }
+
     public function getProductBySearch($keyword)
     {
         return $this->like('name', $keyword)

@@ -25,9 +25,13 @@ class Product extends BaseController
 
         $data = [
             'title' => 'Daftar Produk',
+            'category' => $category,
             'products' => !$category ? $this->productModel->getProducts() : $this->productModel->getProductsByCategory($category),
             'validation' => session()->getFlashdata('validation')
         ];
+        
+        session()->remove('Product Search Info');
+        session()->remove('Product Not Found');
 
         return view('customer/product/index', $data);
     }

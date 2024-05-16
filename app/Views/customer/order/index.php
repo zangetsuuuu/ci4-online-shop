@@ -49,7 +49,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap"><?= date('j F Y, H:i', strtotime($order['created_at'])); ?> WIB</td>
                                 <td class="px-6 py-4 whitespace-nowrap"><?= 'Rp. ' . number_format($order['total_price'], 0, ',', '.'); ?></td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <span class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full <?= $order['color'] ?? 'text-gray-500 bg-gray-100' ?>">
+                                    <span class="<?= $order['color']; ?>">
                                         <?= ucwords($order['status']); ?>
                                     </span>
                                 </td>

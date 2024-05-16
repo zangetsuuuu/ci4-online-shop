@@ -26,17 +26,17 @@ class Order extends BaseController
     public function viewOrders()
     {
         $statusColor = [
-            'dibatalkan' => 'text-red-500 bg-red-100',
-            'menunggu diproses' => 'text-gray-500 bg-gray-100',
-            'diproses' => 'text-yellow-500 bg-yellow-500',
-            'siap diambil' => 'text-blue-500 bg-blue-100',
-            'selesai' => 'text-green-500 bg-green-100'
+            'dibatalkan' => 'badge-red',
+            'menunggu diproses' => 'badge-gray',
+            'diproses' => 'badge-yellow',
+            'siap diambil' => 'badge-blue',
+            'selesai' => 'badge-green'
         ];
         
         $orders = $this->orderModel->getOrders();
         
         foreach ($orders as &$order) {
-            $order['color'] = $statusColor[$order['status']] ?? 'text-gray-500 bg-gray-100';
+            $order['color'] = $statusColor[$order['status']] ?? 'badge-gray';
         }
         
         $data = [
@@ -50,11 +50,11 @@ class Order extends BaseController
     public function viewOrderDetail($params)
     {
         $statusColor = [
-            'dibatalkan' => 'text-red-500 bg-red-100',
-            'menunggu diproses' => 'text-gray-500 bg-gray-100',
-            'diproses' => 'text-yellow-500 bg-yellow-100',
-            'siap diambil' => 'text-blue-500 bg-blue-100',
-            'selesai' => 'text-green-500 bg-green-100'
+            'dibatalkan' => 'badge-red',
+            'menunggu diproses' => 'badge-gray',
+            'diproses' => 'badge-yellow',
+            'siap diambil' => 'badge-blue',
+            'selesai' => 'badge-green'
         ];
 
         $order = $this->orderModel->getOrderDetails($params);
@@ -82,11 +82,11 @@ class Order extends BaseController
     public function setOrderFilters()
     {
         $statusColor = [
-            'dibatalkan' => 'text-red-500 bg-red-100',
-            'menunggu diproses' => 'text-gray-500 bg-gray-100',
-            'diproses' => 'text-yellow-500 bg-yellow-500',
-            'siap diambil' => 'text-blue-500 bg-blue-100',
-            'selesai' => 'text-green-500 bg-green-100'
+            'dibatalkan' => 'badge-red',
+            'menunggu diproses' => 'badge-gray',
+            'diproses' => 'badge-yellow',
+            'siap diambil' => 'badge-blue',
+            'selesai' => 'badge-green'
         ];
 
         $date = $this->request->getVar('date');

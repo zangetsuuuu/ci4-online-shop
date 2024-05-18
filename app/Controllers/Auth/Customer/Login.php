@@ -56,6 +56,7 @@ class Login extends BaseController
         $data = [
             'id' => $customer['id'],
             'fullname' => $customer['fullname'],
+            'username' => $customer['username'],
             'email' => $customer['email'],
             'isLoggedIn' => true
         ];

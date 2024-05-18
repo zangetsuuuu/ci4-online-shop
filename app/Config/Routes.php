@@ -15,13 +15,16 @@ $routes->get('/', 'Home::index');
 // Admin routes
 $routes->group('admin', function ($routes) {
     $routes->get('', 'Auth\Admin\Login::viewForm');
-    $routes->get('create', 'Auth\Admin\Register::viewForm');
-    $routes->post('save', 'Auth\Admin\Register::saveAdminData');
     $routes->get('change-password', 'Auth\Password::admin');
     $routes->get('dashboard', 'Admin\Dashboard::viewDashboard');
     $routes->get('list', 'Admin\Admin::viewAdmins');
     $routes->get('search', 'Admin\Admin::searchAdmin');
     $routes->delete('(:num)/delete', 'Admin\Admin::deleteAdmin/$1');
+    
+    // Auth
+    $routes->get('add', 'Auth\Admin\Register::viewForm');
+    $routes->post('auth/register', 'Auth\Admin\Register::registerAdminAccount');
+    $routes->post('auth/login', 'Auth\Admin\Login::loginToAccount');
 
     // Products
     $routes->get('products', 'Admin\Product::viewProducts');
@@ -44,11 +47,11 @@ $routes->group('admin', function ($routes) {
     $routes->delete('customer/(:num)/delete', 'Admin\Customer::deleteCustomer/$1');
     
     // Profile
-    $routes->get('(:segment)', 'Admin\Profile::viewInfo/$1');
-    $routes->get('(:segment)/edit', 'Admin\Profile::viewEditProfile/$1');
-    $routes->get('(:segment)/update', 'Admin\Profile::updateAdminProfile/$1');
+    $routes->get('profile', 'Admin\Profile::viewInfo/$1');
+    $routes->get('profile/edit', 'Admin\Profile::viewEditProfile/$1');
+    $routes->get('profile/update', 'Admin\Profile::updateAdminProfile/$1');
     
-    $routes->get('info/(:segment)', 'Admin\Admin::viewAdminDetail/$1');
+    $routes->get('(:segment)', 'Admin\Admin::viewAdminDetail/$1');
 });
 
 // Customer routes

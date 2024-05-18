@@ -9,7 +9,7 @@ class RegisterModel extends Model
     protected $table = 'customers';
     protected $returnType = 'array';
     protected $useTimestamps = true;
-    protected $allowedFields = ['fullname', 'username', 'email', 'password', 'phone_number', 'address'];
+    protected $allowedFields = ['fullname', 'username', 'email', 'password', 'gender', 'phone_number', 'address'];
 
     public function validation()
     {
@@ -36,11 +36,18 @@ class RegisterModel extends Model
                     'valid_email' => 'Format email tidak valid!'
                 ]
             ],
+            'gender' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Jenis kelamin tidak boleh kosong!'
+                ]
+            ],
             'phone_number' => [
-                'rules' => 'required|is_unique[customers.phone_number]',
+                'rules' => 'required|is_unique[customers.phone_number]|min_length[10]',
                 'errors' => [
                     'required' => 'Nomor HP tidak boleh kosong!',
-                    'is_unique' => 'Nomor HP sudah digunakan!'
+                    'is_unique' => 'Nomor HP sudah digunakan!',
+                    'min_length' => 'Nomor HP minimal 11 digit!'
                 ]
             ],
             'address' => [

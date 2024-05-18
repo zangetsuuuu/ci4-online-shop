@@ -16,7 +16,7 @@
             </div>
             <h2 class="mb-2 text-2xl font-semibold tracking-wide text-center">Daftar akun baru</h2>
             <p class="mb-8 text-sm tracking-wide text-center text-gray-500">Isi data Anda untuk mendaftar.</p>
-            <form class="space-y-5" action="<?= base_url('auth/register'); ?>" method="post" enctype="multipart/form-data">
+            <form class="space-y-5" action="<?= base_url('auth/register'); ?>" method="post">
                 <?= csrf_field() ?>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-0 gap-y-4 md:gap-x-4">
                     <div>
@@ -50,13 +50,26 @@
                     </div>
                     <div>
                         <label for="phone_number" class="text-sm font-medium tracking-wide text-myBlack">No. HP <span class="text-red-500">*</span></label>
-                        <input type="text" name="phone_number" id="phone_number" class="<?= ($validation && $validation->hasError('phone_number')) ? 'input-error' : 'input-customers' ?>" <?= ($validation && $validation->hasError('phone_number')) ? 'autofocus' : '' ?> placeholder="+62" value="<?= old('phone_number') ?>" />
+                        <input type="text" name="phone_number" id="phone_number" class="<?= ($validation && $validation->hasError('phone_number')) ? 'input-error' : 'input-customers' ?>" <?= ($validation && $validation->hasError('phone_number')) ? 'autofocus' : '' ?> placeholder="08xxxxxxxxxx" value="<?= old('phone_number') ?>" />
                         <?php if ($validation && $validation->hasError('phone_number')) : ?>
                             <div class="input-error-message">
                                 <?= $validation->getError('phone_number'); ?>
                             </div>
                         <?php endif ?>
                     </div>
+                </div>
+                <div>
+                    <label for="gender" class="text-sm font-medium tracking-wide text-myBlack">Jenis Kelamin <span class="text-red-500">*</span></label>
+                    <select name="gender" id="gender" class="<?= ($validation && $validation->hasError('gender')) ? 'input-error' : 'input-customers' ?>" <?= ($validation && $validation->hasError('gender')) ? 'autofocus' : '' ?>>
+                        <option value="" disabled selected>Pilih Jenis Kelamin</option>
+                        <option value="laki-Laki" <?= old('gender') === 'laki-Laki' ? 'selected' : '' ?>>Laki-Laki</option>
+                        <option value="perempuan" <?= old('gender') === 'perempuan' ? 'selected' : '' ?>>Perempuan</option>
+                    </select>
+                    <?php if ($validation && $validation->hasError('gender')) : ?>
+                        <div class="input-error-message">
+                            <?= $validation->getError('gender'); ?>
+                        </div>
+                    <?php endif ?>
                 </div>
                 <div>
                     <label for="address" class="text-sm font-medium tracking-wide text-myBlack">Alamat <span class="text-red-500">*</span></label>

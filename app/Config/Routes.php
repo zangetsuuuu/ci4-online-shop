@@ -25,6 +25,7 @@ $routes->group('admin', function ($routes) {
     $routes->get('add', 'Auth\Admin\Register::viewForm');
     $routes->post('auth/register', 'Auth\Admin\Register::registerAdminAccount');
     $routes->post('auth/login', 'Auth\Admin\Login::loginToAccount');
+    $routes->post('auth/logout', 'Auth\Logout::admin');
 
     // Products
     $routes->get('products', 'Admin\Product::viewProducts');
@@ -39,6 +40,7 @@ $routes->group('admin', function ($routes) {
     // Orders
     $routes->get('orders', 'Admin\Order::viewOrders');
     $routes->get('order/(:segment)', 'Admin\Order::viewOrderDetail/$1');
+    $routes->post('order/edit_status', 'Admin\Order::editOrderStatus');
 
     // Customers
     $routes->get('customers', 'Admin\Customer::viewCustomers');
@@ -60,7 +62,7 @@ $routes->group('', function ($routes) {
     $routes->get('register', 'Auth\Customer\Register::viewForm');
     $routes->post('auth/register', 'Auth\Customer\Register::saveCustomerData');
     $routes->post('auth/login', 'Auth\Customer\Login::loginToAccount');
-    $routes->post('auth/logout', 'Auth\Logout::index');
+    $routes->post('auth/logout', 'Auth\Logout::customer');
     $routes->get('change-password', 'Auth\Customer\Password::customers');
 
     $routes->get('cart', 'Customer\Cart::viewCart');

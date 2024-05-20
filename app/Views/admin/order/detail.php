@@ -13,16 +13,42 @@
                         <h1 class="text-lg font-semibold tracking-wide md:text-xl">Detail</h1>
                     </div>
                 </div>
-                <a href="<?= previous_url(); ?>" class="flex items-center space-x-2 text-xs tracking-wide text-gray-500 md:text-sm hover:underline">
+                <a href="<?= base_url('admin/orders'); ?>" class="flex items-center space-x-2 text-xs tracking-wide text-gray-500 md:text-sm hover:underline">
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                     </svg>
-                    <div>Kembali</div>
+                    <div>Daftar pesanan</div>
                 </a>
             </div>
         </div>
 
         <div class="h-full p-4 mt-3 bg-white rounded-lg shadow-sm md:mt-4">
+            <?php if (session()->getFlashdata('success')) : ?>
+                <div class="flex items-center p-3 mb-4 text-sm text-green-800 border border-green-300 rounded-lg md:p-4 bg-green-50" role="alert">
+                    <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="sr-only">Info</span>
+                    <div>
+                        <div class="text-xs font-medium tracking-wide ms-3 md:text-sm">
+                            <?= session()->getFlashdata('success'); ?>
+                        </div>
+                    </div>
+                </div>
+            <?php elseif (session()->getFlashdata('error')) : ?>
+                <div class="flex items-center p-3 mb-4 text-sm text-red-800 border border-red-300 rounded-lg md:p-4 bg-red-50" role="alert">
+                    <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="sr-only">Info</span>
+                    <div>
+                        <div class="text-xs font-medium tracking-wide ms-3 md:text-sm">
+                            <?= session()->getFlashdata('error'); ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+
             <!-- Order start -->
             <div class="flex items-center justify-between mb-4">
                 <div class="space-y-1">
@@ -61,7 +87,7 @@
                                 <circle cx="12" cy="6" r="4" fill="currentColor" />
                                 <path d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z" fill="currentColor" />
                             </svg>
-                            <p class="text-xs font-semibold tracking-wide md:text-sm"><?= $customer['fullname']; ?></p>
+                            <p class="text-xs font-semibold tracking-wide md:text-sm"><?= $customer['fullname']; ?> <span class="text-red-500">(<?= $customer['deleted_at'] != null ? 'Tidak Aktif' : 'Aktif'; ?>)</span></p>
                         </div>
                         <div class="flex items-center space-x-2 text-gray-500">
                             <svg fill="currentColor" class="w-3 h-3 md:w-4 md:h-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -93,11 +119,18 @@
                     <p class="text-xs font-semibold tracking-wide text-gray-500 md:text-sm"><?= strtoupper($payment_type); ?></p>
                 </div>
             </div>
-            <div class="flex flex-wrap items-center space-x-3 md:flex-nowrap">
-                <button type="button" class="w-3/4 btn-admin">Ubah Status</button>
-                <a href="https://wa.me/<?= $customer['phone_number']; ?>" class="w-1/4 btn-alternative">Kontak Pelanggan</a>
+            <div class="flex flex-wrap items-center space-x-0 space-y-3 md:space-y-0 md:space-x-3 md:flex-nowrap">
+                <?php if ($order['status'] === 'selesai') : ?>
+                    <button type="button" class="w-3/4 btn-admin" disabled>Pesanan sudah selesai</button>
+                <?php else : ?>
+                    <button data-modal-target="order-status-edit-modal#<?= $order['reference']; ?>" data-modal-toggle="order-status-edit-modal#<?= $order['reference']; ?>" type="button" class="w-full md:w-3/4 btn-admin">Ubah Status</button>
+                <?php endif; ?>
+                <a href="https://wa.me/<?= $customer['phone_number']; ?>" class="w-full md:w-1/4 btn-alternative">Kontak Pelanggan</a>
             </div>
         </div>
     </div>
 </div>
+
+<?= $this->include('layout/admin/order/edit_status'); ?>
+
 <?= $this->endSection(); ?>

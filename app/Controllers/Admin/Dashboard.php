@@ -35,7 +35,7 @@ class Dashboard extends BaseController
 
         $orderDetails = [];
         foreach ($orders as $order) {
-            $customer = $this->customerModel->getCustomerById($order['customer_id']);
+            $customer = $this->customerModel->withDeleted()->getCustomerById($order['customer_id']);
             $orderDetails[] = [
                 'id' => $order['id'],
                 'reference' => $order['reference'],

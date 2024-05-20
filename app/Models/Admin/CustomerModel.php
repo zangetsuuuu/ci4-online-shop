@@ -8,6 +8,8 @@ class CustomerModel extends Model
 {
     protected $table = 'customers';
     protected $returnType = 'array';
+    protected $useSoftDeletes = true;
+    protected $deletedField = 'deleted_at';
     protected $useTimestamps = true;
     protected $allowedFields = ['fullname', 'username', 'email', 'password', 'phone_number', 'address'];
 

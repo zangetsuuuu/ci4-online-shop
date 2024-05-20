@@ -28,9 +28,40 @@ class Order extends BaseController
 
     public function viewOrders()
     {
-        $data = [
-            'title' => 'Daftar Pesanan | ADMIN'
+        $statusColor = [
+            'dibatalkan' => 'badge-red',
+            'menunggu diproses' => 'badge-gray',
+            'diproses' => 'badge-yellow',
+            'siap diambil' => 'badge-blue',
+            'selesai' => 'badge-green'
         ];
+
+        $orders = $this->orderModel->getOrders();
+
+        $orderDetails = [];
+        foreach ($orders as $order) {
+            $customer = $this->customerModel->withDeleted()->getCustomerById($order['customer_id']);
+            $orderDetails[] = [
+                'id' => $order['id'],
+                'reference' => $order['reference'],
+                'customer_id' => $order['customer_id'],
+                'customer_name' => $customer['fullname'],
+                'transaction_id' => $order['transaction_id'],
+                'total_price' => $order['total_price'],
+                'created_at' => $order['created_at'],
+                'status' => $order['status'],
+                'status_color' => $statusColor[$order['status']]
+            ];
+        }
+
+        $data = [
+            'title' => 'Daftar Pesanan | ADMIN',
+            'totalIncome' => $this->orderModel->getTotalIncome(),
+            'totalProducts' => $this->productModel->getTotalProducts(),
+            'totalOrders' => $this->orderModel->getTotalOrders(),
+            'totalCustomers' => $this->customerModel->getTotalCustomers(),
+            'orders' => $orderDetails
+       ];
 
         return view('admin/order/index', $data);
     }
@@ -46,7 +77,7 @@ class Order extends BaseController
         ];
 
         $order = $this->orderModel->getOrderDetails($params);
-        $customer = $this->customerModel->where('id', $order['customer_id'])->first();
+        $customer = $this->customerModel->withDeleted()->where('id', $order['customer_id'])->first();
         $orderItems = $this->orderItemModel->where('order_id', $order['id'])->findAll();
         $transaction = $this->transactionModel->where('id', $order['transaction_id'])->first();
         
@@ -67,5 +98,19 @@ class Order extends BaseController
         ];
 
         return view('admin/order/detail', $data);
+    }
+
+    public function editOrderStatus()
+    {
+        $orderID = $this->request->getVar('order_id');
+        $status = $this->request->getVar('status');
+
+        if ($this->orderModel->update($orderID, ['status' => $status])) {
+            session()->setFlashdata('success', 'Status pesanan berhasil diubah!');
+        } else {
+            session()->setFlashdata('error', 'Status pesanan gagal diubah!');
+        };
+
+        return redirect()->back();
     }
 }

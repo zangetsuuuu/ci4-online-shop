@@ -9,6 +9,7 @@ class OrderModel extends Model
     protected $table = 'orders';
     protected $allowedFields = ['reference', 'customer_id', 'transaction_id', 'total_price', 'status', 'created_at', 'updated_at'];
     protected $returnType = 'array';
+    protected $useTimestamps = true;
 
     public function getOrders()
     {
@@ -32,8 +33,12 @@ class OrderModel extends Model
         return $totalIncome;
     }
 
-    public function getTotalOrders()
+    public function getTotalOrders($id = false)
     {
-        return $this->countAll();
+        if ($id) {
+            return $this->where(['customer_id' => $id])->countAllResults();
+        }
+
+        return $this->countAllResults();
     }
 }

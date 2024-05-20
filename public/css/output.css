@@ -1969,11 +1969,6 @@ input:checked + .toggle-bg {
   background-color: rgb(17 24 39 / 0.5);
 }
 
-.bg-green-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(222 247 236 / var(--tw-bg-opacity));
-}
-
 .bg-green-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 250 247 / var(--tw-bg-opacity));
@@ -4492,10 +4487,6 @@ body {
 
   .md\:mt-4 {
     margin-top: 1rem;
-  }
-
-  .md\:block {
-    display: block;
   }
 
   .md\:inline {

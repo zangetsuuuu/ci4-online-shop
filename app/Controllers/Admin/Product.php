@@ -3,7 +3,6 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-
 use App\Models\Admin\ProductModel;
 
 class Product extends BaseController
@@ -32,6 +31,8 @@ class Product extends BaseController
             ]
         ];
 
+        session()->remove('Product Not Found');
+
         return view('admin/product/index', $data);
     }
 
@@ -48,8 +49,7 @@ class Product extends BaseController
     public function viewCreateProduct()
     {
         $data = [
-            'title' => 'Tambah Produk | ADMIN',
-            'validation' => session()->getFlashdata('validation')
+            'title' => 'Tambah Produk | ADMIN'
         ];
 
         return view('admin/product/create', $data);
@@ -81,7 +81,15 @@ class Product extends BaseController
         $config = $this->productModel->saveValidation();
 
         if (!$this->validate($config)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $image = $this->request->getFile('image');
+        if ($image->getError() == 4) {
+            $imageName = 'product-placeholder.webp';
+        } else {
+            $imageName = $image->getRandomName();
+            $image->move('img/products', $imageName);
         }
 
         $data = [
@@ -90,7 +98,8 @@ class Product extends BaseController
             'category' => $this->request->getVar('category'),
             'stock' => $this->request->getVar('stock'),
             'price' => $this->request->getVar('price'),
-            'description' => $this->request->getVar('description')
+            'description' => $this->request->getVar('description'),
+            'image' => $imageName
         ];
 
         $this->productModel->save($data);
@@ -104,7 +113,6 @@ class Product extends BaseController
     {
         $data = [
             'title' => 'Edit Produk | ADMIN',
-            'validation' => session()->getFlashdata('validation'),
             'product' => $this->productModel->getProductBySlug($slug)
         ];
 
@@ -128,17 +136,26 @@ class Product extends BaseController
         $config = $this->productModel->updateValidation($nameRule);
 
         if (!$this->validate($config)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $image = $this->request->getFile('image');
+        if ($image->getError() == 4) {
+            $imageName = $this->request->getVar('old_image');
+        } else {
+            $imageName = $image->getRandomName();
+            $image->move('img/products', $imageName);
         }
 
         $data = [
             'id' => $id,
             'name' => $this->request->getVar('name'),
             'slug' => url_title($this->request->getVar('name'), '-', true),
-            'category' => $this->request->getVar('name'),
+            'category' => $this->request->getVar('category'),
             'stock' => $this->request->getVar('stock'),
             'price' => $this->request->getVar('price'),
-            'description' => $this->request->getVar('description')
+            'description' => $this->request->getVar('description'),
+            'image' => $imageName
         ];
 
         $this->productModel->save($data);
@@ -150,6 +167,11 @@ class Product extends BaseController
 
     public function deleteProduct($id)
     {
+        $product = $this->productModel->getProductById($id);
+        if ($product['image'] != 'placeholder.webp') {
+            unlink('img/products/' . $product['image']);
+        }
+        
         $this->productModel->delete($id);
 
         session()->setFlashdata('Delete Success', 'Data berhasil dihapus!');

@@ -20,57 +20,65 @@
             </div>
         </div>
         <div class="h-full p-4 mt-3 bg-white rounded-lg shadow-sm md:mt-4">
-            <form action="<?= base_url("admin/product/$product[id]/update"); ?>" method="post">
+            <form action="<?= base_url('admin/product/' . $product['id'] . '/update'); ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
+                <input type="hidden" name="old_image" value="<?= $product['image']; ?>">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-8">
                     <!-- Product Image -->
-                    <div class="relative w-full overflow-hidden border rounded-md h-60">
-                        <img id="frame" src="<?= $product['image']; ?>" class="object-cover w-full h-full" alt="">
-                        <div class="absolute inset-0 flex items-center justify-center bg-myBlack/20">
-                            <label data-tooltip-target="add-product-image-tooltip" for="fileInput" class="p-3 text-white duration-300 ease-in-out rounded-full cursor-pointer hover:text-gray-300">
-                                <svg class="w-7 h-7" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="0" fill="none" width="24" height="24" />
-                                    <g>
-                                        <path d="M23 4v2h-3v3h-2V6h-3V4h3V1h2v3h3zm-8.5 7c.828 0 1.5-.672 1.5-1.5S15.328 8 14.5 8 13 8.672 13 9.5s.672 1.5 1.5 1.5zm3.5 3.234l-.513-.57c-.794-.885-2.18-.885-2.976 0l-.655.73L9 9l-3 3.333V6h7V4H6c-1.105 0-2 .895-2 2v12c0 1.105.895 2 2 2h12c1.105 0 2-.895 2-2v-7h-2v3.234z" fill="currentColor" />
-                                    </g>
-                                </svg>
-                            </label>
-                            <input type="file" name="image" id="fileInput" class="hidden" accept="image/*" onchange="previewImage()">
+                    <div class="flex flex-col items-center space-y-2">
+                        <div class="relative w-full h-48 overflow-hidden border rounded-md md:h-60">
+                            <img id="frame" src="<?= base_url('img/products/' . $product['image']); ?>" class="object-cover w-full h-full" alt="<?= $product['name']; ?>">
+                            <div class="absolute inset-0 flex items-center justify-center bg-myBlack/20">
+                                <label data-tooltip-target="add-product-image-tooltip" for="fileInput" class="p-3 text-white duration-300 ease-in-out rounded-full cursor-pointer hover:text-gray-300">
+                                    <svg class="w-7 h-7" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="0" fill="none" width="24" height="24" />
+                                        <g>
+                                            <path d="M23 4v2h-3v3h-2V6h-3V4h3V1h2v3h3zm-8.5 7c.828 0 1.5-.672 1.5-1.5S15.328 8 14.5 8 13 8.672 13 9.5s.672 1.5 1.5 1.5zm3.5 3.234l-.513-.57c-.794-.885-2.18-.885-2.976 0l-.655.73L9 9l-3 3.333V6h7V4H6c-1.105 0-2 .895-2 2v12c0 1.105.895 2 2 2h12c1.105 0 2-.895 2-2v-7h-2v3.234z" fill="currentColor" />
+                                        </g>
+                                    </svg>
+                                </label>
+                                <input type="file" name="image" id="fileInput" class="hidden" accept="image/*" onchange="previewImage()">
+                            </div>
+                            <div id="add-product-image-tooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium tracking-wide text-white transition-opacity duration-300 rounded-lg shadow-sm opacity-0 bg-myBlack tooltip group">
+                                Gambar produk
+                                <div class="tooltip-arrow" data-popper-arrow></div>
+                            </div>
                         </div>
-                        <div id="add-product-image-tooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium tracking-wide text-white transition-opacity duration-300 rounded-lg shadow-sm opacity-0 bg-myBlack tooltip group">
-                            Gambar produk
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
+                        <?php if (isset(session('errors')['image'])) : ?>
+                            <p class="input-error-message">
+                                <?= session('errors')['image']; ?>
+                            </p>
+                        <?php endif; ?>
                     </div>
 
                     <!-- Product Info -->
                     <div class="col-span-2 space-y-5">
                         <div>
                             <label for="name" class="text-sm font-medium tracking-wide text-myBlack">Nama Produk <span class="text-red-500">*</span></label>
-                            <input type="text" name="name" id="name" class="<?= ($validation && $validation->hasError('name')) ? 'input-error' : 'input-admin' ?>" <?= ($validation && $validation->hasError('name')) ? 'autofocus' : '' ?> placeholder="Tambahkan nama produk" value="<?= old('name', $product['name']); ?>" />
-                            <?php if ($validation && $validation->hasError('name')) : ?>
+                            <input type="text" name="name" id="name" class="<?= (isset(session('errors')['name'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['name'])) ? 'autofocus' : '' ?> placeholder="Tambahkan nama produk" value="<?= old('name', $product['name']); ?>" />
+                            <?php if (isset(session('errors')['name'])) : ?>
                                 <p class="input-error-message">
-                                    <?= $validation->getError('name'); ?>
+                                    <?= session('errors')['name']; ?>
                                 </p>
                             <?php endif; ?>
                         </div>
                         <div>
                             <label for="category" class="text-sm font-medium tracking-wide text-myBlack">Kategori <span class="text-red-500">*</span></label>
-                            <select name="category" id="category" class="<?= ($validation && $validation->hasError('category')) ? 'input-error' : 'input-admin' ?>" <?= ($validation && $validation->hasError('category')) ? 'autofocus' : '' ?>>
+                            <select name="category" id="category" class="<?= (isset(session('errors')['category'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['category'])) ? 'autofocus' : '' ?>>
                                 <option selected disabled>Pilih kategori</option>
                                 <option value="makanan" <?= (old('category') === 'Makanan' || ($product['category'] === 'Makanan' && empty(old('category')))) ? 'selected' : ''; ?>>Makanan</option>
                                 <option value="minuman" <?= (old('category') === 'Minuman' || ($product['category'] === 'Minuman' && empty(old('category')))) ? 'selected' : ''; ?>>Minuman</option>
                             </select>
-                            <?php if ($validation && $validation->hasError('category')) : ?>
+                            <?php if (isset(session('errors')['category'])) : ?>
                                 <p class="input-error-message">
-                                    <?= $validation->getError('category'); ?>
+                                    <?= session('errors')['category']; ?>
                                 </p>
                             <?php endif; ?>
                         </div>
                         <div>
                             <label for="stock" class="text-sm font-medium tracking-wide text-myBlack">Stok <span class="text-red-500">*</span></label>
-                            <input type="number" min="1" name="stock" id="stock" class="<?= ($validation && $validation->hasError('stock')) ? 'input-error' : 'input-admin' ?>" <?= ($validation && $validation->hasError('stock')) ? 'autofocus' : '' ?> placeholder="Tambahkan stok" value="<?= old('stock', $product['stock']); ?>" />
-                            <?php if ($validation && $validation->hasError('stock')) : ?>
+                            <input type="number" min="1" name="stock" id="stock" class="<?= (isset(session('errors')['stock'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['stock'])) ? 'autofocus' : '' ?> placeholder="Tambahkan stok" value="<?= old('stock', $product['stock']); ?>" />
+                            <?php if (isset(session('errors')['stock'])) : ?>
                                 <p class="input-error-message">
                                     <?= $validation->getError('stock'); ?>
                                 </p>
@@ -78,19 +86,19 @@
                         </div>
                         <div>
                             <label for="price" class="text-sm font-medium tracking-wide text-myBlack">Harga <span class="text-red-500">*</span></label>
-                            <input type="number" min="500" name="price" id="price" class="<?= ($validation && $validation->hasError('price')) ? 'input-error' : 'input-admin' ?>" <?= ($validation && $validation->hasError('price')) ? 'autofocus' : '' ?> placeholder="Rp." value="<?= old('price', number_format($product['price'], 0, '', '')); ?>" />
-                            <?php if ($validation && $validation->hasError('price')) : ?>
+                            <input type="number" min="500" name="price" id="price" class="<?= (isset(session('errors')['price'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['price'])) ? 'autofocus' : '' ?> placeholder="Rp." value="<?= old('price', number_format($product['price'], 0, '', '')); ?>" />
+                            <?php if (isset(session('errors')['price'])) : ?>
                                 <p class="input-error-message">
-                                    <?= $validation->getError('price'); ?>
+                                    <?= session('errors')['price']; ?>
                                 </p>
                             <?php endif; ?>
                         </div>
                         <div>
                             <label for="description" class="text-sm font-medium tracking-wide text-myBlack">Deskripsi <span class="text-red-500">*</span></label>
-                            <textarea name="description" id="description" class="<?= ($validation && $validation->hasError('description')) ? 'input-error resize-none' : 'input-admin resize-none' ?>" <?= ($validation && $validation->hasError('description')) ? 'autofocus' : '' ?> placeholder="Tambahkan deskripsi"><?= old('description', $product['description']); ?></textarea>
-                            <?php if ($validation && $validation->hasError('description')) : ?>
+                            <textarea name="description" id="description" class="<?= (isset(session('errors')['description'])) ? 'input-error resize-none' : 'input-admin resize-none' ?>" <?= (isset(session('errors')['description'])) ? 'autofocus' : '' ?> placeholder="Tambahkan deskripsi"><?= old('description', $product['description']); ?></textarea>
+                            <?php if (isset(session('errors')['description'])) : ?>
                                 <p class="input-error-message">
-                                    <?= $validation->getError('description'); ?>
+                                    <?= session('errors')['description']; ?>
                                 </p>
                             <?php endif; ?>
                         </div>

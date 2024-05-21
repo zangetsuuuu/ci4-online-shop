@@ -81,6 +81,15 @@ class ProductModel extends Model
                 'errors' => [
                     'required' => 'Deskripsi produk tidak boleh kosong!'
                 ]
+            ],
+            'image' => [
+                'rules' => 'max_size[image,1024]|is_image[image]|ext_in[image,jpg,jpeg,png,webp]|mime_in[image,image/jpg,image/jpeg,image/png,image/webp]',
+                'errors' => [
+                    'max_size' => 'Ukuran file gambar terlalu besar (maksimum 1MB)!',
+                    'is_image' => 'File yang dipilih bukan gambar!',
+                    'ext_in' => 'Ekstensi file yang diperbolehkan hanya jpg, jpeg, dan png!',
+                    'mime_in' => 'Ekstensi file yang diperbolehkan hanya jpg, jpeg, dan png!'
+                ]
             ]
         ];
     }
@@ -113,6 +122,15 @@ class ProductModel extends Model
                 'rules' => 'required',
                 'errors' => [
                     'required' => 'Deskripsi produk tidak boleh kosong!'
+                ]
+            ],
+            'image' => [
+                'rules' => 'max_size[image,1024]|is_image[image]|ext_in[image,jpg,jpeg,png,webp]|mime_in[image,image/jpg,image/jpeg,image/png,image/webp]',
+                'errors' => [
+                    'max_size' => 'Ukuran file gambar terlalu besar (maksimum 1MB)!',
+                    'is_image' => 'File yang dipilih bukan gambar!',
+                    'ext_in' => 'Ekstensi file yang diperbolehkan hanya jpg, jpeg, dan png!',
+                    'mime_in' => 'Ekstensi file yang diperbolehkan hanya jpg, jpeg, dan png!'
                 ]
             ]
         ];

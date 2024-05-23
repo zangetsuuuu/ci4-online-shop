@@ -23,7 +23,7 @@
         <div class="h-full p-4 mt-3 bg-white rounded-lg shadow-sm md:mt-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-5">
                 <div class="relative w-56 h-56 mx-auto overflow-hidden border rounded-full">
-                    <img src="<?= base_url('img/blank-avatar.webp'); ?>" class="object-cover w-full h-full" alt="">
+                    <img src="<?= base_url('img/avatars/customer/' . $customer['avatar']); ?>" class="object-cover w-full h-full" alt="<?= $customer['fullname']; ?>">
                 </div>
                 <div class="col-span-2 space-y-6">
                     <div class="space-y-2">
@@ -49,6 +49,10 @@
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Alamat</p>
                         <h1 class="text-lg font-semibold tracking-wide"><?= $customer['address']; ?></h1>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Tanggal Terdaftar</p>
+                        <h1 class="text-lg font-semibold tracking-wide"><?= date('d F Y', strtotime($customer['created_at'])); ?></h1>
                     </div>
                     <hr class="my-4">
                     <div class="space-y-2">

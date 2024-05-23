@@ -86,7 +86,7 @@ class Product extends BaseController
 
         $image = $this->request->getFile('image');
         if ($image->getError() == 4) {
-            $imageName = 'product-placeholder.webp';
+            $imageName = 'placeholder.webp';
         } else {
             $imageName = $image->getRandomName();
             $image->move('img/products', $imageName);

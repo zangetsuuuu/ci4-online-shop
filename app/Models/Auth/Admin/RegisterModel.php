@@ -9,7 +9,7 @@ class RegisterModel extends Model
     protected $table = 'admins';
     protected $returnType = 'array';
     protected $useTimestamps = true;
-    protected $allowedFields = ['fullname', 'username', 'email', 'password', 'gender', 'phone_number'];
+    protected $allowedFields = ['fullname', 'username', 'email', 'password', 'gender', 'phone_number', 'avatar'];
 
     public function validation()
     {
@@ -61,6 +61,15 @@ class RegisterModel extends Model
                 'errors' => [
                     'required' => 'Konfirmasi password tidak boleh kosong!',
                     'matches' => 'Konfirmasi password tidak sesuai dengan password!'
+                ]
+            ],
+            'avatar' => [
+                'rules' => 'max_size[avatar,1024]|is_image[avatar]|ext_in[avatar,jpg,jpeg,png,webp]|mime_in[avatar,image/jpg,image/jpeg,image/png,image/webp]',
+                'errors' => [
+                    'max_size' => 'Ukuran file gambar terlalu besar (maksimum 1MB)!',
+                    'is_image' => 'File yang dipilih bukan gambar!',
+                    'ext_in' => 'Ekstensi file yang diperbolehkan hanya jpg, jpeg, png dan webp!',
+                    'mime_in' => 'Ekstensi file yang diperbolehkan hanya jpg, jpeg, png dan webp!'
                 ]
             ]
         ];

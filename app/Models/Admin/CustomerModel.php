@@ -31,7 +31,12 @@ class CustomerModel extends Model
 
     public function getCustomerBySearch($keyword)
     {
-        return $this->where("CONCAT(fullname, ' ', username, ' ', email, ' ', phone_number, ' ', address) LIKE '%$keyword%'", null, true)
+        return $this->like('fullname', $keyword)
+            ->orLike('username', $keyword)
+            ->orLike('email', $keyword)
+            ->orLike('gender', $keyword)
+            ->orLike('phone_number', $keyword)
+            ->orLike('address', $keyword)
             ->findAll();
     }
 

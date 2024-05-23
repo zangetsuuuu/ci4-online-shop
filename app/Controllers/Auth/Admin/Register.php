@@ -18,7 +18,7 @@ class Register extends BaseController
     {
         $data = [
             'title' => 'Tambah Admin | ADMIN',
-            'validation' => session()->getFlashdata('validation')
+            'validation' => session('validation')
         ];
 
         return view('auth/admin/register', $data);
@@ -29,7 +29,15 @@ class Register extends BaseController
         $config = $this->registerModel->validation();
 
         if (!$this->validate($config)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
+        }
+
+        $avatar = $this->request->getFile('avatar');
+        if ($avatar->getError() == 4) {
+            $avatarName = 'placeholder.webp';
+        } else {
+            $avatarName = $avatar->getRandomName();
+            $avatar->move('img/avatars/admin/', $avatarName);
         }
 
         $data = [
@@ -39,6 +47,7 @@ class Register extends BaseController
             'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
             'gender' => $this->request->getVar('gender'),
             'phone_number' => $this->request->getVar('phone_number'),
+            'avatar' => $avatarName
         ];
 
         $this->registerModel->save($data);

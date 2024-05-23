@@ -66,8 +66,8 @@
                             <label for="category" class="text-sm font-medium tracking-wide text-myBlack">Kategori <span class="text-red-500">*</span></label>
                             <select name="category" id="category" class="<?= (isset(session('errors')['category'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['category'])) ? 'autofocus' : '' ?>>
                                 <option selected disabled>Pilih kategori</option>
-                                <option value="makanan" <?= (old('category') === 'Makanan' || ($product['category'] === 'Makanan' && empty(old('category')))) ? 'selected' : ''; ?>>Makanan</option>
-                                <option value="minuman" <?= (old('category') === 'Minuman' || ($product['category'] === 'Minuman' && empty(old('category')))) ? 'selected' : ''; ?>>Minuman</option>
+                                <option value="Makanan" <?= (old('category', $product['category']) === 'Makanan') ? 'selected' : ''; ?>>Makanan</option>
+                                <option value="Minuman" <?= (old('category', $product['category']) === 'Minuman') ? 'selected' : ''; ?>>Minuman</option>
                             </select>
                             <?php if (isset(session('errors')['category'])) : ?>
                                 <p class="input-error-message">
@@ -77,7 +77,7 @@
                         </div>
                         <div>
                             <label for="stock" class="text-sm font-medium tracking-wide text-myBlack">Stok <span class="text-red-500">*</span></label>
-                            <input type="number" min="1" name="stock" id="stock" class="<?= (isset(session('errors')['stock'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['stock'])) ? 'autofocus' : '' ?> placeholder="Tambahkan stok" value="<?= old('stock', $product['stock']); ?>" />
+                            <input type="number" name="stock" id="stock" class="<?= (isset(session('errors')['stock'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['stock'])) ? 'autofocus' : '' ?> placeholder="Tambahkan stok" value="<?= old('stock', $product['stock']); ?>" />
                             <?php if (isset(session('errors')['stock'])) : ?>
                                 <p class="input-error-message">
                                     <?= $validation->getError('stock'); ?>

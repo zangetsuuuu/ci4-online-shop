@@ -17,7 +17,7 @@ class Login extends BaseController
     {
         $data = [
             'title' => 'Login',
-            'validation' => session()->getFlashdata('validation'),
+            'validation' => session('validation')
         ];
 
         return view('auth/customer/login', $data);
@@ -27,7 +27,7 @@ class Login extends BaseController
     {
         $config = $this->loginModel->validation();
         if (!$this->validate($config)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         }
 
         $username = $this->request->getVar('username');
@@ -58,6 +58,7 @@ class Login extends BaseController
             'fullname' => $customer['fullname'],
             'username' => $customer['username'],
             'email' => $customer['email'],
+            'avatar' => $customer['avatar'],
             'isLoggedIn' => true
         ];
 

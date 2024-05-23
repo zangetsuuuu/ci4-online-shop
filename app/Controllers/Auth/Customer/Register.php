@@ -19,7 +19,7 @@ class Register extends BaseController
     {
         $data = [
             'title' => 'Daftar Akun',
-            'validation' => session()->getFlashdata('validation')
+            'validation' => session('validation')
         ];
 
         return view('auth/customer/register', $data);
@@ -30,7 +30,7 @@ class Register extends BaseController
         $config = $this->registerModel->validation();
 
         if (!$this->validate($config)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         }
 
         $data = [

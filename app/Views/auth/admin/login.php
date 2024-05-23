@@ -44,19 +44,19 @@
                 <?= csrf_field(); ?>
                 <div>
                     <label for="username" class="text-sm font-medium tracking-wide text-myBlack">Username <span class="text-red-500">*</span></label>
-                    <input type="text" name="username" id="username" class="<?= ($validation && $validation->hasError('username')) ? 'input-error' : 'input-admin' ?>" <?= ($validation && $validation->hasError('username')) ? 'autofocus' : '' ?> value="<?= old('username') ?>" placeholder="johndoe" />
-                    <?php if ($validation && $validation->hasError('username')) : ?>
+                    <input type="text" name="username" id="username" class="<?= (isset($validation['username'])) ? 'input-error' : 'input-admin' ?>" <?= (isset($validation['username'])) ? 'autofocus' : '' ?> value="<?= old('username') ?>" placeholder="johndoe" />
+                    <?php if (isset($validation['username'])) : ?>
                         <div class="input-error-message">
-                            <?= $validation->getError('username'); ?>
+                            <?= $validation['username']; ?>
                         </div>
                     <?php endif ?>
                 </div>
                 <div>
                     <label for="password" class="text-sm font-medium tracking-wide text-myBlack">Password <span class="text-red-500">*</span></label>
-                    <input type="password" name="password" id="password" placeholder="••••••••" class="<?= ($validation && $validation->hasError('password')) ? 'input-error' : 'input-admin' ?>" <?= ($validation && $validation->hasError('password')) ? 'autofocus' : '' ?> value="<?= old('password') ?>" />
-                    <?php if ($validation && $validation->hasError('password')) : ?>
+                    <input type="password" name="password" id="password" placeholder="••••••••" class="<?= (isset($validation['password'])) ? 'input-error' : 'input-admin' ?>" <?= (isset($validation['password'])) ? 'autofocus' : '' ?> value="<?= old('password') ?>" />
+                    <?php if (isset($validation['password'])) : ?>
                         <div class="input-error-message">
-                            <?= $validation->getError('password'); ?>
+                            <?= $validation['password']; ?>
                         </div>
                     <?php endif ?>
                 </div>

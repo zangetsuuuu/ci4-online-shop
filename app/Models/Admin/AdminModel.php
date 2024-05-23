@@ -29,7 +29,11 @@ class AdminModel extends Model
 
     public function getAdminBySearch($keyword)
     {
-        return $this->where("CONCAT(first_name, ' ', last_name, ' ', username, ' ', email, ' ', phone_number) LIKE '%$keyword%'", null, true)
+        return $this->like('fullname', $keyword)
+            ->orLike('username', $keyword)
+            ->orLike('email', $keyword)
+            ->orLike('gender', $keyword)
+            ->orLike('phone_number', $keyword)
             ->findAll();
     }
 }

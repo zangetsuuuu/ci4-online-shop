@@ -49,9 +49,9 @@ $routes->group('admin', function ($routes) {
     $routes->delete('customer/(:num)/delete', 'Admin\Customer::deleteCustomer/$1');
     
     // Profile
-    $routes->get('profile', 'Admin\Profile::viewInfo/$1');
-    $routes->get('profile/edit', 'Admin\Profile::viewEditProfile/$1');
-    $routes->get('profile/update', 'Admin\Profile::updateAdminProfile/$1');
+    $routes->get('profile', 'Admin\Profile::viewInfo');
+    $routes->get('profile/edit', 'Admin\Profile::viewEditProfile');
+    $routes->post('profile/update', 'Admin\Profile::updateAdminProfile');
     
     $routes->get('(:segment)', 'Admin\Admin::viewAdminDetail/$1');
 });

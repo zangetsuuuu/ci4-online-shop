@@ -21,60 +21,80 @@
         </div>
 
         <div class="h-full p-4 mt-3 bg-white rounded-lg shadow-sm md:mt-4">
-            <form action="<?= base_url("admin/$admin[id]update"); ?>" method="post">
+            <form action="<?= base_url('admin/profile/update'); ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
+                <input type="hidden" name="old_avatar" value="<?= $profile['avatar']; ?>">
                 <div class="space-y-5">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-x-0 gap-y-4 md:gap-x-4">
-                        <div class="relative w-48 h-48 mx-auto overflow-hidden border rounded-full md:w-56 md:h-56">
-                            <img id="frame" src="<?= base_url('img/bg-1.jpg'); ?>" class="object-cover w-full h-full" alt="">
-                            <div class="absolute inset-0 flex items-center justify-center bg-myBlack/20">
-                                <label data-tooltip-target="edit-user-picture-tooltip" for="fileInput" class="p-3 text-white duration-300 ease-in-out rounded-full cursor-pointer hover:text-gray-300">
-                                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.77778 21H14.2222C17.3433 21 18.9038 21 20.0248 20.2646C20.51 19.9462 20.9267 19.5371 21.251 19.0607C22 17.9601 22 16.4279 22 13.3636C22 10.2994 22 8.76721 21.251 7.6666C20.9267 7.19014 20.51 6.78104 20.0248 6.46268C19.3044 5.99013 18.4027 5.82123 17.022 5.76086C16.3631 5.76086 15.7959 5.27068 15.6667 4.63636C15.4728 3.68489 14.6219 3 13.6337 3H10.3663C9.37805 3 8.52715 3.68489 8.33333 4.63636C8.20412 5.27068 7.63685 5.76086 6.978 5.76086C5.59733 5.82123 4.69555 5.99013 3.97524 6.46268C3.48995 6.78104 3.07328 7.19014 2.74902 7.6666C2 8.76721 2 10.2994 2 13.3636C2 16.4279 2 17.9601 2.74902 19.0607C3.07328 19.5371 3.48995 19.9462 3.97524 20.2646C5.09624 21 6.65675 21 9.77778 21ZM12 9.27273C9.69881 9.27273 7.83333 11.1043 7.83333 13.3636C7.83333 15.623 9.69881 17.4545 12 17.4545C14.3012 17.4545 16.1667 15.623 16.1667 13.3636C16.1667 11.1043 14.3012 9.27273 12 9.27273ZM12 10.9091C10.6193 10.9091 9.5 12.008 9.5 13.3636C9.5 14.7192 10.6193 15.8182 12 15.8182C13.3807 15.8182 14.5 14.7192 14.5 13.3636C14.5 12.008 13.3807 10.9091 12 10.9091ZM16.7222 10.0909C16.7222 9.63904 17.0953 9.27273 17.5556 9.27273H18.6667C19.1269 9.27273 19.5 9.63904 19.5 10.0909C19.5 10.5428 19.1269 10.9091 18.6667 10.9091H17.5556C17.0953 10.9091 16.7222 10.5428 16.7222 10.0909Z" fill="currentColor" />
-                                    </svg>
-                                </label>
-                                <input type="file" name="userProfilePicture" id="fileInput" class="hidden" accept="image/*" onchange="previewImage()">
+                        <div class="flex flex-col items-center space-y-2">
+                            <div class="relative w-48 h-48 mx-auto overflow-hidden border rounded-full md:w-56 md:h-56">
+                                <img id="frame" src="<?= base_url('img/avatars/admin/' . $profile['avatar']); ?>" class="object-cover w-full h-full" alt="<?= $profile['fullname']; ?>">
+                                <div class="absolute inset-0 flex items-center justify-center bg-myBlack/20">
+                                    <label data-tooltip-target="edit-user-picture-tooltip" for="fileInput" class="p-3 text-white duration-300 ease-in-out rounded-full cursor-pointer hover:text-gray-300">
+                                        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.77778 21H14.2222C17.3433 21 18.9038 21 20.0248 20.2646C20.51 19.9462 20.9267 19.5371 21.251 19.0607C22 17.9601 22 16.4279 22 13.3636C22 10.2994 22 8.76721 21.251 7.6666C20.9267 7.19014 20.51 6.78104 20.0248 6.46268C19.3044 5.99013 18.4027 5.82123 17.022 5.76086C16.3631 5.76086 15.7959 5.27068 15.6667 4.63636C15.4728 3.68489 14.6219 3 13.6337 3H10.3663C9.37805 3 8.52715 3.68489 8.33333 4.63636C8.20412 5.27068 7.63685 5.76086 6.978 5.76086C5.59733 5.82123 4.69555 5.99013 3.97524 6.46268C3.48995 6.78104 3.07328 7.19014 2.74902 7.6666C2 8.76721 2 10.2994 2 13.3636C2 16.4279 2 17.9601 2.74902 19.0607C3.07328 19.5371 3.48995 19.9462 3.97524 20.2646C5.09624 21 6.65675 21 9.77778 21ZM12 9.27273C9.69881 9.27273 7.83333 11.1043 7.83333 13.3636C7.83333 15.623 9.69881 17.4545 12 17.4545C14.3012 17.4545 16.1667 15.623 16.1667 13.3636C16.1667 11.1043 14.3012 9.27273 12 9.27273ZM12 10.9091C10.6193 10.9091 9.5 12.008 9.5 13.3636C9.5 14.7192 10.6193 15.8182 12 15.8182C13.3807 15.8182 14.5 14.7192 14.5 13.3636C14.5 12.008 13.3807 10.9091 12 10.9091ZM16.7222 10.0909C16.7222 9.63904 17.0953 9.27273 17.5556 9.27273H18.6667C19.1269 9.27273 19.5 9.63904 19.5 10.0909C19.5 10.5428 19.1269 10.9091 18.6667 10.9091H17.5556C17.0953 10.9091 16.7222 10.5428 16.7222 10.0909Z" fill="currentColor" />
+                                        </svg>
+                                    </label>
+                                    <input type="file" name="avatar" id="fileInput" class="hidden" accept="image/*" onchange="previewImage()">
+                                </div>
+                                <div id="edit-user-picture-tooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium tracking-wide text-white transition-opacity duration-300 rounded-lg shadow-sm opacity-0 bg-myBlack tooltip group">
+                                    Ganti Foto
+                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                </div>
                             </div>
-                            <div id="edit-user-picture-tooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium tracking-wide text-white transition-opacity duration-300 rounded-lg shadow-sm opacity-0 bg-myBlack tooltip group">
-                                Ganti Foto
-                                <div class="tooltip-arrow" data-popper-arrow></div>
-                            </div>
+                            <?php if (isset(session('errors')['avatar'])) : ?>
+                                <p class="input-error-message">
+                                    <?= session('errors')['avatar']; ?>
+                                </p>
+                            <?php endif; ?>
                         </div>
-
                         <div class="col-span-2 space-y-5">
                             <div>
                                 <label for="fullname" class="text-sm font-medium tracking-wide text-myBlack">Nama Depan <span class="text-red-500">*</span></label>
-                                <input type="text" name="fullname" id="fullname" class="<?= ($validation) ? 'input-error' : 'input-admin' ?>" <?= ($validation) ? 'autofocus' : '' ?> placeholder="John" value="<?= old('fullname', $admin['fullname']) ?>" />
-                                <?php if ($validation) : ?>
+                                <input type="text" name="fullname" id="fullname" class="<?= (isset(session('errors')['fullname'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['fullname'])) ? 'autofocus' : '' ?> placeholder="John" value="<?= old('fullname', $profile['fullname']) ?>" />
+                                <?php if (isset(session('errors')['fullname'])) : ?>
                                     <div class="input-error-message">
-                                        <?= $validation->getError('fullname'); ?>
+                                        <?= session('errors')['fullname']; ?>
                                     </div>
                                 <?php endif ?>
                             </div>
                             <div>
                                 <label for="username" class="text-sm font-medium tracking-wide text-myBlack">Username <span class="text-red-500">*</span></label>
-                                <input type="text" name="username" id="username" class="<?= ($validation) ? 'input-error' : 'input-admin' ?>" <?= ($validation) ? 'autofocus' : '' ?> value="<?= old('username', $admin['username']); ?>" placeholder="johndoe" />
-                                <?php if ($validation) : ?>
+                                <input type="text" name="username" id="username" class="<?= (isset(session('errors')['username'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['username'])) ? 'autofocus' : '' ?> value="<?= old('username', $profile['username']); ?>" placeholder="johndoe" />
+                                <?php if (isset(session('errors')['username'])) : ?>
                                     <p class="input-error-message">
-                                        <?= $validation->getError('username'); ?>
+                                        <?= session('errors')['username']; ?>
                                     </p>
                                 <?php endif; ?>
                             </div>
                             <div>
                                 <label for="email" class="text-sm font-medium tracking-wide text-myBlack">Email <span class="text-red-500">*</span></label>
-                                <input type="email" name="email" id="email" class="<?= ($validation) ? 'input-error' : 'input-admin' ?>" <?= ($validation) ? 'autofocus' : '' ?> placeholder="someone@example.com" value="<?= old('email', $admin['email']) ?>" />
-                                <?php if ($validation) : ?>
+                                <input type="email" name="email" id="email" class="<?= (isset(session('errors')['email'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['email'])) ? 'autofocus' : '' ?> placeholder="someone@example.com" value="<?= old('email', $profile['email']) ?>" />
+                                <?php if (isset(session('errors')['email'])) : ?>
                                     <div class="input-error-message">
-                                        <?= $validation->getError('email'); ?>
+                                        <?= session('errors')['email']; ?>
+                                    </div>
+                                <?php endif ?>
+                            </div>
+                            <div>
+                                <label for="gender" class="text-sm font-medium tracking-wide text-myBlack">Jenis Kelamin <span class="text-red-500">*</span></label>
+                                <select name="gender" id="gender" class="<?= (isset(session('errors')['gender'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['gender'])) ? 'autofocus' : '' ?>>
+                                    <option disabled selected>Pilih Jenis Kelamin</option>
+                                    <option value="Laki-laki" <?= old('gender', $profile['gender']) === 'Laki-laki' ? 'selected' : '' ?>>Laki-Laki</option>
+                                    <option value="Perempuan" <?= old('gender', $profile['gender']) === 'Perempuan' ? 'selected' : '' ?>>Perempuan</option>
+                                </select>
+                                <?php if (isset(session('errors')['gender'])) : ?>
+                                    <div class="input-error-message">
+                                        <?= session('errors')['gender']; ?>
                                     </div>
                                 <?php endif ?>
                             </div>
                             <div>
                                 <label for="phone_number" class="text-sm font-medium tracking-wide text-myBlack">No. HP <span class="text-red-500">*</span></label>
-                                <input type="text" name="phone_number" id="phone_number" class="<?= ($validation) ? 'input-error' : 'input-admin' ?>" <?= ($validation) ? 'autofocus' : '' ?> placeholder="+62" value="<?= old('phone_number', $admin['phone_number']) ?>" />
-                                <?php if ($validation) : ?>
+                                <input type="text" name="phone_number" id="phone_number" class="<?= (isset(session('errors')['phone_number'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['phone_number'])) ? 'autofocus' : '' ?> placeholder="+62" value="<?= old('phone_number', $profile['phone_number']) ?>" />
+                                <?php if (isset(session('errors')['phone_number'])) : ?>
                                     <div class="input-error-message">
-                                        <?= $validation->getError('phone_number'); ?>
+                                        <?= session('errors')['phone_number']; ?>
                                     </div>
                                 <?php endif ?>
                             </div>

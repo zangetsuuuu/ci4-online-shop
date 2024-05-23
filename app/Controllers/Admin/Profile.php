@@ -18,29 +18,34 @@ class Profile extends BaseController
         $this->adminModel = new AdminModel();
     }
 
-    public function viewInfo($username)
+    public function viewInfo()
     {
+        $id = session()->get('id');
+
         $data = [
             'title' => 'Profil | ADMIN',
-            'admin' => $this->adminModel->getAdminByUsername($username)
+            'profile' => $this->adminModel->getAdminById($id)
         ];
 
         return view('admin/profile/index', $data);
     }
 
-    public function viewEditProfile($username)
+    public function viewEditProfile()
     {
+        $id = session()->get('id');
+
         $data = [
             'title' => 'Edit Profil | ADMIN',
-            'admin' => $this->adminModel->getAdminByUsername($username),
-            'validation' => session()->getFlashdata('validation'),
+            'profile' => $this->adminModel->getAdminById($id)
         ];
 
         return view('admin/profile/edit', $data);
     }
 
-    public function updateAdminProfile($id)
+    public function updateAdminProfile()
     {
+        $id = session()->get('id');
+
         $oldData = $this->adminModel->getAdminById($id);
 
         if ($oldData['username'] == $this->request->getVar('username')) {
@@ -54,61 +59,47 @@ class Profile extends BaseController
         } else {
             $emailRule = 'required|is_unique[admins.email]|valid_email';
         }
+        
+        if ($oldData['phone_number'] == $this->request->getVar('phone_number')) {
+            $phoneNumberRule = 'required';
+        } else {
+            $phoneNumberRule = 'required|is_unique[admins.phone_number]';
+        }
 
-        $config = [
-            'first_name' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Nama depan tidak boleh kosong!'
-                ]
-            ],
-            'last_name' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Nama belakang tidak boleh kosong!'
-                ]
-            ],
-            'username' => [
-                'rules' => $usernameRule,
-                'errors' => [
-                    'required' => 'Username tidak boleh kosong!',
-                    'is_unique' => 'Username sudah digunakan!',
-                    'regex_match' => 'Username tidak boleh dispasi!'
-                ]
-            ],
-            'email' => [
-                'rules' => $emailRule,
-                'errors' => [
-                    'required' => 'Email tidak boleh kosong!',
-                    'is_unique' => 'Email sudah digunakan!',
-                    'valid_email' => 'Format email tidak valid!'
-                ]
-            ],
-            'phone_number' => [
-                'rules' => 'required|is_unique[admins.phone_number]',
-                'errors' => [
-                    'required' => 'Nomor HP tidak boleh kosong!',
-                    'is_unique' => 'Nomor HP sudah digunakan!'
-                ]
-            ]
-        ];
+        $config = $this->profileModel->validation($usernameRule, $emailRule, $phoneNumberRule);
 
         if (!$this->validate($config)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $avatar = $this->request->getFile('avatar');
+        $oldAvatar = $this->request->getVar('old_avatar');
+
+        if ($avatar->getError() == 4) {
+            $avatarName = $oldAvatar;
+        } else {
+            $avatarName = $avatar->getRandomName();
+            $avatar->move('img/avatars/admin/', $avatarName);
+
+            if ($oldAvatar != 'default-avatar.webp') {
+                unlink('img/avatars/admin/' . $oldAvatar);
+            }
         }
 
         $data = [
             'id' => $id,
-            'first_name' => $this->request->getVar('first_name'),
-            'last_name' => $this->request->getVar('last_name'),
+            'fullname' => $this->request->getVar('fullname'),
             'username' => $this->request->getVar('username'),
             'email' => $this->request->getVar('email'),
-            'phone_number' => $this->request->getVar('phone_number')
+            'gender' => $this->request->getVar('gender'),
+            'phone_number' => $this->request->getVar('phone_number'),
+            'avatar' => $avatarName
         ];
 
         $this->profileModel->save($data);
 
         session()->setFlashdata('Edit Success', 'Data berhasil diubah!');
+        session()->set(['avatar' => $avatarName]);
 
         return redirect()->to('admin/profile');
     }

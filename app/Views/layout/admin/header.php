@@ -29,7 +29,7 @@
                         <div>
                             <button type="button" class="flex text-sm duration-200 ease-in-out bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-200" aria-expanded="false" data-dropdown-toggle="dropdown-user" data-dropdown-placement="bottom-start">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="w-8 h-8 rounded-full" src="<?= base_url('img/blank-avatar.webp'); ?>" alt="User photo">
+                                <img class="object-cover w-8 h-8 rounded-full" src="<?= base_url('img/avatars/admin/' . session()->get('avatar')); ?>" alt="User photo">
                             </button>
                         </div>
                         <div class="z-40 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow" id="dropdown-user">

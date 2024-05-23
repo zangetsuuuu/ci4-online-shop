@@ -80,6 +80,11 @@ class Customer extends BaseController
             }
         }
 
+        $customer = $this->customerModel->getCustomerById($id);
+        if ($customer['avatar'] != 'default-avatar.webp') {
+            unlink('img/avatars/customer/' . $customer['avatar']);
+        }
+
         $this->customerModel->delete($id);
 
         session()->setFlashdata('Delete Success', 'Data pelanggan berhasil dihapus!');

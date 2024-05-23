@@ -101,29 +101,29 @@
                             </tr>
                         </thead>
                         <tbody class="text-center bg-white divide-y divide-gray-200">
-                            <?php $i = 1; ?>
-                            <?php foreach ($admins as $data) : ?>
+                            <?php $i = 1;
+                            foreach ($admins as $admin) : ?>
                                 <tr class="duration-150 ease-in-out hover:bg-gray-50">
-                                    <td class="px-6 py-4 font-bold whitespace-nowrap text-myBlack"><?= $i; ?>.</td>
+                                    <td class="px-6 py-4 font-bold whitespace-nowrap text-myBlack"><?= $i++; ?>.</td>
                                     <td class="flex justify-center px-6 py-4 whitespace-nowrap">
-                                        <img class="rounded-full w-9 h-9 md:w-10 md:h-10" src="<?= base_url('img/blank-avatar.webp'); ?>" alt="">
+                                        <img class="rounded-full w-9 h-9 md:w-10 md:h-10" src="<?= base_url('img/avatars/admin/' . $admin['avatar']); ?>" alt="<?= $admin['fullname']; ?>">
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="space-y-0.5">
-                                            <div class="text-sm font-semibold"><?= $data['fullname']; ?></div>
-                                            <div class="text-xs text-gray-400">@<?= $data['username']; ?></div>
+                                            <div class="text-sm font-semibold"><?= $admin['fullname']; ?></div>
+                                            <div class="text-xs text-gray-400">@<?= $admin['username']; ?></div>
                                         </div>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap"><?= $data['email']; ?></td>
-                                    <td class="px-6 py-4 whitespace-nowrap"><?= $data['phone_number']; ?></td>
+                                    <td class="px-6 py-4 whitespace-nowrap"><?= $admin['email']; ?></td>
+                                    <td class="px-6 py-4 whitespace-nowrap"><?= $admin['phone_number']; ?></td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="flex items-center justify-center space-x-3">
-                                            <a href="<?= base_url("admin/info/@$data[username]"); ?>" class="duration-300 ease-in-out hover:text-myBlack">
+                                            <a href="<?= base_url('admin/@' . $admin['username']); ?>" class="duration-300 ease-in-out hover:text-myBlack">
                                                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V11C12.75 10.5858 12.4142 10.25 12 10.25C11.5858 10.25 11.25 10.5858 11.25 11V17C11.25 17.4142 11.5858 17.75 12 17.75ZM12 7C12.5523 7 13 7.44772 13 8C13 8.55228 12.5523 9 12 9C11.4477 9 11 8.55228 11 8C11 7.44772 11.4477 7 12 7Z" fill="currentColor" />
                                                 </svg>
                                             </a>
-                                            <button data-modal-target="delete-admin-modal#<?= $data['id']; ?>" data-modal-toggle="delete-admin-modal#<?= $data['id']; ?>" class="text-red-500 duration-300 ease-in-out hover:text-red-600">
+                                            <button data-modal-target="delete-admin-modal#<?= $admin['id']; ?>" data-modal-toggle="delete-admin-modal#<?= $admin['id']; ?>" class="text-red-500 duration-300 ease-in-out hover:text-red-600">
                                                 <svg fill="currentColor" class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="delete" class="icon glyph">
                                                     <path d="M17,4V5H15V4H9V5H7V4A2,2,0,0,1,9,2h6A2,2,0,0,1,17,4Z"></path>
                                                     <path d="M20,6H4A1,1,0,0,0,4,8H5V20a2,2,0,0,0,2,2H17a2,2,0,0,0,2-2V8h1a1,1,0,0,0,0-2Z"></path>
@@ -132,7 +132,6 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <?php $i++; ?>
                             <?php endforeach; ?>
                         </tbody>
                     </table>

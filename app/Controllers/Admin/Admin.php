@@ -39,6 +39,10 @@ class Admin extends BaseController
             'admin' => $this->adminModel->getAdminByUsername($username),
         ];
 
+        if (empty($data['admin'])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Data admin tidak ditemukan!');
+        }
+
         return view('admin/detail', $data);
     }
 
@@ -64,6 +68,11 @@ class Admin extends BaseController
 
     public function deleteAdmin($id)
     {
+        $admin = $this->adminModel->getAdminById($id);
+        if ($admin['avatar'] != 'blank-avatar.webp') {
+            unlink('img/avatars/admin/' . $admin['avatar']);
+        }
+
         $this->adminModel->delete($id);
 
         session()->setFlashdata('Delete Success', 'Data admin berhasil dihapus!');

@@ -16,6 +16,23 @@ class OrderModel extends Model
         return $this->orderBy('created_at', 'DESC')->findAll();
     }
 
+    public function getOrdersByStatus($status)
+    {
+        return $this->where(['status' => $status])->findAll();
+    }
+
+    public function getOrderBySearch($keyword)
+    {
+        return $this->like('id', $keyword)
+            ->orLike('created_at', $keyword)
+            ->findAll();
+    }
+
+    public function sortOrders()
+    {
+        return $this->orderBy('created_at', 'ASC')->findAll();
+    }
+
     public function getOrderDetails($params)
     {
         return $this->where(['reference' => $params])->first();

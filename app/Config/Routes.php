@@ -39,6 +39,7 @@ $routes->group('admin', function ($routes) {
 
     // Orders
     $routes->get('orders', 'Admin\Order::viewOrders');
+    $routes->get('order/search', 'Admin\Order::searchOrder');
     $routes->get('order/(:segment)', 'Admin\Order::viewOrderDetail/$1');
     $routes->post('order/edit_status', 'Admin\Order::editOrderStatus');
 

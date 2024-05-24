@@ -1399,6 +1399,10 @@ input:checked + .toggle-bg {
   height: 100vh;
 }
 
+.h-\[200px\] {
+  height: 200px;
+}
+
 .max-h-\[20rem\] {
   max-height: 20rem;
 }
@@ -1614,6 +1618,16 @@ input:checked + .toggle-bg {
 
 .list-none {
   list-style-type: none;
+}
+
+.columns-4 {
+  -moz-columns: 4;
+       columns: 4;
+}
+
+.columns-6 {
+  -moz-columns: 6;
+       columns: 6;
 }
 
 .grid-cols-1 {

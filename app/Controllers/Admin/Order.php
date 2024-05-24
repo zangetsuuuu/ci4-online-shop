@@ -28,6 +28,11 @@ class Order extends BaseController
 
     public function viewOrders()
     {
+        $sort = $this->request->getVar('sortBy');
+        $status = $this->request->getVar('status');
+        $sort = (isset($sort)) ? $sort : '';
+        $status = (isset($status)) ? $status : '';
+
         $statusColor = [
             'dibatalkan' => 'badge-red',
             'menunggu diproses' => 'badge-gray',
@@ -36,7 +41,15 @@ class Order extends BaseController
             'selesai' => 'badge-green'
         ];
 
-        $orders = $this->orderModel->getOrders();
+        if ($status) {
+            $orders = $this->orderModel->getOrdersByStatus($status);
+            session()->setFlashdata('status', 'Pesanan dengan status: ' . ucwords($status));
+        } elseif ($sort) {
+            $orders = $this->orderModel->sortOrders();
+        } else {
+            $orders = $this->orderModel->getOrders();
+            session()->remove('status');
+        }
 
         $orderDetails = [];
         foreach ($orders as $order) {
@@ -44,10 +57,7 @@ class Order extends BaseController
             $orderDetails[] = [
                 'id' => $order['id'],
                 'reference' => $order['reference'],
-                'customer_id' => $order['customer_id'],
                 'customer_name' => $customer['fullname'],
-                'transaction_id' => $order['transaction_id'],
-                'total_price' => $order['total_price'],
                 'created_at' => $order['created_at'],
                 'status' => $order['status'],
                 'status_color' => $statusColor[$order['status']]
@@ -56,12 +66,12 @@ class Order extends BaseController
 
         $data = [
             'title' => 'Daftar Pesanan | ADMIN',
-            'totalIncome' => $this->orderModel->getTotalIncome(),
-            'totalProducts' => $this->productModel->getTotalProducts(),
-            'totalOrders' => $this->orderModel->getTotalOrders(),
-            'totalCustomers' => $this->customerModel->getTotalCustomers(),
-            'orders' => $orderDetails
-       ];
+            'orders' => $orderDetails,
+            'status' => $status
+        ];
+        
+        session()->remove('Order Search Info');
+        session()->remove('Order Not Found');
 
         return view('admin/order/index', $data);
     }
@@ -80,7 +90,7 @@ class Order extends BaseController
         $customer = $this->customerModel->withDeleted()->where('id', $order['customer_id'])->first();
         $orderItems = $this->orderItemModel->where('order_id', $order['id'])->findAll();
         $transaction = $this->transactionModel->where('id', $order['transaction_id'])->first();
-        
+
         $item = [];
         foreach ($orderItems as &$orderItem) {
             $product = $this->productModel->where('id', $orderItem['product_id'])->first();
@@ -112,5 +122,48 @@ class Order extends BaseController
         };
 
         return redirect()->back();
+    }
+    
+    public function searchOrder()
+    {
+        $statusColor = [
+            'dibatalkan' => 'badge-red',
+            'menunggu diproses' => 'badge-gray',
+            'diproses' => 'badge-yellow',
+            'siap diambil' => 'badge-blue',
+            'selesai' => 'badge-green'
+        ];
+
+        $keyword = $this->request->getVar('keyword');
+        $orders = $this->orderModel->getOrderBySearch($keyword);
+
+        $orderDetails = [];
+        foreach ($orders as $order) {
+            $customer = $this->customerModel->withDeleted()->getCustomerById($order['customer_id']);
+            $orderDetails[] = [
+                'id' => $order['id'],
+                'reference' => $order['reference'],
+                'customer_name' => $customer['fullname'],
+                'created_at' => $order['created_at'],
+                'status' => $order['status'],
+                'status_color' => $statusColor[$order['status']]
+            ];
+        }
+
+        $data = [
+            'title' => 'Daftar Pesanan | ADMIN',
+            'orders' => $orderDetails,
+            'status' => ''
+        ];
+
+        if (empty($data['orders'])) {
+            session()->setFlashdata('Order Not Found', 'Hasil tidak ditemukan!');
+            session()->remove('Order Search Info');
+        } else {
+            session()->setFlashdata('Order Search Info', 'Hasil pencarian: ' . $keyword);
+            session()->remove('Order Not Found');
+        }
+
+        return view('admin/order/index', $data);
     }
 }

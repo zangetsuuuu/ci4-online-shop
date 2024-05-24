@@ -17,8 +17,7 @@ class Product extends BaseController
     public function viewProducts()
     {
         $category = $this->request->getVar('category');
-
-        $category = ($category === 'all') ? null : $category;
+        $category = (isset($category)) ? $category : '';
 
         $data = [
             'title' => 'Daftar Produk | ADMIN',

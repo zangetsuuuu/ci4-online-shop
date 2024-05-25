@@ -87,7 +87,7 @@
                                 <circle cx="12" cy="6" r="4" fill="currentColor" />
                                 <path d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z" fill="currentColor" />
                             </svg>
-                            <p class="text-xs font-semibold tracking-wide md:text-sm"><?= $customer['fullname']; ?> <span class="text-red-500">(<?= $customer['deleted_at'] != null ? 'Tidak Aktif' : 'Aktif'; ?>)</span></p>
+                            <p class="text-xs font-semibold tracking-wide md:text-sm"><?= $customer['fullname']; ?> <span class="text-red-500"><?= $customer['deleted_at'] != null ? '(Tidak Aktif)' : ''; ?></span></p>
                         </div>
                         <div class="flex items-center space-x-2 text-gray-500">
                             <svg fill="currentColor" class="w-3 h-3 md:w-4 md:h-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

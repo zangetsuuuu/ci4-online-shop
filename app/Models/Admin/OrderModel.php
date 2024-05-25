@@ -28,9 +28,13 @@ class OrderModel extends Model
             ->findAll();
     }
 
-    public function sortOrders()
+    public function sortOrders($params)
     {
-        return $this->orderBy('created_at', 'ASC')->findAll();
+        if ($params == 'Terlama') {
+            return $this->orderBy('created_at', 'ASC')->findAll();
+        } else {
+            return $this->orderBy('created_at', 'DESC')->findAll();
+        }
     }
 
     public function getOrderDetails($params)

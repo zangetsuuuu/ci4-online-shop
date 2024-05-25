@@ -45,7 +45,7 @@ class Order extends BaseController
             $orders = $this->orderModel->getOrdersByStatus($status);
             session()->setFlashdata('status', 'Pesanan dengan status: ' . ucwords($status));
         } elseif ($sort) {
-            $orders = $this->orderModel->sortOrders();
+            $orders = $this->orderModel->sortOrders($sort);
         } else {
             $orders = $this->orderModel->getOrders();
             session()->remove('status');
@@ -67,7 +67,8 @@ class Order extends BaseController
         $data = [
             'title' => 'Daftar Pesanan | ADMIN',
             'orders' => $orderDetails,
-            'status' => $status
+            'status' => $status,
+            'sortBy' => $sort
         ];
         
         session()->remove('Order Search Info');

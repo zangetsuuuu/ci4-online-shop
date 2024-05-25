@@ -19,6 +19,7 @@
                     <div>
                         <select id="status" name="status" class="input-admin">
                             <option disabled selected>Pilih status</option>
+                            <option value="menunggu diproses" <?= ($status === 'menunggu diproses') ? 'selected' : ''; ?>>Menunggu Diproses</option>
                             <option value="diproses" <?= ($status === 'diproses') ? 'selected' : ''; ?>>Diproses</option>
                             <option value="siap diambil" <?= ($status === 'siap diambil') ? 'selected' : ''; ?>>Siap Diambil</option>
                             <option value="dibatalkan" <?= ($status === 'dibatalkan') ? 'selected' : ''; ?>>Dibatalkan</option>

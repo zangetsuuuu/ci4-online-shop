@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php if ($title !== 'Login | ADMIN') : ?>
+    <?php if ($title !== 'Login | ADMIN' && $title !== 'Laporan | ADMIN') : ?>
         <nav class="fixed top-0 z-40 w-full bg-white border-b border-gray-200">
             <div class="px-3 py-3 lg:px-5 lg:pl-3">
                 <div class="flex items-center justify-between">

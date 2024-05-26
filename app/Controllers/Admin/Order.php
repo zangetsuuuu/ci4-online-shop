@@ -94,7 +94,7 @@ class Order extends BaseController
 
         $item = [];
         foreach ($orderItems as &$orderItem) {
-            $product = $this->productModel->where('id', $orderItem['product_id'])->first();
+            $product = $this->productModel->withDeleted()->where('id', $orderItem['product_id'])->first();
             $item[] = $product['name'];
         }
 

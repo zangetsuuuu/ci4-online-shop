@@ -9,6 +9,8 @@ class ProductModel extends Model
     protected $table = 'products';
     protected $returnType = 'array';
     protected $useTimestamps = true;
+    protected $useSoftDeletes = true;
+    protected $deletedField = 'deleted_at';
     protected $allowedFields = ['name', 'slug', 'category', 'description', 'price', 'stock', 'image'];
 
     public function getProducts()

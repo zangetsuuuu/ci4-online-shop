@@ -55,7 +55,11 @@ $routes->group('admin', function ($routes) {
     $routes->post('profile/update', 'Admin\Profile::updateAdminProfile');
     
     $routes->get('(:segment)', 'Admin\Admin::viewAdminDetail/$1');
-    $routes->get('report/(:any)', 'Admin\Report::generateReport/$1');
+
+    // Reports
+    $routes->get('report/product/(:any)', 'Admin\Report::generateProductReport/$1');
+    $routes->get('report/order/(:any)', 'Admin\Report::generateOrderReport/$1');
+    $routes->get('report/customer/(:any)', 'Admin\Report::generateCustomerReport/$1');
 });
 
 // Customer routes

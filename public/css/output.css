@@ -1536,6 +1536,14 @@ input:checked + .toggle-bg {
   max-width: 28rem;
 }
 
+.max-w-xl {
+  max-width: 36rem;
+}
+
+.max-w-2xl {
+  max-width: 42rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1546,10 +1554,6 @@ input:checked + .toggle-bg {
 
 .flex-shrink-0 {
   flex-shrink: 0;
-}
-
-.border-collapse {
-  border-collapse: collapse;
 }
 
 .-translate-x-1\/2 {
@@ -1688,6 +1692,14 @@ input:checked + .toggle-bg {
   gap: 1.25rem;
 }
 
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
 .gap-x-0 {
   -moz-column-gap: 0px;
        column-gap: 0px;
@@ -1771,6 +1783,12 @@ input:checked + .toggle-bg {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -2197,10 +2215,6 @@ input:checked + .toggle-bg {
   text-align: end;
 }
 
-.font-sans {
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -2319,6 +2333,11 @@ input:checked + .toggle-bg {
   color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
+.text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
 .text-gray-800 {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
@@ -2374,9 +2393,13 @@ input:checked + .toggle-bg {
   color: rgb(114 59 19 / var(--tw-text-opacity));
 }
 
-.text-gray-700 {
+.text-gray-600 {
   --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity));
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.underline {
+  text-decoration-line: underline;
 }
 
 .placeholder-gray-400::-moz-placeholder {
@@ -2487,6 +2510,14 @@ input:checked + .toggle-bg {
 
 .ease-out {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.ease-linear {
+  transition-timing-function: linear;
+}
+
+.ease-in {
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
 
 /* Set font family */
@@ -4659,6 +4690,12 @@ body {
     margin-bottom: calc(0px * var(--tw-space-y-reverse));
   }
 
+  .md\:space-y-8 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+  }
+
   .md\:p-1 {
     padding: 0.25rem;
   }
@@ -4740,6 +4777,11 @@ body {
   .md\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
+  }
+
+  .md\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 }
 

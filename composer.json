@@ -11,7 +11,8 @@
     },
     "require": {
         "php": "^7.4 || ^8.0",
-        "codeigniter4/framework": "^4.0",
+        "codeigniter4/framework": "4.4.7",
+        "dompdf/dompdf": "^3.0",
         "midtrans/midtrans-php": "^2.5"
     },
     "require-dev": {
@@ -38,4 +39,3 @@
         "test": "phpunit"
     }
 }
-

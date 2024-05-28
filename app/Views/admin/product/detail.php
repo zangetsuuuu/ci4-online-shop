@@ -15,31 +15,31 @@
         <div class="h-full p-4 mt-3 bg-white rounded-lg shadow-sm md:mt-4">
             <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
                 <div class="w-full h-64 overflow-hidden rounded-lg">
-                    <img class="object-cover w-full h-full" src="<?= base_url('img/products/' . $product['image']); ?>" alt="<?= $product['name']; ?>">
+                    <img class="object-cover w-full h-full" src="<?= base_url('img/products/' . esc($product['image'])); ?>" alt="<?= $product['name']; ?>">
                 </div>
                 <div class="relative col-span-1 p-3 md:col-span-2 md:p-4">
                     <div class="space-y-1.5 mb-2.5 md:mb-3.5">
                         <div class="uppercase tracking-wide text-[0.65rem] md:text-xs text-emerald-500 font-semibold">
-                            <?= $product['category']; ?>
+                            <?= esc($product['category']); ?>
                         </div>
                         <h2 class="text-lg font-semibold tracking-wide text-myBlack md:text-xl">
-                            <?= $product['name']; ?>
+                            <?= esc($product['name']); ?>
                         </h2>
                         <div>
                             <span class="bg-gray-100 text-gray-500 text-[0.65rem] md:text-xs font-medium tracking-wide px-2.5 py-0.5 rounded">
-                                Stok: <?= $product['stock']; ?>
+                                Stok: <?= esc($product['stock']); ?>
                             </span>
                         </div>
                     </div>
                     <p class="text-xs leading-relaxed tracking-wide text-gray-500 md:text-sm">
-                        <?= $product['description']; ?>
+                        <?= esc($product['description']); ?>
                     </p>
                     <div class="mt-5">
                         <div class="flex items-center justify-between">
                             <div class="text-xl font-semibold tracking-wide text-myBlack">
                                 Rp. <?= number_format($product['price'], 0, ',', '.'); ?>
                             </div>
-                            <a href="<?= base_url("admin/product/$product[slug]/edit"); ?>" class="flex items-center space-x-2 btn-admin">
+                            <a href="<?= base_url('admin/product/' . $product['slug'] . '/edit'); ?>" class="flex items-center space-x-2 btn-admin">
                                 <svg class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z" fill="currentColor" />
                                 </svg>
@@ -52,5 +52,4 @@
         </div>
     </div>
 </div>
-
 <?= $this->endSection(); ?>

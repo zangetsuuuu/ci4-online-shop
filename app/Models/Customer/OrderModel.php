@@ -10,27 +10,37 @@ class OrderModel extends Model
     protected $allowedFields = ['reference','customer_id', 'transaction_id', 'total_price', 'status', 'created_at', 'updated_at'];
     protected $returnType = 'array';
 
-    public function getOrders($date = '', $status = '')
+    public function getOrders()
     {
-        $customerId = session()->get('id');
-        
-        $conditions = [
-            'customer_id' => $customerId,
-        ];
-
-        if (!empty($date)) {
-            $conditions['DATE(created_at)'] = $date;
-        }
-
-        if (!empty($status)) {
-            $conditions['status'] = $status;
-        }
-
-        return $this->where($conditions)->findAll();
+        $id = session()->get('id');
+        return $this->where('customer_id', $id)->orderBy('created_at', 'DESC')->findAll();
     }
 
     public function getOrderDetails($params)
     {
         return $this->where(['reference' => $params])->first();
+    }
+
+    public function getOrdersByStatus($status)
+    {
+        $id = session()->get('id');
+        return $this->where('customer_id', $id)->where(['status' => $status])->findAll();
+    }
+
+    public function sortOrders($params)
+    {
+        $id = session()->get('id');
+
+        if ($params == 'terlama') {
+            return $this->where(['customer_id' => $id])->orderBy('created_at', 'ASC')->findAll();
+        } else {
+            return $this->where(['customer_id' => $id])->orderBy('created_at', 'DESC')->findAll();
+        }
+    }
+
+    public function getTotalOrders()
+    {
+        $id = session()->get('id');
+        return $this->where(['customer_id' => $id])->countAllResults();
     }
 }

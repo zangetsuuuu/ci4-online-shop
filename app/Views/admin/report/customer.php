@@ -5,9 +5,9 @@
     <div class="flex flex-col items-center justify-center h-full">
         <h1 class="mb-4 text-2xl font-bold">Laporan Pelanggan</h1>
         <h2 class="mb-2 text-xs tracking-wider text-gray-500 uppercase">Keterangan:</h2>
-        <p class="mb-2 text-xs text-myBlack">Data: <?= $info; ?></p>
+        <p class="mb-2 text-xs text-myBlack">Data: <?= esc($info); ?></p>
         <p class="mb-2 text-xs text-myBlack">Tanggal Dibuat: <?= date('d F Y'); ?></p>
-        <p class="mb-6 text-xs text-myBlack">Jumlah Pelanggan: <?= $totalCustomers; ?></p>
+        <p class="mb-6 text-xs text-myBlack">Jumlah Pelanggan: <?= esc($totalCustomers); ?></p>
         <div class="w-full overflow-x-auto border border-gray-200 shadow-lg">
             <table class="min-w-full">
                 <thead class="bg-gray-100">
@@ -43,28 +43,28 @@
                         foreach ($customers as $customer) : ?>
                             <tr>
                                 <td class="px-4 py-2 text-xs text-gray-700">
-                                    <?= $i++; ?>
+                                    <?= esc($i++); ?>
                                 </td>
                                 <td class="px-4 py-2 text-xs text-gray-700">
-                                    #<?= $customer['id']; ?>
+                                    #<?= esc($customer['id']); ?>
                                 </td>
                                 <td class="px-4 py-2 text-xs text-gray-700">
-                                    <?= $customer['fullname']; ?> <span class="text-red-500"><?= $customer['deleted_at'] != null ? '(Tidak Aktif)' : ''; ?></span>
+                                    <?= esc($customer['fullname']); ?> <span class="text-red-500"><?= esc($customer['deleted_at'] != null ? '(Tidak Aktif)' : ''); ?></span>
                                 </td>
                                 <td class="px-4 py-2 text-xs text-gray-700">
-                                    @<?= $customer['username']; ?>
+                                    @<?= esc($customer['username']); ?>
                                 </td>
                                 <td class="px-4 py-2 text-xs text-gray-700">
-                                    <?= $customer['email']; ?>
+                                    <?= esc($customer['email']); ?>
                                 </td>
                                 <td class="px-4 py-2 text-xs text-gray-700">
-                                    <?= ucwords($customer['gender']); ?>
+                                    <?= esc($customer['gender']); ?>
                                 </td>
                                 <td class="px-4 py-2 text-xs text-gray-700">
-                                    <a href="https://wa.me/<?= $customer['phone_number']; ?>"><?= $customer['phone_number']; ?></a>
+                                    <a href="https://wa.me/<?= esc($customer['phone_number']); ?>"><?= esc($customer['phone_number']); ?></a>
                                 </td>
                                 <td class="px-4 py-2 text-xs text-gray-700">
-                                    <?= $customer['address']; ?>
+                                    <?= esc($customer['address']); ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

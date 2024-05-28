@@ -11,67 +11,142 @@
                     </svg>
                     <h1 class="text-lg font-semibold tracking-wide md:text-xl">Pesanan</h1>
                 </div>
-                <button data-modal-target="order-filters-modal" data-modal-toggle="order-filters-modal" class="duration-300 ease-in-out text-myBlack hover:text-gray-500">
-                    <svg class="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3 7C3 6.44772 3.44772 6 4 6H20C20.5523 6 21 6.44772 21 7C21 7.55228 20.5523 8 20 8H4C3.44772 8 3 7.55228 3 7ZM6 12C6 11.4477 6.44772 11 7 11H17C17.5523 11 18 11.4477 18 12C18 12.5523 17.5523 13 17 13H7C6.44772 13 6 12.5523 6 12ZM9 17C9 16.4477 9.44772 16 10 16H14C14.5523 16 15 16.4477 15 17C15 17.5523 14.5523 18 14 18H10C9.44772 18 9 17.5523 9 17Z" fill="currentColor" />
-                    </svg>
-                </button>
+                <div class="flex items-center space-x-3">
+                    <button data-modal-target="sort-modal" data-modal-toggle="sort-modal" class="duration-300 ease-in-out text-myBlack hover:text-gray-500">
+                        <svg class="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 18L16 6M16 6L20 10.125M16 6L12 10.125" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M8 6L8 18M8 18L12 13.875M8 18L4 13.875" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <button data-modal-target="status-modal" data-modal-toggle="status-modal" class="duration-300 ease-in-out text-myBlack hover:text-gray-500">
+                        <svg class="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5868 6.58468C14.9487 6.22336 15.4482 5.99994 16 5.99994C17.1046 5.99994 18 6.89537 18 7.99994C18 8.55169 17.7766 9.05126 17.4153 9.41311C16.824 8.17759 15.8223 7.17594 14.5868 6.58468ZM10.2571 6.25701C10.5118 5.41662 10.9459 4.65423 11.5149 4.0144C7.32249 4.26517 4 7.74455 4 11.9999C4 16.4182 7.58172 19.9999 12 19.9999C16.2554 19.9999 19.7348 16.6774 19.9855 12.4851C19.3457 13.054 18.5833 13.4882 17.7429 13.7429C16.9962 16.2066 14.7075 17.9999 12 17.9999C8.68629 17.9999 6 15.3136 6 11.9999C6 9.2924 7.79338 7.00373 10.2571 6.25701Z" fill="currentColor" />
+                            <circle cx="16" cy="8" r="4" fill="currentColor" />
+                        </svg>
+                    </button>
+                    <button data-modal-target="search-modal" data-modal-toggle="search-modal" class="duration-200 ease-in-out text-myBlack hover:text-gray-500">
+                        <svg class="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.6725 16.6412L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
 
         <div class="h-full p-4 mt-3 bg-white rounded-lg shadow-sm md:mt-4">
-            <div class="overflow-x-auto rounded-md">
-                <!-- Orders start -->
-                <table class="min-w-[60rem] md:min-w-full text-sm text-gray-500 tracking-wide divide-y divide-gray-200 border border-gray-200 text-center">
-                    <thead class="text-xs uppercase bg-gray-100 text-myBlack">
-                        <tr>
-                            <th scope="col" class="px-6 py-4 w-fit">
-                                No.
-                            </th>
-                            <th scope="col" class="px-6 py-4 w-fit">
-                                Tanggal Pesanan
-                            </th>
-                            <th scope="col" class="px-6 py-4 w-fit">
-                                Total
-                            </th>
-                            <th scope="col" class="px-6 py-4 w-fit">
-                                Status
-                            </th>
-                            <th scope="col" class="px-6 py-4 w-fit">
-                                Aksi
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-center bg-white divide-y divide-gray-200">
-                        <?php $i = 1; foreach ($orders as $order) : ?>
+            <?php if (session()->getFlashdata('status')) : ?>
+                <div class="flex items-center justify-between p-3 mb-4 text-sm text-gray-800 border border-gray-300 rounded-lg md:p-4 bg-gray-50">
+                    <div class="flex items-center" role="alert">
+                        <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                        </svg>
+                        <span class="sr-only">Info</span>
+                        <div>
+                            <div class="text-xs font-medium tracking-wide ms-3 md:text-sm">
+                                <?= session()->getFlashdata('status'); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="<?= base_url('orders'); ?>" class="text-xs font-medium tracking-wide md:text-sm hover:underline">Reset</a>
+                </div>
+            <?php endif; ?>
+
+            <?php if (session()->getFlashdata('Order Search Info')) : ?>
+                <div class="flex items-center justify-between p-3 mb-4 text-sm text-gray-800 border border-gray-300 rounded-lg md:p-4 bg-gray-50">
+                    <div class="flex items-center" role="alert">
+                        <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                        </svg>
+                        <span class="sr-only">Info</span>
+                        <div>
+                            <div class="text-xs font-medium tracking-wide ms-3 md:text-sm">
+                                <?= session()->getFlashdata('Order Search Info'); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="<?= base_url('orders'); ?>" class="text-xs font-medium tracking-wide md:text-sm hover:underline">Reset</a>
+                </div>
+            <?php elseif (session()->getFlashdata('Order Not Found')) : ?>
+                <div class="flex items-center justify-between p-3 text-sm text-yellow-800 border border-yellow-300 rounded-lg md:p-4 bg-yellow-50">
+                    <div class="flex items-center" role="alert">
+                        <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                        </svg>
+                        <span class="sr-only">Info</span>
+                        <div>
+                            <div class="text-xs font-medium tracking-wide ms-3 md:text-sm">
+                                <?= session()->getFlashdata('Order Not Found'); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="<?= base_url('orders'); ?>" class="text-xs font-medium tracking-wide md:text-sm hover:underline">Kembali</a>
+                </div>
+            <?php endif; ?>
+
+            <?php if (!session()->getFlashdata('Order Not Found')) : ?>
+                <div class="overflow-x-auto rounded-md">
+                    <!-- Orders start -->
+                    <table class="min-w-[60rem] md:min-w-full text-sm text-gray-500 tracking-wide divide-y divide-gray-200 border border-gray-200 text-center">
+                        <thead class="text-xs uppercase bg-gray-100 text-myBlack">
                             <tr>
-                                <td class="px-6 py-4 font-bold whitespace-nowrap text-myBlack"><?= $i++; ?>.</td>
-                                <td class="px-6 py-4 whitespace-nowrap"><?= date('j F Y, H:i', strtotime($order['created_at'])); ?> WIB</td>
-                                <td class="px-6 py-4 whitespace-nowrap"><?= 'Rp. ' . number_format($order['total_price'], 0, ',', '.'); ?></td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span class="<?= $order['color']; ?>">
-                                        <?= ucwords($order['status']); ?>
-                                    </span>
-                                </td>
-                                <td class="py-4 px-7 whitespace-nowrap">
-                                    <div class="flex items-center justify-center">
-                                        <a href="<?= base_url('order/' . $order['reference']); ?>" class="duration-300 ease-in-out hover:text-myBlack">
-                                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V11C12.75 10.5858 12.4142 10.25 12 10.25C11.5858 10.25 11.25 10.5858 11.25 11V17C11.25 17.4142 11.5858 17.75 12 17.75ZM12 7C12.5523 7 13 7.44772 13 8C13 8.55228 12.5523 9 12 9C11.4477 9 11 8.55228 11 8C11 7.44772 11.4477 7 12 7Z" fill="currentColor" />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </td>
+                                <th scope="col" class="px-6 py-4 w-fit">
+                                    No.
+                                </th>
+                                <th scope="col" class="px-6 py-4 w-fit">
+                                    Tanggal Pesanan
+                                </th>
+                                <th scope="col" class="px-6 py-4 w-fit">
+                                    Total
+                                </th>
+                                <th scope="col" class="px-6 py-4 w-fit">
+                                    Status
+                                </th>
+                                <th scope="col" class="px-6 py-4 w-fit">
+                                    Aksi
+                                </th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-                <!-- Orders end  -->
-            </div>
+                        </thead>
+                        <tbody class="text-center bg-white divide-y divide-gray-200">
+                            <?php if (!empty($orders)) : $i = 1;
+                                foreach ($orders as $order) : ?>
+                                    <tr>
+                                        <td class="px-6 py-4 font-bold whitespace-nowrap text-myBlack"><?= $i++; ?>.</td>
+                                        <td class="px-6 py-4 whitespace-nowrap"><?= date('j F Y, H:i', strtotime($order['created_at'])); ?> WIB</td>
+                                        <td class="px-6 py-4 whitespace-nowrap"><?= 'Rp. ' . number_format($order['total_price'], 0, ',', '.'); ?></td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="<?= $order['color']; ?>">
+                                                <?= ucwords($order['status']); ?>
+                                            </span>
+                                        </td>
+                                        <td class="py-4 px-7 whitespace-nowrap">
+                                            <div class="flex items-center justify-center">
+                                                <a href="<?= base_url('order/' . $order['reference']); ?>" class="duration-300 ease-in-out hover:text-myBlack">
+                                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V11C12.75 10.5858 12.4142 10.25 12 10.25C11.5858 10.25 11.25 10.5858 11.25 11V17C11.25 17.4142 11.5858 17.75 12 17.75ZM12 7C12.5523 7 13 7.44772 13 8C13 8.55228 12.5523 9 12 9C11.4477 9 11 8.55228 11 8C11 7.44772 11.4477 7 12 7Z" fill="currentColor" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                <tr>
+                                    <td colspan="6" class="py-6 text-center">Belum ada pesanan</td>
+                                </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                    <!-- Orders end  -->
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>
 
-<?= $this->include('layout/customer/order/filter'); ?>
+<?= $this->include('layout/customer/order/sort'); ?>
+
+<?= $this->include('layout/customer/order/status'); ?>
+
+<?= $this->include('layout/customer/order/search'); ?>
 
 <?= $this->endSection(); ?>

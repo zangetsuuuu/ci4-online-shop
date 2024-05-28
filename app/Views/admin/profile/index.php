@@ -22,9 +22,23 @@
         </div>
 
         <div class="h-full p-4 mt-3 bg-white rounded-lg md:mt-4">
+            <?php if (session()->getFlashdata('success')) : ?>
+                <div class="flex items-center p-3 mb-4 text-sm text-green-800 border border-green-300 rounded-lg md:p-4 bg-green-50" role="alert">
+                    <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="sr-only">Info</span>
+                    <div>
+                        <div class="text-xs font-medium tracking-wide ms-3 md:text-sm">
+                            <?= session()->getFlashdata('success'); ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-5">
                 <div class="relative w-48 h-48 mx-auto overflow-hidden border rounded-full md:w-56 md:h-56">
-                    <img src="<?= base_url('img/avatars/admin/' . $profile['avatar']); ?>" class="object-cover w-full h-full" alt="">
+                    <img src="<?= base_url('img/avatars/admin/' . esc($profile['avatar'])); ?>" class="object-cover w-full h-full" alt="">
                     <div class="absolute inset-0 flex items-center justify-center duration-300 ease-in-out opacity-0 cursor-pointer hover:opacity-100 bg-myBlack/50">
                         <button type="button" data-modal-target="profile-image-modal" data-modal-toggle="profile-image-modal" data-tooltip-target="profile-image-tooltip" class="p-3 text-white duration-300 ease-in-out rounded-full hover:text-gray-300">
                             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -40,27 +54,27 @@
                 <div class="col-span-2 space-y-6">
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Nama Lengkap</p>
-                        <h1 class="text-lg font-semibold tracking-wide"><?= $profile['fullname']; ?></h1>
+                        <h1 class="text-lg font-semibold tracking-wide"><?= esc($profile['fullname']); ?></h1>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Username</p>
-                        <h1 class="text-lg font-semibold tracking-wide">@<?= $profile['username']; ?></h1>
+                        <h1 class="text-lg font-semibold tracking-wide">@<?= esc($profile['username']); ?></h1>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Email</p>
-                        <h1 class="text-lg font-semibold tracking-wide"><?= $profile['email']; ?></h1>
+                        <h1 class="text-lg font-semibold tracking-wide"><?= esc($profile['email']); ?></h1>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Jenis Kelamin</p>
-                        <h1 class="text-lg font-semibold tracking-wide"><?= ucfirst($profile['gender']); ?></h1>
+                        <h1 class="text-lg font-semibold tracking-wide"><?= esc($profile['gender']); ?></h1>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">No. HP</p>
-                        <h1 class="text-lg font-semibold tracking-wide"><?= $profile['phone_number']; ?></h1>
+                        <h1 class="text-lg font-semibold tracking-wide"><?= esc($profile['phone_number']); ?></h1>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Role</p>
-                        <h1 class="text-lg font-semibold tracking-wide"><?= ucfirst($profile['role']); ?></h1>
+                        <h1 class="text-lg font-semibold tracking-wide"><?= esc($profile['role']); ?></h1>
                     </div>
                 </div>
             </div>

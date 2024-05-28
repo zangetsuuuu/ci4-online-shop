@@ -28,7 +28,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-x-0 gap-y-4 md:gap-x-4">
                         <div class="flex flex-col items-center space-y-2">
                             <div class="relative w-48 h-48 mx-auto overflow-hidden border rounded-full md:w-56 md:h-56">
-                                <img id="frame" src="<?= base_url('img/avatars/admin/' . $profile['avatar']); ?>" class="object-cover w-full h-full" alt="<?= $profile['fullname']; ?>">
+                                <img id="frame" src="<?= base_url('img/avatars/admin/' . esc($profile['avatar'])); ?>" class="object-cover w-full h-full" alt="<?= esc($profile['fullname']); ?>">
                                 <div class="absolute inset-0 flex items-center justify-center bg-myBlack/20">
                                     <label data-tooltip-target="edit-user-picture-tooltip" for="fileInput" class="p-3 text-white duration-300 ease-in-out rounded-full cursor-pointer hover:text-gray-300">
                                         <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,59 +42,60 @@
                                     <div class="tooltip-arrow" data-popper-arrow></div>
                                 </div>
                             </div>
-                            <?php if (isset(session('errors')['avatar'])) : ?>
+                            <?php if (isset($validation['avatar'])) : ?>
                                 <p class="input-error-message">
-                                    <?= session('errors')['avatar']; ?>
+                                    <?= $validation['avatar']; ?>
                                 </p>
                             <?php endif; ?>
                         </div>
+                        
                         <div class="col-span-2 space-y-5">
                             <div>
                                 <label for="fullname" class="text-sm font-medium tracking-wide text-myBlack">Nama Depan <span class="text-red-500">*</span></label>
-                                <input type="text" name="fullname" id="fullname" class="<?= (isset(session('errors')['fullname'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['fullname'])) ? 'autofocus' : '' ?> placeholder="John" value="<?= old('fullname', $profile['fullname']) ?>" />
-                                <?php if (isset(session('errors')['fullname'])) : ?>
+                                <input type="text" name="fullname" id="fullname" class="<?= (isset($validation['fullname'])) ? 'input-error' : 'input-admin' ?>" <?= (isset($validation['fullname'])) ? 'autofocus' : '' ?> placeholder="John" value="<?= old('fullname', $profile['fullname']) ?>" />
+                                <?php if (isset($validation['fullname'])) : ?>
                                     <div class="input-error-message">
-                                        <?= session('errors')['fullname']; ?>
+                                        <?= $validation['fullname']; ?>
                                     </div>
                                 <?php endif ?>
                             </div>
                             <div>
                                 <label for="username" class="text-sm font-medium tracking-wide text-myBlack">Username <span class="text-red-500">*</span></label>
-                                <input type="text" name="username" id="username" class="<?= (isset(session('errors')['username'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['username'])) ? 'autofocus' : '' ?> value="<?= old('username', $profile['username']); ?>" placeholder="johndoe" />
-                                <?php if (isset(session('errors')['username'])) : ?>
+                                <input type="text" name="username" id="username" class="<?= (isset($validation['username'])) ? 'input-error' : 'input-admin' ?>" <?= (isset($validation['username'])) ? 'autofocus' : '' ?> value="<?= old('username', $profile['username']); ?>" placeholder="johndoe" />
+                                <?php if (isset($validation['username'])) : ?>
                                     <p class="input-error-message">
-                                        <?= session('errors')['username']; ?>
+                                        <?= $validation['username']; ?>
                                     </p>
                                 <?php endif; ?>
                             </div>
                             <div>
                                 <label for="email" class="text-sm font-medium tracking-wide text-myBlack">Email <span class="text-red-500">*</span></label>
-                                <input type="email" name="email" id="email" class="<?= (isset(session('errors')['email'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['email'])) ? 'autofocus' : '' ?> placeholder="someone@example.com" value="<?= old('email', $profile['email']) ?>" />
-                                <?php if (isset(session('errors')['email'])) : ?>
+                                <input type="email" name="email" id="email" class="<?= (isset($validation['email'])) ? 'input-error' : 'input-admin' ?>" <?= (isset($validation['email'])) ? 'autofocus' : '' ?> placeholder="someone@example.com" value="<?= old('email', $profile['email']) ?>" />
+                                <?php if (isset($validation['email'])) : ?>
                                     <div class="input-error-message">
-                                        <?= session('errors')['email']; ?>
+                                        <?= $validation['email']; ?>
                                     </div>
                                 <?php endif ?>
                             </div>
                             <div>
                                 <label for="gender" class="text-sm font-medium tracking-wide text-myBlack">Jenis Kelamin <span class="text-red-500">*</span></label>
-                                <select name="gender" id="gender" class="<?= (isset(session('errors')['gender'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['gender'])) ? 'autofocus' : '' ?>>
+                                <select name="gender" id="gender" class="<?= (isset($validation['gender'])) ? 'input-error' : 'input-admin' ?>" <?= (isset($validation['gender'])) ? 'autofocus' : '' ?>>
                                     <option disabled selected>Pilih Jenis Kelamin</option>
-                                    <option value="Laki-laki" <?= old('gender', $profile['gender']) === 'Laki-laki' ? 'selected' : '' ?>>Laki-Laki</option>
+                                    <option value="Laki-laki" <?= old('gender', $profile['gender']) === 'Laki-laki' ? 'selected' : '' ?>>Laki-laki</option>
                                     <option value="Perempuan" <?= old('gender', $profile['gender']) === 'Perempuan' ? 'selected' : '' ?>>Perempuan</option>
                                 </select>
-                                <?php if (isset(session('errors')['gender'])) : ?>
+                                <?php if (isset($validation['gender'])) : ?>
                                     <div class="input-error-message">
-                                        <?= session('errors')['gender']; ?>
+                                        <?= $validation['gender']; ?>
                                     </div>
                                 <?php endif ?>
                             </div>
                             <div>
                                 <label for="phone_number" class="text-sm font-medium tracking-wide text-myBlack">No. HP <span class="text-red-500">*</span></label>
-                                <input type="text" name="phone_number" id="phone_number" class="<?= (isset(session('errors')['phone_number'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['phone_number'])) ? 'autofocus' : '' ?> placeholder="+62" value="<?= old('phone_number', $profile['phone_number']) ?>" />
-                                <?php if (isset(session('errors')['phone_number'])) : ?>
+                                <input type="text" name="phone_number" id="phone_number" class="<?= (isset($validation['phone_number'])) ? 'input-error' : 'input-admin' ?>" <?= (isset($validation['phone_number'])) ? 'autofocus' : '' ?> placeholder="+62" value="<?= old('phone_number', $profile['phone_number']) ?>" />
+                                <?php if (isset($validation['phone_number'])) : ?>
                                     <div class="input-error-message">
-                                        <?= session('errors')['phone_number']; ?>
+                                        <?= $validation['phone_number']; ?>
                                     </div>
                                 <?php endif ?>
                             </div>

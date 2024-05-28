@@ -13,20 +13,20 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="<?= base_url('admin/orders'); ?>" method="get">
+            <form action="<?= base_url('orders'); ?>" method="get">
                 <?= csrf_field(); ?>
                 <div class="p-4 space-y-5 md:p-5">
                     <div>
-                        <select id="sort" name="sortBy" class="input-admin">
+                        <select id="sort" name="sortBy" class="input-customers">
                             <option value="terbaru" selected>Terbaru</option>
-                            <option value="terlama" <?= isset($sortBy) === 'Terlama' ? 'selected' : '' ?>>Terlama</option>
+                            <option value="terlama" <?= isset($sortBy) === 'terlama' ? 'selected' : '' ?>>Terlama</option>
                         </select>
                     </div>
                 </div>
                 <!-- Modal footer -->
                 <div class="flex items-center justify-end p-4 space-x-3 border-t border-gray-200 rounded-b md:p-5">
                     <button type="button" data-modal-hide="sort-modal" class="btn-alternative">Batal</button>
-                    <button type="submit" class="btn-admin">Terapkan</button>
+                    <button type="submit" class="btn-primary">Terapkan</button>
                 </div>
             </form>
         </div>

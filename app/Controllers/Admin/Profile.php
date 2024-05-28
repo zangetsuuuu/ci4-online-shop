@@ -36,7 +36,8 @@ class Profile extends BaseController
 
         $data = [
             'title' => 'Edit Profil | ADMIN',
-            'profile' => $this->adminModel->getAdminById($id)
+            'profile' => $this->adminModel->getAdminById($id),
+            'validation' => session('validation')
         ];
 
         return view('admin/profile/edit', $data);
@@ -69,7 +70,7 @@ class Profile extends BaseController
         $config = $this->profileModel->validation($usernameRule, $emailRule, $phoneNumberRule);
 
         if (!$this->validate($config)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         }
 
         $avatar = $this->request->getFile('avatar');
@@ -98,7 +99,7 @@ class Profile extends BaseController
 
         $this->profileModel->save($data);
 
-        session()->setFlashdata('Edit Success', 'Data berhasil diubah!');
+        session()->setFlashdata('success', 'Data berhasil diubah!');
         session()->set(['avatar' => $avatarName]);
 
         return redirect()->to('admin/profile');

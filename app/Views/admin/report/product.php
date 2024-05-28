@@ -5,9 +5,9 @@
     <div class="flex flex-col items-center justify-center h-full">
         <h1 class="mb-4 text-2xl font-bold">Laporan Produk</h1>
         <h2 class="mb-2 text-xs tracking-wider text-gray-500 uppercase">Keterangan:</h2>
-        <p class="mb-2 text-xs text-myBlack">Data: <?= $info; ?></p>
+        <p class="mb-2 text-xs text-myBlack">Data: <?= esc($info); ?></p>
         <p class="mb-2 text-xs text-myBlack">Tanggal Dibuat: <?= date('d F Y'); ?></p>
-        <p class="mb-6 text-xs text-myBlack">Jumlah Produk: <?= $totalProducts; ?></p>
+        <p class="mb-6 text-xs text-myBlack">Jumlah Produk: <?= esc($totalProducts); ?></p>
         <div class="w-full overflow-x-auto border border-gray-200 shadow-lg">
             <table class="min-w-full">
                 <thead class="bg-gray-100">
@@ -40,16 +40,16 @@
                                     <?= $i++; ?>
                                 </td>
                                 <td class="px-4 py-2 text-xs text-gray-700">
-                                    #<?= $product['id']; ?>
+                                    #<?= esc($product['id']); ?>
                                 </td>
                                 <td class="px-4 py-2 text-xs text-gray-700">
-                                    <?= $product['name']; ?>
+                                    <?= esc($product['name']); ?>
                                 </td>
                                 <td class="px-4 py-2 text-xs text-gray-700">
-                                    <?= $product['category']; ?>
+                                    <?= esc($product['category']); ?>
                                 </td>
                                 <td class="px-4 py-2 text-xs text-gray-700">
-                                    <?= ($product['stock'] == 0) ? 'Habis' : $product['stock']; ?>
+                                    <?= (esc($product['stock']) == 0) ? 'Habis' : esc($product['stock']); ?>
                                 </td>
                                 <td class="px-4 py-2 text-xs text-gray-700">
                                     Rp. <?= number_format($product['price'], 0, ',', '.'); ?>

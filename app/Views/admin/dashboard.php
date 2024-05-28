@@ -86,13 +86,12 @@
                             foreach ($orders as $order) : ?>
                                 <tr>
                                     <td class="px-6 py-4 font-bold whitespace-nowrap text-myBlack"><?= $i++; ?></td>
-                                    <td class="px-6 py-4 whitespace-nowrap">#<?= $order['id']; ?></td>
-                                    <td class="px-6 py-4 whitespace-nowrap"><?= date_format(date_create($order['created_at']), 'd M Y, H:i'); ?> WIB</td>
-
-                                    <td class="px-6 py-4 truncate whitespace-nowrap max-w-10"><?= $order['customer_name']; ?></td>
+                                    <td class="px-6 py-4 whitespace-nowrap">#<?= esc($order['id']); ?></td>
+                                    <td class="px-6 py-4 whitespace-nowrap"><?= esc(date('d M Y, H:i', strtotime($order['created_at']))); ?> WIB</td>
+                                    <td class="px-6 py-4 truncate whitespace-nowrap max-w-10"><?= esc($order['customer_name']); ?></td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span class="inline-flex px-2 text-xs font-semibold leading-5 <?= $order['status_color']; ?> rounded-full">
-                                            <?= ucwords($order['status']); ?>
+                                            <?= esc($order['status']); ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">

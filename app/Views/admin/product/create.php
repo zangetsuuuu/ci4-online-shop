@@ -43,9 +43,9 @@
                                 <div class="tooltip-arrow" data-popper-arrow></div>
                             </div>
                         </div>
-                        <?php if (isset(session('errors')['image'])) : ?>
+                        <?php if (isset($validation['image'])) : ?>
                             <p class="input-error-message">
-                                <?= session('errors')['image']; ?>
+                                <?= $validation['image']; ?>
                             </p>
                         <?php endif; ?>
                     </div>
@@ -54,50 +54,50 @@
                     <div class="col-span-2 space-y-5">
                         <div>
                             <label for="name" class="text-sm font-medium tracking-wide text-myBlack">Nama Produk <span class="text-red-500">*</span></label>
-                            <input type="text" name="name" id="name" class="<?= (isset(session('errors')['name'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['name'])) ? 'autofocus' : '' ?> value="<?= old('name'); ?>" placeholder="Tambahkan nama produk" />
-                            <?php if (isset(session('errors')['name'])) : ?>
+                            <input type="text" name="name" id="name" class="<?= (isset($validation['name'])) ? 'input-error' : 'input-admin' ?>" <?= (isset($validation['name'])) ? 'autofocus' : '' ?> value="<?= esc(old('name')) ?>" placeholder="Tambahkan nama produk" />
+                            <?php if (isset($validation['name'])) : ?>
                                 <p class="input-error-message">
-                                    <?= session('errors')['name']; ?>
+                                    <?= $validation['name']; ?>
                                 </p>
                             <?php endif; ?>
                         </div>
                         <div>
                             <label for="category" class="text-sm font-medium tracking-wide text-myBlack">Kategori <span class="text-red-500">*</span></label>
-                            <select name="category" id="category" class="<?= (isset(session('errors')['category'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['category'])) ? 'autofocus' : '' ?>>
+                            <select name="category" id="category" class="<?= (isset($validation['category'])) ? 'input-error' : 'input-admin' ?>" <?= (isset($validation['category'])) ? 'autofocus' : '' ?>>
                                 <option value="" disabled selected>Pilih kategori</option>
-                                <option value="makanan" <?= old('category') == 'makanan' ? 'selected' : '' ?>>Makanan</option>
-                                <option value="minuman" <?= old('category') == 'minuman' ? 'selected' : '' ?>>Minuman</option>
+                                <option value="Makanan" <?= old('category') == 'Makanan' ? 'selected' : '' ?>>Makanan</option>
+                                <option value="Minuman" <?= old('category') == 'Minuman' ? 'selected' : '' ?>>Minuman</option>
                             </select>
-                            <?php if (isset(session('errors')['category'])) : ?>
+                            <?php if (isset($validation['category'])) : ?>
                                 <p class="input-error-message">
-                                    <?= session('errors')['category']; ?>
+                                    <?= $validation['category']; ?>
                                 </p>
                             <?php endif; ?>
                         </div>
                         <div>
                             <label for="stock" class="text-sm font-medium tracking-wide text-myBlack">Stok <span class="text-red-500">*</span></label>
-                            <input type="number" min="" name="stock" id="stock" class="<?= (isset(session('errors')['stock'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['stock'])) ? 'autofocus' : '' ?> value="<?= old('stock'); ?>" placeholder="Tambahkan stok" />
-                            <?php if (isset(session('errors')['stock'])) : ?>
+                            <input type="number" min="" name="stock" id="stock" class="<?= (isset($validation['stock'])) ? 'input-error' : 'input-admin' ?>" <?= (isset($validation['stock'])) ? 'autofocus' : '' ?> value="<?= esc(old('stock')); ?>" placeholder="Tambahkan stok" />
+                            <?php if (isset($validation['stock'])) : ?>
                                 <p class="input-error-message">
-                                    <?= session('errors')['stock']; ?>
+                                    <?= $validation['stock']; ?>
                                 </p>
                             <?php endif; ?>
                         </div>
                         <div>
                             <label for="price" class="text-sm font-medium tracking-wide text-myBlack">Harga <span class="text-red-500">*</span></label>
-                            <input type="number" min="500" name="price" id="price" class="<?= (isset(session('errors')['price'])) ? 'input-error' : 'input-admin' ?>" <?= (isset(session('errors')['price'])) ? 'autofocus' : '' ?> value="<?= old('price'); ?>" placeholder="Rp." />
-                            <?php if (isset(session('errors')['price'])) : ?>
+                            <input type="number" min="500" name="price" id="price" class="<?= (isset($validation['price'])) ? 'input-error' : 'input-admin' ?>" <?= (isset($validation['price'])) ? 'autofocus' : '' ?> value="<?= esc(old('price')); ?>" placeholder="Rp." />
+                            <?php if (isset($validation['price'])) : ?>
                                 <p class="input-error-message">
-                                    <?= session('errors')['price']; ?>
+                                    <?= $validation['price']; ?>
                                 </p>
                             <?php endif; ?>
                         </div>
                         <div>
                             <label for="description" class="text-sm font-medium tracking-wide text-myBlack">Deskripsi <span class="text-red-500">*</span></label>
-                            <textarea name="description" id="description" class="<?= (isset(session('errors')['description'])) ? 'input-error resize-none' : 'input-admin resize-none' ?>" <?= (isset(session('errors')['description'])) ? 'autofocus' : '' ?> placeholder=" Tambahkan deskripsi"><?= old('description'); ?></textarea>
-                            <?php if (isset(session('errors')['description'])) : ?>
+                            <textarea name="description" id="description" class="<?= (isset($validation['description'])) ? 'input-error resize-none' : 'input-admin resize-none' ?>" <?= (isset($validation['description'])) ? 'autofocus' : '' ?> placeholder=" Tambahkan deskripsi"><?= esc(old('description')); ?></textarea>
+                            <?php if (isset($validation['description'])) : ?>
                                 <p class="input-error-message">
-                                    <?= session('errors')['description']; ?>
+                                    <?= $validation['description']; ?>
                                 </p>
                             <?php endif; ?>
                         </div>

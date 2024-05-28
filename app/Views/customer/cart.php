@@ -4,20 +4,36 @@
 <div class="min-h-screen">
     <div class="p-4 sm:ml-64">
         <div class="h-full p-4 mt-16 bg-white rounded-lg shadow-sm md:mt-14">
-            <div class="flex items-center space-x-2 md:space-x-3">
-                <svg class="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2.08416 2.7512C2.22155 2.36044 2.6497 2.15503 3.04047 2.29242L3.34187 2.39838C3.95839 2.61511 4.48203 2.79919 4.89411 3.00139C5.33474 3.21759 5.71259 3.48393 5.99677 3.89979C6.27875 4.31243 6.39517 4.76515 6.4489 5.26153C6.47295 5.48373 6.48564 5.72967 6.49233 6H17.1305C18.8155 6 20.3323 6 20.7762 6.57708C21.2202 7.15417 21.0466 8.02369 20.6995 9.76275L20.1997 12.1875C19.8846 13.7164 19.727 14.4808 19.1753 14.9304C18.6236 15.38 17.8431 15.38 16.2821 15.38H10.9792C8.19028 15.38 6.79583 15.38 5.92943 14.4662C5.06302 13.5523 4.99979 12.5816 4.99979 9.64L4.99979 7.03832C4.99979 6.29837 4.99877 5.80316 4.95761 5.42295C4.91828 5.0596 4.84858 4.87818 4.75832 4.74609C4.67026 4.61723 4.53659 4.4968 4.23336 4.34802C3.91052 4.18961 3.47177 4.03406 2.80416 3.79934L2.54295 3.7075C2.15218 3.57012 1.94678 3.14197 2.08416 2.7512Z" fill="currentColor" />
-                    <path d="M7.5 18C8.32843 18 9 18.6716 9 19.5C9 20.3284 8.32843 21 7.5 21C6.67157 21 6 20.3284 6 19.5C6 18.6716 6.67157 18 7.5 18Z" fill="currentColor" />
-                    <path d="M16.5 18.0001C17.3284 18.0001 18 18.6716 18 19.5001C18 20.3285 17.3284 21.0001 16.5 21.0001C15.6716 21.0001 15 20.3285 15 19.5001C15 18.6716 15.6716 18.0001 16.5 18.0001Z" fill="currentColor" />
-                </svg>
-                <h1 class="text-lg font-semibold tracking-wide md:text-xl">Keranjang</h1>
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2 md:space-x-3">
+                    <svg class="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.08416 2.7512C2.22155 2.36044 2.6497 2.15503 3.04047 2.29242L3.34187 2.39838C3.95839 2.61511 4.48203 2.79919 4.89411 3.00139C5.33474 3.21759 5.71259 3.48393 5.99677 3.89979C6.27875 4.31243 6.39517 4.76515 6.4489 5.26153C6.47295 5.48373 6.48564 5.72967 6.49233 6H17.1305C18.8155 6 20.3323 6 20.7762 6.57708C21.2202 7.15417 21.0466 8.02369 20.6995 9.76275L20.1997 12.1875C19.8846 13.7164 19.727 14.4808 19.1753 14.9304C18.6236 15.38 17.8431 15.38 16.2821 15.38H10.9792C8.19028 15.38 6.79583 15.38 5.92943 14.4662C5.06302 13.5523 4.99979 12.5816 4.99979 9.64L4.99979 7.03832C4.99979 6.29837 4.99877 5.80316 4.95761 5.42295C4.91828 5.0596 4.84858 4.87818 4.75832 4.74609C4.67026 4.61723 4.53659 4.4968 4.23336 4.34802C3.91052 4.18961 3.47177 4.03406 2.80416 3.79934L2.54295 3.7075C2.15218 3.57012 1.94678 3.14197 2.08416 2.7512Z" fill="currentColor" />
+                        <path d="M7.5 18C8.32843 18 9 18.6716 9 19.5C9 20.3284 8.32843 21 7.5 21C6.67157 21 6 20.3284 6 19.5C6 18.6716 6.67157 18 7.5 18Z" fill="currentColor" />
+                        <path d="M16.5 18.0001C17.3284 18.0001 18 18.6716 18 19.5001C18 20.3285 17.3284 21.0001 16.5 21.0001C15.6716 21.0001 15 20.3285 15 19.5001C15 18.6716 15.6716 18.0001 16.5 18.0001Z" fill="currentColor" />
+                    </svg>
+                    <h1 class="text-lg font-semibold tracking-wide md:text-xl">Keranjang</h1>
+                </div>
+                <button data-modal-target="cart-info-modal" data-modal-toggle="cart-info-modal" class="duration-300 ease-in-out text-myBlack hover:text-gray-500">
+                    <svg class="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <title />
+                        <g id="Complete">
+                            <g id="info-circle">
+                                <g>
+                                    <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                    <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="12" y2="16" />
+                                    <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="8" />
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </button>
             </div>
         </div>
         <div class="h-full p-4 mt-3 bg-white rounded-lg shadow-sm md:mt-4">
             <?php if (isset($flashMessages)) :
                 foreach ($flashMessages as $key => $flashMessage) :
                     if ($flashMessage['message']) : ?>
-                        <div id="<?= $flashMessage['id'] ?>" class="flex items-center p-3 mb-4 tracking-wide text-green-800 rounded-lg md:p-4 bg-green-50" role="alert">
+                        <div id="<?= $flashMessage['id'] ?>" class="flex items-center p-3 mb-4 tracking-wide text-blue-800 rounded-lg md:p-4 bg-blue-50" role="alert">
                             <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                             </svg>
@@ -25,7 +41,7 @@
                             <div class="text-xs font-medium tracking-wide ms-3 md:text-sm">
                                 <?= $flashMessage['message'] ?>
                             </div>
-                            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1 md:p-1.5 hover:bg-green-200 inline-flex items-center justify-center w-7 h-7 md:w-8 md:h-8 ease-in-out duration-200" data-dismiss-target="#<?= $flashMessage['id'] ?>" aria-label="Close">
+                            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-blue-50 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 p-1 md:p-1.5 hover:bg-blue-200 inline-flex items-center justify-center w-7 h-7 md:w-8 md:h-8 ease-in-out duration-200" data-dismiss-target="#<?= $flashMessage['id'] ?>" aria-label="Close">
                                 <span class="sr-only">Close</span>
                                 <svg class="w-2 h-2 md:w-3 md:h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
@@ -82,10 +98,10 @@
                                 <?php foreach ($cart as $item) : ?>
                                     <tr>
                                         <th scope="row" class="px-6 py-4 font-medium text-myBlack whitespace-nowrap">
-                                            <?= $item['product_name']; ?>
+                                            <?= esc($item['product_name']); ?>
                                         </th>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <?= $item['quantity']; ?>
+                                            <?= esc($item['quantity']); ?>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <?= 'Rp. ' . number_format($item['price'], 0, ',', '.'); ?>
@@ -115,7 +131,7 @@
                                 <tr class="font-semibold text-myBlack">
                                     <th scope="row" class="px-6 py-3 text-base">Total</th>
                                     <td name="total_quantity" class="px-6 py-4 whitespace-nowrap">
-                                        <?= $total_quantity; ?>
+                                        <?= esc($total_quantity); ?>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap"></td>
                                     <td name="total_price" class="px-6 py-4 whitespace-nowrap">
@@ -148,6 +164,8 @@
         </div>
     </div>
 </div>
+
+<?= $this->include('layout/customer/cart_info'); ?>
 
 <?= $this->include('layout/customer/edit_cart'); ?>
 

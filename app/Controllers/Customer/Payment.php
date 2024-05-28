@@ -154,7 +154,6 @@ class Payment extends BaseController
                 'transaction_id' => $this->transactionModel->getInsertID(),
                 'total_price' => $amount,
                 'created_at' => Time::now(),
-                'status' => 'menunggu diproses'
             ];
 
             $this->orderModel->save($orderData);

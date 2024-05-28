@@ -78,11 +78,18 @@ $routes->group('', function ($routes) {
     $routes->get('product/search', 'Customer\Product::searchProduct');
     $routes->post('product/add-to-cart', 'Customer\Product::addToCart');
     $routes->get('product/(:segment)', 'Customer\Product::viewProductDetail/$1');
+
+    // Orders
     $routes->get('orders', 'Customer\Order::viewOrders');
-    $routes->get('orders/filter', 'Customer\Order::setOrderFilters');
     $routes->get('order/(:segment)', 'Customer\Order::viewOrderDetail/$1');
+    $routes->post('order/(:num)/complete', 'Customer\Order::setOrderComplete/$1');
+
+    // Profile
     $routes->get('profile', 'Customer\Profile::viewProfile');
-    $routes->get('profile/(:segment)/edit', 'Customer\Profile::edit/$1');
+    $routes->get('profile/edit', 'Customer\Profile::editProfile');
+    $routes->post('profile/update', 'Customer\Profile::updateProfile');
+
+    // Payment
     $routes->post('payment/save-transaction', 'Customer\Payment::saveTransaction');
     $routes->post('checkout', 'Customer\Payment::checkout');
     $routes->get('payment/success', 'Customer\Payment::success');

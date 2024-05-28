@@ -34,11 +34,11 @@ class Order extends BaseController
         $status = (isset($status)) ? $status : '';
 
         $statusColor = [
-            'dibatalkan' => 'badge-red',
-            'menunggu diproses' => 'badge-gray',
-            'diproses' => 'badge-yellow',
-            'siap diambil' => 'badge-blue',
-            'selesai' => 'badge-green'
+            'Dibatalkan' => 'badge-red',
+            'Menunggu Diproses' => 'badge-gray',
+            'Diproses' => 'badge-yellow',
+            'Siap Diambil' => 'badge-blue',
+            'Selesai' => 'badge-green'
         ];
 
         if ($status) {
@@ -80,11 +80,11 @@ class Order extends BaseController
     public function viewOrderDetail($params)
     {
         $statusColor = [
-            'dibatalkan' => 'badge-red',
-            'menunggu diproses' => 'badge-gray',
-            'diproses' => 'badge-yellow',
-            'siap diambil' => 'badge-blue',
-            'selesai' => 'badge-green'
+            'Dibatalkan' => 'badge-red',
+            'Menunggu Diproses' => 'badge-gray',
+            'Diproses' => 'badge-yellow',
+            'Siap Diambil' => 'badge-blue',
+            'Selesai' => 'badge-green'
         ];
 
         $order = $this->orderModel->getOrderDetails($params);

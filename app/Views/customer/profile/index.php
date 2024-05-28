@@ -12,7 +12,7 @@
                     </svg>
                     <h1 class="text-lg font-semibold tracking-wide md:text-xl">Profil</h1>
                 </div>
-                <a href="<?= base_url('profile/1/edit'); ?>" class="flex items-center space-x-2 text-xs font-semibold tracking-wide text-blue-700 md:text-sm hover:underline">
+                <a href="<?= base_url('profile/edit'); ?>" class="flex items-center space-x-2 text-xs font-semibold tracking-wide text-blue-700 md:text-sm hover:underline">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z" fill="currentColor" />
                     </svg>
@@ -22,9 +22,23 @@
         </div>
 
         <div class="h-full p-4 mt-3 bg-white rounded-lg shadow-sm md:mt-4">
+            <?php if (session()->getFlashdata('success')) : ?>
+                <div class="flex items-center p-3 mb-4 text-sm text-blue-800 border border-blue-300 rounded-lg md:p-4 bg-blue-50" role="alert">
+                    <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="sr-only">Info</span>
+                    <div>
+                        <div class="text-xs font-medium tracking-wide ms-3 md:text-sm">
+                            <?= session()->getFlashdata('success'); ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-5">
                 <div class="relative w-48 h-48 mx-auto overflow-hidden border rounded-full md:w-56 md:h-56">
-                    <img src="img/bg-1.jpg" class="object-cover w-full h-full" alt="">
+                    <img src="<?= base_url('img/avatars/customer/' . $profile['avatar']); ?>" class="object-cover w-full h-full" alt="<?= $profile['fullname']; ?>">
                     <div class="absolute inset-0 flex items-center justify-center duration-300 ease-in-out opacity-0 cursor-pointer hover:opacity-100 bg-myBlack/50">
                         <button type="button" data-modal-target="profile-image-modal" data-modal-toggle="profile-image-modal" data-tooltip-target="profile-image-tooltip" class="p-3 text-white duration-300 ease-in-out rounded-full hover:text-gray-300">
                             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -40,32 +54,32 @@
                 <div class="col-span-2 space-y-6">
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Nama Lengkap</p>
-                        <h1 class="text-lg font-semibold tracking-wide">Rafif Athallah</h1>
+                        <h1 class="text-lg font-semibold tracking-wide"><?= esc($profile['fullname']); ?></h1>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Username</p>
-                        <h1 class="text-lg font-semibold tracking-wide">@rafthllh</h1>
+                        <h1 class="text-lg font-semibold tracking-wide">@<?= esc($profile['username']); ?></h1>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Email</p>
-                        <h1 class="text-lg font-semibold tracking-wide">rafifathallah99@gmail.com</h1>
+                        <h1 class="text-lg font-semibold tracking-wide"><?= esc($profile['email']); ?></h1>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Jenis Kelamin</p>
+                        <h1 class="text-lg font-semibold tracking-wide"><?= esc($profile['gender']); ?></h1>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">No. HP</p>
-                        <h1 class="text-lg font-semibold tracking-wide">082110111111</h1>
+                        <h1 class="text-lg font-semibold tracking-wide"><?= esc($profile['phone_number']); ?></h1>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Alamat</p>
-                        <h1 class="text-lg font-semibold tracking-wide">Jl. Teratai No. 123</h1>
-                    </div>
-                    <div class="space-y-2">
-                        <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Role</p>
-                        <h1 class="text-lg font-semibold tracking-wide">Pelanggan</h1>
+                        <h1 class="text-lg font-semibold tracking-wide"><?= esc($profile['address']); ?></h1>
                     </div>
                     <hr class="my-4">
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Total Pesanan</p>
-                        <h1 class="text-lg font-semibold tracking-wide">0</h1>
+                        <h1 class="text-lg font-semibold tracking-wide"><?= $totalOrders; ?></h1>
                     </div>
                 </div>
             </div>

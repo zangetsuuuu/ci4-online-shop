@@ -19,9 +19,9 @@
                         <label for="status" class="text-sm font-medium tracking-wide text-myBlack">Status:</label>
                         <select id="status" name="status" class="input-admin">
                             <option disabled selected>Pilih status</option>
-                            <option value="diproses" <?= ($order['status'] === 'diproses') ? 'selected' : ''; ?>>Diproses</option>
-                            <option value="siap diambil" <?= ($order['status'] === 'siap diambil') ? 'selected' : ''; ?>>Siap Diambil</option>
-                            <option value="dibatalkan" <?= ($order['status'] === 'dibatalkan') ? 'selected' : ''; ?>>Dibatalkan</option>
+                            <option value="Diproses" <?= ($order['status'] === 'Diproses') ? 'selected' : ''; ?>>Diproses</option>
+                            <option value="Siap Diambil" <?= ($order['status'] === 'Siap Diambil') ? 'selected' : ''; ?>>Siap Diambil</option>
+                            <option value="Dibatalkan" <?= ($order['status'] === 'Dibatalkan') ? 'selected' : ''; ?>>Dibatalkan</option>
                         </select>
                     </div>
                 </div>

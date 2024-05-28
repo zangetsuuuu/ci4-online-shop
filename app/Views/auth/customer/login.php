@@ -44,7 +44,7 @@
                 <?= csrf_field(); ?>
                 <div>
                     <label for="username" class="text-sm font-medium tracking-wide text-myBlack">Username<span class="text-red-500">*</span></label>
-                    <input type="text" name="username" id="username" class="<?= (isset($validation['username'])) ? 'input-error' : 'input-customers' ?>" <?= (isset($validation['username'])) ? 'autofocus' : '' ?> value="<?= old('username') ?>" placeholder="johndoe" />
+                    <input type="text" name="username" id="username" class="<?= (isset($validation['username'])) ? 'input-error' : 'input-customers' ?>" <?= (isset($validation['username'])) ? 'autofocus' : '' ?> value="<?= esc(old('username')); ?>" placeholder="johndoe" />
                     <?php if (isset($validation['username'])) : ?>
                         <div class="input-error-message">
                             <?= $validation['username']; ?>
@@ -53,7 +53,7 @@
                 </div>
                 <div>
                     <label for="password" class="text-sm font-medium tracking-wide text-myBlack">Password <span class="text-red-500">*</span></label>
-                    <input type="password" name="password" id="password" placeholder="••••••••" class="<?= (isset($validation['password'])) ? 'input-error' : 'input-customers' ?>" <?= (isset($validation['password'])) ? 'autofocus' : '' ?> value="<?= old('password') ?>" />
+                    <input type="password" name="password" id="password" placeholder="••••••••" class="<?= (isset($validation['password'])) ? 'input-error' : 'input-customers' ?>" <?= (isset($validation['password'])) ? 'autofocus' : '' ?> value="<?= esc(old('password')); ?>" />
                     <?php if (isset($validation['password'])) : ?>
                         <div class="input-error-message">
                             <?= $validation['password']; ?>
@@ -63,7 +63,7 @@
                 <div class="flex items-center justify-between">
                     <div class="flex items-start">
                         <div class="flex items-center h-5">
-                            <input id="remember" type="checkbox" name="remember" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-2 focus:ring-blue-300" />
+                            <input id="remember" type="checkbox" name="remember" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-2 focus:ring-blue-300" />
                         </div>
                         <label for="remember" class="text-sm font-medium tracking-wide ms-2 text-myBlack">Ingat saya</label>
                     </div>

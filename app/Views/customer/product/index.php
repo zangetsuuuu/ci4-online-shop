@@ -162,8 +162,8 @@
                     <div class="max-h-[20rem] bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-lg ease-in-out duration-300 group">
                         <form action="" method="">
                             <div class="relative h-24 md:h-28">
-                                <a href="<?= base_url("product/$data[slug]"); ?>">
-                                    <img class="object-contain w-full h-full" src="<?= $data['image']; ?>" alt="">
+                                <a href="<?= base_url('product/' . $data['slug']); ?>">
+                                    <img class="object-contain w-full h-full" src="<?= base_url('img/products/' . $data['image']); ?>" alt="">
                                     <div class="absolute inset-0 flex items-center justify-center text-sm font-semibold tracking-wide text-white duration-300 ease-in-out opacity-0 hover:opacity-100 bg-myBlack/20 backdrop-filter backdrop-blur-md">
                                         Klik untuk lihat detail
                                     </div>

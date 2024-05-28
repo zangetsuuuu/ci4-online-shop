@@ -40,7 +40,7 @@
                         <div>
                             <button type="button" class="flex text-sm duration-200 ease-in-out bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-200" aria-expanded="false" data-dropdown-toggle="dropdown-user" data-dropdown-placement="bottom-start">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="w-8 h-8 rounded-full" src="<?= base_url('img/blank-avatar.webp'); ?>" alt="User photo">
+                                <img class="object-cover w-8 h-8 rounded-full" src="<?= base_url('img/avatars/customer/' . session()->get('avatar')); ?>" alt="<?= base_url('img/avatars/customer/' . session()->get('avatar')); ?>">
                             </button>
                         </div>
                         <div class="z-40 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow" id="dropdown-user">
@@ -147,7 +147,7 @@
                     </li>
                 </ul>
                 <div class="absolute left-0 w-full px-4 py-2 bottom-2">
-                    <p class="text-sm font-semibold tracking-wide">&copy; 2024 Rafif Athallah.</p>
+                    <p class="text-sm font-semibold tracking-wide">&copy;2024 - Warung Ibu Sri</p>
                 </div>
             </div>
         </aside>

@@ -13,16 +13,15 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="<?= base_url('admin/orders'); ?>" method="get">
+            <form action="<?= base_url('orders'); ?>" method="get">
                 <?= csrf_field(); ?>
                 <div class="p-4 space-y-5 md:p-5">
                     <div>
-                        <select id="status" name="status" class="input-admin">
+                        <select id="status" name="status" class="input-customers">
                             <option disabled selected>Pilih status</option>
                             <option value="Menunggu Diproses" <?= ($status === 'Menunggu Diproses') ? 'selected' : ''; ?>>Menunggu Diproses</option>
                             <option value="Diproses" <?= ($status === 'Diproses') ? 'selected' : ''; ?>>Diproses</option>
                             <option value="Siap Diambil" <?= ($status === 'Siap Diambil') ? 'selected' : ''; ?>>Siap Diambil</option>
-                            <option value="Selesai" <?= ($status === 'Selesai') ? 'selected' : ''; ?>>Selesai</option>
                             <option value="Dibatalkan" <?= ($status === 'Dibatalkan') ? 'selected' : ''; ?>>Dibatalkan</option>
                         </select>
                     </div>
@@ -30,7 +29,7 @@
                 <!-- Modal footer -->
                 <div class="flex items-center justify-end p-4 space-x-3 border-t border-gray-200 rounded-b md:p-5">
                     <button type="button" data-modal-hide="status-modal" class="btn-alternative">Batal</button>
-                    <button type="submit" class="btn-admin">Terapkan</button>
+                    <button type="submit" class="btn-customers">Terapkan</button>
                 </div>
             </form>
         </div>

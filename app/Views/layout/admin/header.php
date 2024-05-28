@@ -82,7 +82,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url('admin/products'); ?>" class="flex items-center p-2 rounded-lg hover:text-emerald-500 hover:bg-gray-100 group ease-in-out duration-200 <?= ($title == 'Daftar Produk | ADMIN') ? 'bg-gray-100 text-emerald-500' : 'text-myBlack' ?>">
+                        <a href="<?= base_url('admin/products'); ?>" class="flex items-center p-2 rounded-lg hover:text-emerald-500 hover:bg-gray-100 group ease-in-out duration-200 <?= ($title == 'Daftar Produk | ADMIN' || $title == 'Detail Produk | ADMIN' || $title == 'Tambah Produk | ADMIN' || $title == 'Edit Produk | ADMIN') ? 'bg-gray-100 text-emerald-500' : 'text-myBlack' ?>">
                             <svg class="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <g id="icon" fill="currentColor" transform="translate(64.000000, 34.346667)">
@@ -95,7 +95,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url('admin/orders'); ?>" class="flex items-center p-2 rounded-lg hover:text-emerald-500 hover:bg-gray-100 group ease-in-out duration-200 <?= ($title == 'Daftar Pesanan | ADMIN') ? 'bg-gray-100 text-emerald-500' : 'text-myBlack' ?>">
+                        <a href="<?= base_url('admin/orders'); ?>" class="flex items-center p-2 rounded-lg hover:text-emerald-500 hover:bg-gray-100 group ease-in-out duration-200 <?= ($title == 'Daftar Pesanan | ADMIN' || $title == 'Detail Pesanan | ADMIN') ? 'bg-gray-100 text-emerald-500' : 'text-myBlack' ?>">
                             <svg class="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M5.58579 4.58579C5 5.17157 5 6.11438 5 8V17C5 18.8856 5 19.8284 5.58579 20.4142C6.17157 21 7.11438 21 9 21H15C16.8856 21 17.8284 21 18.4142 20.4142C19 19.8284 19 18.8856 19 17V8C19 6.11438 19 5.17157 18.4142 4.58579C17.8284 4 16.8856 4 15 4H9C7.11438 4 6.17157 4 5.58579 4.58579ZM9 8C8.44772 8 8 8.44772 8 9C8 9.55228 8.44772 10 9 10H15C15.5523 10 16 9.55228 16 9C16 8.44772 15.5523 8 15 8H9ZM9 12C8.44772 12 8 12.4477 8 13C8 13.5523 8.44772 14 9 14H15C15.5523 14 16 13.5523 16 13C16 12.4477 15.5523 12 15 12H9ZM9 16C8.44772 16 8 16.4477 8 17C8 17.5523 8.44772 18 9 18H13C13.5523 18 14 17.5523 14 17C14 16.4477 13.5523 16 13 16H9Z" fill="currentColor" />
                             </svg>
@@ -103,7 +103,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url('admin/customers'); ?>" class="flex items-center p-2 rounded-lg hover:text-emerald-500 hover:bg-gray-100 group ease-in-out duration-200 <?= ($title == 'Daftar Pelanggan | ADMIN') ? 'bg-gray-100 text-emerald-500' : 'text-myBlack' ?>">
+                        <a href="<?= base_url('admin/customers'); ?>" class="flex items-center p-2 rounded-lg hover:text-emerald-500 hover:bg-gray-100 group ease-in-out duration-200 <?= ($title == 'Daftar Pelanggan | ADMIN' || $title == 'Detail Pelanggan | ADMIN') ? 'bg-gray-100 text-emerald-500' : 'text-myBlack' ?>">
                             <svg class="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="12" cy="6" r="4" fill="currentColor" />
                                 <path d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z" fill="currentColor" />
@@ -114,7 +114,7 @@
                 </ul>
                 <ul class="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200">
                     <li>
-                        <a href="<?= base_url('admin/list'); ?>" class="flex items-center ps-2.5 p-2 rounded-lg hover:text-emerald-500 hover:bg-gray-100 group ease-in-out duration-200 <?= ($title == 'Daftar Admin | ADMIN') ? 'bg-gray-100 text-emerald-500' : 'text-myBlack' ?>">
+                        <a href="<?= base_url('admin/list'); ?>" class="flex items-center ps-2.5 p-2 rounded-lg hover:text-emerald-500 hover:bg-gray-100 group ease-in-out duration-200 <?= ($title == 'Daftar Admin | ADMIN' || $title == 'Detail Admin | ADMIN') ? 'bg-gray-100 text-emerald-500' : 'text-myBlack' ?>">
                             <svg fill="currentColor" class="w-5 h-5" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 352.644 352.644" xml:space="preserve">
                                 <path d="M324.478,51.943L177.985,0.285c-1.076-0.38-2.25-0.38-3.326,0L28.166,51.943c-1.999,0.705-3.337,2.595-3.337,4.715c0,52.278,13.834,112.711,37.955,165.805c19.567,43.069,54.751,100.519,111.248,129.625c0.719,0.37,1.504,0.555,2.29,0.555c0.786,0,1.571-0.185,2.29-0.555c56.497-29.106,91.681-86.556,111.248-129.625c24.121-53.094,37.955-113.527,37.955-165.805C327.815,54.538,326.477,52.648,324.478,51.943z M236.322,222.07h-120c-2.549,0-4.615-2.066-4.615-4.615c0-31.84,22.326-41.677,34.321-46.961c2.31-1.018,5.394-2.376,6.478-3.226c0.269-3.704-1.259-5.735-4.534-9.705c-4.518-5.476-10.703-12.974-10.703-29.501c0-28.058,14.965-45.487,39.054-45.487c24.089,0,39.053,17.429,39.053,45.487c0,16.527-6.186,24.026-10.702,29.501c-3.276,3.971-4.804,6.001-4.535,9.705c1.084,0.85,4.168,2.208,6.479,3.225c11.994,5.285,34.321,15.121,34.321,46.962C240.937,220.003,238.871,222.07,236.322,222.07z" />
                             </svg>
@@ -123,7 +123,7 @@
                     </li>
                 </ul>
                 <div class="absolute left-0 w-full px-4 py-2 bottom-2">
-                    <p class="text-sm font-semibold tracking-wide">&copy; 2024 Rafif Athallah.</p>
+                    <p class="text-sm font-semibold tracking-wide">&copy;2024 - Warung Ibu Sri</p>
                 </div>
             </div>
         </aside>

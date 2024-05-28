@@ -7,6 +7,8 @@ use App\Models\Customer\OrderModel;
 use App\Models\Customer\OrderItemModel;
 use App\Models\Customer\ProductModel;
 use App\Models\Customer\TransactionModel;
+use App\Models\Admin\CustomerModel;
+use App\Models\Admin\AdminModel;
 
 class Order extends BaseController
 {
@@ -14,6 +16,8 @@ class Order extends BaseController
     protected $orderItemModel;
     protected $productModel;
     protected $transactionModel;
+    protected $customerModel;
+    protected $adminModel;
 
     public function __construct()
     {
@@ -21,40 +25,60 @@ class Order extends BaseController
         $this->orderItemModel = new OrderItemModel();
         $this->productModel = new ProductModel();
         $this->transactionModel = new TransactionModel();
+        $this->customerModel = new CustomerModel();
+        $this->adminModel = new AdminModel();
     }
 
     public function viewOrders()
     {
+        $sort = $this->request->getVar('sortBy');
+        $status = $this->request->getVar('status');
+        $sort = (isset($sort)) ? $sort : '';
+        $status = (isset($status)) ? $status : '';
+
         $statusColor = [
-            'dibatalkan' => 'badge-red',
-            'menunggu diproses' => 'badge-gray',
-            'diproses' => 'badge-yellow',
-            'siap diambil' => 'badge-blue',
-            'selesai' => 'badge-green'
+            'Dibatalkan' => 'badge-red',
+            'Menunggu Diproses' => 'badge-gray',
+            'Diproses' => 'badge-yellow',
+            'Siap Diambil' => 'badge-blue',
+            'Selesai' => 'badge-green'
         ];
-        
-        $orders = $this->orderModel->getOrders();
-        
+
+        if ($status) {
+            $orders = $this->orderModel->getOrdersByStatus($status);
+            session()->setFlashdata('status', 'Pesanan dengan status: ' . $status);
+        } elseif ($sort) {
+            $orders = $this->orderModel->sortOrders($sort);
+        } else {
+            $orders = $this->orderModel->getOrders();
+            session()->remove('status');
+        }
+
         foreach ($orders as &$order) {
             $order['color'] = $statusColor[$order['status']] ?? 'badge-gray';
         }
-        
+
         $data = [
             'title' => 'Daftar Pesanan',
-            'orders' => $orders
+            'orders' => $orders,
+            'status' => $status,
+            'sortBy' => $sort
         ];
         
-        return view('customer/order/index', $data);        
+        session()->remove('Order Search Info');
+        session()->remove('Order Not Found');
+
+        return view('customer/order/index', $data);
     }
 
     public function viewOrderDetail($params)
     {
         $statusColor = [
-            'dibatalkan' => 'badge-red',
-            'menunggu diproses' => 'badge-gray',
-            'diproses' => 'badge-yellow',
-            'siap diambil' => 'badge-blue',
-            'selesai' => 'badge-green'
+            'Dibatalkan' => 'badge-red',
+            'Menunggu Diproses' => 'badge-gray',
+            'Diproses' => 'badge-yellow',
+            'Siap Diambil' => 'badge-blue',
+            'Selesai' => 'badge-green'
         ];
 
         $order = $this->orderModel->getOrderDetails($params);
@@ -73,7 +97,8 @@ class Order extends BaseController
             'order_items' => $orderItems,
             'items' => $item,
             'payment_type' => $transaction['payment_type'],
-            'color' => $statusColor[$order['status']]
+            'color' => $statusColor[$order['status']],
+            'admin' => $this->adminModel->first()
         ];
 
         return view('customer/order/detail', $data);
@@ -82,11 +107,11 @@ class Order extends BaseController
     public function setOrderFilters()
     {
         $statusColor = [
-            'dibatalkan' => 'badge-red',
-            'menunggu diproses' => 'badge-gray',
-            'diproses' => 'badge-yellow',
-            'siap diambil' => 'badge-blue',
-            'selesai' => 'badge-green'
+            'Dibatalkan' => 'badge-red',
+            'Menunggu Diproses' => 'badge-gray',
+            'Diproses' => 'badge-yellow',
+            'Siap Diambil' => 'badge-blue',
+            'Selesai' => 'badge-green'
         ];
 
         $date = $this->request->getVar('date');
@@ -104,5 +129,16 @@ class Order extends BaseController
         ];
 
         return view('customer/order/index', $data);
+    }
+
+    public function setOrderComplete($orderID)
+    {
+        if ($this->orderModel->update($orderID, ['status' => 'Selesai'])) {
+            session()->setFlashdata('success', 'Status pesanan berhasil diubah!');
+        } else {
+            session()->setFlashdata('error', 'Status pesanan gagal diubah!');
+        };
+
+        return redirect()->back();
     }
 }

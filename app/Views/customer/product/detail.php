@@ -49,7 +49,7 @@
 
             <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
                 <div class="w-full h-64 overflow-hidden rounded-lg">
-                    <img class="object-cover w-full h-full" src="<?= $product['image']; ?>">
+                    <img class="object-cover w-full h-full" src="<?= base_url('img/products/' . $product['image']); ?>">
                 </div>
                 <div class="relative col-span-1 p-3 md:col-span-2 md:p-4">
                     <div class="space-y-1.5 mb-2.5 md:mb-3.5">

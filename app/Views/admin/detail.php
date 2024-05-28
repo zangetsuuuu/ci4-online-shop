@@ -23,32 +23,32 @@
         <div class="h-full p-4 mt-3 bg-white rounded-lg shadow-sm md:mt-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-5">
                 <div class="relative w-56 h-56 mx-auto overflow-hidden border rounded-full">
-                    <img src="<?= base_url('img/avatars/admin/' . $admin['avatar']); ?>" class="object-cover w-full h-full" alt="">
+                    <img src="<?= base_url('img/avatars/admin/' . esc($admin['avatar'])); ?>" class="object-cover w-full h-full" alt="<?= esc($admin['fullname']); ?>">
                 </div>
                 <div class="col-span-2 space-y-6">
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Nama Lengkap</p>
-                        <h1 class="text-lg font-semibold tracking-wide"><?= $admin['fullname']; ?></h1>
+                        <h1 class="text-lg font-semibold tracking-wide"><?= esc($admin['fullname']); ?></h1>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Username</p>
-                        <h1 class="text-lg font-semibold tracking-wide">@<?= $admin['username']; ?></h1>
+                        <h1 class="text-lg font-semibold tracking-wide">@<?= esc($admin['username']); ?></h1>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Email</p>
-                        <h1 class="text-lg font-semibold tracking-wide"><?= $admin['email']; ?></h1>
+                        <h1 class="text-lg font-semibold tracking-wide"><?= esc($admin['email']); ?></h1>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Jenis Kelamin</p>
-                        <h1 class="text-lg font-semibold tracking-wide"><?= $admin['gender']; ?></h1>
+                        <h1 class="text-lg font-semibold tracking-wide"><?= esc($admin['gender']); ?></h1>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">No. HP</p>
-                        <h1 class="text-lg font-semibold tracking-wide"><?= $admin['phone_number']; ?></h1>
+                        <h1 class="text-lg font-semibold tracking-wide"><?= esc($admin['phone_number']); ?></h1>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-wide text-gray-400 uppercase">Tanggal Terdaftar</p>
-                        <h1 class="text-lg font-semibold tracking-wide"><?= date('d F Y', strtotime($admin['created_at'])); ?></h1>
+                        <h1 class="text-lg font-semibold tracking-wide"><?= date('d F Y', strtotime(esc($admin['created_at']))); ?></h1>
                     </div>
                 </div>
             </div>

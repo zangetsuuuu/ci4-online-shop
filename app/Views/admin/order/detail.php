@@ -52,11 +52,11 @@
             <!-- Order start -->
             <div class="flex items-center justify-between mb-4">
                 <div class="space-y-1">
-                    <h1 class="text-lg font-semibold tracking-wide md:text-xl">Pesanan #<?= $order['id']; ?></h1>
-                    <p class="text-xs tracking-wide text-gray-500"><?= date('d M Y, H:i', strtotime($order['created_at'])); ?> WIB</p>
+                    <h1 class="text-lg font-semibold tracking-wide md:text-xl">Pesanan #<?= esc($order['id']); ?></h1>
+                    <p class="text-xs tracking-wide text-gray-500"><?= date('d M Y, H:i', strtotime(esc($order['created_at']))); ?> WIB</p>
                 </div>
                 <span class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full md:px-3 md:text-sm <?= $color; ?>">
-                    <?= ucfirst($order['status']); ?>
+                    <?= esc($order['status']); ?>
                 </span>
             </div>
             <div class="p-4 mb-4 rounded-lg bg-gray-50">
@@ -65,14 +65,14 @@
                     <?php $i = 0;
                     foreach ($order_items as $order_item) : ?>
                         <div class="flex items-center justify-between">
-                            <p class="w-2/4 text-xs tracking-wide text-left text-gray-500 md:text-sm"><?= $items[$i++] ?> &times;<?= $order_item['quantity']; ?></p>
+                            <p class="w-2/4 text-xs tracking-wide text-left text-gray-500 md:text-sm"><?= $items[$i++] ?> &times;<?= esc($order_item['quantity']); ?></p>
                             <p class="w-1/4 text-xs tracking-wide text-gray-500 md:text-sm text-end">Rp. <?= number_format($order_item['price'] * $order_item['quantity'], 0, ',', '.'); ?></p>
                         </div>
                     <?php endforeach; ?>
                 </div>
                 <div class="flex items-center justify-between pt-2 border-t">
                     <p class="text-base font-semibold tracking-wide md:text-lg">Total</p>
-                    <p class="text-base font-semibold tracking-wide md:text-lg">Rp. <?= number_format($order['total_price'], 0, ',', '.'); ?></p>
+                    <p class="text-base font-semibold tracking-wide md:text-lg">Rp. <?= number_format(esc($order['total_price']), 0, ',', '.'); ?></p>
                 </div>
             </div>
             <!-- Order end -->
@@ -87,13 +87,13 @@
                                 <circle cx="12" cy="6" r="4" fill="currentColor" />
                                 <path d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z" fill="currentColor" />
                             </svg>
-                            <p class="text-xs font-semibold tracking-wide md:text-sm"><?= $customer['fullname']; ?> <span class="text-red-500"><?= $customer['deleted_at'] != null ? '(Tidak Aktif)' : ''; ?></span></p>
+                            <p class="text-xs font-semibold tracking-wide md:text-sm"><?= esc($customer['fullname']); ?> <span class="text-red-500"><?= esc($customer['deleted_at']) != null ? '(Tidak Aktif)' : ''; ?></span></p>
                         </div>
                         <div class="flex items-center space-x-2 text-gray-500">
                             <svg fill="currentColor" class="w-3 h-3 md:w-4 md:h-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M22,5V9L12,13,2,9V5A1,1,0,0,1,3,4H21A1,1,0,0,1,22,5ZM2,11.154V19a1,1,0,0,0,1,1H21a1,1,0,0,0,1-1V11.154l-10,4Z" />
                             </svg>
-                            <p class="text-xs font-semibold tracking-wide md:text-sm"><?= $customer['email']; ?></p>
+                            <p class="text-xs font-semibold tracking-wide md:text-sm"><?= esc($customer['email']); ?></p>
                         </div>
                         <div class="flex items-center space-x-2 text-gray-500">
                             <svg class="w-3 h-3 md:w-4 md:h-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -108,7 +108,7 @@
                             <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="w-3 h-3 md:w-4 md:h-4" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
                                 <path fill="currentColor" d="M32,0C18.746,0,8,10.746,8,24c0,5.219,1.711,10.008,4.555,13.93c0.051,0.094,0.059,0.199,0.117,0.289l16,24C29.414,63.332,30.664,64,32,64s2.586-0.668,3.328-1.781l16-24c0.059-0.09,0.066-0.195,0.117-0.289C54.289,34.008,56,29.219,56,24C56,10.746,45.254,0,32,0z M32,32c-4.418,0-8-3.582-8-8s3.582-8,8-8s8,3.582,8,8S36.418,32,32,32z" />
                             </svg>
-                            <p class="text-xs font-semibold tracking-wide md:text-sm"><?= $customer['address']; ?></p>
+                            <p class="text-xs font-semibold tracking-wide md:text-sm"><?= esc($customer['address']); ?></p>
                         </div>
                     </div>
                 </div>
@@ -116,16 +116,16 @@
                 <!-- Payment method -->
                 <div class="p-4 rounded-lg bg-gray-50">
                     <h2 class="mb-3 text-base font-semibold tracking-wide md:text-lg">Metode Pembayaran</h2>
-                    <p class="text-xs font-semibold tracking-wide text-gray-500 md:text-sm"><?= strtoupper($payment_type); ?></p>
+                    <p class="text-xs font-semibold tracking-wide text-gray-500 md:text-sm"><?= strtoupper(esc($payment_type)); ?></p>
                 </div>
             </div>
             <div class="flex flex-wrap items-center space-x-0 space-y-3 md:space-y-0 md:space-x-3 md:flex-nowrap">
-                <?php if ($order['status'] === 'selesai') : ?>
-                    <button type="button" class="w-3/4 btn-admin" disabled>Pesanan sudah selesai</button>
+                <?php if ($order['status'] === 'Selesai') : ?>
+                    <button type="button" class="w-full md:w-3/4 btn-admin" disabled>Pesanan sudah selesai</button>
                 <?php else : ?>
                     <button data-modal-target="order-status-edit-modal#<?= $order['reference']; ?>" data-modal-toggle="order-status-edit-modal#<?= $order['reference']; ?>" type="button" class="w-full md:w-3/4 btn-admin">Ubah Status</button>
                 <?php endif; ?>
-                <a href="https://wa.me/<?= $customer['phone_number']; ?>" class="w-full md:w-1/4 btn-alternative">Kontak Pelanggan</a>
+                <a href="https://wa.me/62<?= substr(esc($customer['phone_number']), 1); ?>" target="_blank" class="w-full md:w-1/4 btn-alternative">Kontak Pelanggan</a>
             </div>
         </div>
     </div>

@@ -30,7 +30,7 @@ class OrderModel extends Model
 
     public function sortOrders($params)
     {
-        if ($params == 'Terlama') {
+        if ($params == 'terlama') {
             return $this->orderBy('created_at', 'ASC')->findAll();
         } else {
             return $this->orderBy('created_at', 'DESC')->findAll();

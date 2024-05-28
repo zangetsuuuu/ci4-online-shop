@@ -48,7 +48,8 @@ class Product extends BaseController
     public function viewCreateProduct()
     {
         $data = [
-            'title' => 'Tambah Produk | ADMIN'
+            'title' => 'Tambah Produk | ADMIN',
+            'validation' => session('validation')
         ];
 
         return view('admin/product/create', $data);
@@ -80,7 +81,7 @@ class Product extends BaseController
         $config = $this->productModel->saveValidation();
 
         if (!$this->validate($config)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         }
 
         $image = $this->request->getFile('image');

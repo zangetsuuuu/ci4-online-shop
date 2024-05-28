@@ -24,11 +24,11 @@ class Dashboard extends BaseController
     public function viewDashboard()
     {
         $statusColor = [
-            'dibatalkan' => 'badge-red',
-            'menunggu diproses' => 'badge-gray',
-            'diproses' => 'badge-yellow',
-            'siap diambil' => 'badge-blue',
-            'selesai' => 'badge-green'
+            'Dibatalkan' => 'badge-red',
+            'Menunggu Diproses' => 'badge-gray',
+            'Diproses' => 'badge-yellow',
+            'Siap Diambil' => 'badge-blue',
+            'Selesai' => 'badge-green'
         ];
 
         $orders = $this->orderModel->getOrders();

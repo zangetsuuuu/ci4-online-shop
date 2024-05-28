@@ -32,14 +32,6 @@ class Register extends BaseController
             return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         }
 
-        $avatar = $this->request->getFile('avatar');
-        if ($avatar->getError() == 4) {
-            $avatarName = 'placeholder.webp';
-        } else {
-            $avatarName = $avatar->getRandomName();
-            $avatar->move('img/avatars/admin/', $avatarName);
-        }
-
         $data = [
             'fullname' => $this->request->getVar('fullname'),
             'username' => $this->request->getVar('username'),
@@ -47,7 +39,6 @@ class Register extends BaseController
             'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
             'gender' => $this->request->getVar('gender'),
             'phone_number' => $this->request->getVar('phone_number'),
-            'avatar' => $avatarName
         ];
 
         $this->registerModel->save($data);

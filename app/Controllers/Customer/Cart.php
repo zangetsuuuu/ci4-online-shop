@@ -22,6 +22,8 @@ class Cart extends BaseController
 
     public function viewCart()
     {
+        $this->deleteItemAfter3Hours();
+
         $customerId = session()->get('id');
 
         $cartItems = $this->cartModel->getCartByCustomerId($customerId);
@@ -104,6 +106,21 @@ class Cart extends BaseController
         $this->cartModel->delete($id);
 
         session()->setFlashdata('Delete Success', 'Item berhasil dihapus!');
+
+        return redirect()->to('cart');
+    }
+
+    public function deleteItemAfter3Hours()
+    {
+        $carts = $this->cartModel->findAll();
+        foreach ($carts as $cart) {
+            if (time() - strtotime($cart['created_at']) > 3 * 3600) {
+                $product = $this->productModel->getProductById($cart['product_id']);
+                $product['stock'] += $cart['quantity'];
+                $this->productModel->save($product);
+                $this->cartModel->delete($cart['id']);
+            }
+        }
 
         return redirect()->to('cart');
     }

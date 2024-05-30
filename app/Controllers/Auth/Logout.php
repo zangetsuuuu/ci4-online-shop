@@ -8,20 +8,14 @@ class Logout extends BaseController
 {
     public function admin()
     {
-        session()->remove('id');
-        session()->remove('fullname');
-        session()->remove('email');
-        session()->remove('isLoggedIn');
-        return redirect()->to('admin');
+        session()->destroy();
+        return redirect()->to(base_url('admin'));
     }
 
     public function customer()
     {
-        session()->remove('id');
-        session()->remove('fullname');
-        session()->remove('email');
-        session()->remove('isLoggedIn');
+        session()->destroy();
         setcookie('remember_' . session()->get('id'), '', time() - 3600, '/');
-        return redirect()->to('login');
+        return redirect()->to(base_url('login'));
     }
 }

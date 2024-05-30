@@ -139,6 +139,7 @@ class Order extends BaseController
             session()->setFlashdata('error', 'Status pesanan gagal diubah!');
         };
 
-        return redirect()->back();
+        $reference = $this->request->getVar('reference');
+        return redirect()->to(base_url('order/' . $reference));
     }
 }

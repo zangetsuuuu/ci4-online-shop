@@ -82,6 +82,7 @@
                 <p class="text-xs font-semibold tracking-wide text-gray-500 md:text-sm"><?= strtoupper($payment_type); ?></p>
             </div>
             <form action="<?= base_url('order/' . $order['id'] . '/complete'); ?>" method="post" class="flex flex-wrap items-center justify-center space-x-0 space-y-3 md:flex-nowrap md:space-y-0 md:space-x-3">
+                <input type="hidden" name="reference" value="<?= $order['reference']; ?>">
                 <?php if ($order['status'] === 'Selesai') : ?>
                     <button type="button" class="w-full md:w-3/4 btn-primary" disabled>Pesanan sudah selesai</button>
                 <?php else : ?>

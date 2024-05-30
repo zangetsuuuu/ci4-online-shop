@@ -27,7 +27,7 @@ class Login extends BaseController
     {
         $config = $this->loginModel->validation();
         if (!$this->validate($config)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
+            return redirect()->to(base_url('login'))->withInput()->with('validation', $this->validator->getErrors());
         }
 
         $username = $this->request->getVar('username');
@@ -43,11 +43,11 @@ class Login extends BaseController
                 setcookie($key, $value, time() + (86400 * 30), '/');
             }
 
-            return redirect()->to('products');
+            return redirect()->to(base_url('products'));
         }
 
         session()->setFlashdata('error', 'Username atau password salah!');
-        return redirect()->back()->withInput();
+        return redirect()->to(base_url('login'))->withInput();
     }
 
 

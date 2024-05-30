@@ -76,7 +76,7 @@ class Product extends BaseController
         $config = $this->productModel->validation();
 
         if (!$this->validate($config)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+            return redirect()->to(base_url('products'))->withInput()->with('validation', $this->validator);
         }
 
         $productId = $this->request->getVar('product_id');
@@ -86,7 +86,7 @@ class Product extends BaseController
 
         if ($quantity > $product['stock']) {
             session()->setFlashdata('Stock Not Available', 'Jumlah pesanan melebihi stok produk!');
-            return redirect()->back();
+            return redirect()->to(base_url('products'));
         }
 
         $cartItem = $this->cartModel->where('product_id', $productId)
@@ -111,7 +111,7 @@ class Product extends BaseController
 
         session()->setFlashdata('Add Success', 'Berhasil ditambahkan ke keranjang!');
 
-        return redirect()->back();
+        return redirect()->to(base_url('products'));
     }
 
 }

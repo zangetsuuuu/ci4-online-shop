@@ -69,7 +69,7 @@ class Cart extends BaseController
         $config = $this->cartModel->validation();
 
         if (!$this->validate($config)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+            return redirect()->to(base_url('cart'))->withInput()->with('validation', $this->validator);
         }
 
         $cartId = $this->request->getVar('cart_id');
@@ -83,7 +83,7 @@ class Cart extends BaseController
 
         if ($quantity > $product['stock']) {
             session()->setFlashdata('Stock Not Available', 'Jumlah pesanan melebihi stok produk!');
-            return redirect()->back();
+            return redirect()->to(base_url('cart'));
         }
 
         $this->cartModel->update($cartId, ['quantity' => $quantity]);
@@ -92,7 +92,7 @@ class Cart extends BaseController
         $this->productModel->update($productId, ['stock' => $newStock]);
 
         session()->setFlashdata('Edit Success', 'Jumlah pesanan berhasil diperbarui!');
-        return redirect()->back();
+        return redirect()->to(base_url('cart'));
     }
 
     public function deleteCartItem($id)
@@ -107,7 +107,7 @@ class Cart extends BaseController
 
         session()->setFlashdata('Delete Success', 'Item berhasil dihapus!');
 
-        return redirect()->to('cart');
+        return redirect()->to(base_url('cart'));
     }
 
     public function deleteItemAfter3Hours()
@@ -122,6 +122,6 @@ class Cart extends BaseController
             }
         }
 
-        return redirect()->to('cart');
+        return redirect()->to(base_url('cart'));
     }
 }

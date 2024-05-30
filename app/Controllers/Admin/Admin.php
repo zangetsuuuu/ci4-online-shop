@@ -76,6 +76,6 @@ class Admin extends BaseController
 
         session()->setFlashdata('Delete Success', 'Data admin berhasil dihapus!');
 
-        return redirect()->to('admin/list');
+        return redirect()->to(base_url('admin/list'));
     }
 }

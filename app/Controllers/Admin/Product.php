@@ -81,7 +81,7 @@ class Product extends BaseController
         $config = $this->productModel->saveValidation();
 
         if (!$this->validate($config)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
+            return redirect()->to(base_url('admin/products/create'))->withInput()->with('validation', $this->validator->getErrors());
         }
 
         $image = $this->request->getFile('image');
@@ -106,7 +106,7 @@ class Product extends BaseController
 
         session()->setFlashdata('Create Success', 'Data berhasil ditambahkan!');
 
-        return redirect()->to('admin/products');
+        return redirect()->to(base_url('admin/products'));
     }
 
     public function viewEditProduct($slug)
@@ -136,7 +136,7 @@ class Product extends BaseController
         $config = $this->productModel->updateValidation($nameRule);
 
         if (!$this->validate($config)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            return redirect()->to(base_url('admin/products/edit'))->withInput()->with('errors', $this->validator->getErrors());
         }
 
         $image = $this->request->getFile('image');

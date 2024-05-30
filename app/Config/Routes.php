@@ -13,7 +13,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 
 // Admin routes
-$routes->group('admin', function ($routes) {
+$routes->group('admin', ['filter' => 'auth-admin'], function ($routes) {
     $routes->get('', 'Auth\Admin\Login::viewForm');
     $routes->get('change-password', 'Auth\Password::admin');
     $routes->get('dashboard', 'Admin\Dashboard::viewDashboard');
@@ -63,14 +63,17 @@ $routes->group('admin', function ($routes) {
 });
 
 // Customer routes
-$routes->group('', function ($routes) {
-    $routes->get('login', 'Auth\Customer\Login::viewForm');
-    $routes->get('register', 'Auth\Customer\Register::viewForm');
-    $routes->post('auth/register', 'Auth\Customer\Register::saveCustomerData');
-    $routes->post('auth/login', 'Auth\Customer\Login::loginToAccount');
-    $routes->post('auth/logout', 'Auth\Logout::customer');
-    $routes->get('change-password', 'Auth\Customer\Password::customers');
+$routes->get('login', 'Auth\Customer\Login::viewForm');
+$routes->post('auth/login', 'Auth\Customer\Login::loginToAccount');
+$routes->get('register', 'Auth\Customer\Register::viewForm');
+$routes->post('auth/register', 'Auth\Customer\Register::saveCustomerData');
+$routes->post('auth/logout', 'Auth\Logout::customer');
+$routes->get('forgot-password', 'Auth\Password::customers');
+$routes->post('auth/send-email', 'Auth\Password::sendEmail');
+$routes->get('auth/reset', 'Auth\Password::resetForm');
+$routes->post('auth/password/reset', 'Auth\Password::reset');
 
+$routes->group('', ['filter' => 'auth-customer'], function ($routes) {
     $routes->get('cart', 'Customer\Cart::viewCart');
     $routes->post('cart/(:num)/update', 'Customer\Cart::updateCartItem/$1');
     $routes->delete('cart/(:num)/delete', 'Customer\Cart::deleteCartItem/$1');
@@ -98,3 +101,6 @@ $routes->group('', function ($routes) {
 
 // Public page route
 $routes->get('about-us', 'Customer\Page::about');
+
+// Forbidden route
+$routes->get('forbidden', 'Page::forbidden');

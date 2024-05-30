@@ -30,7 +30,7 @@ class Register extends BaseController
         $config = $this->registerModel->validation();
 
         if (!$this->validate($config)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
+            return redirect()->to(base_url('register'))->withInput()->with('validation', $this->validator->getErrors());
         }
 
         $data = [
@@ -47,6 +47,6 @@ class Register extends BaseController
 
         session()->setFlashdata('Register Success', 'Akun berhasil didaftarkan!');
 
-        return redirect()->to('login');
+        return redirect()->to(base_url('login'));
     }
 }

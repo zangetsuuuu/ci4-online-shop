@@ -70,7 +70,7 @@ class Profile extends BaseController
         $config = $this->profileModel->validation($usernameRule, $emailRule, $phoneNumberRule);
 
         if (!$this->validate($config)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
+            return redirect()->to(base_url('admin/profile/edit'))->withInput()->with('validation', $this->validator->getErrors());
         }
 
         $avatar = $this->request->getFile('avatar');
@@ -102,6 +102,6 @@ class Profile extends BaseController
         session()->setFlashdata('success', 'Data berhasil diubah!');
         session()->set(['avatar' => $avatarName]);
 
-        return redirect()->to('admin/profile');
+        return redirect()->to(base_url('admin/profile'));
     }
 }

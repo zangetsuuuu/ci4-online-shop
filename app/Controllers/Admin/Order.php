@@ -115,6 +115,7 @@ class Order extends BaseController
     {
         $orderID = $this->request->getVar('order_id');
         $status = $this->request->getVar('status');
+        $reference = $this->request->getVar('reference');
 
         if ($this->orderModel->update($orderID, ['status' => $status])) {
             session()->setFlashdata('success', 'Status pesanan berhasil diubah!');
@@ -122,7 +123,7 @@ class Order extends BaseController
             session()->setFlashdata('error', 'Status pesanan gagal diubah!');
         };
 
-        return redirect()->back();
+        return redirect()->to(base_url('admin/order/' . $reference));
     }
     
     public function searchOrder()

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php if ($title !== 'Login | ADMIN' && $title !== 'Laporan | ADMIN') : ?>
+    <?php if ($title !== 'Login | ADMIN' && $title !== 'Laporan | ADMIN' && $title !== 'Forbidden') : ?>
         <nav class="fixed top-0 z-40 w-full bg-white border-b border-gray-200">
             <div class="px-3 py-3 lg:px-5 lg:pl-3">
                 <div class="flex items-center justify-between">
@@ -49,7 +49,7 @@
                                     <a href="<?= base_url('admin/add'); ?>" class="block px-4 py-2 text-sm tracking-wide duration-200 ease-in-out text-myBlack hover:bg-gray-100" role="menuitem">Tambah admin</a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url('admin/change-password'); ?>" class="block px-4 py-2 text-sm tracking-wide duration-200 ease-in-out text-myBlack hover:bg-gray-100" role="menuitem">Ganti password</a>
+                                    <a href="<?= base_url('admin/forgot-password'); ?>" class="block px-4 py-2 text-sm tracking-wide duration-200 ease-in-out text-myBlack hover:bg-gray-100" role="menuitem">Reset password</a>
                                 </li>
                             </ul>
                             <div class="py-1">

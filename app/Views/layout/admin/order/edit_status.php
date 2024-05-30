@@ -15,6 +15,7 @@
             <form action="<?= base_url('admin/order/edit_status') ?>" method="post">
                 <div class="p-4 md:p-5">
                     <input type="hidden" name="order_id" value="<?= $order['id']; ?>">
+                    <input type="hidden" name="reference" value="<?= $order['reference']; ?>">
                     <div>
                         <label for="status" class="text-sm font-medium tracking-wide text-myBlack">Status:</label>
                         <select id="status" name="status" class="input-admin">

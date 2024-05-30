@@ -89,6 +89,6 @@ class Customer extends BaseController
 
         session()->setFlashdata('Delete Success', 'Data pelanggan berhasil dihapus!');
 
-        return redirect()->to('admin/customers');
+        return redirect()->to(base_url('admin/customers'));
     }
 }

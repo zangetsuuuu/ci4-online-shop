@@ -29,7 +29,7 @@ class AdminAuthFilter implements FilterInterface
             return redirect()->to(base_url('admin'));
         }
 
-        if (session()->get('role') != 'Admin') {
+        if (!session()->get('role')) {
             return redirect()->to(base_url('forbidden'));
         }
     }

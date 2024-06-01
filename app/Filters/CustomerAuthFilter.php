@@ -28,6 +28,10 @@ class CustomerAuthFilter implements FilterInterface
         if (!session()->get('isLoggedIn')) {
             return redirect()->to(base_url('login'));
         }
+
+        if (session()->get('role')) {
+            return redirect()->back();
+        }
     }
 
     /**

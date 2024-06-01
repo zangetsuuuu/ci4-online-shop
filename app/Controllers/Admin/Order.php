@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
+use Config\Services;
 use App\Models\Admin\OrderModel;
 use App\Models\Admin\OrderItemModel;
 use App\Models\Admin\ProductModel;
@@ -111,19 +112,26 @@ class Order extends BaseController
         return view('admin/order/detail', $data);
     }
 
-    public function editOrderStatus()
+    public function updateOrderStatus()
     {
-        $orderID = $this->request->getVar('order_id');
-        $status = $this->request->getVar('status');
-        $reference = $this->request->getVar('reference');
+        $orderId = $this->request->getVar('order_id');
+        $newStatus = $this->request->getVar('status');
+        $orderRef = $this->request->getVar('reference');
 
-        if ($this->orderModel->update($orderID, ['status' => $status])) {
-            session()->setFlashdata('success', 'Status pesanan berhasil diubah!');
+        $order = $this->orderModel->where('id', $orderId)->first();
+        $customer = $this->customerModel->withDeleted()->where('id', $order['customer_id'])->first();
+        $customerEmail = $customer['email'];
+
+        if ($this->orderModel->update($orderId, ['status' => $newStatus])) {
+            if ($newStatus === 'Siap Diambil') {
+                $this->sendNotification($orderId, $customerEmail);
+            }
+            session()->setFlashdata('success', 'Status pesanan berhasil diperbarui!');
         } else {
-            session()->setFlashdata('error', 'Status pesanan gagal diubah!');
-        };
+            session()->setFlashdata('error', 'Gagal memperbarui status pesanan!');
+        }
 
-        return redirect()->to(base_url('admin/order/' . $reference));
+        return redirect()->to(base_url('admin/order/' . $orderRef));
     }
     
     public function searchOrder()
@@ -167,5 +175,22 @@ class Order extends BaseController
         }
 
         return view('admin/order/index', $data);
+    }
+
+    public function sendNotification($orderId, $email)
+    {
+        $customer = $this->customerModel->where('email', $email)->first();
+        $data = [
+            'orderId' => $orderId,
+            'customerName' => $customer['fullname']
+        ];
+
+        $emailService = Services::email();
+        $emailService->setTo($email);
+        $emailService->setSubject('Pesanan Siap Diambil');
+        $emailService->setMessage(view('email/order_ready', $data));
+        $emailService->send();
+
+        return;
     }
 }

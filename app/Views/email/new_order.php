@@ -454,7 +454,7 @@
 </head>
 
 <body>
-    <span class="preheader">Gunakan tautan ini untuk mengatur ulang password Anda. Tautan hanya valid selama 24 jam.</span>
+    <span class="preheader">Notifikasi Pesanan Baru.</span>
     <table class="email-wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
         <tr>
             <td align="center">
@@ -474,8 +474,8 @@
                                 <tr>
                                     <td class="content-cell">
                                         <div class="f-fallback">
-                                            <h1>Hai <?= $customerName; ?>,</h1>
-                                            <p>Anda baru meminta untuk reset password untuk akun website Warung Ibu Sri Anda. Klik tombol dibawah ini untuk reset. <strong>Tautan ini hanya valid untuk 30 menit.</strong></p>
+                                            <h1>Hai Admin,</h1>
+                                            <p>Ada pesanan baru yang sedang menunggu diproses. Silahkan klik tombol dibawah ini untuk lihat pesanan.</p>
                                             <!-- Action -->
                                             <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                                                 <tr>
@@ -485,23 +485,10 @@
                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
                                                             <tr>
                                                                 <td align="center">
-                                                                    <a href="<?= $resetLink; ?>" class="f-fallback button--blue" style=" color: #fff; text-decoration: underline;" target="_blank">Reset Password</a>
+                                                                    <a href="<?= base_url('admin/order'); ?>" class="f-fallback button--blue" style=" color: #fff; text-decoration: underline;" target="_blank">Lihat Pesanan</a>
                                                                 </td>
                                                             </tr>
                                                         </table>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <p>Jika Anda tidak meminta untuk reset password, silakan abaikan email ini atau <a href="https://wa.me/6282110967112">hubungi kami</a> jika Anda memiliki pertanyaan.</p>
-                                            <p>Terima kasih,
-                                                <br>Tim Warung Ibu Sri
-                                            </p>
-                                            <!-- Sub copy -->
-                                            <table class="body-sub" role="presentation">
-                                                <tr>
-                                                    <td>
-                                                        <p class="f-fallback sub">Jika Anda memiliki masalah dengan tombol di atas, silakan copy dan paste tautan dibawah ini ke browser Anda.</p>
-                                                        <p class="f-fallback sub"><?= $resetLink; ?></p>
                                                     </td>
                                                 </tr>
                                             </table>

@@ -3,21 +3,24 @@
 namespace App\Controllers\Customer;
 
 use App\Controllers\BaseController;
-use App\Models\Customer\TransactionModel;
-use App\Models\Customer\ProductModel;
-use App\Models\Customer\CartModel;
-use App\Models\Admin\CustomerModel;
-use App\Models\Customer\OrderModel;
-use App\Models\Customer\OrderItemModel;
 use Midtrans\Config;
 use Midtrans\Snap;
 use CodeIgniter\I18n\Time;
+use Config\Services;
+use App\Models\Customer\TransactionModel;
+use App\Models\Customer\ProductModel;
+use App\Models\Customer\CartModel;
+use App\Models\Admin\AdminModel;
+use App\Models\Admin\CustomerModel;
+use App\Models\Customer\OrderModel;
+use App\Models\Customer\OrderItemModel;
 
 class Payment extends BaseController
 {
     protected $transactionModel;
     protected $cartModel;
     protected $productModel;
+    protected $adminModel;
     protected $customerModel;
     protected $orderModel;
     protected $orderItemModel;
@@ -27,6 +30,7 @@ class Payment extends BaseController
         $this->transactionModel = new TransactionModel();
         $this->productModel = new ProductModel();
         $this->cartModel = new CartModel();
+        $this->adminModel = new AdminModel();
         $this->customerModel = new CustomerModel();
         $this->orderModel = new OrderModel();
         $this->orderItemModel = new OrderItemModel();
@@ -109,6 +113,10 @@ class Payment extends BaseController
 
     public function success()
     {
+        if (session()->getFlashdata('success')) {
+            $this->sendNotification();
+        }
+
         $data = [
             'title' => 'Pembayaran Berhasil!',
         ];
@@ -170,8 +178,9 @@ class Payment extends BaseController
 
                 $this->orderItemModel->save($orderItemData);
             }
-
+            
             $this->cartModel->where('customer_id', $customerId)->delete();
+            session()->setFlashdata('success', 'Pembayaran Berhasil!');
         } else {
             $response = [
                 'success' => false
@@ -179,5 +188,18 @@ class Payment extends BaseController
         }
 
         return json_encode($response);
+    }
+
+    public function sendNotification()
+    {
+        $admin = $this->adminModel->first();
+
+        $emailService = Services::email();
+        $emailService->setTo($admin['email']);
+        $emailService->setSubject('Pesanan Baru');
+        $emailService->setMessage(view('email/new_order'));
+        $emailService->send();
+
+        return;
     }
 }

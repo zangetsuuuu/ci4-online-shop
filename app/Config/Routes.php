@@ -10,22 +10,24 @@ use CodeIgniter\Router\RouteCollection;
 $routes->setAutoRoute(true);
 
 // Default route
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Page::index');
 
 // Admin routes
+$routes->get('admin', 'Auth\Admin\Login::viewForm');
+$routes->post('admin/auth/register', 'Auth\Admin\Register::registerAdminAccount');
+$routes->post('admin/auth/login', 'Auth\Admin\Login::loginToAccount');
+$routes->post('admin/auth/logout', 'Auth\Logout::admin');
+$routes->get('admin/email', 'Customer\Payment::sendNotification');
+
 $routes->group('admin', ['filter' => 'auth-admin'], function ($routes) {
-    $routes->get('', 'Auth\Admin\Login::viewForm');
     $routes->get('change-password', 'Auth\Password::admin');
     $routes->get('dashboard', 'Admin\Dashboard::viewDashboard');
     $routes->get('list', 'Admin\Admin::viewAdmins');
     $routes->get('search', 'Admin\Admin::searchAdmin');
     $routes->delete('(:num)/delete', 'Admin\Admin::deleteAdmin/$1');
     
-    // Auth
+    // Add admin
     $routes->get('add', 'Auth\Admin\Register::viewForm');
-    $routes->post('auth/register', 'Auth\Admin\Register::registerAdminAccount');
-    $routes->post('auth/login', 'Auth\Admin\Login::loginToAccount');
-    $routes->post('auth/logout', 'Auth\Logout::admin');
 
     // Products
     $routes->get('products', 'Admin\Product::viewProducts');
@@ -41,7 +43,7 @@ $routes->group('admin', ['filter' => 'auth-admin'], function ($routes) {
     $routes->get('orders', 'Admin\Order::viewOrders');
     $routes->get('order/search', 'Admin\Order::searchOrder');
     $routes->get('order/(:segment)', 'Admin\Order::viewOrderDetail/$1');
-    $routes->post('order/edit_status', 'Admin\Order::editOrderStatus');
+    $routes->post('order/update_status', 'Admin\Order::updateOrderStatus');
 
     // Customers
     $routes->get('customers', 'Admin\Customer::viewCustomers');

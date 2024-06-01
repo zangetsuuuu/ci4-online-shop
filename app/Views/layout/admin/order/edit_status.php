@@ -12,7 +12,7 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="<?= base_url('admin/order/edit_status') ?>" method="post">
+            <form action="<?= base_url('admin/order/update_status') ?>" method="post">
                 <div class="p-4 md:p-5">
                     <input type="hidden" name="order_id" value="<?= $order['id']; ?>">
                     <input type="hidden" name="reference" value="<?= $order['reference']; ?>">

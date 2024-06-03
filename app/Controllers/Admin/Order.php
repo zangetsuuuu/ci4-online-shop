@@ -33,6 +33,7 @@ class Order extends BaseController
         $status = $this->request->getVar('status');
         $sort = (isset($sort)) ? $sort : '';
         $status = (isset($status)) ? $status : '';
+        $currentPage = $this->request->getVar('page_orders') ? $this->request->getVar('page_orders') : 1;
 
         $statusColor = [
             'Dibatalkan' => 'badge-red',
@@ -69,7 +70,9 @@ class Order extends BaseController
             'title' => 'Daftar Pesanan | ADMIN',
             'orders' => $orderDetails,
             'status' => $status,
-            'sortBy' => $sort
+            'sortBy' => $sort,
+            'pager' => $this->orderModel->pager,
+            'currentPage' => $currentPage
         ];
         
         session()->remove('Order Search Info');
@@ -137,15 +140,16 @@ class Order extends BaseController
     public function searchOrder()
     {
         $statusColor = [
-            'dibatalkan' => 'badge-red',
-            'menunggu diproses' => 'badge-gray',
-            'diproses' => 'badge-yellow',
-            'siap diambil' => 'badge-blue',
-            'selesai' => 'badge-green'
+            'Dibatalkan' => 'badge-red',
+            'Menunggu Diproses' => 'badge-gray',
+            'Diproses' => 'badge-yellow',
+            'Siap Diambil' => 'badge-blue',
+            'Selesai' => 'badge-green'
         ];
 
         $keyword = $this->request->getVar('keyword');
         $orders = $this->orderModel->getOrderBySearch($keyword);
+        $currentPage = $this->request->getVar('page_orders') ? $this->request->getVar('page_orders') : 1;
 
         $orderDetails = [];
         foreach ($orders as $order) {
@@ -163,7 +167,9 @@ class Order extends BaseController
         $data = [
             'title' => 'Daftar Pesanan | ADMIN',
             'orders' => $orderDetails,
-            'status' => ''
+            'status' => '',
+            'pager' => $this->orderModel->pager,
+            'currentPage' => $currentPage
         ];
 
         if (empty($data['orders'])) {

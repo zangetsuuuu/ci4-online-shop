@@ -91,7 +91,6 @@ class Profile extends BaseController
             'address' => $this->request->getVar('address'),
             'avatar' => $avatarName
         ];
-        // dd($data);
 
         $this->profileModel->save($data);
 

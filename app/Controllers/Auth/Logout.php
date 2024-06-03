@@ -15,7 +15,8 @@ class Logout extends BaseController
     public function customer()
     {
         session()->destroy();
-        setcookie('remember_' . session()->get('id'), '', time() - 3600, '/');
+        $key = 'remember_me';
+        setcookie($key, '', time() - (86400 * 30), '/');
         return redirect()->to(base_url('login'));
     }
 }

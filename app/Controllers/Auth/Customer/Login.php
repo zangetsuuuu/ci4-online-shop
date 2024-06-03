@@ -38,18 +38,17 @@ class Login extends BaseController
             $this->setCustomerSession($customer);
 
             if ($this->request->getVar('remember')) {
-                $key = 'remember_' . $customer['id'];
+                $key = 'remember_me';
                 $value = $customer['id'] . ':' . $customer['password'];
                 setcookie($key, $value, time() + (86400 * 30), '/');
             }
-
+            
             return redirect()->to(base_url('products'));
         }
 
         session()->setFlashdata('error', 'Username atau password salah!');
         return redirect()->to(base_url('login'))->withInput();
     }
-
 
     private function setCustomerSession($customer)
     {

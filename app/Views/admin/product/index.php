@@ -37,7 +37,7 @@
                         </svg>
                     </button>
                 </div>
-                <div id="add-product-tooltip" role="tooltip" class="absolute z-50 invisible inline-block px-3 py-2 text-xs font-medium tracking-wide text-white transition-opacity duration-300 rounded-lg shadow-sm opacity-0 bg-myBlack tooltip group">
+                <div id="add-product-tooltip" role="tooltip" class="absolute z-50 invisible inline-block px-3 py-3 text-xs font-medium tracking-wide text-white transition-opacity duration-300 rounded-lg shadow-sm opacity-0 bg-myBlack tooltip group">
                     Tambah produk
                     <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
@@ -122,56 +122,56 @@
                     <table class="min-w-[60rem] md:min-w-full text-sm text-left text-gray-500 tracking-wide divide-y divide-gray-200 border border-gray-200">
                         <thead class="text-xs text-center uppercase bg-gray-100 text-myBlack">
                             <tr>
-                                <th scope="col" class="w-10 px-6 py-4">
+                                <th scope="col" class="w-10 px-6 py-3 md:py-4">
                                     No.
                                 </th>
-                                <th scope="col" class="px-6 py-4 w-fit">
+                                <th scope="col" class="px-6 py-3 md:py-4 w-fit">
                                     Gambar
                                 </th>
-                                <th scope="col" class="px-6 py-4 w-fit">
+                                <th scope="col" class="px-6 py-3 md:py-4 w-fit">
                                     Nama
                                 </th>
-                                <th scope="col" class="px-6 py-4 w-fit">
+                                <th scope="col" class="px-6 py-3 md:py-4 w-fit">
                                     Stok
                                 </th>
-                                <th scope="col" class="w-40 px-6 py-4">
+                                <th scope="col" class="w-40 px-6 py-3 md:py-4">
                                     Harga
                                 </th>
-                                <th scope="col" class="px-6 py-4 w-fit">
+                                <th scope="col" class="px-6 py-3 md:py-4 w-fit">
                                     Aksi
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="text-center bg-white divide-y divide-gray-200">
+                        <tbody class="text-xs text-center bg-white divide-y divide-gray-200 md:text-sm">
                             <?php if (!empty($products)) : ?>
-                                <?php $i = 1;
+                                <?php $i = 1 + (10 * ($currentPage - 1));
                                 foreach ($products as $product) : ?>
                                     <tr class="duration-150 ease-in-out hover:bg-gray-50">
-                                        <td class="px-6 py-4 font-bold whitespace-nowrap text-myBlack"><?= $i++; ?>.</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="h-24 md:h-28">
+                                        <td class="px-6 py-3 font-bold md:py-4 whitespace-nowrap text-myBlack"><?= $i++; ?>.</td>
+                                        <td class="px-6 py-3 md:py-4 whitespace-nowrap">
+                                            <div class="h-16 md:h-28">
                                                 <img class="object-contain w-full h-full" src="<?= base_url('img/products/' . esc($product['image'])); ?>" alt="<?= esc($product['name']); ?>">
                                             </div>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap"><?= esc($product['name']); ?></td>
-                                        <td class="px-6 py-4 whitespace-nowrap"><?= esc($product['stock'] == 0 ? 'Habis' : $product['stock']); ?></td>
-                                        <td class="px-6 py-4 truncate whitespace-nowrap max-w-10">
+                                        <td class="px-6 py-3 md:py-4 whitespace-nowrap"><?= esc($product['name']); ?></td>
+                                        <td class="px-6 py-3 md:py-4 whitespace-nowrap"><?= esc($product['stock'] == 0 ? 'Habis' : $product['stock']); ?></td>
+                                        <td class="px-6 py-3 truncate md:py-4 whitespace-nowrap max-w-10">
                                             Rp. <?= number_format(esc($product['price']), 0, ',', '.'); ?>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
+                                        <td class="px-6 py-3 md:py-4 whitespace-nowrap">
                                             <div class="flex items-center justify-center space-x-3">
                                                 <a href="<?= base_url('admin/product/' . esc($product['slug'])); ?>" class="duration-300 ease-in-out hover:text-myBlack">
-                                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <svg class="w-4 h-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V11C12.75 10.5858 12.4142 10.25 12 10.25C11.5858 10.25 11.25 10.5858 11.25 11V17C11.25 17.4142 11.5858 17.75 12 17.75ZM12 7C12.5523 7 13 7.44772 13 8C13 8.55228 12.5523 9 12 9C11.4477 9 11 8.55228 11 8C11 7.44772 11.4477 7 12 7Z" fill="currentColor" />
                                                     </svg>
                                                 </a>
                                                 <a href="<?= base_url('admin/product/' . esc($product['slug']) . '/edit'); ?>" class="duration-300 ease-in-out text-emerald-500 hover:text-emerald-600">
-                                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <svg class="w-4 h-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z" fill="currentColor" />
                                                     </svg>
                                                 </a>
                                                 <button data-modal-target="delete-product-modal#<?= esc($product['id']); ?>" data-modal-toggle="delete-product-modal#<?= esc($product['id']); ?>" class="text-red-500 duration-300 ease-in-out hover:text-red-600">
-                                                    <svg fill="currentColor" class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="delete" class="icon glyph">
+                                                    <svg fill="currentColor" class="w-4 h-4 md:h-5 md:w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="delete" class="icon glyph">
                                                         <path d="M17,4V5H15V4H9V5H7V4A2,2,0,0,1,9,2h6A2,2,0,0,1,17,4Z"></path>
                                                         <path d="M20,6H4A1,1,0,0,0,4,8H5V20a2,2,0,0,0,2,2H17a2,2,0,0,0,2-2V8h1a1,1,0,0,0,0-2Z"></path>
                                                     </svg>
@@ -188,6 +188,9 @@
                         </tbody>
                     </table>
                 </div>
+                <?php if ($pager !== null) : ?>
+                    <?= $pager->links('products', 'products_pagination'); ?>
+                <?php endif; ?>
             <?php endif; ?>
             <!-- Products end -->
         </div>

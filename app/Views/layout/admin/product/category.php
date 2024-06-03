@@ -17,7 +17,7 @@
                 <div class="p-4 md:p-5">
                     <div class="w-full">
                         <select id="category" name="category" class="input-admin">
-                            <option value="all" selected>Semua Kategori</option>
+                            <option value="semua" selected>Semua Kategori</option>
                             <option value="makanan" <?= ($category === 'makanan') ? 'selected' : ''; ?>>Makanan</option>
                             <option value="minuman" <?= ($category === 'minuman') ? 'selected' : ''; ?>>Minuman</option>
                         </select>

@@ -29,7 +29,7 @@
                 <!-- Modal footer -->
                 <div class="flex items-center justify-end p-4 space-x-3 border-t border-gray-200 rounded-b md:p-5">
                     <button type="button" class="btn-alternative" data-modal-hide="search-modal">Batal</button>
-                    <button type="submit" class="btn-customers">Cari</button>
+                    <button type="submit" class="btn-primary">Cari</button>
                 </div>
             </form>
         </div>

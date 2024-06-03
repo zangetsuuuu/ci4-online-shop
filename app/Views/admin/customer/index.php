@@ -13,7 +13,7 @@
                     <h1 class="text-lg font-semibold tracking-wide md:text-xl">Pelanggan</h1>
                 </div>
                 <button data-modal-target="customer-search-modal" data-modal-toggle="customer-search-modal" class="duration-300 ease-in-out text-myBlack hover:text-gray-500">
-                    <svg class="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-4 h-4 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16.6725 16.6412L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </button>
@@ -77,51 +77,51 @@
                     <table class="min-w-[60rem] md:min-w-full text-sm text-left text-gray-500 tracking-wide divide-y divide-gray-200 border border-gray-200">
                         <thead class="text-xs text-center uppercase bg-gray-100 text-myBlack">
                             <tr>
-                                <th scope="col" class="px-6 py-4 w-fit">
+                                <th scope="col" class="px-4 py-3 md:px-6 md:py-4 w-fit">
                                     No.
                                 </th>
-                                <th scope="col" class="px-6 py-4 w-fit">
+                                <th scope="col" class="px-4 py-3 md:px-6 md:py-4 w-fit">
                                     Foto
                                 </th>
-                                <th scope="col" class="px-6 py-4 w-fit">
+                                <th scope="col" class="px-4 py-3 md:px-6 md:py-4 w-fit">
                                     Nama
                                 </th>
-                                <th scope="col" class="px-6 py-4 w-fit">
+                                <th scope="col" class="px-4 py-3 md:px-6 md:py-4 w-fit">
                                     Email
                                 </th>
-                                <th scope="col" class="px-6 py-4 w-fit">
+                                <th scope="col" class="px-4 py-3 md:px-6 md:py-4 w-fit">
                                     No. HP
                                 </th>
-                                <th scope="col" class="px-6 py-4 w-fit">
+                                <th scope="col" class="px-4 py-3 md:px-6 md:py-4 w-fit">
                                     Aksi
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="text-center bg-white divide-y divide-gray-200">
-                            <?php $i = 1;
+                        <tbody class="text-xs text-center bg-white divide-y divide-gray-200 md:text-sm">
+                            <?php $i = 1 + (25 * ($currentPage - 1));
                             foreach ($customers as $data) : ?>
                                 <tr class="duration-150 ease-in-out hover:bg-gray-50">
-                                    <td class="px-6 py-4 font-bold whitespace-nowrap text-myBlack"><?= esc($i++); ?>.</td>
-                                    <td class="flex justify-center px-6 py-4 whitespace-nowrap">
+                                    <td class="px-4 py-3 md:px-6 fo:nt-bold mdpy-4 whitespace-nowrap text-myBlack"><?= esc($i++); ?>.</td>
+                                    <td class="flex justify-center px-4 py-3 md:px-6 md:py-4 whitespace-nowrap">
                                         <img class="object-cover rounded-full w-9 h-9 md:w-10 md:h-10" src="<?= base_url('img/avatars/customer/' . esc($data['avatar'])); ?>" alt="<?= esc($data['fullname']); ?>">
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="space-y-0.5">
-                                            <div class="text-sm font-semibold"><?= esc($data['fullname']); ?></div>
-                                            <div class="text-xs text-gray-400">@<?= esc($data['username']); ?></div>
+                                    <td class="px-4 py-3 md:px-6 md:py-4 whitespace-nowrap">
+                                        <div class="space-y-[0.080rem] md:space-y-0.5">
+                                            <div class="text-xs font-semibold md:text-sm"><?= esc($data['fullname']); ?></div>
+                                            <div class="text-[0.55rem] md:text-xs text-gray-400">@<?= esc($data['username']); ?></div>
                                         </div>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap"><?= esc($data['email']); ?></td>
-                                    <td class="px-6 py-4 whitespace-nowrap "><a href="https://wa.me/62<?= substr(esc($data['phone_number']), 1); ?>" class="duration-200 ease-in-out hover:text-emerald-500"><?= esc($data['phone_number']); ?></a></td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
+                                    <td class="px-4 py-3 md:px-6 md:py-4 whitespace-nowrap"><?= esc($data['email']); ?></td>
+                                    <td class="px-4 py-3 md:px-6 md:py-4 whitespace-nowrap "><a href="https://wa.me/62<?= substr(esc($data['phone_number']), 1); ?>" class="duration-200 ease-in-out hover:text-emerald-500"><?= esc($data['phone_number']); ?></a></td>
+                                    <td class="px-4 py-3 md:px-6 md:py-4 whitespace-nowrap">
                                         <div class="flex items-center justify-center space-x-3">
                                             <a href="<?= base_url('admin/customer/@' . esc($data['username'])); ?>" class="duration-300 ease-in-out hover:text-myBlack">
-                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <svg class="w-4 h-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V11C12.75 10.5858 12.4142 10.25 12 10.25C11.5858 10.25 11.25 10.5858 11.25 11V17C11.25 17.4142 11.5858 17.75 12 17.75ZM12 7C12.5523 7 13 7.44772 13 8C13 8.55228 12.5523 9 12 9C11.4477 9 11 8.55228 11 8C11 7.44772 11.4477 7 12 7Z" fill="currentColor" />
                                                 </svg>
                                             </a>
                                             <button data-modal-target="delete-customer-modal#<?= esc($data['id']); ?>" data-modal-toggle="delete-customer-modal#<?= esc($data['id']); ?>" class="text-red-500 duration-300 ease-in-out hover:text-red-600">
-                                                <svg fill="currentColor" class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="delete" class="icon glyph">
+                                                <svg fill="currentColor" class="w-4 h-4 md:h-5 md:w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="delete" class="icon glyph">
                                                     <path d="M17,4V5H15V4H9V5H7V4A2,2,0,0,1,9,2h6A2,2,0,0,1,17,4Z"></path>
                                                     <path d="M20,6H4A1,1,0,0,0,4,8H5V20a2,2,0,0,0,2,2H17a2,2,0,0,0,2-2V8h1a1,1,0,0,0,0-2Z"></path>
                                                 </svg>
@@ -131,10 +131,12 @@
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
-
                     </table>
                 </div>
                 <!-- Customers end -->
+                <?php if ($pager !== null) : ?>
+                    <?= $pager->links('orders', 'orders_pagination'); ?>
+                <?php endif; ?>
             <?php endif; ?>
         </div>
     </div>

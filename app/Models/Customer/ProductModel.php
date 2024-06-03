@@ -13,7 +13,7 @@ class ProductModel extends Model
 
     public function getProducts()
     {
-        return $this->findAll();
+        return $this->paginate(16, 'products');
     }
 
     public function getProductById($id)
@@ -28,7 +28,7 @@ class ProductModel extends Model
 
     public function getProductsByCategory($category)
     {
-        return $this->where(['category' => $category])->findAll();
+        return $this->where(['category' => $category])->paginate(16, 'products');
     }
 
     public function getProductBySearch($keyword)
@@ -38,7 +38,7 @@ class ProductModel extends Model
             ->orLike('description', $keyword)
             ->orLike('price', $keyword)
             ->orLike('stock', $keyword)
-            ->findAll();
+            ->paginate(16, 'products');
     }
 
     public function validation()

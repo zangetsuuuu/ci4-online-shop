@@ -108,7 +108,7 @@
                 </div>
             <?php endif; ?>
 
-            <?php if (isset($category) && $category !== '') : ?>
+            <?php if (isset($category) && $category !== '' && $category != 'semua') : ?>
                 <div class="flex items-center justify-between p-3 mb-4 text-sm text-gray-800 border border-gray-300 rounded-lg md:p-4 bg-gray-50">
                     <div class="flex items-center" role="alert">
                         <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -144,7 +144,7 @@
                 <div class="flex items-center justify-between p-3 text-sm text-yellow-800 border border-yellow-300 rounded-lg md:p-4 bg-yellow-50">
                     <div class="flex items-center" role="alert">
                         <svg class="flex-shrink-0 inline w-3 h-3 md:w-4 md:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/>
+                            <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" />
                         </svg>
                         <span class="sr-only">Info</span>
                         <div>
@@ -160,34 +160,32 @@
             <div class="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5">
                 <?php foreach ($products as $data) : ?>
                     <div class="max-h-[20rem] bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-lg ease-in-out duration-300 group">
-                        <form action="" method="">
-                            <div class="relative h-24 md:h-28">
-                                <a href="<?= base_url('product/' . $data['slug']); ?>">
-                                    <img class="object-contain w-full h-full" src="<?= base_url('img/products/' . $data['image']); ?>" alt="">
-                                    <div class="absolute inset-0 flex items-center justify-center text-sm font-semibold tracking-wide text-white duration-300 ease-in-out opacity-0 hover:opacity-100 bg-myBlack/20 backdrop-filter backdrop-blur-md">
-                                        Klik untuk lihat detail
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="p-3">
-                                <div class="mb-4">
-                                    <div class="mb-1 text-sm font-semibold tracking-wide truncate md:text-base text-myBlack"><?= $data['name']; ?></div>
-                                    <span class="bg-gray-100 text-gray-500 text-[0.65rem] md:text-xs font-medium tracking-wide px-2.5 py-0.5 rounded">Stok: <?= ($data['stock'] == 0) ? 'Habis' : number_format($data['stock'], 0, ',', '.') ?></span>
+                        <div class="relative h-24 md:h-28">
+                            <a href="<?= base_url('product/' . $data['slug']); ?>">
+                                <img class="object-contain w-full h-full" src="<?= base_url('img/products/' . $data['image']); ?>" alt="">
+                                <div class="absolute inset-0 flex items-center justify-center text-sm font-semibold tracking-wide text-white duration-300 ease-in-out opacity-0 hover:opacity-100 bg-myBlack/20 backdrop-filter backdrop-blur-md">
+                                    Klik untuk lihat detail
                                 </div>
-                                <div class="flex items-center justify-between rounded-md">
-                                    <h1 class="text-sm font-semibold tracking-wide md:text-base">
-                                        Rp. <?= number_format($data['price'], 0, ',', '.'); ?>
-                                    </h1>
-                                    <button data-tooltip-target="cart-tooltip#<?= $data['id']; ?>" data-modal-target="add-to-cart-modal#<?= $data['id']; ?>" data-modal-toggle="add-to-cart-modal#<?= $data['id']; ?>" type="button" class="icon-primary" <?= ($data['stock'] == 0) ? 'disabled' : '' ?>>
-                                        <svg class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.04047 2.29242C2.6497 2.15503 2.22155 2.36044 2.08416 2.7512C1.94678 3.14197 2.15218 3.57012 2.54295 3.7075L2.80416 3.79934C3.47177 4.03406 3.91052 4.18961 4.23336 4.34802C4.53659 4.4968 4.67026 4.61723 4.75832 4.74609C4.84858 4.87818 4.91828 5.0596 4.95761 5.42295C4.99877 5.80316 4.99979 6.29837 4.99979 7.03832L4.99979 9.64C4.99979 12.5816 5.06302 13.5523 5.92943 14.4662C6.79583 15.38 8.19028 15.38 10.9792 15.38H16.2821C17.8431 15.38 18.6236 15.38 19.1753 14.9304C19.727 14.4808 19.8846 13.7164 20.1997 12.1875L20.6995 9.76275C21.0466 8.02369 21.2202 7.15417 20.7762 6.57708C20.3323 6 18.8155 6 17.1305 6H6.49233C6.48564 5.72967 6.47295 5.48373 6.4489 5.26153C6.39517 4.76515 6.27875 4.31243 5.99677 3.89979C5.71259 3.48393 5.33474 3.21759 4.89411 3.00139C4.48203 2.79919 3.95839 2.61511 3.34187 2.39838L3.04047 2.29242ZM13 8.25C13.4142 8.25 13.75 8.58579 13.75 9V10.25H15C15.4142 10.25 15.75 10.5858 15.75 11C15.75 11.4142 15.4142 11.75 15 11.75H13.75V13C13.75 13.4142 13.4142 13.75 13 13.75C12.5858 13.75 12.25 13.4142 12.25 13V11.75H11C10.5858 11.75 10.25 11.4142 10.25 11C10.25 10.5858 10.5858 10.25 11 10.25H12.25V9C12.25 8.58579 12.5858 8.25 13 8.25Z" fill="currentColor" />
-                                            <path d="M7.5 18C8.32843 18 9 18.6716 9 19.5C9 20.3284 8.32843 21 7.5 21C6.67157 21 6 20.3284 6 19.5C6 18.6716 6.67157 18 7.5 18Z" fill="currentColor" />
-                                            <path d="M16.5 18.0001C17.3284 18.0001 18 18.6716 18 19.5001C18 20.3285 17.3284 21.0001 16.5 21.0001C15.6716 21.0001 15 20.3285 15 19.5001C15 18.6716 15.6716 18.0001 16.5 18.0001Z" fill="currentColor" />
-                                        </svg>
-                                    </button>
-                                </div>
+                            </a>
+                        </div>
+                        <div class="p-3">
+                            <div class="mb-4">
+                                <div class="mb-1 text-sm font-semibold tracking-wide truncate md:text-base text-myBlack"><?= $data['name']; ?></div>
+                                <span class="bg-gray-100 text-gray-500 text-[0.65rem] md:text-xs font-medium tracking-wide px-2.5 py-0.5 rounded">Stok: <?= ($data['stock'] == 0) ? 'Habis' : number_format($data['stock'], 0, ',', '.') ?></span>
                             </div>
-                        </form>
+                            <div class="flex items-center justify-between rounded-md">
+                                <h1 class="text-sm font-semibold tracking-wide md:text-base">
+                                    Rp. <?= number_format($data['price'], 0, ',', '.'); ?>
+                                </h1>
+                                <button data-tooltip-target="cart-tooltip#<?= $data['id']; ?>" data-modal-target="add-to-cart-modal#<?= $data['id']; ?>" data-modal-toggle="add-to-cart-modal#<?= $data['id']; ?>" type="button" class="icon-primary" <?= ($data['stock'] == 0) ? 'disabled' : '' ?>>
+                                    <svg class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.04047 2.29242C2.6497 2.15503 2.22155 2.36044 2.08416 2.7512C1.94678 3.14197 2.15218 3.57012 2.54295 3.7075L2.80416 3.79934C3.47177 4.03406 3.91052 4.18961 4.23336 4.34802C4.53659 4.4968 4.67026 4.61723 4.75832 4.74609C4.84858 4.87818 4.91828 5.0596 4.95761 5.42295C4.99877 5.80316 4.99979 6.29837 4.99979 7.03832L4.99979 9.64C4.99979 12.5816 5.06302 13.5523 5.92943 14.4662C6.79583 15.38 8.19028 15.38 10.9792 15.38H16.2821C17.8431 15.38 18.6236 15.38 19.1753 14.9304C19.727 14.4808 19.8846 13.7164 20.1997 12.1875L20.6995 9.76275C21.0466 8.02369 21.2202 7.15417 20.7762 6.57708C20.3323 6 18.8155 6 17.1305 6H6.49233C6.48564 5.72967 6.47295 5.48373 6.4489 5.26153C6.39517 4.76515 6.27875 4.31243 5.99677 3.89979C5.71259 3.48393 5.33474 3.21759 4.89411 3.00139C4.48203 2.79919 3.95839 2.61511 3.34187 2.39838L3.04047 2.29242ZM13 8.25C13.4142 8.25 13.75 8.58579 13.75 9V10.25H15C15.4142 10.25 15.75 10.5858 15.75 11C15.75 11.4142 15.4142 11.75 15 11.75H13.75V13C13.75 13.4142 13.4142 13.75 13 13.75C12.5858 13.75 12.25 13.4142 12.25 13V11.75H11C10.5858 11.75 10.25 11.4142 10.25 11C10.25 10.5858 10.5858 10.25 11 10.25H12.25V9C12.25 8.58579 12.5858 8.25 13 8.25Z" fill="currentColor" />
+                                        <path d="M7.5 18C8.32843 18 9 18.6716 9 19.5C9 20.3284 8.32843 21 7.5 21C6.67157 21 6 20.3284 6 19.5C6 18.6716 6.67157 18 7.5 18Z" fill="currentColor" />
+                                        <path d="M16.5 18.0001C17.3284 18.0001 18 18.6716 18 19.5001C18 20.3285 17.3284 21.0001 16.5 21.0001C15.6716 21.0001 15 20.3285 15 19.5001C15 18.6716 15.6716 18.0001 16.5 18.0001Z" fill="currentColor" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
                         <div id="cart-tooltip#<?= $data['id']; ?>" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium tracking-wide text-white transition-opacity duration-300 rounded-lg shadow-sm opacity-0 bg-myBlack tooltip group">
                             <?= ($data['stock'] == 0) ? 'Habis' : 'Tambahkan ke keranjang' ?>
                             <div class="tooltip-arrow" data-popper-arrow></div>
@@ -195,6 +193,9 @@
                     </div>
                 <?php endforeach; ?>
             </div>
+            <?php if ($pager !== null) : ?>
+                <?= $pager->links('products', 'products_pagination'); ?>
+            <?php endif; ?>
         </div>
         <!-- Product End -->
     </div>

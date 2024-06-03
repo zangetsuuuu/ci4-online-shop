@@ -24,6 +24,17 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-5">
                 <div class="relative w-56 h-56 mx-auto overflow-hidden border rounded-full">
                     <img src="<?= base_url('img/avatars/admin/' . esc($admin['avatar'])); ?>" class="object-cover w-full h-full" alt="<?= esc($admin['fullname']); ?>">
+                    <div class="absolute inset-0 flex items-center justify-center duration-300 ease-in-out opacity-0 cursor-pointer hover:opacity-100 bg-myBlack/50">
+                        <button type="button" data-modal-target="profile-image-modal#<?= esc($admin['id']) ?>" data-modal-toggle="profile-image-modal#<?= esc($admin['id']) ?>" data-tooltip-target="profile-image-tooltip#<?= esc($admin['id']) ?>" class="p-3 text-white duration-300 ease-in-out rounded-full hover:text-gray-300">
+                            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 9V5.6C4 5.03995 4 4.75992 4.10899 4.54601C4.20487 4.35785 4.35785 4.20487 4.54601 4.109C4.75992 4 5.03995 4 5.6 4L9 4M4 15V18.4C4 18.9601 4 19.2401 4.10899 19.454C4.20487 19.6422 4.35785 19.7951 4.54601 19.891C4.75992 20 5.03995 20 5.6 20L9 20M15 4H18.4C18.9601 4 19.2401 4 19.454 4.10899C19.6422 4.20487 19.7951 4.35785 19.891 4.54601C20 4.75992 20 5.03995 20 5.6V9M20 15V18.4C20 18.9601 20 19.2401 19.891 19.454C19.7951 19.6422 19.6422 19.7951 19.454 19.891C19.2401 20 18.9601 20 18.4 20H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <div id="profile-image-tooltip#<?= esc($admin['id']) ?>" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium tracking-wide text-white transition-opacity duration-300 rounded-lg shadow-sm opacity-0 bg-myBlack tooltip group">
+                            Lihat Foto
+                            <div class="tooltip-arrow" data-popper-arrow></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-span-2 space-y-6">
                     <div class="space-y-2">
@@ -55,4 +66,7 @@
         </div>
     </div>
 </div>
+
+<?= $this->include('layout/admin/avatar'); ?>
+
 <?= $this->endSection(); ?>

@@ -77,39 +77,39 @@
                         <table class="min-w-[40rem] md:min-w-full text-xs md:text-sm text-gray-500 tracking-wide divide-y divide-gray-200 border border-gray-200 text-left">
                             <thead class="text-xs uppercase bg-gray-100 text-myBlack">
                                 <tr>
-                                    <th scope="col" class="px-6 py-4 w-fit">
+                                    <th scope="col" class="px-4 py-3 md:px-6 md:py-4 w-fit">
                                         Nama Produk
                                     </th>
-                                    <th scope="col" class="px-6 py-4 w-fit">
+                                    <th scope="col" class="px-4 py-3 md:px-6 md:py-4 w-fit">
                                         Jumlah
                                     </th>
-                                    <th scope="col" class="px-6 py-4 w-fit">
+                                    <th scope="col" class="px-4 py-3 md:px-6 md:py-4 w-fit">
                                         Harga
                                     </th>
-                                    <th scope="col" class="px-6 py-4 w-fit">
+                                    <th scope="col" class="px-4 py-3 md:px-6 md:py-4 w-fit">
                                         Total Harga
                                     </th>
-                                    <th scope="col" class="px-6 py-4 w-fit">
+                                    <th scope="col" class="px-4 py-3 md:px-6 md:py-4 w-fit">
                                         Aksi
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
+                            <tbody class="text-xs bg-white divide-y divide-gray-200 md:text-sm">
                                 <?php foreach ($cart as $item) : ?>
                                     <tr>
-                                        <th scope="row" class="px-6 py-4 font-medium text-myBlack whitespace-nowrap">
+                                        <th scope="row" class="px-4 py-3 font-medium md:px-6 md:py-4 text-myBlack whitespace-nowrap">
                                             <?= esc($item['product_name']); ?>
                                         </th>
-                                        <td class="px-6 py-4 whitespace-nowrap">
+                                        <td class="px-4 py-3 md:px-6 md:py-4 whitespace-nowrap">
                                             <?= esc($item['quantity']); ?>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
+                                        <td class="px-4 py-3 md:px-6 md:py-4 whitespace-nowrap">
                                             <?= 'Rp. ' . number_format($item['price'], 0, ',', '.'); ?>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
+                                        <td class="px-4 py-3 md:px-6 md:py-4 whitespace-nowrap">
                                             <?= 'Rp. ' . number_format($item['total'], 0, ',', '.'); ?>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
+                                        <td class="px-4 py-3 md:px-6 md:py-4 whitespace-nowrap">
                                             <div class="flex items-center space-x-3">
                                                 <button data-modal-target="edit-cart-item-modal#<?= $item['id']; ?>" data-modal-toggle="edit-cart-item-modal#<?= $item['id']; ?>" type="button" class="text-blue-700 duration-300 ease-in-out hover:text-blue-800">
                                                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -129,12 +129,12 @@
                             </tbody>
                             <tfoot>
                                 <tr class="font-semibold text-myBlack">
-                                    <th scope="row" class="px-6 py-3 text-base">Total</th>
-                                    <td name="total_quantity" class="px-6 py-4 whitespace-nowrap">
+                                    <th scope="row" class="px-4 py-3 text-sm md:text-base md:px-6">Total</th>
+                                    <td name="total_quantity" class="px-4 py-3 md:px-6 md:py-4 whitespace-nowrap">
                                         <?= esc($total_quantity); ?>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap"></td>
-                                    <td name="total_price" class="px-6 py-4 whitespace-nowrap">
+                                    <td class="px-4 py-3 md:px-6 md:py-4 whitespace-nowrap"></td>
+                                    <td name="total_price" class="px-4 py-3 md:px-6 md:py-4 whitespace-nowrap">
                                         <?= 'Rp. ' . number_format($total_price, 0, ',', '.'); ?>
                                     </td>
                                 </tr>

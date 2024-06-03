@@ -88,40 +88,41 @@
                     <table class="min-w-[60rem] md:min-w-full text-sm text-gray-500 tracking-wide divide-y divide-gray-200 border border-gray-200 text-center">
                         <thead class="text-xs uppercase bg-gray-100 text-myBlack">
                             <tr>
-                                <th scope="col" class="px-6 py-4 w-fit">
+                                <th scope="col" class="px-4 py-3 md:px-6 md:py-4 w-fit">
                                     No.
                                 </th>
-                                <th scope="col" class="px-6 py-4 w-fit">
+                                <th scope="col" class="px-4 py-3 md:px-6 md:py-4 w-fit">
                                     ID Pesanan
                                 </th>
-                                <th scope="col" class="px-6 py-4 w-fit">
+                                <th scope="col" class="px-4 py-3 md:px-6 md:py-4 w-fit">
                                     Tanggal Pesanan
                                 </th>
-                                <th scope="col" class="px-6 py-4 w-fit">
+                                <th scope="col" class="px-4 py-3 md:px-6 md:py-4 w-fit">
                                     Pelanggan
                                 </th>
-                                <th scope="col" class="px-6 py-4 w-fit">
+                                <th scope="col" class="px-4 py-3 md:px-6 md:py-4 w-fit">
                                     Status
                                 </th>
-                                <th scope="col" class="px-6 py-4 w-fit">
+                                <th scope="col" class="px-4 py-3 md:px-6 md:py-4 w-fit">
                                     Aksi
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="text-center bg-white divide-y divide-gray-200">
-                            <?php if (!empty($orders)) : $i = 1;
+                        <tbody class="text-xs text-center bg-white divide-y divide-gray-200 md:text-sm">
+                            <?php if (!empty($orders)) :
+                                $i = 1 + (25 * ($currentPage - 1));
                                 foreach ($orders as $order) : ?>
                                     <tr>
-                                        <td class="px-6 py-4 font-bold whitespace-nowrap text-myBlack"><?= esc($i++); ?></td>
-                                        <td class="px-6 py-4 whitespace-nowrap">#<?= esc($order['id']); ?></td>
-                                        <td class="px-6 py-4 whitespace-nowrap"><?= esc(date('d M Y, H:i', strtotime($order['created_at']))); ?> WIB</td>
-                                        <td class="px-6 py-4 truncate whitespace-nowrap max-w-10"><?= esc($order['customer_name']); ?></td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
+                                        <td class="px-4 py-3 font-bold md:px-6 md:py-4 whitespace-nowrap text-myBlack"><?= esc($i++); ?>.</td>
+                                        <td class="px-4 py-3 md:px-6 md:py-4 whitespace-nowrap">#<?= esc($order['id']); ?></td>
+                                        <td class="px-4 py-3 md:px-6 md:py-4 whitespace-nowrap"><?= esc(date('d M Y, H:i', strtotime($order['created_at']))); ?> WIB</td>
+                                        <td class="px-4 py-3 truncate md:px-6 md:py-4 whitespace-nowrap max-w-10"><?= esc($order['customer_name']); ?></td>
+                                        <td class="px-4 py-3 md:px-6 md:py-4 whitespace-nowrap">
                                             <span class="inline-flex px-2 text-xs font-semibold leading-5 <?= esc($order['status_color']); ?> rounded-full">
                                                 <?= esc($order['status']); ?>
                                             </span>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
+                                        <td class="px-4 py-3 md:px-6 md:py-4 whitespace-nowrap">
                                             <div class="flex items-center justify-center">
                                                 <a href="<?= base_url('admin/order/' . esc($order['reference'])); ?>" class="duration-300 ease-in-out hover:text-myBlack">
                                                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -141,6 +142,9 @@
                     </table>
                     <!-- Orders end  -->
                 </div>
+                <?php if ($pager !== null) : ?>
+                    <?= $pager->links('orders', 'orders_pagination'); ?>
+                <?php endif; ?>
             <?php endif; ?>
         </div>
     </div>

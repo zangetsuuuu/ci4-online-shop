@@ -22,6 +22,7 @@
                             <option value="Menunggu Diproses" <?= ($status === 'Menunggu Diproses') ? 'selected' : ''; ?>>Menunggu Diproses</option>
                             <option value="Diproses" <?= ($status === 'Diproses') ? 'selected' : ''; ?>>Diproses</option>
                             <option value="Siap Diambil" <?= ($status === 'Siap Diambil') ? 'selected' : ''; ?>>Siap Diambil</option>
+                            <option value="Selesai" <?= ($status === 'Selesai') ? 'selected' : ''; ?>>Selesai</option>
                             <option value="Dibatalkan" <?= ($status === 'Dibatalkan') ? 'selected' : ''; ?>>Dibatalkan</option>
                         </select>
                     </div>
@@ -29,7 +30,7 @@
                 <!-- Modal footer -->
                 <div class="flex items-center justify-end p-4 space-x-3 border-t border-gray-200 rounded-b md:p-5">
                     <button type="button" data-modal-hide="status-modal" class="btn-alternative">Batal</button>
-                    <button type="submit" class="btn-customers">Terapkan</button>
+                    <button type="submit" class="btn-primary">Terapkan</button>
                 </div>
             </form>
         </div>

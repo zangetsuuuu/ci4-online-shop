@@ -13,27 +13,28 @@ class OrderModel extends Model
 
     public function getOrders()
     {
-        return $this->orderBy('created_at', 'DESC')->findAll();
+        return $this->orderBy('created_at', 'DESC')->paginate(25, 'orders');
     }
 
     public function getOrdersByStatus($status)
     {
-        return $this->where(['status' => $status])->findAll();
+        return $this->where(['status' => $status])->paginate(25, 'orders');
     }
 
     public function getOrderBySearch($keyword)
     {
         return $this->like('id', $keyword)
             ->orLike('created_at', $keyword)
-            ->findAll();
+            ->orLike('status', $keyword)
+            ->paginate(25, 'orders');
     }
 
     public function sortOrders($params)
     {
         if ($params == 'terlama') {
-            return $this->orderBy('created_at', 'ASC')->findAll();
+            return $this->orderBy('created_at', 'ASC')->paginate(25, 'orders');
         } else {
-            return $this->orderBy('created_at', 'DESC')->findAll();
+            return $this->orderBy('created_at', 'DESC')->paginate(25, 'orders');
         }
     }
 

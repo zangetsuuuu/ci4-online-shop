@@ -20,13 +20,13 @@ class Product extends BaseController
     public function viewProducts()
     {
         $category = $this->request->getVar('category');
-
-        $category = ($category === 'all') ? null : $category;
+        $category = ($category === 'semua') ? null : $category;
 
         $data = [
             'title' => 'Daftar Produk',
             'category' => $category,
             'products' => !$category ? $this->productModel->getProducts() : $this->productModel->getProductsByCategory($category),
+            'pager' => $this->productModel->pager,
             'validation' => session()->getFlashdata('validation')
         ];
         
@@ -53,10 +53,13 @@ class Product extends BaseController
     public function searchProduct()
     {
         $keyword = $this->request->getVar('keyword');
+        $currentPage = $this->request->getVar('page_products') ? $this->request->getVar('page_products') : 1;
 
         $data = [
             'title' => 'Daftar Produk | ADMIN',
             'category' => '',
+            'pager' => $this->productModel->pager,
+            'currentPage' => $currentPage,
             'products' => $this->productModel->getProductBySearch($keyword)
         ];
 
@@ -111,7 +114,6 @@ class Product extends BaseController
 
         session()->setFlashdata('Add Success', 'Berhasil ditambahkan ke keranjang!');
 
-        return redirect()->to(base_url('products'));
+        return redirect()->back();
     }
-
 }

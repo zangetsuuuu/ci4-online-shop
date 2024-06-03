@@ -33,6 +33,8 @@ class Dashboard extends BaseController
 
         $orders = $this->orderModel->getOrders();
 
+        $currentPage = $this->request->getVar('page_orders') ? $this->request->getVar('page_orders') : 1;
+
         $orderDetails = [];
         foreach ($orders as $order) {
             $customer = $this->customerModel->withDeleted()->getCustomerById($order['customer_id']);
@@ -55,7 +57,9 @@ class Dashboard extends BaseController
             'totalProducts' => $this->productModel->getTotalProducts(),
             'totalOrders' => $this->orderModel->getTotalOrders(),
             'totalCustomers' => $this->customerModel->getTotalCustomers(),
-            'orders' => $orderDetails
+            'orders' => $orderDetails,
+            'pager' => $this->orderModel->pager,
+            'currentPage' => $currentPage
        ];
 
         return view('admin/dashboard', $data);

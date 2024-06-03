@@ -19,7 +19,33 @@
 
 body {
   font-family: "Red Hat Display", sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: #b0b0b0 #f0f0f0;
   @apply bg-myWhite text-myBlack;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b0b0b0;
+  transition: background 0.3s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
 }
 
 /* Button style */
@@ -176,21 +202,33 @@ body {
 }
 
 .badge-gray {
-  @apply inline-flex px-2 text-xs font-semibold leading-5 rounded-full shadow-sm text-gray-500 bg-gray-100
+  @apply inline-flex px-2 text-[0.65rem] md:text-xs font-semibold leading-5 rounded-full shadow-sm text-gray-500 bg-gray-100;
 }
 
 .badge-yellow {
-  @apply inline-flex px-2 text-xs font-semibold leading-5 rounded-full shadow-sm text-yellow-500 bg-yellow-100
+  @apply inline-flex px-2 text-[0.65rem] md:text-xs font-semibold leading-5 rounded-full shadow-sm text-yellow-500 bg-yellow-100;
 }
 
 .badge-blue {
-  @apply inline-flex px-2 text-xs font-semibold leading-5 rounded-full shadow-sm text-blue-500 bg-blue-100
+  @apply inline-flex px-2 text-[0.65rem] md:text-xs font-semibold leading-5 rounded-full shadow-sm text-blue-500 bg-blue-100;
 }
 
 .badge-green {
-  @apply inline-flex px-2 text-xs font-semibold leading-5 rounded-full shadow-sm text-green-500 bg-green-100
+  @apply inline-flex px-2 text-[0.65rem] md:text-xs font-semibold leading-5 rounded-full shadow-sm text-green-500 bg-green-100;
 }
 
 .badge-red {
-  @apply inline-flex px-2 text-xs font-semibold leading-5 rounded-full shadow-sm text-red-500 bg-red-100
+  @apply inline-flex px-2 text-[0.65rem] md:text-xs font-semibold leading-5 rounded-full shadow-sm text-red-500 bg-red-100;
+}
+
+.pagination-container {
+  @apply inline-flex -space-x-px text-xs md:text-sm mt-6;
+}
+
+.page-active {
+  @apply flex items-center justify-center px-2 md:px-3 h-6 md:h-8 text-gray-700 border border-gray-300 bg-gray-100 hover:bg-gray-100 hover:text-gray-700;
+}
+
+.pagination-link {
+  @apply flex items-center justify-center h-6 md:h-8 px-2 md:px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700;
 }

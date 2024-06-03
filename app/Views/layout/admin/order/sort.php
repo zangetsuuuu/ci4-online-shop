@@ -19,7 +19,7 @@
                     <div>
                         <select id="sort" name="sortBy" class="input-admin">
                             <option value="terbaru" selected>Terbaru</option>
-                            <option value="terlama" <?= isset($sortBy) === 'Terlama' ? 'selected' : '' ?>>Terlama</option>
+                            <option value="terlama" <?= $sortBy == 'terlama' ? 'selected' : '' ?>>Terlama</option>
                         </select>
                     </div>
                 </div>

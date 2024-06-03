@@ -35,6 +35,7 @@ class Order extends BaseController
         $status = $this->request->getVar('status');
         $sort = (isset($sort)) ? $sort : '';
         $status = (isset($status)) ? $status : '';
+        $currentPage = $this->request->getVar('page_orders') ? $this->request->getVar('page_orders') : 1;
 
         $statusColor = [
             'Dibatalkan' => 'badge-red',
@@ -62,7 +63,9 @@ class Order extends BaseController
             'title' => 'Daftar Pesanan',
             'orders' => $orders,
             'status' => $status,
-            'sortBy' => $sort
+            'sortBy' => $sort,
+            'pager' => $this->orderModel->pager,
+            'currentPage' => $currentPage
         ];
         
         session()->remove('Order Search Info');

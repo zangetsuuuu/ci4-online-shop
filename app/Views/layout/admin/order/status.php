@@ -19,11 +19,11 @@
                     <div>
                         <select id="status" name="status" class="input-admin">
                             <option disabled selected>Pilih status</option>
-                            <option value="Menunggu Diproses" <?= ($status === 'Menunggu Diproses') ? 'selected' : ''; ?>>Menunggu Diproses</option>
-                            <option value="Diproses" <?= ($status === 'Diproses') ? 'selected' : ''; ?>>Diproses</option>
-                            <option value="Siap Diambil" <?= ($status === 'Siap Diambil') ? 'selected' : ''; ?>>Siap Diambil</option>
-                            <option value="Selesai" <?= ($status === 'Selesai') ? 'selected' : ''; ?>>Selesai</option>
-                            <option value="Dibatalkan" <?= ($status === 'Dibatalkan') ? 'selected' : ''; ?>>Dibatalkan</option>
+                            <option value="menunggu diproses" <?= ($status === 'Menunggu Diproses') ? 'selected' : ''; ?>>Menunggu Diproses</option>
+                            <option value="diproses" <?= ($status === 'Diproses') ? 'selected' : ''; ?>>Diproses</option>
+                            <option value="siap diambil" <?= ($status === 'Siap Diambil') ? 'selected' : ''; ?>>Siap Diambil</option>
+                            <option value="selesai" <?= ($status === 'Selesai') ? 'selected' : ''; ?>>Selesai</option>
+                            <option value="dibatalkan" <?= ($status === 'Dibatalkan') ? 'selected' : ''; ?>>Dibatalkan</option>
                         </select>
                     </div>
                 </div>

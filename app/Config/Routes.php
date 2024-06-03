@@ -9,9 +9,6 @@ use CodeIgniter\Router\RouteCollection;
 // Auto route
 $routes->setAutoRoute(true);
 
-// Default route
-$routes->get('/', 'Page::index');
-
 // Admin routes
 $routes->get('admin', 'Auth\Admin\Login::viewForm');
 $routes->post('admin/auth/register', 'Auth\Admin\Register::registerAdminAccount');
@@ -25,7 +22,7 @@ $routes->group('admin', ['filter' => 'auth-admin'], function ($routes) {
     $routes->get('list', 'Admin\Admin::viewAdmins');
     $routes->get('search', 'Admin\Admin::searchAdmin');
     $routes->delete('(:num)/delete', 'Admin\Admin::deleteAdmin/$1');
-    
+
     // Add admin
     $routes->get('add', 'Auth\Admin\Register::viewForm');
 
@@ -50,12 +47,12 @@ $routes->group('admin', ['filter' => 'auth-admin'], function ($routes) {
     $routes->get('customer/search', 'Admin\Customer::searchCustomer');
     $routes->get('customer/(:segment)', 'Admin\Customer::viewCustomerDetail/$1');
     $routes->delete('customer/(:num)/delete', 'Admin\Customer::deleteCustomer/$1');
-    
+
     // Profile
     $routes->get('profile', 'Admin\Profile::viewInfo');
     $routes->get('profile/edit', 'Admin\Profile::viewEditProfile');
     $routes->post('profile/update', 'Admin\Profile::updateAdminProfile');
-    
+
     $routes->get('(:segment)', 'Admin\Admin::viewAdminDetail/$1');
 
     // Reports
@@ -76,6 +73,9 @@ $routes->get('auth/reset', 'Auth\Password::resetForm');
 $routes->post('auth/password/reset', 'Auth\Password::reset');
 
 $routes->group('', ['filter' => 'auth-customer'], function ($routes) {
+    // Default route
+    $routes->get('/', 'Page::index');
+
     $routes->get('cart', 'Customer\Cart::viewCart');
     $routes->post('cart/(:num)/update', 'Customer\Cart::updateCartItem/$1');
     $routes->delete('cart/(:num)/delete', 'Customer\Cart::deleteCartItem/$1');

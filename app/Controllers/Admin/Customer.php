@@ -25,9 +25,13 @@ class Customer extends BaseController
 
     public function viewCustomers()
     {
+        $currentPage = $this->request->getVar('page_customers') ? $this->request->getVar('page_customers') : 1;
+
         $data = [
             'title' => 'Daftar Pelanggan | ADMIN',
-            'customers' => $this->customerModel->getCustomers()
+            'customers' => $this->customerModel->getCustomers(),
+            'pager' => $this->customerModel->pager,
+            'currentPage' => $currentPage
         ];
 
         session()->remove('Customer Search Info');
@@ -52,10 +56,13 @@ class Customer extends BaseController
     public function searchCustomer()
     {
         $keyword = $this->request->getVar('keyword');
+        $currentPage = $this->request->getVar('page_customers') ? $this->request->getVar('page_customers') : 1;
 
         $data = [
             'title' => 'Daftar Pelanggan | ADMIN',
-            'customers' => $this->customerModel->getCustomerBySearch($keyword)
+            'customers' => $this->customerModel->getCustomerBySearch($keyword),
+            'pager' => $this->customerModel->pager,
+            'currentPage' => $currentPage
         ];
 
         if (empty($data['customers'])) {

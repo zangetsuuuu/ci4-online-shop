@@ -13,7 +13,7 @@ class OrderModel extends Model
     public function getOrders()
     {
         $id = session()->get('id');
-        return $this->where('customer_id', $id)->orderBy('created_at', 'DESC')->findAll();
+        return $this->where('customer_id', $id)->orderBy('created_at', 'DESC')->paginate(25, 'orders');
     }
 
     public function getOrderDetails($params)
@@ -24,7 +24,7 @@ class OrderModel extends Model
     public function getOrdersByStatus($status)
     {
         $id = session()->get('id');
-        return $this->where('customer_id', $id)->where(['status' => $status])->findAll();
+        return $this->where('customer_id', $id)->where(['status' => $status])->paginate(25, 'orders');
     }
 
     public function sortOrders($params)
@@ -32,9 +32,9 @@ class OrderModel extends Model
         $id = session()->get('id');
 
         if ($params == 'terlama') {
-            return $this->where(['customer_id' => $id])->orderBy('created_at', 'ASC')->findAll();
+            return $this->where(['customer_id' => $id])->orderBy('created_at', 'ASC')->paginate(25, 'orders');
         } else {
-            return $this->where(['customer_id' => $id])->orderBy('created_at', 'DESC')->findAll();
+            return $this->where(['customer_id' => $id])->orderBy('created_at', 'DESC')->paginate(25, 'orders');
         }
     }
 

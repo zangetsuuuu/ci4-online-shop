@@ -5,32 +5,49 @@ namespace App\Filters;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\Admin\CustomerModel;
 
 class CustomerAuthFilter implements FilterInterface
 {
     /**
-     * Do whatever processing this filter needs to do.
-     * By default it should not return anything during
-     * normal execution. However, when an abnormal state
-     * is found, it should return an instance of
-     * CodeIgniter\HTTP\Response. If it does, script
-     * execution will end and that Response will be
-     * sent back to the client, allowing for error pages,
-     * redirects, etc.
+     * Checks if the user is authenticated and authorized.
      *
      * @param RequestInterface $request
-     * @param array|null       $arguments
+     * @param array|null $arguments
      *
      * @return RequestInterface|ResponseInterface|string|void
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (!session()->get('isLoggedIn')) {
+        $isLoggedIn = session()->get('isLoggedIn');
+        $role = session()->get('role');
+
+        if (!$isLoggedIn) {
             return redirect()->to(base_url('login'));
         }
 
-        if (session()->get('role')) {
+        if ($role) {
             return redirect()->back();
+        }
+
+        if (!$isLoggedIn && isset($_COOKIE['remember_me'])) {
+            list($id, $password) = explode(':', $_COOKIE['remember_me']);
+
+            $model = new CustomerModel();
+            $customer = $model->find($id);
+            
+            if ($password == $customer['password']) {
+                $data = [
+                    'id' => $customer['id'],
+                    'fullname' => $customer['fullname'],
+                    'username' => $customer['username'],
+                    'email' => $customer['email'],
+                    'avatar' => $customer['avatar'],
+                    'isLoggedIn' => true
+                ];
+        
+                session()->set($data);
+            }
         }
     }
 

@@ -17,12 +17,15 @@ class Product extends BaseController
     public function viewProducts()
     {
         $category = $this->request->getVar('category');
-        $category = (isset($category)) ? $category : '';
+        $category = ($category === 'semua') ? null : $category;
+        $currentPage = $this->request->getVar('page_products') ? $this->request->getVar('page_products') : 1;
 
         $data = [
             'title' => 'Daftar Produk | ADMIN',
             'category' => $category,
             'products' => !$category ? $this->productModel->getProducts() : $this->productModel->getProductsByCategory($category),
+            'pager' => $this->productModel->pager,
+            'currentPage' => $currentPage,
             'flashMessages' => [
                 'Create Success' => ['id' => 'alert-create-success', 'message' => session()->getFlashdata('Create Success')],
                 'Edit Success' => ['id' => 'alert-edit-success', 'message' => session()->getFlashdata('Edit Success')],
@@ -58,11 +61,14 @@ class Product extends BaseController
     public function searchProduct()
     {
         $keyword = $this->request->getVar('keyword');
+        $currentPage = $this->request->getVar('page_products') ? $this->request->getVar('page_products') : 1;
 
         $data = [
             'title' => 'Daftar Produk | ADMIN',
             'category' => '',
-            'products' => $this->productModel->getProductBySearch($keyword)
+            'products' => $this->productModel->getProductBySearch($keyword),
+            'pager' => $this->productModel->pager,
+            'currentPage' => $currentPage
         ];
 
         if (empty($data['products'])) {
@@ -162,7 +168,7 @@ class Product extends BaseController
 
         session()->setFlashdata('Edit Success', 'Data berhasil diubah!');
 
-        return redirect()->to('admin/products');
+        return redirect()->to(base_url('admin/products'));
     }
 
     public function deleteProduct($id)
@@ -176,6 +182,6 @@ class Product extends BaseController
 
         session()->setFlashdata('Delete Success', 'Data berhasil dihapus!');
 
-        return redirect()->to('admin/products');
+        return redirect()->to(base_url('admin/products'));
     }
 }

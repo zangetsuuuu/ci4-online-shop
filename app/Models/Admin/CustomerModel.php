@@ -15,7 +15,7 @@ class CustomerModel extends Model
 
     public function getCustomers()
     {
-        return $this->findAll();
+        return $this->paginate(25, 'customers');
     }
 
     public function getCustomerById($id)
@@ -37,7 +37,7 @@ class CustomerModel extends Model
             ->orLike('gender', $keyword)
             ->orLike('phone_number', $keyword)
             ->orLike('address', $keyword)
-            ->findAll();
+            ->paginate(25, 'customers');
     }
 
     public function getTotalCustomers()

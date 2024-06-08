@@ -34,7 +34,7 @@ class Payment extends BaseController
         $this->customerModel = new CustomerModel();
         $this->orderModel = new OrderModel();
         $this->orderItemModel = new OrderItemModel();
-        Config::$serverKey = 'SB-Mid-server-pzDcwPlXshvIxjJMLEvZtQdx';
+        Config::$serverKey = 'SB-Mid-server-Ekvcn3oCH7UN-jMUIn_T1bk8';
         Config::$isProduction = false;
         Config::$isSanitized = true;
         Config::$is3ds = true;
@@ -113,9 +113,9 @@ class Payment extends BaseController
 
     public function success()
     {
-        if (session()->getFlashdata('success')) {
-            $this->sendNotification();
-        }
+        // if (session()->getFlashdata('success')) {
+        //     $this->sendNotification();
+        // }
 
         $data = [
             'title' => 'Pembayaran Berhasil!',
@@ -150,7 +150,7 @@ class Payment extends BaseController
         ];
 
         $saveTransaction = $this->transactionModel->save($data);
-
+        
         if ($saveTransaction && $status == 'settlement') {
             $response = [
                 'success' => true
@@ -180,7 +180,6 @@ class Payment extends BaseController
             }
             
             $this->cartModel->where('customer_id', $customerId)->delete();
-            session()->setFlashdata('success', 'Pembayaran Berhasil!');
         } else {
             $response = [
                 'success' => false

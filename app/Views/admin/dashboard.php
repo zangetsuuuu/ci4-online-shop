@@ -114,7 +114,7 @@
                 </table>
                 <!-- Orders end  -->
             </div>
-            <?php if ($pager !== null) : ?>
+            <?php if ($pager !== null && $pager->getPageCount() > 1 && !empty($orders)) : ?>
                 <?= $pager->links('orders', 'orders_pagination'); ?>
             <?php endif; ?>
         </div>

@@ -9,6 +9,9 @@ use CodeIgniter\Router\RouteCollection;
 // Auto route
 $routes->setAutoRoute(true);
 
+// Default route
+$routes->get('/', 'Page::index');
+
 // Admin routes
 $routes->get('admin', 'Auth\Admin\Login::viewForm');
 $routes->post('admin/auth/register', 'Auth\Admin\Register::registerAdminAccount');
@@ -73,9 +76,6 @@ $routes->get('auth/reset', 'Auth\Password::resetForm');
 $routes->post('auth/password/reset', 'Auth\Password::reset');
 
 $routes->group('', ['filter' => 'auth-customer'], function ($routes) {
-    // Default route
-    $routes->get('/', 'Page::index');
-
     $routes->get('cart', 'Customer\Cart::viewCart');
     $routes->post('cart/(:num)/update', 'Customer\Cart::updateCartItem/$1');
     $routes->delete('cart/(:num)/delete', 'Customer\Cart::deleteCartItem/$1');

@@ -134,7 +134,7 @@
                     </table>
                 </div>
                 <!-- Customers end -->
-                <?php if ($pager !== null) : ?>
+                <?php if ($pager !== null && $pager->getPageCount() > 1 && !empty($customers)) : ?>
                     <?= $pager->links('orders', 'orders_pagination'); ?>
                 <?php endif; ?>
             <?php endif; ?>

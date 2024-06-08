@@ -193,7 +193,7 @@
                     </div>
                 <?php endforeach; ?>
             </div>
-            <?php if ($pager !== null) : ?>
+            <?php if ($pager !== null && $pager->getPageCount() > 1 && !empty($products)) : ?>
                 <?= $pager->links('products', 'products_pagination'); ?>
             <?php endif; ?>
         </div>

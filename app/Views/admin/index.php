@@ -135,8 +135,11 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                    <!-- Admins end -->
                 </div>
-                <!-- Admins end -->
+                <?php if ($pager !== null && $pager->getPageCount() > 1 && !empty($admins)) : ?>
+                    <?= $pager->links('admins', 'admins_pagination'); ?>
+                <?php endif; ?>
             <?php endif; ?>
         </div>
     </div>

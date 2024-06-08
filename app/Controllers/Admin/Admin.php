@@ -16,9 +16,13 @@ class Admin extends BaseController
 
     public function viewAdmins()
     {
+        $currentPage = $this->request->getVar('page_admins') ? $this->request->getVar('page_admins') : 1;
+
         $data = [
             'title' => 'Daftar Admin | ADMIN',
             'admins' => $this->adminModel->getAdmins(),
+            'pager' => $this->adminModel->pager,
+            'currentPage' => $currentPage,
             'flashMessages' => [
                 'Register Success' => ['id' => 'alert-create-success', 'message' => session()->getFlashdata('Register Success')],
                 'Delete Success' => ['id' => 'alert-delete-success', 'message' => session()->getFlashdata('Delete Success')],
@@ -36,6 +40,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Detail Admin | ADMIN',
             'admin' => $this->adminModel->getAdminByUsername($username),
+            
         ];
 
         if (empty($data['admin'])) {
@@ -48,10 +53,13 @@ class Admin extends BaseController
     public function searchAdmin()
     {
         $keyword = $this->request->getVar('keyword');
+        $currentPage = $this->request->getVar('page_admins') ? $this->request->getVar('page_admins') : 1;
 
         $data = [
             'title' => 'Daftar Admin | ADMIN',
-            'admins' => $this->adminModel->getAdminBySearch($keyword)
+            'admins' => $this->adminModel->getAdminBySearch($keyword),
+            'pager' => $this->adminModel->pager,
+            'currentPage' => $currentPage
         ];
 
         if (empty($data['admins'])) {
@@ -68,7 +76,7 @@ class Admin extends BaseController
     public function deleteAdmin($id)
     {
         $admin = $this->adminModel->getAdminById($id);
-        if ($admin['avatar'] != 'blank-avatar.webp') {
+        if ($admin['avatar'] != 'default-avatar.webp') {
             unlink('img/avatars/admin/' . $admin['avatar']);
         }
 

@@ -22,8 +22,7 @@
                             </svg>
                         </button>
                         <a href="<?= base_url('products'); ?>" class="flex ms-2 md:me-24">
-                            <img src="" class="h-8 me-3" alt="" />
-                            <span class="self-center text-xl font-semibold sm:text-2xl">OnlineStore</span>
+                            <span class="self-center text-xl font-semibold sm:text-2xl">Warung Ibu Sri</span>
                         </a>
                     </div>
                     <div class="flex items-center ms-3">

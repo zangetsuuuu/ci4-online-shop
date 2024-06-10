@@ -1528,10 +1528,6 @@ input:checked + .toggle-bg {
   max-width: 48rem;
 }
 
-.max-w-4xl {
-  max-width: 56rem;
-}
-
 .max-w-lg {
   max-width: 32rem;
 }
@@ -1542,6 +1538,10 @@ input:checked + .toggle-bg {
 
 .max-w-sm {
   max-width: 24rem;
+}
+
+.max-w-xl {
+  max-width: 36rem;
 }
 
 .flex-1 {
@@ -2150,11 +2150,6 @@ input:checked + .toggle-bg {
   padding-bottom: 0.75rem;
 }
 
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
@@ -2290,6 +2285,14 @@ input:checked + .toggle-bg {
 
 .leading-relaxed {
   line-height: 1.625;
+}
+
+.leading-loose {
+  line-height: 2;
+}
+
+.leading-tight {
+  line-height: 1.25;
 }
 
 .tracking-wide {

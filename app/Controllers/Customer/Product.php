@@ -19,6 +19,8 @@ class Product extends BaseController
 
     public function viewProducts()
     {
+        $this->deleteItemAfter3Hours();
+
         $category = $this->request->getVar('category');
         $category = ($category === 'semua') ? null : $category;
 
@@ -52,6 +54,8 @@ class Product extends BaseController
 
     public function searchProduct()
     {
+        $this->deleteItemAfter3Hours();
+
         $keyword = $this->request->getVar('keyword');
         $currentPage = $this->request->getVar('page_products') ? $this->request->getVar('page_products') : 1;
 
@@ -115,5 +119,20 @@ class Product extends BaseController
         session()->setFlashdata('Add Success', 'Berhasil ditambahkan ke keranjang!');
 
         return redirect()->back();
+    }
+
+    public function deleteItemAfter3Hours()
+    {
+        $carts = $this->cartModel->findAll();
+        foreach ($carts as $cart) {
+            if (time() - strtotime($cart['created_at']) > 3 * 3600) {
+                $product = $this->productModel->getProductById($cart['product_id']);
+                $product['stock'] += $cart['quantity'];
+                $this->productModel->save($product);
+                $this->cartModel->delete($cart['id']);
+            }
+        }
+
+        return redirect()->to(base_url('products'));
     }
 }

@@ -75,7 +75,7 @@ $routes->post('auth/send-email', 'Auth\Password::sendEmail');
 $routes->get('auth/reset', 'Auth\Password::resetForm');
 $routes->post('auth/password/reset', 'Auth\Password::reset');
 
-$routes->group('', ['filter' => 'auth-customer'], function ($routes) {
+$routes->group('', function ($routes) {
     $routes->get('cart', 'Customer\Cart::viewCart');
     $routes->post('cart/(:num)/update', 'Customer\Cart::updateCartItem/$1');
     $routes->delete('cart/(:num)/delete', 'Customer\Cart::deleteCartItem/$1');

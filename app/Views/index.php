@@ -13,6 +13,9 @@
                 <a href="<?= base_url('login'); ?>" class="w-full btn-alternative md:w-auto">
                     Login
                 </a>
+                <a href="<?= base_url('products'); ?>" class="w-full btn-alternative md:w-auto">
+                    Lihat Produk
+                </a>
             </div>
         </div>
     </div>

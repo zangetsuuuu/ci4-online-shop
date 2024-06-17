@@ -89,6 +89,6 @@
     </div>
 </div>
 
-<?= $this->include('layout/customer/product/add_to_cart'); ?>
+<?= $this->include('layout/customer/product/add_to_cart_detail'); ?>
 
 <?= $this->endSection(); ?>

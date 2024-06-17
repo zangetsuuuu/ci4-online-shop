@@ -3,8 +3,8 @@
 <?= $this->section('content'); ?>
 <div class="flex items-center justify-center min-h-screen">
     <div class="container px-4 py-16 md:px-24">
-        <div class="max-w-xl mx-auto md:text-center">
-            <h1 class="mb-3 text-4xl font-bold tracking-wide md:text-5xl md:mb-4">Selamat Datang di Warung Online Ibu Sri!</h1>
+        <div class="max-w-xl mx-auto text-center">
+            <h1 class="mb-3 text-4xl font-bold tracking-wide text-pretty md:text-5xl md:mb-4">Selamat Datang di Warung Ibu Sri!</h1>
             <p class="mb-6 text-base tracking-wide text-gray-500 md:text-lg">Cari dan beli barang yang Anda mau, disini!</p>
             <div class="flex flex-wrap items-center justify-center space-x-0 space-y-3 md:space-x-3 md:space-y-0">
                 <a href="<?= base_url('register'); ?>" class="w-full btn-primary md:w-auto">

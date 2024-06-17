@@ -47,7 +47,7 @@
     </div>
 </div>
 
-<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-gmWNxcxq0YbH5cPs"></script>
+<script src="https://app.midtrans.com/snap/snap.js" data-client-key="<CLIENT_KEY>"></script>
 <script type="text/javascript">
     document.getElementById('pay-button').onclick = function() {
         // SnapToken acquired from Payment controller

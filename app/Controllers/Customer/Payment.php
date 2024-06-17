@@ -34,8 +34,8 @@ class Payment extends BaseController
         $this->customerModel = new CustomerModel();
         $this->orderModel = new OrderModel();
         $this->orderItemModel = new OrderItemModel();
-        Config::$serverKey = 'SB-Mid-server-Ekvcn3oCH7UN-jMUIn_T1bk8';
-        Config::$isProduction = false;
+        Config::$serverKey = '<SERVER_KEY>';
+        Config::$isProduction = true;
         Config::$isSanitized = true;
         Config::$is3ds = true;
     }

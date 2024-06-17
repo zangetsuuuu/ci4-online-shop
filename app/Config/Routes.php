@@ -102,7 +102,8 @@ $routes->group('', function ($routes) {
 });
 
 // Public page route
-$routes->get('about-us', 'Customer\Page::about');
+$routes->get('about-us', 'Page::about');
+$routes->get('terms-and-conditions', 'Page::terms');
 
 // Forbidden route
 $routes->get('forbidden', 'Page::forbidden');
